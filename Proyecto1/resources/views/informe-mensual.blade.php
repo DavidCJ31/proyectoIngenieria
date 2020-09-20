@@ -39,30 +39,26 @@
             </ul>
             <ul class="navbar-nav nav-flex-icons" id="redes">
                 <li class="nav-item">
-                    <a href="https://www.facebook.com/VDOCENCIAUNA/"><img src="imagenes/facebook.png" class="facebook-img-card" /></a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://www.instagram.com/vdocenciauna/"><img src="imagenes/instagram.png" class="instagram-img-card" /></a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://www.youtube.com/channel/UCUs96CKvsIuVdsdxGhWKfjA"><img src="imagenes/youtube.png" class="youtube-img-card" /></a>
-                </li>
-                <li>
-                <x-jet-responsive-nav-link href="/user/profile" :active="request()->routeIs('profile.show')">
+                <x-jet-responsive-nav-link class="nav-link" href="/user/profile" :active="request()->routeIs('profile.show')">
                     {{ __('Profile') }}
                 </x-jet-responsive-nav-link>
                 </li>
-                <li>
+                <li class="nav-item">
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                        <x-jet-responsive-nav-link href="{{ route('logout') }}"
+                        <x-jet-responsive-nav-link class="nav-link" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                             this.closest('form').submit();">
                             {{ __('Logout') }}
                         </x-jet-responsive-nav-link>
                 </form>
+                </li>
+                <li class="nav-item">
+                    <x-jet-responsive-nav-link href="/user/profile" :active="request()->routeIs('profile.show')">
+                        <img class="h-8 w-8 rounded-full object-cover" style="width:30px; border-radius:50%;" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                    </x-jet-responsive-nav-link>
                 </li>
             </ul>
         </div>
@@ -187,6 +183,7 @@
             </div>
         </div>
     </div>
+    @include("layouts.footer")
 </body>
 
 <script>
