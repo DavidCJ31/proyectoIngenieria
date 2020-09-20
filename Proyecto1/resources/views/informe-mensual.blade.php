@@ -17,22 +17,6 @@
 <header>
 
 <!-- ****** Bara del header ************ -->
-<div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Seguimiento</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                        @endif
-                    @endif
-                </div>
-            @endif
-            </div>
-
     <nav class="navbar navbar-expand-lg navbar-dark default-color">
         <a class="navbar-brand" href="#"><strong>UNA</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,6 +46,23 @@
                 </li>
                 <li class="nav-item">
                     <a href="https://www.youtube.com/channel/UCUs96CKvsIuVdsdxGhWKfjA"><img src="imagenes/youtube.png" class="youtube-img-card" /></a>
+                </li>
+                <li>
+                <x-jet-responsive-nav-link href="/user/profile" :active="request()->routeIs('profile.show')">
+                    {{ __('Profile') }}
+                </x-jet-responsive-nav-link>
+                </li>
+                <li>
+                    <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                        <x-jet-responsive-nav-link href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                            {{ __('Logout') }}
+                        </x-jet-responsive-nav-link>
+                </form>
                 </li>
             </ul>
         </div>
