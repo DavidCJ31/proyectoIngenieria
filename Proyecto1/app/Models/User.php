@@ -23,10 +23,18 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+
+
     protected $fillable = [
-        'name',
-        'email',
+        'usuario',
+        'rol',
         'password',
+        'id',
+        'name',
+        'apellido',
+        'email',
     ];
 
     /**
@@ -36,9 +44,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
     ];
 
     /**
@@ -46,9 +51,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public $timestamps = false;
 
     /**
      * The accessors to append to the model's array form.
@@ -58,4 +61,10 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function persona()
+    {
+        return $this->hasOne('App\Models\persona');
+    }
+
 }

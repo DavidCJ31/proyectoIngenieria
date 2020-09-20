@@ -19,10 +19,10 @@ class CreatePersonasTable extends Migration
             $table->integer('id');
             $table->string('nombre', 45);
             $table->string('apellido', 45);
-            $table->bigInteger('usuario_id')->unsigned();
+            $table->string('usuario_id',45);
             $table->string('email',45);
             $table->primary('id');
-            $table->foreign('usuario_id')->references('id')->on('users');
+            //$table->foreign('usuario_id')->references('id')->on('users');
         });
 
        //Schema::table('personas', function (Blueprint $table) {

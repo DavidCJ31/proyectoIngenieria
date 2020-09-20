@@ -16,7 +16,7 @@ class CreateTutorsTable extends Migration
         Schema::create('tutors', function (Blueprint $table) {
             $table->integer('id');
             $table->primary('id');
-            $table->foreign('id')->references('id')->on('personas');
+            $table->foreign('id')->references('id')->on('users');
         });
     }
 

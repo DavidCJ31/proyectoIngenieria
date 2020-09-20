@@ -16,7 +16,7 @@ class CreatePostulantesTable extends Migration
         Schema::create('postulantes', function (Blueprint $table) {
             $table->integer('id');
            $table->primary('id');
-           $table->foreign('id')->references('id')->on('personas');
+           $table->foreign('id')->references('id')->on('users');
             $table->string('especialidad', 45)->nullable();
         });
     }
