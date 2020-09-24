@@ -24,3 +24,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/informe-mensual', function () {
     return view('informe-mensual');
 });
+
+Route::get('/formulario', function () {
+    return view('formulario');
+});
+
+Route::get('/calendario', function () {
+    return view('calendario');
+});

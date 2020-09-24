@@ -126,5 +126,14 @@ body{
   padding-right: 5px;
 }
 
+.btn-navbar{
+  background-color: #cc071e;
+  border: none;
+}
 
 
+
+.dropdown-item:hover{
+  background-color: #cc071e;
+  color: #F7F7F7;
+}
