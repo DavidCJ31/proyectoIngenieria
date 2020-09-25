@@ -58,6 +58,12 @@
             <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
             <x-jet-input-error for="name" class="mt-2" />
         </div>
+        <!-- Cédula -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="id" value="{{ __('Id') }}" />
+            <x-jet-input id="id" type="text" class="mt-1 block w-full" wire:model.defer="state.id" autocomplete="id" />
+            <x-jet-input-error for="id" class="mt-2" />
+        </div>
 
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
@@ -75,5 +81,6 @@
         <x-jet-button>
             {{ __('Save') }}
         </x-jet-button>
+
     </x-slot>
 </x-jet-form-section>
