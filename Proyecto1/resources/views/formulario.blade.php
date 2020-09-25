@@ -145,7 +145,6 @@
                     <td class="cuadro-tabla opcion-tabla" hora="1-3" dia="viernes"></td>
                   </tr>
 
-                  
                 <tr>
                     <td>3-5</td>
                     <td class="cuadro-tabla opcion-tabla" hora="3-5" dia="lunes"></td>
@@ -155,7 +154,6 @@
                     <td class="cuadro-tabla opcion-tabla" hora="3-5" dia="viernes"></td>
                   </tr>
 
-                  
                 <tr>
                     <td>5-7</td>
                     <td class="cuadro-tabla opcion-tabla" hora="5-7" dia="lunes"></td>
@@ -164,7 +162,6 @@
                     <td class="cuadro-tabla opcion-tabla" hora="5-7" dia="jueves"></td>
                     <td class="cuadro-tabla opcion-tabla" hora="5-7" dia="viernes"></td>
                   </tr>
-
 
               </tbody>
             </table>

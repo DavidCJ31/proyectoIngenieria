@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PersonaController;
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,7 +34,5 @@ Route::get('/calendario', function () {
     return view('calendario');
 });
 
-Route::get('/usuarios', function () {
-    return view('tabla_usuarios');
-});
 
+Route::get('/usuarios', [PersonaController::class, 'tablaUsuarios']);
