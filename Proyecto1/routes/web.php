@@ -32,3 +32,8 @@ Route::get('/formulario', function () {
 Route::get('/calendario', function () {
     return view('calendario');
 });
+
+Route::get('/usuarios', function () {
+    return view('tabla_usuarios');
+});
+

@@ -176,6 +176,8 @@
     @include("layouts.footer")
 </body>
 
+</html>
+
 <script>
     
     function empezar(){
@@ -189,8 +191,5 @@
 
 
 </script>
-
-</html>
-
 
 
