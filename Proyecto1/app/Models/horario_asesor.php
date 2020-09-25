@@ -7,5 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class horario_asesor extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
+    protected $fillable = [
+        'id',
+        'dia',
+        'hora_inicio',
+        'hora_final',
+        'asesor_id'
+    ];
+
+    public function asesor()
+    {
+        return $this->belongsTo('App\Models\asesor');
+    }
 }

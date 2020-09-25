@@ -7,5 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class lista_curso_estudiante extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
+    protected $fillable = [
+        'id',
+        'detalle_curso_id',
+        'estudiante_id',
+    ];
+
+    public function detalle_curso()
+    {
+        return $this->belongsTo('App\Models\detalle_curso');
+    }
+    public function estudiante()
+    {
+        return $this->belongsTo('App\Models\estudiante');
+    }
 }

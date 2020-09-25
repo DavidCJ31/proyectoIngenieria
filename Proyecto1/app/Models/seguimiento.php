@@ -7,5 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class seguimiento extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
+    protected $fillable = [
+        'id',
+        'descripcion',
+        'horario_asesor_id',
+        'estudiante_id',
+    ];
+
+    public function estudiante()
+    {
+        return $this->belongsTo('App\Models\estudiante');
+    }
+    public function horario_asesor()
+    {
+        return $this->belongsTo('App\Models\horario_asesor');
+    }
 }

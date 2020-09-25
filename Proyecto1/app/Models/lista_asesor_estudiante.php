@@ -7,5 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class lista_asesor_estudiante extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
+    protected $fillable = [
+        'id',
+        'asesor_id',
+        'estudiante_id',
+    ];
+
+    public function asesor()
+    {
+        return $this->belongsTo('App\Models\asesor');
+    }
+    public function estudiante()
+    {
+        return $this->belongsTo('App\Models\estudiante');
+    }
 }
