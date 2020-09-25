@@ -4,8 +4,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark default-color">
 
         <a class="navbar-brand" href="#"><strong>UNA</strong></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -21,8 +20,7 @@
                 </li>
                 <li class="nav-item">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle btn-navbar" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle btn-navbar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Opciones
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -37,19 +35,18 @@
                 @if (Route::has('login'))
                 @auth
                 <li class="nav-item">
-                    <x-jet-responsive-nav-link class="nav-link" href="/user/profile"
-                        :active="request()->routeIs('profile.show')">
+                    <a class="nav-link" href="/user/profile" :active="request()->routeIs('profile.show')">
                         {{ __('Profile') }}
-                    </x-jet-responsive-nav-link>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
 
-                        <x-jet-responsive-nav-link class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                             this.closest('form').submit();">
                             {{ __('Logout') }}
-                        </x-jet-responsive-nav-link>
+                        </a>
                     </form>
                 </li>
                 @else
