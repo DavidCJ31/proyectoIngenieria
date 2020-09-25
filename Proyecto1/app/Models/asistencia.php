@@ -7,5 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class asistencia extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
+    protected $fillable = [
+        'id',
+        'clase_id',
+        'estudiante_id',
+    ];
+
+    public function clase()
+    {
+        return $this->belongsTo('App\Models\clase');
+    }
+    public function estudiante()
+    {
+        return $this->belongsTo('App\Models\estudiante');
+    }
 }

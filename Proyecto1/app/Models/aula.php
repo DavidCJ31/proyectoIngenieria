@@ -7,5 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class aula extends Model
 {
-    use HasFactory;
+    protected $primaryKey = 'codigo';
+    public $incrementing = false;
+
+    public $timestamps = false;
+    protected $fillable = [
+        'codigo',
+        'sede',
+    ];
+
+    public function clase()
+    {
+        return $this->hasMany('App\Models\clase', 'foreign_key', 'codigo');
+    }
+
 }

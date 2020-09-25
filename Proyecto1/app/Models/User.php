@@ -61,9 +61,28 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function persona()
+    /*public function persona()
     {
         return $this->hasOne('App\Models\persona');
+    }*/
+    public function postulante()
+    {
+        return $this->hasOne('App\Models\postulante');
     }
-
+    public function estudiante()
+    {
+        return $this->hasOne('App\Models\estudiante');
+    }
+    public function adminitrador()
+    {
+        return $this->hasOne('App\Models\adminitrador');
+    }
+    public function asesor()
+    {
+        return $this->hasOne('App\Models\asesor');
+    }
+    public function tutor()
+    {
+        return $this->hasOne('App\Models\tutor');
+    }
 }
