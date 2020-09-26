@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonaController;
+use App\Http\Controllers\EstudianteController;
 use App\Models\User;
+use App\Models\estudientes;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,3 +39,4 @@ Route::get('/calendario', function () {
 
 
 Route::get('/usuarios', [PersonaController::class, 'tablaUsuarios']);
+Route::get('/estudiante', [EstudianteController::class, 'tablaEstudiantes']);

@@ -26,7 +26,7 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">Fomulario</a>
                             <a class="dropdown-item" href="#">Informe mensual</a>
-                            <a class="dropdown-item" href="#">Something</a>
+                            <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
                         </div>
                     </div>
                 </li>

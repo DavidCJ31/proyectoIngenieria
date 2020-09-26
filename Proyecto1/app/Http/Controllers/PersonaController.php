@@ -15,6 +15,4 @@ class PersonaController extends Controller
         return view('tabla_usuarios')->with('usuarios',$usuario);
     }
 
-
-
 }

@@ -71,7 +71,7 @@ class User extends Authenticatable
     }
     public function estudiante()
     {
-        return $this->hasOne('App\Models\estudiante');
+        return $this->hasOne('App\Models\estudiante','id');
     }
     public function adminitrador()
     {

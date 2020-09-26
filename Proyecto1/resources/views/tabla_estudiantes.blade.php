@@ -27,8 +27,10 @@
 
 <body>
 
+
+
     <div id="fondoTabla">
-        <h1 id="TituloVista">Usuarios</h1>
+        <h1 id="TituloVista">Segimientos</h1>
         <div id="marg">
             <table class="table table-bordered table-striped mb-0 " id="example">
                 <thead>
@@ -46,28 +48,29 @@
                     <?php
                         $index = 1;
                     ?>
-                    @foreach($usuarios as $usuario)
+                    @if($estudiantes)
                     <tr style="height: 10px">
                         <td> <?php echo $index++ ?> </td>
-                        <td >{{$usuario->id}}</td>
-                        <td>{{$usuario->usuario}}</td>
-                        <td style=" "> {{$usuario->name}}</td>
-                        <td style=" ">{{$usuario->apellido}}</td>
-                        <td> {{$usuario->email}}</td>
+                        <td > {{ $estudiantes->name }}</td>
+                        <td></td>
+                        <td style=" "> </td>
+                        <td style=" "></td>
+                        <td> </td>
                         <td>
-                        {{$usuario->rol}}
 <!--                        
                             <button type="submit" class="btn btn-default"><img src="imagenes/logo.jpg"
                                     style=" width: 50px; height: 50px;"></button>
 -->
                         </td>
                     </tr>
-                    @endforeach
+                    @else
+                    <p> Vacio </p>
+
+                    @endif
                 </tbody>
             </table>
         </div>
     </div>
-
 </body>
 
 </html>
