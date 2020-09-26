@@ -29,10 +29,10 @@ class estudiante extends Model
     }
     public function seguimiento()
     {
-        return $this->hasMany('App\Models\seguimiento');
+        return $this->hasMany('App\Models\seguimiento','estudiante_id');
     }
         public function lista_asesor_estudiante()
     {
-        return $this->hasMany('App\Models\lista_asesor_estudiante');
+        return $this->hasMany('App\Models\lista_asesor_estudiante','asesor_id');
     }
 }

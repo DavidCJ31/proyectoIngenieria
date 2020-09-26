@@ -27,6 +27,7 @@
                             <a class="dropdown-item" href="#">Fomulario</a>
                             <a class="dropdown-item" href="#">Informe mensual</a>
                             <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
+                            <a class="dropdown-item" href="/estudiante">Tabla estudiantes</a>
                         </div>
                     </div>
                 </li>

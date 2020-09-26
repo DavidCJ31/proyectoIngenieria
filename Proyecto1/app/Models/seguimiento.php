@@ -17,7 +17,7 @@ class seguimiento extends Model
 
     public function estudiante()
     {
-        return $this->belongsTo('App\Models\estudiante');
+        return $this->belongsTo('App\Models\estudiante','estudiante_id');
     }
     public function horario_asesor()
     {

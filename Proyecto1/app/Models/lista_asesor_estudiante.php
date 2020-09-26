@@ -20,6 +20,6 @@ class lista_asesor_estudiante extends Model
     }
     public function estudiante()
     {
-        return $this->belongsTo('App\Models\estudiante');
+        return $this->belongsTo('App\Models\estudiante','estudiante_id');
     }
 }

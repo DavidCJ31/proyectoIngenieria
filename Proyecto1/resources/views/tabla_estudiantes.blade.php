@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link href="{{ asset('css/informacionEstudiante.css') }}" rel="stylesheet">
     <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
     <link href="{{ asset('css/estilo-Form.css') }}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -22,12 +23,26 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="{{ asset('css/styleTable.css') }}" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     @include("layouts.header")
 </head>
 
 <body>
 
-
+@if($estudiantes)
+<div class="card">
+    <div class="card-body">
+        <div class="media">
+            <div> <i style='font-size:24px' class='fas'>&#xf2c1;</i> </div>
+            <div class="media-body">
+                <ul class="list-unstyled fa-ul">
+                    <li><i class="fa fa-user fa-li"></i><a href="#">{{ $estudiantes[0]->name }}</a></li>
+                    <li><i class="fa fa-envelope fa-li"></i><a href="#">{{ $estudiantes[0]->email }} </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
     <div id="fondoTabla">
         <h1 id="TituloVista">Segimientos</h1>
@@ -37,40 +52,30 @@
                     <tr>
                         <th id="colcorta" scope="col">#</th>
                         <th scope="col">Id</th>
-                        <th scope="col">Usuario</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellido</th>
-                        <th scope="col">Correo</th>
-                        <th scope="col">Rol</th>
+                        <th scope="col">Horario</th>
+                        <th scope="col">Asesor</th>
+                        <th scope="col">Estudiante</th>
+                        <th scope="col">Descripción</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                         $index = 1;
                     ?>
-                    @if($estudiantes)
-                    <tr style="height: 10px">
-                        <td> <?php echo $index++ ?> </td>
-                        <td > {{ $estudiantes->name }}</td>
-                        <td></td>
-                        <td style=" "> </td>
-                        <td style=" "></td>
-                        <td> </td>
-                        <td>
-<!--                        
-                            <button type="submit" class="btn btn-default"><img src="imagenes/logo.jpg"
-                                    style=" width: 50px; height: 50px;"></button>
--->
-                        </td>
+                    
+                    <tr>
+                        <td>  <?php echo $index++ ?> </td>
+                        <td>{{ $estudiantes[1][0]->id }}</td>
+                        <td>{{ $estudiantes[3][0]->hora_inicio}} - {{ $estudiantes[3][0]->hora_final}}</td>
+                        <td>{{ $estudiantes[2]->name }}</td>
+                        <td>{{ $estudiantes[1][0]->estudiante_id }}</td>
+                        <td>{{ $estudiantes[1][0]->descripcion }}</td>
                     </tr>
-                    @else
-                    <p> Vacio </p>
-
-                    @endif
                 </tbody>
             </table>
         </div>
     </div>
+    @endif
 </body>
 
 </html>

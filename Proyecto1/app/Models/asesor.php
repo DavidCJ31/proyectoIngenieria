@@ -17,7 +17,7 @@ class asesor extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo('App\Models\User','id');
     }
     public function lista_asesor_estudiante()
     {
@@ -25,7 +25,7 @@ class asesor extends Model
     }
     public function horario_asesor()
     {
-        return $this->hasMany('App\Models\horario_asesor');
+        return $this->hasMany('App\Models\horario_asesor','asesor_id');
     }
 
 }
