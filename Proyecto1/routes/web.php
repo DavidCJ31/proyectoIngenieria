@@ -58,5 +58,9 @@ Route::get('/calendario', function () {
 });
 
 
+
+
+Route::get('/asistencia', [PersonaController::class, 'tablaUsuarios']);
 Route::get('/usuarios', [PersonaController::class, 'tablaUsuarios']);
 Route::get('/estudiante', [EstudianteController::class, 'tablaEstudiantes']);
+
