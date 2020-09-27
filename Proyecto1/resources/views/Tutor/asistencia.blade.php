@@ -22,7 +22,7 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="{{ asset('css/styleTable.css') }}" rel="stylesheet">
-    @include("layouts.header")
+    @include("Tutor.headerTutor")
 </head>
 
 <body>
@@ -44,21 +44,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                        $index = 1;
-                    ?>
-                    @foreach($usuarios as $usuario)
-                    <tr style="height: 10px">
-
-                        <td>  <?php echo $index++;?> </td>
-                        <td >{{$usuario->id}}</td>
-                        <td>{{$usuario->usuario}}</td>
-                        <td style=" "> {{$usuario->name}}</td>
-                        <td style=" ">{{$usuario->apellido}}</td>
-                        <td> {{$usuario->email}}</td>
-                
-                    </tr>
-                    @endforeach
                 </tbody>
             </table>
         </div>
