@@ -14,11 +14,13 @@
 .cuadro-tabla{
     width: 16%;
     height: 50px;
+    background-color: white;
 }
 
 .informacion{
     color: red;
     background-color: blue;
 }
+
 
 

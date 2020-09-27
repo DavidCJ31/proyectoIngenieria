@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PersonaController extends Controller
 {
 
     public function tablaUsuarios(){
-        $usuario = \DB::table('users')
+        $usuario = DB::table('users')
         ->select('users.*')
         ->orderBy('id','DESC')
         ->get();

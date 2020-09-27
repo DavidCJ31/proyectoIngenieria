@@ -56,7 +56,11 @@ class HorarioAsesorController extends Controller
      */
     public function show($id)
     {
-        //
+        $horario = DB::table('horario_asesors')
+        ->select('horario_asesors.*')
+        ->where('asesor_id', $id)
+        ->get();
+        return view('horarios-citas')->with('horario',$horario);
     }
 
     /**

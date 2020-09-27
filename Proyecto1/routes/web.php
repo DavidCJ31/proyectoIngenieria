@@ -50,6 +50,10 @@ Route::get('/informe-mensual', function () {
     return view('informe-mensual');
 });
 
+Route::get('/prueba-horarios', function () {
+    return view('horarios-citas');
+});
+
 Route::get('/formulario', function () {
     return view('formulario');
 });
