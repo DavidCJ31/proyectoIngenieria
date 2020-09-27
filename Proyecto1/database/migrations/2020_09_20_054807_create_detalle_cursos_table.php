@@ -18,8 +18,8 @@ class CreateDetalleCursosTable extends Migration
             
             $table->integer('tutor_id');
             $table->string('curso_codigo',45);
-            $table->foreign('curso_codigo')->references('codigo')->on('cursos');
-            $table->foreign('tutor_id')->references('id')->on('tutors');;
+            $table->foreign('curso_codigo')->references('codigo')->on('cursos')->onDelete('cascade');
+            $table->foreign('tutor_id')->references('id')->on('tutors')->onDelete('cascade');
 
             $table->integer('anno');
             $table->string('periodo', 45);

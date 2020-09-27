@@ -22,15 +22,13 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="{{ asset('css/styleTable.css') }}" rel="stylesheet">
-
     @include("layouts.header")
-    
 </head>
 
 <body>
 
     <div id="fondoTabla">
-        <h1 id="TituloVista">Usuarios</h1>
+        <h1 id="TituloVista">Estudiantes</h1>
         <div id="marg">
             <table class="table table-bordered table-striped mb-0 " id="example">
                 <thead>
@@ -41,7 +39,8 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">Correo</th>
-                        <th scope="col">Rol</th>
+                        <th scope="col">Si</th>
+                        <th scope="col">No</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,25 +56,15 @@
                         <td style=" "> {{$usuario->name}}</td>
                         <td style=" ">{{$usuario->apellido}}</td>
                         <td> {{$usuario->email}}</td>
-                        <td>
-                        {{$usuario->rol}}
-<!--                        
-                            <button type="submit" class="btn btn-default"><img src="imagenes/logo.jpg"
-                                    style=" width: 50px; height: 50px;"></button>
--->
-                        </td>
+                
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
+      
     </div>
-<<<<<<< HEAD
-    @include("layouts.footer")
-</body>
-=======
->>>>>>> main
-
+    
 </body>
 @include("layouts.footer")
 </html>

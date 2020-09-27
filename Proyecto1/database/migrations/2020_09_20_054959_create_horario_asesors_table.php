@@ -16,7 +16,7 @@ class CreateHorarioAsesorsTable extends Migration
         Schema::create('horario_asesors', function (Blueprint $table) {
             $table->id('id');
             $table->integer('asesor_id');
-            $table->foreign('asesor_id')->references('id')->on('asesors');
+            $table->foreign('asesor_id')->references('id')->on('asesors')->onDelete('cascade');
             
             $table->time('hora_inicio');
             $table->time('hora_final');

@@ -19,8 +19,8 @@ class CreateAsistenciasTable extends Migration
 
             $table->bigInteger('clase_id')->unsigned();
             $table->integer('estudiante_id');
-            $table->foreign('clase_id')->references('id')->on('clases');
-            $table->foreign('estudiante_id')->references('id')->on('estudiantes');
+            $table->foreign('clase_id')->references('id')->on('clases')->onDelete('cascade');
+            $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
 
 
             $table->tinyInteger('presencialidad')->nullable();

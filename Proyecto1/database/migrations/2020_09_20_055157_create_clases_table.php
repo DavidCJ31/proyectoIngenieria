@@ -16,9 +16,9 @@ class CreateClasesTable extends Migration
         Schema::create('clases', function (Blueprint $table) {
             $table->id('id');
             $table->bigInteger('detalle_curso_id')->unsigned();
-            $table->foreign('detalle_curso_id')->references('id')->on('detalle_cursos');
+            $table->foreign('detalle_curso_id')->references('id')->on('detalle_cursos')->onDelete('cascade');
             $table->string('aula_codigo',45);
-            $table->foreign('aula_codigo')->references('codigo')->on('aulas');
+            $table->foreign('aula_codigo')->references('codigo')->on('aulas')->onDelete('cascade');
 
             $table->time('hora_inicio');
             $table->time('hora_final')->nullable();
