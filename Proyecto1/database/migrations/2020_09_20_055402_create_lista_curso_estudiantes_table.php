@@ -16,9 +16,9 @@ class CreateListaCursoEstudiantesTable extends Migration
         Schema::create('lista_curso_estudiantes', function (Blueprint $table) {
             $table->id('id');
             $table->bigInteger('detalle_curso_id')->unsigned();
-            $table->foreign('detalle_curso_id')->references('id')->on('detalle_cursos');
+            $table->foreign('detalle_curso_id')->references('id')->on('detalle_cursos')->onDelete('cascade');
             $table->integer('estudiante_id');
-            $table->foreign('estudiante_id')->references('id')->on('estudiantes');
+            $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
         });
     }
 

@@ -18,8 +18,8 @@ class CreateListaAsesorEstudiantesTable extends Migration
 
             $table->integer('asesor_id');
             $table->integer('estudiante_id');
-            $table->foreign('asesor_id')->references('id')->on('asesors');
-            $table->foreign('estudiante_id')->references('id')->on('estudiantes');
+            $table->foreign('asesor_id')->references('id')->on('asesors')->onDelete('cascade');
+            $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
         });
     }
 

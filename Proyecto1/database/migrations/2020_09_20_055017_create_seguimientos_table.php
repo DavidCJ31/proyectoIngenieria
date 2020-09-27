@@ -16,10 +16,10 @@ class CreateSeguimientosTable extends Migration
         Schema::create('seguimientos', function (Blueprint $table) {
             $table->id('id');
 
-            $table->bigInteger('horario_asesors_id')->unsigned();
-            $table->foreign('horario_asesors_id')->references('id')->on('horario_asesors');
+            $table->bigInteger('horario_asesor_id')->unsigned();
+            $table->foreign('horario_asesor_id')->references('id')->on('horario_asesors')->onDelete('cascade');
             $table->integer('estudiante_id');
-            $table->foreign('estudiante_id')->references('id')->on('estudiantes');
+            $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
 
             $table->string('descripcion', 45);
         });
