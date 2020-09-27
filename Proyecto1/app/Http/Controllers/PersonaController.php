@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class PersonaController extends Controller
 {
-/*
+
     public function tablaUsuarios(){
         $usuario = \DB::table('users')
         ->select('users.*')
@@ -15,7 +15,7 @@ class PersonaController extends Controller
         ->get();
         return view('tabla_usuarios')->with('usuarios',$usuario);
     }
-*/
+
     /**
      * Display a listing of the resource.
      *

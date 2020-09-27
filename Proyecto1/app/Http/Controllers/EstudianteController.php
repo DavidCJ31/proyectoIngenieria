@@ -9,18 +9,27 @@ use App\Models\estudiante;
 use App\Models\seguimiento;
 use App\Models\asesor;
 use App\Models\horario_asesor;
+use Illuminate\Support\Facades\Auth;
 
 class EstudianteController extends Controller
 {
 
     public function tablaEstudiantes(){
-        $estudiante = estudiante::find('2324')->user;
-        $seguimientos = estudiante::find('2324')->seguimiento;
-        $lista_asesor_estu = estudiante::find(123)->lista_asesor_estudiante;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->rol;
+        if($rol == 3){        
+        $estudiante = estudiante::find($id)->user;
+        $seguimientos = estudiante::find($id)->seguimiento;
+        $lista_asesor_estu = estudiante::find($id)->lista_asesor_estudiante;
         $asesor = asesor::find($lista_asesor_estu[0]->asesor_id)->user;
         $horario = asesor::find($lista_asesor_estu[0]->asesor_id)->horario_asesor;
-        $datos = [$estudiante, $seguimientos, $asesor, $horario];
+        $datos = [$estudiante, $seguimientos, $asesor, $horario, $rol];
         return view('tabla_estudiantes')->with('estudiantes',$datos);
+        }else{
+            $asesor = asesor::find($id)->user;
+            $datos = [$asesor,0,0,0,$rol];
+            return view('tabla_estudiantes')->with('estudiantes',$datos);
+        }
     }
 
     /**

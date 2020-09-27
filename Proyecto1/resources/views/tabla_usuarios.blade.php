@@ -48,7 +48,8 @@
                     ?>
                     @foreach($usuarios as $usuario)
                     <tr style="height: 10px">
-                        <td> <?php echo $index++ ?> </td>
+
+                        <td>  <?php echo $index++;?> </td>
                         <td >{{$usuario->id}}</td>
                         <td>{{$usuario->usuario}}</td>
                         <td style=" "> {{$usuario->name}}</td>
@@ -67,7 +68,6 @@
             </table>
         </div>
     </div>
-
 </body>
 
 </html>

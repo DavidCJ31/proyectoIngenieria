@@ -28,8 +28,7 @@
 </head>
 
 <body>
-
-@if($estudiantes)
+@if( $estudiantes[4] == 3)
 <div class="card">
     <div class="card-body">
         <div class="media">
@@ -38,6 +37,7 @@
                 <ul class="list-unstyled fa-ul">
                     <li><i class="fa fa-user fa-li"></i><a href="#">{{ $estudiantes[0]->name }}</a></li>
                     <li><i class="fa fa-envelope fa-li"></i><a href="#">{{ $estudiantes[0]->email }} </a></li>
+                    <li><a href="#"> Estudiante </a></li>
                 </ul>
             </div>
         </div>
@@ -62,7 +62,6 @@
                     <?php
                         $index = 1;
                     ?>
-                    
                     <tr>
                         <td>  <?php echo $index++ ?> </td>
                         <td>{{ $estudiantes[1][0]->id }}</td>
@@ -75,7 +74,23 @@
             </table>
         </div>
     </div>
+    @else
+    <div class="card">
+        <div class="card-body">
+            <div class="media">
+                <div> <i style='font-size:24px' class='fas'>&#xf2c1;</i> </div>
+                <div class="media-body">
+                    <ul class="list-unstyled fa-ul">
+                        <li><i class="fa fa-user fa-li"></i><a href="#">{{ $estudiantes[0]->name }}</a></li>
+                        <li><i class="fa fa-envelope fa-li"></i><a href="#">{{ $estudiantes[0]->email }} </a></li>
+                        <li><a href="#">Asesor</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     @endif
+
 </body>
 
 </html>
