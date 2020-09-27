@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class CreateAulasTable extends Migration
 {
@@ -17,7 +18,7 @@ class CreateAulasTable extends Migration
             $table->string('codigo',45);
             $table->primary('codigo');
             $table->string('sede', 45);
-            $table->string('nombre', 45);
+            $table->string('nombre', 45)->nullable();
         });
     }
 

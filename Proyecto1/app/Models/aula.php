@@ -14,11 +14,12 @@ class aula extends Model
     protected $fillable = [
         'codigo',
         'sede',
+        'nombre'
     ];
 
     public function clase()
     {
-        return $this->hasMany('App\Models\clase', 'foreign_key', 'codigo');
+        return $this->hasMany('App\Models\clase',  'codigo');
     }
 
 }

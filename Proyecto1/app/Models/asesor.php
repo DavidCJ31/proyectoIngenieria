@@ -21,11 +21,14 @@ class asesor extends Model
     }
     public function lista_asesor_estudiante()
     {
-        return $this->hasMany('App\Models\lista_asesor_estudiante');
+        return $this->hasMany('App\Models\lista_asesor_estudiante', 'asesor_id');
     }
     public function horario_asesor()
     {
         return $this->hasMany('App\Models\horario_asesor','asesor_id');
     }
-
+    public function listaEstudiantes()
+    {
+        return $this->belongsToMany('App\Models\estudiante', 'lista_asesor_estudiantes', 'asesor_id', 'estudiante_id');
+    }
 }

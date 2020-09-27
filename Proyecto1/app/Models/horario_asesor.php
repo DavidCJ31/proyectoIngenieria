@@ -9,7 +9,6 @@ class horario_asesor extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-        'id',
         'dia',
         'hora_inicio',
         'hora_final',
@@ -18,6 +17,6 @@ class horario_asesor extends Model
 
     public function asesor()
     {
-        return $this->belongsTo('App\Models\asesor');
+        return $this->belongsTo('App\Models\asesor','id');
     }
 }

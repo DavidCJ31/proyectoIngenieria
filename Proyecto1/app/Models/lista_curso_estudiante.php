@@ -16,10 +16,10 @@ class lista_curso_estudiante extends Model
 
     public function detalle_curso()
     {
-        return $this->belongsTo('App\Models\detalle_curso');
+        return $this->belongsTo('App\Models\detalle_curso', 'id');
     }
     public function estudiante()
     {
-        return $this->belongsTo('App\Models\estudiante');
+        return $this->belongsTo('App\Models\estudiante', 'id');
     }
 }

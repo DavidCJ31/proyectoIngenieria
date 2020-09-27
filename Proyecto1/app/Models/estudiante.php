@@ -21,11 +21,11 @@ class estudiante extends Model
     }
     public function lista_curso_estudiante()
     {
-        return $this->hasMany('App\Models\lista_curso_estudiante');
+        return $this->hasMany('App\Models\lista_curso_estudiante', 'estudiante_id');
     }
     public function asistencia()
     {
-        return $this->hasMany('App\Models\asistencia');
+        return $this->hasMany('App\Models\asistencia', 'estudiante_id');
     }
     public function seguimiento()
     {
@@ -33,6 +33,18 @@ class estudiante extends Model
     }
         public function lista_asesor_estudiante()
     {
-        return $this->hasMany('App\Models\lista_asesor_estudiante','asesor_id');
+        return $this->hasMany('App\Models\lista_asesor_estudiante','estudiante_id');
+    }
+    public function listaAsesores()
+    {
+        return $this->belongsToMany('App\Models\asesor', 'lista_asesor_estudiantes','estudiante_id', 'asesor_id');
+    }
+    public function listaCursos()
+    {
+        return $this->belongsToMany('App\Models\detalle_curso', 'lista_curso_estudiante', 'estudiante_id', 'detalle_curso_id');
+    }
+    public function listaClases()
+    {
+        return $this->belongsToMany('App\Models\clase', 'asistencia', 'estudiante_id', 'clase_id');
     }
 }

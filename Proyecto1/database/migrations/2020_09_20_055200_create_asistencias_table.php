@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class CreateAsistenciasTable extends Migration
 {
@@ -22,7 +23,7 @@ class CreateAsistenciasTable extends Migration
             $table->foreign('estudiante_id')->references('id')->on('estudiantes');
 
 
-            $table->tinyInteger('presencialidad');
+            $table->tinyInteger('presencialidad')->nullable();
         });
     }
 

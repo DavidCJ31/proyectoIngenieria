@@ -67,22 +67,22 @@ class User extends Authenticatable
     }*/
     public function postulante()
     {
-        return $this->hasOne('App\Models\postulante');
+        return $this->hasOne('App\Models\postulante', 'id');
     }
     public function estudiante()
     {
-        return $this->hasOne('App\Models\estudiante','id');
+        return $this->hasOne('App\Models\estudiante', 'id');
     }
     public function adminitrador()
     {
-        return $this->hasOne('App\Models\adminitrador');
+        return $this->hasOne('App\Models\adminitrador', 'id');
     }
     public function asesor()
     {
-        return $this->hasOne('App\Models\asesor');
+        return $this->hasOne('App\Models\asesor', 'id');
     }
     public function tutor()
     {
-        return $this->hasOne('App\Models\tutor');
+        return $this->hasOne('App\Models\tutor', 'id');
     }
 }

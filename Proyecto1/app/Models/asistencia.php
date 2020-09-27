@@ -9,17 +9,17 @@ class asistencia extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-        'id',
         'clase_id',
         'estudiante_id',
+        'presencialidad'
     ];
 
     public function clase()
     {
-        return $this->belongsTo('App\Models\clase');
+        return $this->belongsTo('App\Models\clase','id');
     }
     public function estudiante()
     {
-        return $this->belongsTo('App\Models\estudiante');
+        return $this->belongsTo('App\Models\estudiante', 'id');
     }
 }

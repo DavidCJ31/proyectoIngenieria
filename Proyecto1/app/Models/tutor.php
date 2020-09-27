@@ -17,10 +17,10 @@ class tutor extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo('App\Models\User', 'id');
     }
     public function detalle_curso()
     {
-        return $this->hasMany('App\Models\detalle_curso');
+        return $this->hasMany('App\Models\detalle_curso', 'tutor_id');
     }
 }

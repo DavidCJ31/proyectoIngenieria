@@ -16,7 +16,7 @@ class lista_asesor_estudiante extends Model
 
     public function asesor()
     {
-        return $this->belongsTo('App\Models\asesor');
+        return $this->belongsTo('App\Models\asesor', 'id');
     }
     public function estudiante()
     {

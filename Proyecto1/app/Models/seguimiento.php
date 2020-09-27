@@ -21,6 +21,6 @@ class seguimiento extends Model
     }
     public function horario_asesor()
     {
-        return $this->belongsTo('App\Models\horario_asesor');
+        return $this->belongsTo('App\Models\horario_asesor', 'id');
     }
 }
