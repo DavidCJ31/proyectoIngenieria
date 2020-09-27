@@ -59,13 +59,7 @@ Route::get('/calendario', function () {
 });
 
 
-
-
 Route::get('/asistencia', [PersonaController::class, 'tablaUsuarios']);
 Route::get('/usuarios', [PersonaController::class, 'tablaUsuarios']);
 Route::get('/estudiante', [EstudianteController::class, 'tablaEstudiantes']);
-<<<<<<< HEAD
 Route::get('/horarioAsesor', [HorarioAsesorController::class, 'tablaHorarios']);
-=======
-
->>>>>>> main

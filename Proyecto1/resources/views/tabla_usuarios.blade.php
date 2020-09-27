@@ -70,11 +70,7 @@
             </table>
         </div>
     </div>
-<<<<<<< HEAD
-    @include("layouts.footer")
-</body>
-=======
->>>>>>> main
+
 
 </body>
 @include("layouts.footer")
