@@ -13,21 +13,20 @@
                     <a class="nav-link" href="/">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/informe-mensual">Informe-mensual</a>
+                    <a class="nav-link" href="#">Detalles de asesor</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/formulario">Formulario</a>
+                    <a class="nav-link" href="#"></a>
                 </li>
                 <li class="nav-item">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle btn-navbar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Opciones
+                            Reportes
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Fomulario</a>
-                            <a class="dropdown-item" href="#">Informe mensual</a>
-                            <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
-                            <a class="dropdown-item" href="/estudiante">Tabla estudiantes</a>
+                            <a class="dropdown-item" href="#">Estudiantes</a>
+                            <a class="dropdown-item" href="/horarioAsesor">Horarios</a>
+                            <a class="dropdown-item" href="#">General</a>
                         </div>
                     </div>
                 </li>

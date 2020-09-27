@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\asesor;
 
 class HorarioAsesorController extends Controller
 {
+
+    public function tablaHorarios(){
+        $id = Auth::user()->id;        
+        $horario = asesor::find($id)->horario_asesor;
+        $datos = [$horario];
+        return view('layouts/tabla_horarios_asesor')->with('horarios',$datos);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +24,7 @@ class HorarioAsesorController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

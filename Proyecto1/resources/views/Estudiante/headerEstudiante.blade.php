@@ -13,10 +13,10 @@
                     <a class="nav-link" href="/">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/informe-mensual">Informe-mensual</a>
+                    <a class="nav-link" href="#">Agendar cita</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/formulario">Formulario</a>
+                    <a class="nav-link" href="">Historial</a>
                 </li>
                 <li class="nav-item">
                     <div class="dropdown">
@@ -24,9 +24,7 @@
                             Opciones
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Fomulario</a>
-                            <a class="dropdown-item" href="#">Informe mensual</a>
-                            <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
+                            <a class="dropdown-item" href="#">Perfil</a>
                             <a class="dropdown-item" href="/estudiante">Tabla estudiantes</a>
                         </div>
                     </div>

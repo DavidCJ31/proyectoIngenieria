@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\EstudianteController;
+use App\Http\Controllers\HorarioAsesorController;
 use App\Models\User;
 use App\Models\estudientes;
 
@@ -60,3 +61,4 @@ Route::get('/calendario', function () {
 
 Route::get('/usuarios', [PersonaController::class, 'tablaUsuarios']);
 Route::get('/estudiante', [EstudianteController::class, 'tablaEstudiantes']);
+Route::get('/horarioAsesor', [HorarioAsesorController::class, 'tablaHorarios']);

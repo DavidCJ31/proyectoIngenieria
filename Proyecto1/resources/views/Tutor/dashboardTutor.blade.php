@@ -16,7 +16,7 @@
 
 <body>
     <!--Main Navigation-->
-    @include("layouts.header")
+    @include("Tutor.headerTutor")
 
     <div>
     </div>
