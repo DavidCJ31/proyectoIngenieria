@@ -27,7 +27,19 @@
 
 <body>
 
-    <div id="fondoTabla">
+<div id="fondoTabla">
+<div class="input-group mb-3" style=" width: 30%;">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Curso </span>
+            </div>
+            <input type="text" class="form-control" value="Matematica para Informatica" id ="campo-fecha" aria-describedby="basic-addon1" disabled >
+          </div>
+    
+   </div>
+  
+          
+<div id="fondoTabla">
+
         <h1 id="TituloVista">Estudiantes</h1>
         <div id="marg">
             <table class="table table-bordered table-striped mb-0 " id="example">
@@ -35,7 +47,6 @@
                     <tr>
                         <th id="colcorta" scope="col">#</th>
                         <th scope="col">Id</th>
-                        <th scope="col">Usuario</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">Correo</th>
@@ -44,12 +55,36 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                      
+                        <td>1</td>
+                        <td>402390969</td>
+                        <td>kevin</td>
+                        <td>Artavia</td>
+                        <td>kevin@gmail.com</td>
+                        <td>    <div class="form-check form-check-inline">
+                    
+                        <input class="form-check-input" type="radio" name="pregunta1" id="inlineRadio1" value="option1">
+                        <label class="form-check-label" for="inlineRadio1">Si</label>
+                        </div></td>
+                        <td>              <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="pregunta1" id="inlineRadio2" value="option2">
+                        <label class="form-check-label" for="inlineRadio2">No</label>
+                    </div></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-      
+        <button type="button" class="btn btn-primary btn-lg" style="position: relative; margin-left: 40%;">Guardar Cambios</button>
     </div>
     
+
+          
+
+
+
+
+
 </body>
 @include("layouts.footer")
 </html>
