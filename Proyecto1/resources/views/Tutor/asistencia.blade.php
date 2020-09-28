@@ -28,13 +28,15 @@
 <body>
 
 <div id="fondoTabla">
-<div class="input-group mb-3" style=" width: 30%;">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Curso </span>
+<div class="container" style="padding: 0px;">
+            <div class="row row-cols-4 justify-content-start" style="margin: 0%;">
+                <div class="col" style="margin: 0%; padding: 0px;"><span class="input-group-text">Curso </span></div>
+                <div class="col" style="margin: 0%; padding: 0px;"><span class="input-group-text"> Funtamentos de Informatica </span></div>
+
+                <div class="col" style="margin: 0%; padding: 0px;"><span class="input-group-text">Tutor </span></div>
+                <div class="col" style="margin: 0%; padding: 0px;"><span class="input-group-text">David Cordero Jimenez </span></div>
             </div>
-            <input type="text" class="form-control" value="Matematica para Informatica" id ="campo-fecha" aria-describedby="basic-addon1" disabled >
           </div>
-    
    </div>
   
           
