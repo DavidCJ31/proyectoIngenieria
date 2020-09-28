@@ -58,8 +58,8 @@ Route::get('/formulario', function () {
     return view('formulario');
 });
 
-Route::get('/calendario', function () {
-    return view('calendario');
+Route::get('/registro', function () {
+    return view('RegistroDeEntrada');
 });
 
 
