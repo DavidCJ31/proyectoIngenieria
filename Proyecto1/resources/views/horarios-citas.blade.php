@@ -142,7 +142,8 @@
 </html>
 
 <script>
-    
+    let lista_horarios = [];
+
     function empezar(){
         $(".opcion-tabla").hover(function(){
             $(this).css("background-color", "#f6f799");
@@ -150,6 +151,8 @@
         $(this).css("background-color","white");} );
 
         $(".opcion-tabla").on("click", function(){seleccionarCasilla(this)});
+
+        cargarHorario();
     }
 
     empezar();
@@ -161,8 +164,20 @@
 
       if(casilla.innerHTML == ""){
         casilla.append("Disponible");
+        lista_horarios.push(casilla);
       }
+      else{
+        casilla.innerHTML = "";
+        if(lista_horarios.indexOf(casilla) !== -1){
+         var index = lista_horarios.indexOf(casilla);
+         lista_horarios.splice(index,1);
+        }
+      }
+      console.log(lista_horarios);
     }
+
+    /*
+    */
 
 
 </script>
