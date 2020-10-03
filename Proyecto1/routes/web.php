@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CursoController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PersonaController;
@@ -62,7 +63,7 @@ Route::get('/registro', function () {
     return view('RegistroDeEntrada');
 });
 
-
+Route::resource('/cursos', CursoController::class);
 
 
 Route::get('/asistencia', function(){
