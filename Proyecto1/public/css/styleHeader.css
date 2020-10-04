@@ -1,3 +1,13 @@
-navbar{
+.navbar{
     background-color: #292c2f !important;
+}
+.dropdown-menu{
+    background-color: #292c2f !important;
+    color: white;
+}
+.dropdown{
+    color: white;
+}
+.dropdown-item{
+    color: white;
 }

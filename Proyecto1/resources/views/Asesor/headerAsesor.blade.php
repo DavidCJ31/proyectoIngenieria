@@ -1,3 +1,4 @@
+<link href="{{ asset('css/styleHeader.css') }}" rel="stylesheet">
 <header>
 
     <!-- ****** Bara del header ************ -->
