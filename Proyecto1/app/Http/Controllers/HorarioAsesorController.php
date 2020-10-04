@@ -24,7 +24,7 @@ class HorarioAsesorController extends Controller
      */
     public function index()
     {
-        
+        return "Horarios";
     }
 
     /**

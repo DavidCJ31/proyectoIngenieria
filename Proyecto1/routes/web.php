@@ -64,6 +64,7 @@ Route::get('/registro', function () {
 });
 
 Route::resource('/cursos', CursoController::class);
+Route::resource('/horario', HorarioAsesorController::class);
 
 
 Route::get('/asistencia', function(){
