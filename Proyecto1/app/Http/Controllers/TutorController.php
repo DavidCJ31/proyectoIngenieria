@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\asesor;
+use App\Models\tutor;
 use Illuminate\Http\Request;
 
 class TutorController extends Controller
@@ -14,7 +17,9 @@ class TutorController extends Controller
      */
     public function index()
     {
-        //
+        $id = Auth::user()->id;
+        $usuario = tutor::find($id)->user;
+        return view('Tutor/inicioTutor')->with('usuario',$usuario);
     }
 
     /**

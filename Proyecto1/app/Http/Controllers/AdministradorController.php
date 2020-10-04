@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\administrador;
 use Illuminate\Http\Request;
 
 class AdministradorController extends Controller
@@ -14,7 +16,8 @@ class AdministradorController extends Controller
      */
     public function index()
     {
-        //
+        $usuario = administrador::find(Auth::user()->id)->user;
+        return view('Administrador/inicioAdministrador')->with('usuario',$usuario);
     }
 
     /**

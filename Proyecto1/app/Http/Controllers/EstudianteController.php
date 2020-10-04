@@ -39,7 +39,8 @@ class EstudianteController extends Controller
      */
     public function index()
     {
-        //
+        $usuario = estudiante::find(Auth::user()->id)->user;
+        return view('Estudiante/inicioEstudiante')->with('usuario',$usuario);
     }
 
     /**

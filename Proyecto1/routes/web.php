@@ -1,11 +1,19 @@
 <?php
 
+
+use App\Http\Controllers\AdministradorController;
+use App\Http\Controllers\EstudianteController;
+use App\Http\Controllers\AsesorController;
+use App\Http\Controllers\TutorController;
+
+use App\Http\Controllers\PersonaController;
+use App\Http\Controllers\HorarioAsesorController;
 use App\Http\Controllers\CursoController;
+
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\PersonaController;
-use App\Http\Controllers\EstudianteController;
-use App\Http\Controllers\HorarioAsesorController;
+
 use App\Models\User;
 use App\Models\estudientes;
 
@@ -22,22 +30,30 @@ use App\Models\estudientes;
 
 Route::get('/logged_in', function(){
     $rol = Auth::user()->rol;
+    $usuario = Auth::user();
     if($rol == 1){//Administrador
-        return view('Administrador/dashboardAdministrador');
+        return view('Administrador/inicioAdministrador')->with('usuario',$usuario);
     }
     if($rol == 2){//Asesor
-        return view('Asesor/dashboardAsesor');
+        return view('Asesor/inicioAsesor')->with('usuario',$usuario);
     }
     if($rol == 3){//Estudiante
-        return view('Estudiante/dashboardEstudiante');
+        return view('Estudiante/inicioEstudiante')->with('usuario',$usuario);
     }
     if($rol == 4){//Tutor
-        return view('Tutor/dashboardTutor');
+        return view('Tutor/inicioTutor')->with('usuario',$usuario);
     }
     else{
         return view('auth/login');
     }
 });
+
+Route::resources([
+    '/Asesor' => AsesorController::class,
+    '/Estudiante' => EstudianteController::class,
+    '/Tutor' => TutorController::class,
+    '/Administrador' => AdministradorController::class
+    ]);
 
 Route::get('/', function () {
     return view('welcome');
@@ -47,6 +63,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+
+Route::resource('/horario', HorarioAsesorController::class);
 Route::get('/informe-mensual', function () {
     return view('informe-mensual');
 });
@@ -63,8 +81,8 @@ Route::get('/registro', function () {
     return view('RegistroDeEntrada');
 });
 
-Route::resource('/cursos', CursoController::class);
 Route::resource('/horario', HorarioAsesorController::class);
+Route::resource('/Cursos', CursoController::class);
 
 
 Route::get('/asistencia', function(){
