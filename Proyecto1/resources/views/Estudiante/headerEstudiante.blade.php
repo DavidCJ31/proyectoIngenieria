@@ -1,7 +1,7 @@
+<link href="{{ asset('css/styleHeader.css') }}" rel="stylesheet">
 <header>
-
     <!-- ****** Bara del header ************ -->
-    <nav class="navbar navbar-expand-lg navbar-dark default-color">
+    <nav class="navbar navbar-expand-lg navbar-dark default-color" >
 
         <a class="navbar-brand" href="#"><strong>UNA</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

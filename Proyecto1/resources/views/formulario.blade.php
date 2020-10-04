@@ -14,7 +14,7 @@
 
 <body>
 <!--Main Navigation-->
-@include("layouts.header")
+@include("Estudiante.headerEstudiante")
 <!--Main Navigation-->
 
     <!-- Aqui empieza el  formulario -->
@@ -74,7 +74,6 @@
             <input type="text" class="form-control" id ="campo-materia" aria-describedby="basic-addon1">
           </div>
 
-
           <!-- Hilera del formulario -- Profesor -->
         <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -82,7 +81,6 @@
             </div>
             <input type="text" class="form-control" id ="campo-profesor" aria-describedby="basic-addon1">
           </div>
-
 
           <!-- Hilera del formulario -- Creditos y ano de horas -->
           <div class="input-group mb-3">
