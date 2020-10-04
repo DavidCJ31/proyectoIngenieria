@@ -29,19 +29,25 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Id asesor: </span>
                 </div>
-                <input type="text" class="form-control" placeholder="codigo" id="idAsesor" name="idAsesor" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="Id asesor" id="idAsesor" name="idAsesor" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Hora inicio: </span>
                 </div>
-                <input type="text" class="form-control" placeholder="nombre" id="horaInicio" name="horaInicio" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="Hora inicio" id="horaInicio" name="horaInicio" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Hora final: </span>
                 </div>
-                <input type="text" class="form-control" placeholder="" id="horaFinal" name="horaFinal" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="Hora final" id="horaFinal" name="horaFinal" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Día: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="Dia" id="dia" name="dia" aria-describedby="basic-addon1">
             </div>
             <input type="submit" name="enviar" value="Guardar">
         </form>

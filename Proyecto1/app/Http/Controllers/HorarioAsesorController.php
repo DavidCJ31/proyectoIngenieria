@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\asesor;
+use App\Models\horario_asesor;
+
 
 class HorarioAsesorController extends Controller
 {
@@ -24,7 +26,7 @@ class HorarioAsesorController extends Controller
      */
     public function index()
     {
-        return "Horarios";
+        return view('Asesor/HorarioAsesor');
     }
 
     /**
@@ -45,7 +47,13 @@ class HorarioAsesorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $horario = new horario_asesor;
+        $horario->asesor_id = $request->input('idAsesor');
+        $horario->hora_inicio = $request->input('horaInicio');
+        $horario->hora_final = $request->input('horaFinal');
+        $horario->dia = $request->input('dia');
+        $horario->save();
+        return view('Asesor/HorarioAsesor');
     }
 
     /**
