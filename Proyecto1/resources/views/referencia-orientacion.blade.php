@@ -58,11 +58,11 @@
                 <span class="input-group-text">Sexo: &nbsp &nbsp </span>
               </div>
               <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="Hombre" id="inlineRadio1" value="option1">
+                        <input class="form-check-input" type="radio" name="radio-sexo" id="inlineRadio1" value="option1">
                         <label class="form-check-label" for="inlineRadio1">Hombre</label>
                         </div>
                         <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="Mujer" id="inlineRadio2" value="option2">
+                        <input class="form-check-input" type="radio" name="radio-sexo" id="inlineRadio2" value="option2">
                         <label class="form-check-label" for="inlineRadio2">Mujer</label>
                     </div>
           </div>
@@ -131,19 +131,19 @@
                 <span class="input-group-text">Servicio del Departamento al que se refiere: </span>
               </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="psicopedagogia" id="inlineRadio1" value="option1">
+                        <input class="form-check-input" type="radio" name="radio-refiere" id="psicopedagogia" value="option1">
                         <label class="form-check-label" for="inlineRadio1">Atención psicopedagógica.</label>
                     </div>
                     <div class="form-check form-check-inline">
-                         <input class="form-check-input" type="radio" name="psicologia" id="inlineRadio2" value="option2">
+                         <input class="form-check-input" type="radio" name="radio-refiere" id="psicologia" value="option2">
                          <label class="form-check-label" for="inlineRadio2">Psicología.</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="individual" id="inlineRadio2" value="option3">
+                        <input class="form-check-input" type="radio" name="radio-refiere" id="individual" value="option3">
                         <label class="form-check-label" for="inlineRadio2">Orientación Individual.</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="Vocacional" id="inlineRadio2" value="option4">
+                        <input class="form-check-input" type="radio" name="radio-refiere" id="Vocacional" value="option4">
                         <label class="form-check-label" for="inlineRadio2">Orientación Vocacional.</label>
                     </div>
                 </div>
