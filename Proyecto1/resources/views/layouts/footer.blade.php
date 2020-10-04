@@ -2,11 +2,7 @@
 <footer>
     <div class="row">
         <div class="col-sm-6 col-md-4 footer-navigation">
-            <h3><a href="https://www.una.ac.cr/"><img style="width:80%;" src="imagenes/logo-largo.png"/></a></h3>
-            <p class="links"><a href="https://correo.una.ac.cr/">Correo estudiantil</a><strong> · </strong><a
-                    href="https://mail.google.com/mail/u/0/?tab=wm#inbox"> Correo funcionarios</a><strong> · </strong>
-                    <a href="https://www.una.ac.cr/index.php?option=com_content&view=article&id=284">Eduroam</a></p>
-            <p class="company-name">Universidad Nacional de Costa Rica © 2020 Copyright .Todos los derechos reservados. </p>
+            <h3><a href="https://www.una.ac.cr/"><img style="width:90%;" src="imagenes/logo-largo.png"/></a></h3>
         </div>
         <div class="col-sm-6 col-md-4 footer-contacts">
             <div><span class="fa fa-map-marker footer-contacts-icon"></span>
@@ -32,5 +28,8 @@
                 <a href="https://www.youtube.com/channel/UCUs96CKvsIuVdsdxGhWKfjA"><img src="imagenes/youtube.png"
                         class="youtube-img-card" /></a>
             </div>
+            
         </div>
+        <p class="company-name" style="text-align: center; margin: auto;">Universidad Nacional de Costa Rica © 2020 Copyright .Todos los derechos reservados. </p>
 </footer>
+
