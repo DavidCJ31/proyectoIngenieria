@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\asesor;
 use Illuminate\Http\Request;
 
 class AsesorController extends Controller
@@ -14,7 +16,8 @@ class AsesorController extends Controller
      */
     public function index()
     {
-        //
+        $usuario = asesor::find(Auth::user()->id)->user;
+        return view('Asesor/inicioAsesor')->with('usuario',$usuario);
     }
 
     /**

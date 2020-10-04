@@ -3,9 +3,8 @@
 <html lang="es">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Administrador</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asesor</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
     <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
     <link href="{{ asset('css/estilo-Form.css') }}" rel="stylesheet">
@@ -16,9 +15,12 @@
 
 <body>
     <!--Main Navigation-->
-    @include("Administrador.headerAdministrador")
+    @include("Asesor.headerAsesor")
 
-    <div>
+    <div class="container-inicio">
+        <div class="efecto-inicio">
+            <h1> Hola {{ $usuario->name }}</h1>
+        </div>
     </div>
 
     @include("layouts.footer")
