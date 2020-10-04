@@ -22,5 +22,20 @@
     background-color: blue;
 }
 
-
+#divTabla{
+    width: 100%;
+}
+#tabla{
+    width: 100%;
+    border: 2px black solid;
+    text-align: center;
+}
+#tabla tr{
+    width: 100%;
+    border: 2px black solid;
+}
+#tabla textarea{
+    width: 100%;
+    resize: none;
+}
 

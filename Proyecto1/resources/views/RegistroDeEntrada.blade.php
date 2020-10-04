@@ -159,45 +159,45 @@
         <h6> Forma en que financia los estudio universitarios </h6>
 
         <div class="input-group mb-3">
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio1" value="option1">
-            <label class="form-check-label" for="inlineRadio1">Beca UNA</label>
-            <input type="text" class="form-control" id="campo-carrera" aria-describedby="basic-addon2"
-                placeholder="¿Por qué?">
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
-            <label class="form-check-label" for="inlineRadio2">Recursos propios</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
-            <label class="form-check-label" for="inlineRadio2">Recursos familiares</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
-            <label class="form-check-label" for="inlineRadio2">Ceditos educativos</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
-            <label class="form-check-label" for="inlineRadio2">FONABE</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
-            <label class="form-check-label" for="inlineRadio2">Otros</label>
-            <input type="text" class="form-control" id="campo-carrera" aria-describedby="basic-addon2"
-                placeholder="¿Por qué?">
-        </div>
-        <div class="form-check form-check-inline">
-            <label class="form-check-label" for="inlineRadio1">Trabaja:</label>
-            <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio1" value="option1">
-            <label class="form-check-label" for="inlineRadio1">Si</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
-            <label class="form-check-label" for="inlineRadio2">No</label>
-            <input type="text" class="form-control" id="campo-carrera" aria-describedby="basic-addon2"
-                placeholder="¿Lugar de trabajo?">
-        </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio1" value="option1">
+                <label class="form-check-label" for="inlineRadio1">Beca UNA</label>
+                <input type="text" class="form-control" id="campo-carrera" aria-describedby="basic-addon2"
+                    placeholder="¿Por qué?">
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">Recursos propios</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">Recursos familiares</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">Ceditos educativos</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">FONABE</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">Otros</label>
+                <input type="text" class="form-control" id="campo-carrera" aria-describedby="basic-addon2"
+                    placeholder="¿Por qué?">
+            </div>
+            <div class="form-check form-check-inline">
+                <label class="form-check-label" for="inlineRadio1">Trabaja:</label>
+                <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio1" value="option1">
+                <label class="form-check-label" for="inlineRadio1">Si</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">No</label>
+                <input type="text" class="form-control" id="campo-carrera" aria-describedby="basic-addon2"
+                    placeholder="¿Lugar de trabajo?">
+            </div>
         </div>
 
         <div class="input-group mb-3">
@@ -404,7 +404,8 @@
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text">¿Cuántas horas de estudio independiente dedica a esos cursos matriculados? </span>
+                <span class="input-group-text">¿Cuántas horas de estudio independiente dedica a esos cursos
+                    matriculados? </span>
             </div>
             <input type="text" class="form-control" id="campo-materia" aria-describedby="basic-addon1">
         </div>
@@ -429,99 +430,162 @@
                 <input type="text" class="form-control" id="campo-materia" aria-describedby="basic-addon1">
             </div>
         </div>
-
-        <!-- Hilera del formulario -- Profesor -->
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text">NOMBRE DEL/DE LA PROFESOR/A: </span>
+                <span class="input-group-text">Mencione los factores que considera, han favorecido u obstaculidado en su
+                    rendiminento academico:</span>
             </div>
-            <input type="text" class="form-control" id="campo-profesor" aria-describedby="basic-addon1">
+            <div id="divTabla">
+                <table id='tabla'>
+                    <tr>
+                        <td>
+                            Factores que favorecen
+                        </td>
+                        <td>
+                            Factores que obstaculizan
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <textarea class="form-control"></textarea>
+                        </td>
+                        <td>
+                            <textarea class="form-control"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
 
+        <h5> PARTICIPACIÓN EN SERVICIOS EN ÉXITO ACADEMICO Y ENLACE PROFECIONAL </h5>
 
-        <!-- Hilera del formulario -- Creditos y ano de horas -->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Ninguna </span>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Si</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Tutoría grupal (M,Ig,Q,E,F,otras) </span>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Si</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">No</label>
+                </div>
+                <input type="text" class="form-control" id="campo-materia" aria-describedby="basic-addon1">
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Tutoría individual (M,Ig,Q,E,F,otras) </span>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Si</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">No</label>
+                </div>
+                <input type="text" class="form-control" id="campo-materia" aria-describedby="basic-addon1">
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Tutoría especializada (M,Ig,Q,E,F,otras) </span>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Si</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">No</label>
+                </div>
+                <input type="text" class="form-control" id="campo-materia" aria-describedby="basic-addon1">
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Asesoria individual</span>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Si</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Articulo 9</span>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Si</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Talleres metacognitivos y académicos </span>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Si</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">No</label>
+                </div>
+                <input type="text" class="form-control" id="campo-materia" aria-describedby="basic-addon1" placeholder='Cuales?'>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Otros</span>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Si</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">No</label>
+                </div>
+                <input type="text" class="form-control" id="campo-materia" aria-describedby="basic-addon1" placeholder='Cuales?'>
+            </div>
+        </div>
+
+        <h5> MOTIVO DE LA ENTREVISTA </h5>
+        <textarea class="form-control"></textarea>
+
+        <h5> SÍNTESIS DE LA SITUACIÓN </h5>
+        <textarea class="form-control"></textarea>
+        
+        <h5> ACUERDOS </h5>
+        <textarea class="form-control"></textarea>
+        <br>
         <div class="input-group mb-3">
             <div class="input-group-append">
-                <span class="input-group-text">CREDITOS DEL CURSO: </span>
+                <span class="input-group-text">Entrevistado por: </span>
             </div>
             <input type="text" class="form-control" id="campo-creditos" aria-describedby="basic-addon2">
-
-            <div class="input-group-append">
-                <span class="input-group-text">HORA DE ESTUDIO: </span>
-            </div>
-            <input type="text" class="form-control" id="campo-horas" aria-describedby="basic-addon2">
         </div>
-
-
-
-        <span class="input-group-text text-uppercase">Síntesis de la situación:</span>
-        <div class="input-group">
-            <textarea class="form-control"></textarea>
-        </div>
-
-        <br>
-        <h5> DISPONIBILIDAD DE HORARIO </h5>
-        <div class="table-responsive ">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th class="cuadro-tabla">HORARIOS</th>
-                        <th class="cuadro-tabla">LUNES</th>
-                        <th class="cuadro-tabla">MARTES</th>
-                        <th class="cuadro-tabla">MIERCOLES</th>
-                        <th class="cuadro-tabla">JUEVES</th>
-                        <th class="cuadro-tabla">VIERNES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>8-10</td>
-                        <td class="cuadro-tabla opcion-tabla" hora="8-10" dia="lunes"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="8-10" dia="martes"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="8-10" dia="miercoles"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="8-10" dia="jueves"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="8-10" dia="viernes"></td>
-                    </tr>
-                    <tr>
-                        <td>10-12</td>
-                        <td class="cuadro-tabla opcion-tabla" hora="10-12" dia="lunes"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="10-12" dia="martes"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="10-12" dia="miercoles"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="10-12" dia="jueves"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="10-12" dia="viernes"></td>
-                    </tr>
-
-                    <tr>
-                        <td>1-3</td>
-                        <td class="cuadro-tabla opcion-tabla" hora="1-3" dia="lunes"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="1-3" dia="martes"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="1-3" dia="miercoles"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="1-3" dia="jueves"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="1-3" dia="viernes"></td>
-                    </tr>
-
-                    <tr>
-                        <td>3-5</td>
-                        <td class="cuadro-tabla opcion-tabla" hora="3-5" dia="lunes"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="3-5" dia="martes"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="3-5" dia="miercoles"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="3-5" dia="jueves"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="3-5" dia="viernes"></td>
-                    </tr>
-
-                    <tr>
-                        <td>5-7</td>
-                        <td class="cuadro-tabla opcion-tabla" hora="5-7" dia="lunes"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="5-7" dia="martes"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="5-7" dia="miercoles"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="5-7" dia="jueves"></td>
-                        <td class="cuadro-tabla opcion-tabla" hora="5-7" dia="viernes"></td>
-                    </tr>
-
-                </tbody>
-            </table>
-        </div>
-
+        <button type="submit" class="btn btn-primary" name="enviar" id='boton-enviar'>Guardar</button>
     </div>
     @include("layouts.footer")
 </body>
