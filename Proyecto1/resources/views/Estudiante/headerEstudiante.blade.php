@@ -26,6 +26,7 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">Perfil</a>
                             <a class="dropdown-item" href="/estudiante">Tabla estudiantes</a>
+                            <a class="dropdown-item" href="/formulario">Solicitar tutoria</a>
                         </div>
                     </div>
                 </li>
