@@ -77,6 +77,10 @@ Route::get('/formulario', function () {
     return view('formulario');
 });
 
+Route::get('/referencia', function () {
+    return view('referencia-orientacion');
+});
+
 Route::get('/registro', function () {
     return view('RegistroDeEntrada');
 });

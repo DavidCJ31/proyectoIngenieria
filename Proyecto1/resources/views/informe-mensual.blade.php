@@ -22,6 +22,8 @@
         <h4 class="text-center">VICERRECTORIA DE DOCENCIA</h4><H5 class="text-center text-uppercase">éxito academico</H5>
         <h5 class="text-center text-uppercase"> Informe mensual de avance academico </h5>
         <h5 class="text-center text-uppercase"> Tutorias especializadas </h5>
+
+
         <!-- Hilera del formulario -- nombre -->
         <div class="input-group mb-3" style=" width: 50%;">
             <div class="input-group-prepend">
