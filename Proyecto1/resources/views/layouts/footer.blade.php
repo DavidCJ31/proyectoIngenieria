@@ -12,12 +12,12 @@
                 <p class="footer-center-info email text-left"> Central telefónica: 2277-3000.</p>
             </div>
             <div><i class="fa fa-envelope footer-contacts-icon"></i>
-                <p><a href="https://www.una.ac.cr/" target="_blank">support@company.com</a></p>
+                <p><a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSBnqKjFsdNNhtSbVGnvldfFCQksPmBLGrfQJMwlGmrFVsNBpmZVStMRDkdCQDtGfHfPccQZ" target="_blank">exito@una.cr</a></p>
             </div>
         </div>
         <div class="clearfix"></div>
         <div class="col-md-4 footer-about">
-            <h4>About the company</h4>
+            <h4>Acerca de Nosotros</h4>
             <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus
                 vehicula sit amet. </p>
             <div class="social-links social-icons">
@@ -30,6 +30,10 @@
             </div>
             
         </div>
-        <p class="company-name" style="text-align: center; margin: auto;">Universidad Nacional de Costa Rica © 2020 Copyright .Todos los derechos reservados. </p>
+
+        <div style="text-align: center; margin: auto;">
+        <br>
+        <p class="company-name" >Universidad Nacional de Costa Rica © 2020 Copyright .Todos los derechos reservados. </p>  
+        </div>
 </footer>
 
