@@ -6,13 +6,15 @@
         </div>
         <div class="col-sm-6 col-md-4 footer-contacts">
             <div><span class="fa fa-map-marker footer-contacts-icon"></span>
-                <p><span class="new-line-span">Avenida 1, Calle 9. </span> Apartado Postal: 86-3000</p>
+                <p><span class="new-line-span">Avenida 1, Calle 9.   Apartado Postal: 86-3000 </span> </p>
             </div>
             <div><i class="fa fa-phone footer-contacts-icon"></i>
-                <p class="footer-center-info email text-left"> Central telefónica: 2277-3000.</p>
+                <p class="footer-center-info email text-left">Recepción: 2562-6765</p>
+                <p>Coordinación: 2277-3772</p>
+      
             </div>
             <div><i class="fa fa-envelope footer-contacts-icon"></i>
-                <p><a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSBnqKjFsdNNhtSbVGnvldfFCQksPmBLGrfQJMwlGmrFVsNBpmZVStMRDkdCQDtGfHfPccQZ" target="_blank">exito@una.cr</a></p>
+            <a href="mailto:exito@una.cr?cc=Tengo una Consulta&">Envianos un Correo</a>
             </div>
         </div>
         <div class="clearfix"></div>
@@ -36,4 +38,6 @@
         <p class="company-name" >Universidad Nacional de Costa Rica © 2020 Copyright .Todos los derechos reservados. </p>  
         </div>
 </footer>
+
+
 
