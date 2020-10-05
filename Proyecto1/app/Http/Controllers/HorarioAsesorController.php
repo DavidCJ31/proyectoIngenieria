@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\asesor;
 use App\Models\horario_asesor;
+use App\Models\estudiante;
+use App\Models\User;
+
 
 
 class HorarioAsesorController extends Controller
@@ -14,9 +17,21 @@ class HorarioAsesorController extends Controller
 
     public function tablaHorarios(){
         $id = Auth::user()->id;        
+//        $horario = asesor::find($id)->horario_asesor;
+//        $datos = [$horario];
+//        return view('layouts/tabla_horarios_asesor')->with('horarios',$datos);
+        $id = Auth::user()->id;
+        $rol = Auth::user()->rol;
+//        if($rol == 2){        
+        $asesor = asesor::find($id)->user;
         $horario = asesor::find($id)->horario_asesor;
-        $datos = [$horario];
-        return view('layouts/tabla_horarios_asesor')->with('horarios',$datos);
+        $datos = [$asesor, $horario, $rol];
+        return view('layouts/tabla_horarios_asesor')->with('datos',$datos);
+//        }else{
+//            $asesor = asesor::find($id)->user;
+//            $datos = [$asesor,0,0,0,$rol];
+//            return view('tabla_estudiantes')->with('estudiantes',$datos);
+//        }
     }
 
     /**

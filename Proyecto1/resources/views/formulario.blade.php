@@ -164,7 +164,11 @@
               </tbody>
             </table>
           </div>
-        
+          <div class="input-group mb-3">
+            <div class="input-group-append">
+                <button type="button" class="btn btn-primary" id="boton-enviar">Enviar solicitud</button>
+            </div>
+        </div>
     </div>
     @include("layouts.footer")
 </body>

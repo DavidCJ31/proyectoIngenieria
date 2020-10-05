@@ -24,14 +24,15 @@
 </head>
 
 <body>
+@if($datos != [] )
 <div class="card">
     <div class="card-body">
         <div class="media">
             <div> <i style='font-size:24px' class='fas'>&#xf2c1;</i> </div>
             <div class="media-body">
                 <ul class="list-unstyled fa-ul">
-                    <li><i class="fa fa-user fa-li"></i><a href="#"></a></li>
-                    <li><i class="fa fa-envelope fa-li"></i><a href="#"></a></li>
+                <li><i class="fa fa-user fa-li"></i><a href="#">{{$datos[0]->name}} </a></li>
+                    <li><i class="fa fa-envelope fa-li"></i><a href="#">{{$datos[0]->email}} </a></li>
                     <li><a href="#"> Asesor </a></li>
                 </ul>
             </div>
@@ -47,9 +48,9 @@
                     <tr>
                         <th id="colcorta" scope="col">#</th>
                         <th scope="col">Id</th>
-                        <th scope="col">Horario</th>
-                        <th scope="col">Asesor</th>
-                        <th scope="col">Estudiante</th>
+                        <th scope="col">Hora inicio</th>
+                        <th scope="col">Hora final</th>
+                        <th scope="col">Día</th>
                         <th scope="col">Descripción</th>
                     </tr>
                 </thead>
@@ -57,20 +58,20 @@
                     <?php
                         $index = 1;
                     ?>
-                    @foreach($horarios as $horario)
+
                     <tr>
                         <td>  <?php echo $index++ ?> </td>
-                        <td>{{ $horario[0]->asesor_id}}</td>
-                        <td>{{ $horario[0]->hora_inicio}}</td>
-                        <td>{{ $horario[0]->hora_final}}</td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ $datos[0] }}</td>
+                        <td>{{ $datos[0] }}</td>
+                        <td>{{ $datos[0] }}</td>
+                        <td>{{ $datos[0] }}</td>
+                        <td>{{ $datos[0] }}</td>
                     </tr>
-                    @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+    @endif
     @include("layouts.footer")
 </body>
 
