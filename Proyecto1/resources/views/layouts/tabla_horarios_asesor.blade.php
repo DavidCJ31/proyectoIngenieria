@@ -51,7 +51,6 @@
                         <th scope="col">Hora inicio</th>
                         <th scope="col">Hora final</th>
                         <th scope="col">Día</th>
-                        <th scope="col">Descripción</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,11 +60,10 @@
 
                     <tr>
                         <td>  <?php echo $index++ ?> </td>
-                        <td>{{ $datos[0] }}</td>
-                        <td>{{ $datos[0] }}</td>
-                        <td>{{ $datos[0] }}</td>
-                        <td>{{ $datos[0] }}</td>
-                        <td>{{ $datos[0] }}</td>
+                        <td>{{ $datos[0]->id }}</td>
+                        <td>{{ $datos[1][0]->hora_inicio }}</td>
+                        <td>{{ $datos[1][0]->hora_final }}</td>
+                        <td>{{ $datos[1][0]->dia }}</td>
                     </tr>
                 </tbody>
             </table>
