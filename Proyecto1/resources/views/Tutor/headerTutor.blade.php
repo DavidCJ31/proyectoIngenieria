@@ -20,18 +20,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Est Asisgnado</a>
                 </li>
-                <li class="nav-item">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle btn-navbar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Opciones
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Cursos</a>
-                            <a class="dropdown-item" href="#">Horarios</a>
-                            <a class="dropdown-item" href="#">Tabla estudiantes</a>
-                            <a class="dropdown-item" href="#">Asistensia</a>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Opciones
+                    </a>
+                <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Fomulario</a>
+                        <a class="dropdown-item" href="#">Informe mensual</a>
+                        <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
+                        <a class="dropdown-item" href="/estudiante">Tabla estudiantes</a>
                         </div>
-                    </div>
                 </li>
             </ul>
             <ul class="navbar-nav navbar-rigth">
