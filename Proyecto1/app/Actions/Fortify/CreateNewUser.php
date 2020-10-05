@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify;
 
+use App\Models\estudiante;
 use App\Models\User;
 use App\Models\persona;
 use Illuminate\Support\Facades\Hash;
@@ -39,6 +40,9 @@ class CreateNewUser implements CreatesNewUsers
             'usuario' => $input['usuario'],
         ]);
 
+        estudiante::create([
+            'id' => $input['id']
+        ]);
        /* $persona = persona::create([
             'id' => $input['id'],
             'nombre' => $input['nombre'],

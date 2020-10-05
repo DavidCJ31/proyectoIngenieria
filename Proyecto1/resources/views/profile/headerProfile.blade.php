@@ -1,37 +1,16 @@
 <link href="{{ asset('css/styleHeader.css') }}" rel="stylesheet">
 <header>
-
     <!-- ****** Bara del header ************ -->
     <nav class="navbar navbar-expand-lg navbar-dark default-color">
 
         <a class="logoHeader"><img src="imagenes/logo-largo.png" /></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/Asesor">Inicio<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Detalles de asesor</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"></a>
-                </li>
-                <li class="nav-item">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle btn-navbar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Reportes
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Estudiantes</a>
-                            <a class="dropdown-item" href="/horarioAsesor">Horarios</a>
-                            <a class="dropdown-item" href="#">General</a>
-                        </div>
-                    </div>
+                    <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
+
             <ul class="navbar-nav navbar-rigth">
                 @if (Route::has('login'))
                 @auth

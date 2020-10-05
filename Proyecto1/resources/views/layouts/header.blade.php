@@ -3,7 +3,7 @@
     <!-- ****** Bara del header ************ -->
     <nav class="navbar navbar-expand-lg navbar-dark default-color">
 
-        <a class="navbar-brand" href="#"><strong>UNA</strong></a>
+        <a class="logoHeader"><img src="imagenes/logo-largo.png" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -12,30 +12,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Inicio<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/informe-mensual">Informe-mensual</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/formulario">Formulario</a>
-                </li>
-                      
-                <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Opciones
-                    </a>
-                <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Fomulario</a>
-                        <a class="dropdown-item" href="#">Informe mensual</a>
-                        <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
-                        <a class="dropdown-item" href="/estudiante">Tabla estudiantes</a>
-                        </div>
-                </li>
             </ul>
-
-  
-
-
-
             <ul class="navbar-nav navbar-rigth">
                 @if (Route::has('login'))
                 @auth

@@ -11,7 +11,7 @@
 
 <body>
 <!--Main Navigation--> 
-@include('layouts.header')
+@include('profile.headerProfile')
     <x-app-layout>
         <x-slot name="header">
         </x-slot>

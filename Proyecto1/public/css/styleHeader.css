@@ -1,13 +1,27 @@
-.navbar{
+.navbar {
     background-color: #292c2f !important;
 }
-.dropdown-menu{
+
+.dropdown-menu {
     background-color: #292c2f !important;
     color: white;
 }
-.dropdown{
+
+.dropdown {
     color: white;
 }
-.dropdown-item{
+
+.dropdown-item {
     color: white;
+}
+
+.logoHeader {
+    width: 150px;
+    padding: 0px;
+    margin: 0px;
+    margin-right: 10px;
+}
+
+.logoHeader img {
+    width: 100%;
 }

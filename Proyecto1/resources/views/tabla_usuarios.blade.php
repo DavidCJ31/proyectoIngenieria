@@ -54,8 +54,8 @@
                         <td>  <?php echo $index++;?> </td>
                         <td >{{$usuario->id}}</td>
                         <td>{{$usuario->usuario}}</td>
-                        <td style=" "> {{$usuario->name}}</td>
-                        <td style=" ">{{$usuario->apellido}}</td>
+                        <td> {{$usuario->name}}</td>
+                        <td>{{$usuario->apellido}}</td>
                         <td> {{$usuario->email}}</td>
                         <td>
                         {{$usuario->rol}}
