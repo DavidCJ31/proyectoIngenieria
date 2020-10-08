@@ -30,7 +30,7 @@
 </head>
 
 <body>
-@if( $estudiantes[4] == 3)
+@if( $estudiantes[4] == 3 )
 <div class="card">
     <div class="card-body">
         <div class="media">
@@ -68,7 +68,7 @@
                         <td>  <?php echo $index++ ?> </td>
                         <td>{{ $estudiantes[1][0]->id }}</td>
                         <td>{{ $estudiantes[3][0]->hora_inicio}} - {{ $estudiantes[3][0]->hora_final}}</td>
-                        <td>{{ $estudiantes[2]->name }}</td>
+                        <td>{{ $estudiantes[2]->name }} </td>
                         <td>{{ $estudiantes[1][0]->estudiante_id }}</td>
                         <td>{{ $estudiantes[1][0]->descripcion }}</td>
                     </tr>

@@ -3,7 +3,7 @@
     <!-- ****** Bara del header ************ -->
     <nav class="navbar navbar-expand-lg navbar-dark default-color">
 
-        <a class="logoHeader"><img src="imagenes/logo-largo.png" /></a>
+        <a class="logoHeader"><img src="../imagenes/logo-largo.png" /></a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
