@@ -5,6 +5,7 @@ use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\AsesorController;
 use App\Http\Controllers\TutorController;
+use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\HorarioAsesorController;
@@ -52,7 +53,8 @@ Route::resources([
     '/Asesor' => AsesorController::class,
     '/Estudiante' => EstudianteController::class,
     '/Tutor' => TutorController::class,
-    '/Administrador' => AdministradorController::class
+    '/Administrador' => AdministradorController::class,
+    '/User' => UserController::class
     ]);
 
 Route::get('/', function () {

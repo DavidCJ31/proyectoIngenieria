@@ -4,7 +4,6 @@ namespace App\Actions\Fortify;
 
 use App\Models\estudiante;
 use App\Models\User;
-use App\Models\persona;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -39,17 +38,9 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'usuario' => $input['usuario'],
         ]);
-
         estudiante::create([
             'id' => $input['id']
         ]);
-       /* $persona = persona::create([
-            'id' => $input['id'],
-            'nombre' => $input['nombre'],
-            'apellido' => $input['apellido'],
-            'email' => $input['email'],
-            'usuario_id' => $input['usuario'],
-        ]);*/
 
         return $usuario;
     }

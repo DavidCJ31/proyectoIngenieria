@@ -13,9 +13,8 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/Adminitrador">Inicio<span class="sr-only">(current)</span></a>
                 </li>
-              
                 <li class="nav-item">
-                    <a class="nav-link" href="#"></a>
+                    <a class="nav-link" href="/User">Registrar Usuario</a>
                 </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -8,7 +8,7 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-
+            <x-jet-input type="hidden" name="rol" :value="3"/>
             <div>
                 <x-jet-label value="{{ __('Cedula') }}" />
                 <x-jet-input class="block mt-1 w-full" type="number" name="id" :value="old('id')" required autofocus autocomplete="id" />
