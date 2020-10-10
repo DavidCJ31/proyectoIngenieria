@@ -13,23 +13,18 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/Adminitrador">Inicio<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Detalles de estudiantes</a>
-                </li>
+              
                 <li class="nav-item">
                     <a class="nav-link" href="#"></a>
                 </li>
-                <li class="nav-item">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle btn-navbar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Reportes
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">estudiantes</a>
-                            <a class="dropdown-item" href="#">asesores</a>
-                            <a class="dropdown-item" href="/usuarios">usuarios</a>
-                            <a class="dropdown-item" href="/estudiante">general</a>
-                        </div>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Opciones
+                    </a>
+                    <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
+                        <a class="dropdown-item" href="/estudiante">Tabla estudiantes</a>
+                        <a class="dropdown-item" href="/estudiante">Tabla Tutores</a>
                     </div>
                 </li>
             </ul>

@@ -19,16 +19,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#"></a>
                 </li>
-                <li class="nav-item">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle btn-navbar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Reportes
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Estudiantes</a>
-                            <a class="dropdown-item" href="/horarioAsesor">Horarios</a>
-                            <a class="dropdown-item" href="#">General</a>
-                        </div>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Opciones
+                    </a>
+                    <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Fomulario</a>
+                        <a class="dropdown-item" href="#">Informe mensual</a>
+                        <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
+                        <a class="dropdown-item" href="/estudiante">Tabla estudiantes</a>
                     </div>
                 </li>
             </ul>
