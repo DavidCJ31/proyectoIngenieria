@@ -67,6 +67,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 
 Route::resource('/horario-citas', HorarioAsesorController::class);
+
 Route::get('/informe-mensual', function () {
     return view('informe-mensual');
 });

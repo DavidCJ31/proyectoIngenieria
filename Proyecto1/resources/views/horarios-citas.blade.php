@@ -13,11 +13,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
-    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
-
     <!-- Aqui empieza el  formulario -->
     <div class= "form-card">
         <h4 class="text-center">VICERRECTORIA DE DOCENCIA</h4><H5 class="text-center">EXITO ACADEMICO</H5><h4 class="text-center">DISPONIBILIDAD PARA ASESORIAS</h4>
@@ -137,7 +136,7 @@
           selectAllow: false,
           weekends: false,
           events: async function(start, end, timezone, callback) {
-            var response = await fetch('prueba-horarios/create', {method: 'GET'});
+            var response = await fetch('horario-citas/create', {method: 'GET'});
             var resul = await response.json();
             var events = [];
             console.log(resul);
@@ -187,15 +186,20 @@
     function guardarHorario(horario){
       console.log("Entro a guardarHorario con:");
       console.log(horario);
-      $.ajax({type: "POST", 
-          url:"prueba-horarios",
-          "data": JSON.stringify(horario), 
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      $.ajax({ 
+          url:"horario-citas",
+          type: "POST",
+          data: JSON.stringify(horario), 
           success: function (resul){
             if(resul.status == 'Error'){
-              alert(resul.message);
-          }},
-          error: function(status){ alert(errorMessage(status));}                 
-        }); 
+              alert("Error 1");
+          }}
+        });
     }
     
 

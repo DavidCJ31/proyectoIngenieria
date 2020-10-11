@@ -52,13 +52,14 @@ class HorarioAsesorController extends Controller
     public function create()
     {
         //
-        $horarios = horario_asesor::where('asesor_id', 2)->get();
+        $id = Auth::user()->id;
+        $horarios = horario_asesor::where('asesor_id', $id)->get();
         $data = array();
         foreach($horarios as $row)
         {
             $data[] = array(
             'id'   => $row["id"],
-            'title'   => $row["Titulo"],
+            'title'   => $row["titulo"],
             'start'   => $row["inicio"],
             'end'   => $row["final"]
             );
@@ -93,6 +94,7 @@ class HorarioAsesorController extends Controller
         //Aqui valido si ya se ingreso el horario para la misma fecha y hora
         $id = Auth::user()->id;
         $horarios = horario_asesor::where('asesor_id', $id)->where('inicio', $request->inicio)->get();
+        
         if(!empty($horarios)){
             $message = 'Este horario ya esta registrado para la fecha: '+ $request->inicio;
             return response()->json([
@@ -100,17 +102,21 @@ class HorarioAsesorController extends Controller
                 'message' => $message, 
             ]);
         }
+        
         $horario = new horario_asesor;
-        $horario->id = 0;
+        $horario->id = 4;
         $horario->asesor_id = $id;
         $horario->inicio = $request->inicio;
         $horario->final = $request->final;
         $horario->titulo = $request->titulo;
         $horario->save();
+        return response()->json($horario);
+        /*
         return response()->json([
             'status'=> 'Success', 
             'message' => 'Ingresado correctamente', 
         ]);
+        */
 
     }
 
