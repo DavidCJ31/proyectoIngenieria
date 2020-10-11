@@ -191,21 +191,16 @@
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
       });
-      $.ajax({ 
-          url:"horario-citas",
+      $.ajax({
+          url: "horario-citas",
           type: "POST",
-          data: JSON.stringify(horario), 
-          success: function (resul){
-            if(resul.status == 'Error'){
-              alert("Error 1");
-          }}
-        });
-    }
-    
-
-    async function pedirHorarios(){
-
-        calendar.fullCalendar('refetchEvents');
+          data: {horarios:JSON.stringify(horario)},
+          success: function (result) {
+              console.log("success");
+              console.log(result)
+              calendar.fullCalendar('refetchEvents');
+          }
+      });
     }
 
     function seleccionarCasilla( casilla ){
