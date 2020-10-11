@@ -66,7 +66,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
-Route::resource('/horario', HorarioAsesorController::class);
+Route::resource('/horario-citas', HorarioAsesorController::class);
 Route::get('/informe-mensual', function () {
     return view('informe-mensual');
 });
@@ -87,7 +87,7 @@ Route::get('/registro', function () {
     return view('RegistroDeEntrada');
 });
 
-Route::resource('/horario', HorarioAsesorController::class);
+//Route::resource('/horario', HorarioAsesorController::class);
 Route::resource('/Cursos', CursoController::class);
 
 
@@ -96,7 +96,7 @@ Route::get('/asistencia', function(){
 });
 Route::get('/usuarios', [PersonaController::class, 'tablaUsuarios']);
 Route::get('/estudiante', [EstudianteController::class, 'tablaEstudiantes']);
-Route::get('/horarioAsesor', [HorarioAsesorController::class, 'tablaHorarios']);
+//Route::get('/horarioAsesor', [HorarioAsesorController::class, 'tablaHorarios']);
 
 Route::get('/contrato', function () {
     return view('contratoDeTutoria');

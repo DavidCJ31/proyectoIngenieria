@@ -9,10 +9,10 @@ class horario_asesor extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-        'dia',
-        'hora_inicio',
-        'hora_final',
-        'asesor_id'
+        'asesor_id',
+        'titulo',
+        'inicio',
+        'final'        
     ];
 
     public function asesor()

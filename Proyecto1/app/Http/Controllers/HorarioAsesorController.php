@@ -41,7 +41,7 @@ class HorarioAsesorController extends Controller
      */
     public function index()
     {
-        return view('Asesor/HorarioAsesor');
+        return view('horarios-citas');
     }
 
     /**
@@ -52,6 +52,18 @@ class HorarioAsesorController extends Controller
     public function create()
     {
         //
+        $horarios = horario_asesor::where('asesor_id', 2)->get();
+        $data = array();
+        foreach($horarios as $row)
+        {
+            $data[] = array(
+            'id'   => $row["id"],
+            'title'   => $row["Titulo"],
+            'start'   => $row["inicio"],
+            'end'   => $row["final"]
+            );
+            }
+        return response()->json($data);
     }
 
     /**
@@ -62,6 +74,9 @@ class HorarioAsesorController extends Controller
      */
     public function store(Request $request)
     {
+        /*
+
+
         $horario = new horario_asesor;
         $horario->asesor_id = $request->input('idAsesor');
         $horario->hora_inicio = $request->input('horaInicio');
@@ -69,6 +84,34 @@ class HorarioAsesorController extends Controller
         $horario->dia = $request->input('dia');
         $horario->save();
         return view('Asesor/HorarioAsesor');
+        */
+
+        //Creo que aqui es donde esta el problema y creo que no cubro todas las situaciones posibles
+        // Como si el sql me da un error al insertar
+
+
+        //Aqui valido si ya se ingreso el horario para la misma fecha y hora
+        $id = Auth::user()->id;
+        $horarios = horario_asesor::where('asesor_id', $id)->where('inicio', $request->inicio)->get();
+        if(!empty($horarios)){
+            $message = 'Este horario ya esta registrado para la fecha: '+ $request->inicio;
+            return response()->json([
+                'status'=> 'Error', 
+                'message' => $message, 
+            ]);
+        }
+        $horario = new horario_asesor;
+        $horario->id = 0;
+        $horario->asesor_id = $id;
+        $horario->inicio = $request->inicio;
+        $horario->final = $request->final;
+        $horario->titulo = $request->titulo;
+        $horario->save();
+        return response()->json([
+            'status'=> 'Success', 
+            'message' => 'Ingresado correctamente', 
+        ]);
+
     }
 
     /**
@@ -79,11 +122,7 @@ class HorarioAsesorController extends Controller
      */
     public function show($id)
     {
-        $horario = DB::table('horario_asesors')
-        ->select('horario_asesors.*')
-        ->where('asesor_id', $id)
-        ->get();
-        return view('horarios-citas')->with('horario',$horario);
+        //
     }
 
     /**

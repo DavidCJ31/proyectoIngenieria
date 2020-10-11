@@ -18,9 +18,9 @@ class CreateHorarioAsesorsTable extends Migration
             $table->integer('asesor_id');
             $table->foreign('asesor_id')->references('id')->on('asesors')->onDelete('cascade');
             
-            $table->time('hora_inicio');
-            $table->time('hora_final');
-            $table->string('dia', 45);
+            $table->dateTime('inicio');
+            $table->dateTime('final');
+            $table->string('titulo', 45);
         });
     }
 
