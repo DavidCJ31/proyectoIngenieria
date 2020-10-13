@@ -23,7 +23,7 @@
                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
                         <a class="dropdown-item" href="/estudiante">Tabla estudiantes</a>
-                        <a class="dropdown-item" href="/estudiante">Tabla Tutores</a>
+                        <a class="dropdown-item" href="/Tutores">Tabla Tutores</a>
                     </div>
                 </li>
             </ul>

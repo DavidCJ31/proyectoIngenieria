@@ -27,7 +27,7 @@
                 @csrf
                 <span id="reauth-email" class="reauth-email"></span>
                 <input type="id" name="id" value="207600154" required autofocus id="inputEmail" class="form-control">
-                <input type="password" name="password" value="12345678" required autocomplete="current-password" id="inputPassword" class="form-control" required>
+                <input type="password" name="password" value="123456789" required autocomplete="current-password" id="inputPassword" class="form-control" required>
                 <div id="remember" class="checkbox">
                     <label>
                         <input type="checkbox" value="remember-me"> {{ __('Remember me') }}

@@ -49,6 +49,17 @@ Route::get('/logged_in', function(){
     }
 });
 
+// Rutas Super Administrador
+
+// Rutas Administrador
+Route::get('/Tutores', [AdministradorController::class, 'tablaTutores']);
+
+// Rutas Asesor
+
+// Rutas Tutores
+
+//Rutas Estudiantes
+
 Route::resources([
     '/Asesor' => AsesorController::class,
     '/Estudiante' => EstudianteController::class,

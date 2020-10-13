@@ -5,10 +5,34 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\administrador;
+use App\Models\tutor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdministradorController extends Controller
 {
+
+    public function tablaTutores(){
+        $id = Auth::user()->id;
+        $rol = Auth::user()->rol;
+        if($rol == 1){
+        $adiministrador = administrador::find($id)->user;
+        $tutor = DB::table('tutors')->select('tutors.*')->get();
+        $con = 0;
+        $tutores = [];
+        foreach ($tutor as $value) {
+            $tutores[$con++] = DB::table('users')->select('users.*')->where('id', $value->id)->get();
+        }
+        $datos = [$adiministrador,$tutores,$rol];
+        return view("Administrador/tabla_tutores")->with('tutores',$datos);
+        }else{
+            $datos = [$adiministrador,0,$rol];
+            echo "LLEGO";
+            return view("Administrador/tabla_tutores")->with('tutores',$datos);
+        }
+    }
+
+
     /**
      * Display a listing of the resource.
      *

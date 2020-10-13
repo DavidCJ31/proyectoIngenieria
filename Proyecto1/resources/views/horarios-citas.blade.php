@@ -17,6 +17,7 @@
 </head>
 
 <body>
+    @include("Asesor.headerAsesor")
     <!-- Aqui empieza el  formulario -->
     <div class= "form-card">
         <h4 class="text-center">VICERRECTORIA DE DOCENCIA</h4><H5 class="text-center">EXITO ACADEMICO</H5><h4 class="text-center">DISPONIBILIDAD PARA ASESORIAS</h4>
@@ -97,12 +98,12 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" id='horario-dia'>Enviar</button>
+        <button type="button" class="btn btn-primary" id='horario-dia' data-dismiss="modal">Enviar</button>
       </div>
     </div>
   </div>
 </div>
-
+  @include("layouts.footer")
 </body>
 
 </html>

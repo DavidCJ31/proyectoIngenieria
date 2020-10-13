@@ -28,6 +28,7 @@
                         <a class="dropdown-item" href="#">Informe mensual</a>
                         <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
                         <a class="dropdown-item" href="/estudiante">Tabla estudiantes</a>
+                        <a class="dropdown-item" href="/horario-citas">Horario</a>
                     </div>
                 </li>
             </ul>
