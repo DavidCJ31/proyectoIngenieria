@@ -21,6 +21,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
+    <script src="{{ asset('js/buscadorParaTablas.js') }}" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="{{ asset('css/styleTable.css') }}" rel="stylesheet">
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
@@ -30,9 +31,18 @@
 </head>
 
 <body>
-        <h1 id="TituloVista">Usuarios</h1>
+    <div id="fondoTabla">
+        <h1 id="TituloVista">Tutores</h1>
+        <div class="col-6">
+            <div class="input-group mb-2">
+                <input id="texto" class="form-control col-md-3 light-table-filter" data-table="order-table" type="text" placeholder="Search.." aria-label="Input group example">
+                <div class="input-group-append">
+                <span class="input-group-text">Buscar</span>
+                </div>
+            </div>
+        </div>
         <div id="marg">
-            <table class="table table-striped w-auto" id="example" >
+            <table class="table table-bordered table-striped mb-0 w-auto order-table" id="example" >
                 <thead>
                     <tr>
                         <th id="colcorta" scope="col">#</th>
@@ -69,38 +79,10 @@
             </table>
         </div>
 
-
+    </div>
 </body>
 
 </html>
 <script>
-$(document).ready(function() {
-    $('#example').DataTable({
-        pageLength: 10,
-        responsive: true,
-        lengthMenu: [
-            [10, 20, 100, -1],
-            ["10", "20", "100", "Todos"]
-        ],
-        language: {
 
-            search: "Buscar: ",
-            lengthMenu: "Elementos _MENU_  por pagina",
-
-            info: "Mostrando  _START_  a _END_ de _TOTAL_ elementos",
-
-            loadingRecords: "Cargando Elementos...",
-            zeroRecords: "No se encontraron elementos que coincidan con los parametros de busqueda",
-            emptyTable: "No hay elementos disponibles",
-            paginate: {
-                first: "Primer",
-                previous: "Anterior",
-                next: "Siguiente",
-                last: "Ultimo"
-            },
-
-        }
-
-    });
-});
 </script>

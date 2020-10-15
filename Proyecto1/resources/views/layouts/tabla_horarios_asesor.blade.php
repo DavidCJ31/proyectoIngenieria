@@ -24,6 +24,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="{{ asset('css/styleTable.css') }}" rel="stylesheet">
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="{{ asset('js/buscadorParaTablas.js') }}" crossorigin="anonymous"></script>
+
     @include("Asesor.headerAsesor")
 </head>
 
@@ -46,15 +48,23 @@
 
     <div id="fondoTabla">
         <h1 id="TituloVista">Horarios</h1>
+        <div class="col-6">
+            <div class="input-group mb-2">
+                <input id="texto" class="form-control col-md-3 light-table-filter" data-table="order-table" type="text" placeholder="Search.." aria-label="Input group example">
+                <div class="input-group-append">
+                <span class="input-group-text">Buscar</span>
+                </div>
+            </div>
+        </div>
         <div id="marg">
-            <table class="table table-bordered table-striped mb-0 " id="example">
+            <table class="table table-bordered table-striped mb-0 w-auto order-table" id="example">
                 <thead>
                     <tr>
                         <th id="colcorta" scope="col">#</th>
                         <th scope="col">Id</th>
-                        <th scope="col">Hora inicio</th>
-                        <th scope="col">Hora final</th>
-                        <th scope="col">Día</th>
+                        <th scope="col">Inicio</th>
+                        <th scope="col">Final</th>
+                        <th scope="col">Descripción</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,9 +75,9 @@
                     <tr>
                         <td>  <?php echo $index++ ?> </td>
                         <td>{{ $datos[0]->id }}</td>
-                        <td>{{ $datos[1][0]->hora_inicio }}</td>
-                        <td>{{ $datos[1][0]->hora_final }}</td>
-                        <td>{{ $datos[1][0]->dia }}</td>
+                        <td>{{ $datos[1][0]->inicio }}</td>
+                        <td>{{ $datos[1][0]->final }}</td>
+                        <td>{{ $datos[1][0]->titulo }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -79,33 +89,4 @@
 
 </html>
 <script>
-$(document).ready(function() {
-    $('#example').DataTable({
-        pageLength: 10,
-        responsive: true,
-        lengthMenu: [
-            [10, 20, 100, -1],
-            ["10", "20", "100", "Todos"]
-        ],
-        language: {
-
-            search: "Buscar: ",
-            lengthMenu: "Elementos _MENU_  por pagina",
-
-            info: "Mostrando  _START_  a _END_ de _TOTAL_ elementos",
-
-            loadingRecords: "Cargando Elementos...",
-            zeroRecords: "No se encontraron elementos que coincidan con los parametros de busqueda",
-            emptyTable: "No hay elementos disponibles",
-            paginate: {
-                first: "Primer",
-                previous: "Anterior",
-                next: "Siguiente",
-                last: "Ultimo"
-            },
-
-        }
-
-    });
-});
 </script>

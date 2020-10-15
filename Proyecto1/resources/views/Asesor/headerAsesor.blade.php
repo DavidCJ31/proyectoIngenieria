@@ -1,4 +1,5 @@
 <link href="{{ asset('css/styleHeader.css') }}" rel="stylesheet">
+<link rel="shortcut icon" href="Imagenes/logo-blanco.png" type="image/x-icon" />
 <header>
 
     <!-- ****** Bara del header ************ -->
@@ -27,8 +28,9 @@
                         <a class="dropdown-item" href="#">Fomulario</a>
                         <a class="dropdown-item" href="#">Informe mensual</a>
                         <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
-                        <a class="dropdown-item" href="/estudiante">Tabla estudiantes</a>
-                        <a class="dropdown-item" href="/horario-citas">Horario</a>
+                        <a class="dropdown-item" href="/estudiantes">Tabla estudiantes</a>
+                        <a class="dropdown-item" href="/horario-citas">Guardar horario</a>
+                        <a class="dropdown-item" href="/horarioAsesor">Tabla horarios</a>
                     </div>
                 </li>
             </ul>

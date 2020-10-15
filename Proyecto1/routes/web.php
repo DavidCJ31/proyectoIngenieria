@@ -53,6 +53,7 @@ Route::get('/logged_in', function(){
 
 // Rutas Administrador
 Route::get('/Tutores', [AdministradorController::class, 'tablaTutores']);
+Route::get('/Tutores/buscador', [AdministradorController::class, 'buscador']);
 
 // Rutas Asesor
 
@@ -106,9 +107,10 @@ Route::resource('/Cursos', CursoController::class);
 Route::get('/asistencia', function(){
     return view('Tutor/asistencia');
 });
+
 Route::get('/usuarios', [PersonaController::class, 'tablaUsuarios']);
-Route::get('/estudiante', [EstudianteController::class, 'tablaEstudiantes']);
-//Route::get('/horarioAsesor', [HorarioAsesorController::class, 'tablaHorarios']);
+Route::get('/estudiantes', [EstudianteController::class, 'tablaEstudiantes']);
+Route::get('/horarioAsesor', [HorarioAsesorController::class, 'tablaHorarios']);
 
 Route::get('/contrato', function () {
     return view('contratoDeTutoria');

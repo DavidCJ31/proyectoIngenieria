@@ -1,5 +1,5 @@
 <link href="{{ asset('css/styleHeader.css') }}" rel="stylesheet">
-
+<link rel="shortcut icon" href="Imagenes/logo-blanco.png" type="image/x-icon" />
 <header>
     <!-- ****** Bara del header ************ -->
     <nav class="navbar navbar-expand-lg navbar-dark default-color">

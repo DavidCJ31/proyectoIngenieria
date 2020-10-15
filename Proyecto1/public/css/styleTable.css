@@ -1,5 +1,4 @@
 body{
-    background-image: url(/assets/imagenes/fondo.jpeg);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -114,11 +113,3 @@ table #colcorta{
     text-align: center;
 }
 
-#marg{
-    height: available; 
-    position: relative; 
-    margin-left: 20%; 
-    margin-right: 20%; 
-    margin-bottom: auto; 
-    background-color: rgba(255, 255, 255, 0.5);
-}
