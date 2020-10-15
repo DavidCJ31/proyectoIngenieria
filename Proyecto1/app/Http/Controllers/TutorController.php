@@ -22,6 +22,14 @@ class TutorController extends Controller
         return view('Tutor/inicioTutor')->with('usuario',$usuario);
     }
 
+
+
+    public function vistaEstudiante()
+    {
+            $id = Auth::user()->id;
+            $usuario = tutor::find($id)->user;
+            return view('Tutor/estudiantes-asignados')->with('usuario',$usuario);
+    }
     /**
      * Show the form for creating a new resource.
      *
