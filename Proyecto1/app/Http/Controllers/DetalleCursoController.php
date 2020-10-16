@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+
 class DetalleCursoController extends Controller
 {
     /**
@@ -15,7 +16,7 @@ class DetalleCursoController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -36,7 +37,7 @@ class DetalleCursoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**

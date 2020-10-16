@@ -49,6 +49,6 @@ class estudiante extends Model
     }
     public function estudianteDetalle()
     {
-        return $this->hasOne('App\Models\estudiante_detalle', 'id');
+        return $this->hasOne('App\Models\estudiante_detalle', 'estudiante_id');
     }
 }
