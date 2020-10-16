@@ -2,17 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\administrador;
-use App\Models\asesor;
-use App\Models\User;
-use App\Models\tutor;
-use App\Http\Controllers\Controller;
-use App\Models\super_administrador;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\super_administrador;
 
-class UserController extends Controller
+class SuperAdministradorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('SuperAdministrador.registerUsuarios');
+        $usuario = super_administrador::find(Auth::user()->id)->user;
+        return view('SuperAdministrador/inicioSuperAdministrador')->with('usuario',$usuario);
     }
 
     /**
@@ -42,37 +38,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User;
-        $user->id = $request->input('id');
-        $user->name = $request->input('nombre');
-        $user->apellido = $request->input('apellido');
-        $user->email = $request->input('email');
-        $user->usuario = $request->input('usuario');
-        $user->password = Hash::make($request->input('password'));
-        $user->rol = $request->input('rol');
-        $user->save();
-
-        if($user->rol == 0){
-            $superAdministrador = new super_administrador();
-            $superAdministrador->id = $user->id;
-            $superAdministrador->save();
-        }
-        if($user->rol == 1){
-            $administrador = new administrador;
-            $administrador->id = $user->id;
-            $administrador->save();
-        }
-        if($user->rol == 2){
-            $asesor = new asesor;
-            $asesor->id = $user->id;
-            $asesor->save();
-        }
-        if($user->rol == 4){
-            $tutor = new tutor;
-            $tutor->id = $user->id;
-            $tutor->save();
-        }
-        return redirect('logged_in');
+        //
     }
 
     /**

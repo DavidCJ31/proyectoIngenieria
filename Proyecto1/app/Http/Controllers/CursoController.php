@@ -16,7 +16,7 @@ class CursoController extends Controller
      */
     public function index()
     {
-        return view('Administrador/Cursos');
+        return view('SuperAdministrador/Curso/Cursos');
     }
 
     /**
@@ -42,7 +42,7 @@ class CursoController extends Controller
         $curso->nombre = $request->input('cursoNombre');
         $curso->curso_necesario = $request->input('cursoNecesario');
         $curso->save();
-        return view('Administrador/Cursos');
+        return redirect('logged_in');
     }
 
     /**
