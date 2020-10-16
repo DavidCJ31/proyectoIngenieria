@@ -31,19 +31,20 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">NOMBRE COMPLETO:</span>
                 </div>
-                <input type="text" class="form-control" name="campo-nombre" id="campo-nombre" aria-describedby="basic-addon1" disabled>
+                <input type="text" class="form-control" name="campo-nombre" id="campo-nombre" value="{{ $estudiante->name.' '.$estudiante->apellido }}" aria-describedby="basic-addon1" disabled>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">NUMERO DE IDENTIFICACIÓN:</span>
                 </div>
-                <input type="number" class="form-control no-spin" name="campo-cedula" id="campo-cedula" aria-describedby="basic-addon1" disabled>
+                <input type="hidden" name="campo-cedula" value="{{ $estudiante->id }}">
+                <input type="number" class="form-control no-spin" aria-describedby="basic-addon1" value="{{ $estudiante->id }}" disabled>
             </div>
             <!-- Hilera del formulario -- cedula y telefono -->
             <div class="input-group mb-3">
                 <div class="input-group-append">
                     <span class="input-group-text">FECHA DE NACIMIENTO:</span>
-                    <input type="date" class="form-control" placeholder="Numero de cedula (tambien automaticamente)" name="campo-fecha-nacimiento" id="campo-fecha-nacimiento" aria-describedby="basic-addon2" require>
+                    <input type="date" class="form-control" name="campo-fecha-nacimiento" id="campo-fecha-nacimiento" aria-describedby="basic-addon2" require>
                 </div>
                 <div class="input-group-append">
                     <span class="input-group-text">EDAD:</span>
@@ -87,15 +88,15 @@
                 <div class="input-group-append">
                     <span class="input-group-text">CUANTOS:</span>
                 </div>
-                <input type="number" class="form-control" name="campo-hijos" id="campo-hijos3" value="0" aria-describedby="basic-addon2" require min="0" disabled>
+                <input type="number" class="form-control" name="campo-hijos" id="campo-hijos3" value="0" aria-describedby="basic-addon2" require min="0" readonly>
                 <script>
                     function deshabilitarCampoHijos3() {
-                        document.getElementById("campo-hijos3").disabled = true;
+                        document.getElementById("campo-hijos3").setAttribute('readonly', true);
                         document.getElementById("campo-hijos3").value = '0';
                     }
 
                     function habilitarCampoHijos3() {
-                        document.getElementById("campo-hijos3").disabled = false;
+                        document.getElementById("campo-hijos3").removeAttribute('readonly');
                         document.getElementById("campo-hijos3").value = '1';
                     }
                 </script>
@@ -105,7 +106,7 @@
                 <div class="input-group-append">
                     <span class="input-group-text">CORREO:</span>
                 </div>
-                <input type="email" class="form-control" name="campo-correo" id="campo-correo" aria-describedby="basic-addon2" disabled>
+                <input type="email" class="form-control" name="campo-correo" id="campo-correo" aria-describedby="basic-addon2" value="{{ $estudiante->email}}" disabled>
 
                 <div class="input-group-append">
                     <span class="input-group-text">ZONA DE PROCEDENCIA:</span>
@@ -520,7 +521,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">¿Qué tecnicas de estudio emplea? </span>
                 </div>
-                <input type="text" class="form-control" id="campo-universidad-tecEstudio" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" name="campo-universidad-tecEstudio" id="campo-universidad-tecEstudio" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">

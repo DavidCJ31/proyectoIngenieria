@@ -7,12 +7,50 @@ use Illuminate\Database\Eloquent\Model;
 
 class estudiante_detalle extends Model
 {
-    protected $primaryKey = 'id';
-    public $incrementing = false;
-
     public $timestamps = false;
     protected $fillable = [
-        'id',
+        'estudiante_id',
+        'fecha_nacimiento',
+        'edad',
+        'tel_celular',
+        'tel_habitacion',
+        'estado_civil',
+        'hijos',
+        'zona_procedencia',
+        'direccion_actual',
+        'familiares_convive',
+        'familiares_relacion',
+        'familiares_apoyo',
+        'financiamiento',
+        'trabaja',
+        'trabajoLugar',
+        'trabajoJornada',
+        'trabajoMotivo',
+        'antecedenteInstitucion',
+        'antecedenteModalidadEgreso',
+        'antecedenteAnnoEgreso',
+        'antecedenteReprobo',
+        'antecedenteMateriasDificiles',
+        'antecedenteAdecuacion',
+        'antecedenteAdecuacionCuandoid',
+        'antecedenteAdecuacionTipo',
+        'universidadAdecuacion',
+        'universidadCarrera',
+        'universidadAnnoIngreso',
+        'universidadNivel',
+        'universidadOpcion',
+        'universidadMotivacion',
+        'universidadSatisfecho',
+        'universidadOtraCarrera',
+        'universidadOtraCarreraInstitucion',
+        'universidadCursosRepetidos',
+        'universidadHoraConsulta',
+        'universidadCursosMatriculados',
+        'universidadHoraEstudio',
+        'universidadTecnicasEstudio',
+        'universidadPuntualClases',
+        'universidadFactoresFavorecen',
+        'universidadFactoresObtaculizan'
     ];
 
     public function estudiante()

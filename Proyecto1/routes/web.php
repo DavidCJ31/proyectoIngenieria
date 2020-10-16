@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\EstudianteController;
+use App\Http\Controllers\EstudianteDetalleController;
 use App\Http\Controllers\AsesorController;
 use App\Http\Controllers\TutorController;
 use App\Http\Controllers\UserController;
@@ -65,7 +66,7 @@ Route::resources([
     '/Tutor' => TutorController::class,
     '/Administrador' => AdministradorController::class,
     '/User' => UserController::class,
-    '/EstudianteDetalle' => EstudianteDetalleController::class
+    '/EstudianteDetalle' => EstudianteDetalleController::class,
     '/AgendarSeguimientos' => SeguimientoController::class
     ]);
 
@@ -90,10 +91,6 @@ Route::get('/formulario', function () {
 
 Route::get('/referencia', function () {
     return view('referencia-orientacion');
-});
-
-Route::get('/registro', function () {
-    return view('RegistroDeEntrada');
 });
 
 Route::get('/prueba', function(){
