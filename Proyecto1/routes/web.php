@@ -65,7 +65,8 @@ Route::resources([
     '/Estudiante' => EstudianteController::class,
     '/Tutor' => TutorController::class,
     '/Administrador' => AdministradorController::class,
-    '/User' => UserController::class
+    '/User' => UserController::class,
+    '/EstudianteDetalle' => EstudianteDetalleController::class
     ]);
 
 Route::get('/', function () {

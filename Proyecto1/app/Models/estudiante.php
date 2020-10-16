@@ -47,4 +47,8 @@ class estudiante extends Model
     {
         return $this->belongsToMany('App\Models\clase', 'asistencia', 'estudiante_id', 'clase_id');
     }
+    public function estudianteDetalle()
+    {
+        return $this->hasOne('App\Models\estudiante_detalle', 'id');
+    }
 }
