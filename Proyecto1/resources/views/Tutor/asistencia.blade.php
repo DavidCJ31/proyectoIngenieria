@@ -57,8 +57,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                      
+                    <tr>                      
                         <td>1</td>
                         <td>402390969</td>
                         <td>kevin</td>
@@ -91,33 +90,4 @@
 @include("layouts.footer")
 </html>
 <script>
-$(document).ready(function() {
-    $('#example').DataTable({
-        pageLength: 10,
-        responsive: true,
-        lengthMenu: [
-            [10, 20, 100, -1],
-            ["10", "20", "100", "Todos"]
-        ],
-        language: {
-
-            search: "Buscar: ",
-            lengthMenu: "Elementos _MENU_  por pagina",
-
-            info: "Mostrando  _START_  a _END_ de _TOTAL_ elementos",
-
-            loadingRecords: "Cargando Elementos...",
-            zeroRecords: "No se encontraron elementos que coincidan con los parametros de busqueda",
-            emptyTable: "No hay elementos disponibles",
-            paginate: {
-                first: "Primer",
-                previous: "Anterior",
-                next: "Siguiente",
-                last: "Ultimo"
-            },
-
-        }
-
-    });
-});
 </script>

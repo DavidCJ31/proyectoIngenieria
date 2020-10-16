@@ -72,13 +72,13 @@
                             <td>david@gmail.com</td>
                             <td>  
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="pregunta1" id="inlineRadio1" value="option1">
+                                    <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio1" value="option1">
                                     <label class="form-check-label" for="inlineRadio1">Si</label>
                                 </div>
                             </td>
                             <td>              
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="pregunta1" id="inlineRadio2" value="option2">
+                                    <input class="form-check-input" type="radio" name="pregunta2" id="inlineRadio2" value="option2">
                                     <label class="form-check-label" for="inlineRadio2">No</label>
                                 </div>
                             </td>
@@ -88,13 +88,13 @@
                             <td>jose@gmail.com</td>
                             <td>  
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="pregunta1" id="inlineRadio1" value="option1">
+                                    <input class="form-check-input" type="radio" name="pregunta3" id="inlineRadio1" value="option1">
                                     <label class="form-check-label" for="inlineRadio1">Si</label>
                                 </div>
                             </td>
                             <td>              
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="pregunta1" id="inlineRadio2" value="option2">
+                                    <input class="form-check-input" type="radio" name="pregunta3" id="inlineRadio2" value="option2">
                                     <label class="form-check-label" for="inlineRadio2">No</label>
                                 </div>
                             </td>
@@ -113,35 +113,7 @@
 @include("layouts.footer")
 </html>
 <script>
-$(document).ready(function() {
-    $('#example').DataTable({
-        pageLength: 10,
-        responsive: true,
-        lengthMenu: [
-            [10, 20, 100, -1],
-            ["10", "20", "100", "Todos"]
-        ],
-        language: {
 
-            search: "Buscar: ",
-            lengthMenu: "Elementos _MENU_  por pagina",
-
-            info: "Mostrando  _START_  a _END_ de _TOTAL_ elementos",
-
-            loadingRecords: "Cargando Elementos...",
-            zeroRecords: "No se encontraron elementos que coincidan con los parametros de busqueda",
-            emptyTable: "No hay elementos disponibles",
-            paginate: {
-                first: "Primer",
-                previous: "Anterior",
-                next: "Siguiente",
-                last: "Ultimo"
-            },
-
-        }
-
-    });
-});
 </script>
 
 

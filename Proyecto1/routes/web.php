@@ -11,6 +11,7 @@ use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\HorarioAsesorController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\SeguimientoController;
+use App\Http\Controllers\EstudianteDetalleController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -65,7 +66,7 @@ Route::resources([
     '/Tutor' => TutorController::class,
     '/Administrador' => AdministradorController::class,
     '/User' => UserController::class,
-    '/EstudianteDetalle' => EstudianteDetalleController::class
+    '/EstudianteDetalle' => EstudianteDetalleController::class,
     '/AgendarSeguimientos' => SeguimientoController::class
     ]);
 
