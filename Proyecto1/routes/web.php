@@ -10,8 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\HorarioAsesorController;
 use App\Http\Controllers\CursoController;
-
-
+use App\Http\Controllers\SeguimientoController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,6 +66,7 @@ Route::resources([
     '/Administrador' => AdministradorController::class,
     '/User' => UserController::class,
     '/EstudianteDetalle' => EstudianteDetalleController::class
+    '/AgendarSeguimientos' => SeguimientoController::class
     ]);
 
 Route::get('/', function () {
@@ -82,10 +82,6 @@ Route::resource('/horario-citas', HorarioAsesorController::class);
 
 Route::get('/informe-mensual', function () {
     return view('informe-mensual');
-});
-
-Route::get('/prueba-horarios', function () {
-    return view('horarios-citas');
 });
 
 Route::get('/formulario', function () {

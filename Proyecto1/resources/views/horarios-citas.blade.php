@@ -128,7 +128,11 @@
         $(".opcion-tabla").on("click", function(){seleccionarCasilla(this)});
         $("#horario-dia").on("click", function(){lista_horarios.forEach((x)=> guardarHorario(x));})
         calendar = $('#calendar').fullCalendar({
-          editable:true,
+          monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+          monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+          dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+          dayNamesShort: ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'],
+          editable:false,
           header:{
           left:'prev,next today',
           center:'title',

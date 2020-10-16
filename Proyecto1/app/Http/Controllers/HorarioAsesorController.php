@@ -143,6 +143,7 @@ class HorarioAsesorController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\horario_asesor;
+use App\Models\seguimiento;
 
 class SeguimientoController extends Controller
 {
@@ -16,6 +18,7 @@ class SeguimientoController extends Controller
     public function index()
     {
         //
+        return view('Seguimiento/citasSeguimientos');
     }
 
     /**
@@ -37,6 +40,36 @@ class SeguimientoController extends Controller
     public function store(Request $request)
     {
         //
+
+        $id = Auth::user()->id;
+            if(isset($_POST["horario"])){
+                $array = json_decode($_POST["horario"]);
+                //guardamos el seguimiento y buscamos el horario para actualizarlo
+
+                $horario = horario_asesor::where('id', $array->id)->get();
+                $seguimiento = new seguimiento;
+                $seguimiento->id = 0;
+                $seguimiento->descripcion = 'Cita para seguimiento';
+                $seguimiento->horario_asesor_id = $horario->id;
+                $seguimiento->estudiante_id = $id;
+                $seguimiento->save();
+                
+                //Actualizar el horario para que ya no salga disponible y que al asesor le salga con quien es el seguimiento
+
+                $horario->titulo = "Seguimiento asignado con: ".Auth::user()->name." de cedula: ".$id;
+                $horario->save(); //Save tambien sirve para actualizar un registro ya existente
+                return response('Success',200);
+                $horario = new horario_asesor;                
+                $horario->asesor_id = $id;
+                $horario->inicio = $array->inicio;
+                $horario->final = $array->final;
+                $horario->titulo = $array->titulo;
+                $horario->save();
+            }
+            else{
+                return response('Error',404);
+            }
+            return response('Error',404);
     }
 
     /**
