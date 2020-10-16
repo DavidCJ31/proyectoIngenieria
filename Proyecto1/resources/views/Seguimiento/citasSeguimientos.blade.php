@@ -90,7 +90,7 @@
           selectAllow: false,
           weekends: false,
           events: async function(start, end, timezone, callback) {
-            var response = await fetch('horario-citas/create', {method: 'GET'});
+            var response = await fetch('AgendarSeguimientos/create', {method: 'GET'});
             var resul = await response.json();
             var events = [];
             console.log(resul);

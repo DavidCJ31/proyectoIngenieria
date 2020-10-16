@@ -29,6 +29,18 @@ class SeguimientoController extends Controller
     public function create()
     {
         //
+        $horarios = horario_asesor::all();
+        $data = array();
+        foreach($horarios as $row)
+        {
+            $data[] = array(
+            'id'   => $row["id"],
+            'title'   => $row["titulo"],
+            'start'   => $row["inicio"],
+            'end'   => $row["final"]
+            );
+            }
+        return response()->json($data);
     }
 
     /**
