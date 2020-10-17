@@ -22,6 +22,18 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="{{ asset('css/styleTable.css') }}" rel="stylesheet">
+
+    <meta name="csrf-token" content="{​​{​​ csrf_token() }​​}​​">
+
+
+
+
+
+
+
+
+
+
     @include("Tutor.headerTutor")
 </head>
 
@@ -36,49 +48,49 @@
                     <div class="card-header" style="text-align-last: center;" >
                         <h4>Añadir un Usuario</h4>
                     </div>
-                        <form id="respuestas" class="card-body" method="POST" action="/User">
+                        
                         @csrf
                             <div class="form-group">
-                                <input type="number" name="id" required autofocus autocomplete="id"  placeholder="Cedula" class="form-control">
+                                <input type="number" id="id" name="id" required autofocus autocomplete="id"  placeholder="Cedula" class="form-control">
                             </div>
                             <div id="respuestas" class="form-group">
-                                <input type="text" name="nombre" required  required placeholder="Nombre"
+                                <input type="text" id="nombre" name="nombre" required  required placeholder="Nombre"
                                     class="form-control">
                             </div>
                             <div id="respuestas" class="form-group">
-                                <input type="text" name="apellido" placeholder="Apellido" required
+                                <input type="text" id="apellido" name="apellido" placeholder="Apellido" required
                                     class="form-control">
                             </div>
                             <div id="respuestas" class="form-group">
-                                <input type="email" name="email" placeholder="Email" required
+                                <input type="email" id="email" name="email" placeholder="Email" required
                                     class="form-control">
                             </div>
                             <div id="respuestas" class="form-group">
-                                <input type="text" name="usuario" placeholder="Usuario" required autofocus autocomplete="id"
+                                <input type="text" id="usuario" name="usuario" placeholder="Usuario" required autofocus autocomplete="id"
                                     class="form-control">
                             </div>
                             <div id="respuestas" class="form-group">
-                                <input type="password" name="password" required autocomplete="new-password" placeholder="Contraseña"
+                                <input type="password" id="contrasena" name="password" required autocomplete="new-password" placeholder="Contraseña"
                                     class="form-control">
                             </div>
                             <div id="respuestas" class="form-group">
-                                <input type="password" name="password_confirmation" placeholder="Confirmar Contraseña"
+                                <input type="password" id="confirmPassword" name="password_confirmation" placeholder="Confirmar Contraseña"
                                     class="form-control">
                             </div>
                             <div id="respuestas" class="form-group">
-                                <input class="block mt-1 w-full" id="SuperAdministrador" type="radio" name="rol" value="0" checked />
-                                <label for="Administrador">Super Administrador</label>
-                                <input class="block mt-1 w-full" id="Administrador" type="radio" name="rol" value="1"/>
-                                <label for="Administrador">Administrador</label>
-                                <input class="block mt-1 w-full" id="Asesor" type="radio" name="rol" value="2" />
-                                <label for="Asesor">Asesor</label>
-                                <input class="block mt-1 w-full" id="Tutor" type="radio" name="rol" value="3" />
-                                <label for="Tutor">Tutor</label>
+                            <div class="dropdown show">
+                                    <select class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="rol">
+                                    <option class="dropdown-item" id="SuperAdministrador" type="radio" name="rol" value="0" checked>Super Administrador</option>
+                                    <option class="dropdown-item" id="Administrador" type="radio" name="rol" value="1">Administrador</option>
+                                    <option class="dropdown-item" id="Asesor" type="radio" name="rol" value="2">Supervisor</option>
+                                    <option class="dropdown-item" id="Tutor" type="radio" name="rol" value="3">Tutor</option>
+                                    </select>
+                                </div>
                             </div>
                             <div colspan="2" id="boton">
-                                <input type="submit" value="Submit" class="btn btn-primary btn-block">
+                                <button onclick="guarda()"  >Enviar</button>
                             </div>
-                        </form>
+                   
                 </div>
             </div>
         </div>
@@ -92,35 +104,49 @@
 
 
 <script>
-$(document).ready(function() {
-    $('#example').DataTable({
-        pageLength: 10,
-        responsive: true,
-        lengthMenu: [
-            [10, 20, 100, -1],
-            ["10", "20", "100", "Todos"]
-        ],
-        language: {
+function init(){
 
-            search: "Buscar: ",
-            lengthMenu: "Elementos _MENU_  por pagina",
+}
 
-            info: "Mostrando  _START_  a _END_ de _TOTAL_ elementos",
+function guarda() {
 
-            loadingRecords: "Cargando Elementos...",
-            zeroRecords: "No se encontraron elementos que coincidan con los parametros de busqueda",
-            emptyTable: "No hay elementos disponibles",
-            paginate: {
-                first: "Primer",
-                previous: "Anterior",
-                next: "Siguiente",
-                last: "Ultimo"
-            },
+    id2 = document.getElementById("id").value
+    name2 = document.getElementById("nombre").value
+    apellido2 = document.getElementById("apellido").value
+    email2 = document.getElementById("email").value
+    user2 = document.getElementById("usuario").value
+    contrasena2 = document.getElementById("contrasena").value
+    rol2 = document.getElementById("dropdownMenuLink").value
+    
+    let obj = {id:id2,
+        name:name2,
+        apellido:apellido2,
+        email:email2,
+        user:user2,
+        contrasena:contrasena2,
+        rol:rol2
+    }
 
+        $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
+        });
 
-    });
-});
+        $.ajax({
+            url: "User",
+            type: "POST",
+            data: {usuario:JSON.stringify(obj)},
+            success: function (result) {
+                console.log("success");
+                console.log(result);
+            }
+        });
+
+}
+
+
+
 </script>
 
 
