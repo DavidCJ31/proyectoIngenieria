@@ -7,32 +7,16 @@
 
     <title>Seguimiento Estudiantil</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="shortcut icon" href="Imagenes/logo-blanco.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
     <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
     <link href="{{ asset('css/estilo-Form.css') }}" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
-    </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="{{ asset('css/styleTable.css') }}" rel="stylesheet">
-
-    <meta name="csrf-token" content="{​​{​​ csrf_token() }​​}​​">
-
-
-
-
-
-
-
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @include("Tutor.headerTutor")
 </head>
@@ -48,8 +32,6 @@
                     <div class="card-header" style="text-align-last: center;" >
                         <h4>Añadir un Usuario</h4>
                     </div>
-                        
-                        @csrf
                             <div class="form-group">
                                 <input type="number" id="id" name="id" required autofocus autocomplete="id"  placeholder="Cedula" class="form-control">
                             </div>
@@ -79,16 +61,16 @@
                             </div>
                             <div id="respuestas" class="form-group">
                             <div class="dropdown show">
-                                    <select class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="rol">
-                                    <option class="dropdown-item" id="SuperAdministrador" type="radio" name="rol" value="0" checked>Super Administrador</option>
-                                    <option class="dropdown-item" id="Administrador" type="radio" name="rol" value="1">Administrador</option>
-                                    <option class="dropdown-item" id="Asesor" type="radio" name="rol" value="2">Supervisor</option>
-                                    <option class="dropdown-item" id="Tutor" type="radio" name="rol" value="3">Tutor</option>
+                                    <select class="btn btn-secondary dropdown-toggle" id="rol">
+                                    <option class="dropdown-item" value="0" checked>Super Administrador</option>
+                                    <option class="dropdown-item" value="1">Administrador</option>
+                                    <option class="dropdown-item" value="2">Supervisor</option>
+                                    <option class="dropdown-item" value="3">Tutor</option>
                                     </select>
                                 </div>
                             </div>
                             <div colspan="2" id="boton">
-                                <button onclick="guarda()"  >Enviar</button>
+                            <button type="button" class="btn btn-primary" id='GuardarUsuario' onclick="init()" data-dismiss="modal">Guardar</button>
                             </div>
                    
                 </div>
@@ -105,97 +87,47 @@
 
 <script>
 function init(){
-
-}
-
-function guarda() {
-
     id2 = document.getElementById("id").value
     name2 = document.getElementById("nombre").value
     apellido2 = document.getElementById("apellido").value
     email2 = document.getElementById("email").value
     user2 = document.getElementById("usuario").value
     contrasena2 = document.getElementById("contrasena").value
-    rol2 = document.getElementById("dropdownMenuLink").value
+    rol2 = document.getElementById("rol").value
     
+    
+
     let obj = {id:id2,
-        name:name2,
-        apellido:apellido2,
-        email:email2,
-        user:user2,
-        contrasena:contrasena2,
-        rol:rol2
+        name : name2,
+        apellido : apellido2,
+        email : email2,
+        user : user2,
+        contrasena : contrasena2,
+        rol : rol2
     }
-
-        $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-        });
-
-        $.ajax({
-            url: "User",
-            type: "POST",
-            data: {usuario:JSON.stringify(obj)},
-            success: function (result) {
-                console.log("success");
-                console.log(result);
-            }
-        });
-
+    guarda(obj);
 }
 
 
+function guarda(datos) {
+
+    console.log("Entro a guardar con:");
+    console.log(datos);
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: "User",
+        type: "POST",
+        data: {usu:JSON.stringify(datos),_token: '{{csrf_token()}}'},
+        success: function (result) {
+        console.log("success");
+        console.log(result);
+        }
+    });
+}
 
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
