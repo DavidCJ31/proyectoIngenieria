@@ -27,7 +27,21 @@
 </head>
 
 <body>
-<h1> Hola {{ $usuario->name }}</h1>
+
+<div class="card" style="margin: 5px;">
+    <div class="card-body">
+        <div class="media">
+            <div> <i style='font-size:24px' class='fas'>&#xf2c1;</i> </div>
+            <div class="media-body">
+                <ul class="list-unstyled fa-ul">
+                <li><i class="fa fa-user fa-li"></i><a href="#">{{$usuario->name}} </a></li>
+                    <li><i class="fa fa-envelope fa-li"></i><a href="#">{{$usuario->email}} </a></li>
+                    <li>Tutor</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
      
 <div class="container-fluid">
 

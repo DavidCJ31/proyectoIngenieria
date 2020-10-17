@@ -67,12 +67,17 @@ class UserController extends Controller
             $asesor->id = $user->id;
             $asesor->save();
         }
-        if($user->rol == 4){
+        if($user->rol == 3){
             $tutor = new tutor;
             $tutor->id = $user->id;
             $tutor->save();
         }
+<<<<<<< Updated upstream
         return redirect('logged_in');
+=======
+        $usuario = administrador::find(Auth::user()->id)->user;
+        return view('Administrador/inicioAdministrador')->with('usuario',$usuario);
+>>>>>>> Stashed changes
     }
 
     /**
