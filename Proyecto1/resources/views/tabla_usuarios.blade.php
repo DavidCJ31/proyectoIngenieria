@@ -24,7 +24,7 @@
     <link href="{{ asset('css/styleTable.css') }}" rel="stylesheet">
     <script src="{{ asset('js/buscadorParaTablas.js') }}" crossorigin="anonymous"></script>
 
-    @include("Asesor.headerAsesor")
+    @include('layouts.header')
 </head>
 
 <body>

@@ -21,7 +21,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('SuperAdministrador.registerUsuarios');
+        $usuario = Auth::user();
+        return view('SuperAdministrador.registerUsuarios')->with('usuario', $usuario);
     }
 
     /**
@@ -42,116 +43,87 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-// `        $user = new User;
-//         $user->id = $request->input('id');
-//         $user->name = $request->input('nombre');
-//         $user->apellido = $request->input('apellido');
-//         $user->email = $request->input('email');
-//         $user->usuario = $request->input('usuario');
-//         $user->password = Hash::make($request->input('password'));
-//         $user->rol = $request->input('rol');
-//         $user->save();
+        $user = new User;
+        $user->id = $request->input('id');
+        $user->name = $request->input('nombre');
+        $user->apellido = $request->input('apellido');
+        $user->email = $request->input('email');
+        $user->usuario = $request->input('usuario');
+        $user->password = Hash::make($request->input('password'));
+        $user->rol = $request->input('rol');
+        $user->save();
 
-//         if($user->rol == 0){
-//             $superAdministrador = new super_administrador();
-//             $superAdministrador->id = $user->id;
-//             $superAdministrador->save();
-//         }
-//         if($user->rol == 1){
-//             $administrador = new administrador;
-//             $administrador->id = $user->id;
-//             $administrador->save();
-//         }
-//         if($user->rol == 2){
-//             $asesor = new asesor;
-//             $asesor->id = $user->id;
-//             $asesor->save();
-//         }
-//         if($user->rol == 3){
-//             $tutor = new tutor;
-//             $tutor->id = $user->id;
-//             $tutor->save();
-//         }
-//         $usuario = administrador::find(Auth::user()->id)->user;
-//         return view('Administrador/inicioAdministrador')->with('usuario',$usuario);`
-        // $user = new User;
-        // $user->id = $request->input('id');
-        // $user->name = $request->input('nombre');
-        // $user->apellido = $request->input('apellido');
-        // $user->email = $request->input('email');
-        // $user->usuario = $request->input('usuario');
-        // $user->password = Hash::make($request->input('password'));
-        // $user->rol = $request->input('rol');
-        // $user->save();
-
-        // if($user->rol == 0){
-        //     $superAdministrador = new super_administrador();
-        //     $superAdministrador->id = $user->id;
-        //     $superAdministrador->save();
-        // }
-        // if($user->rol == 1){
-        //     $administrador = new administrador;
-        //     $administrador->id = $user->id;
-        //     $administrador->save();
-        // }
-        // if($user->rol == 2){
-        //     $asesor = new asesor;
-        //     $asesor->id = $user->id;
-        //     $asesor->save();
-        // }
-        // if($user->rol == 4){
-        //     $tutor = new tutor;
-        //     $tutor->id = $user->id;
-        //     $tutor->save();
-        // }
-        // return redirect('logged_in');
-        if(isset($_POST["usu"])){
-                echo "LLEGO";
-                $array = json_decode($_POST["usu"]);
-                echo "LLEGO";
-                $usuario = new User;
-                $usuario->usuario = $array->user;                
-                $usuario->rol = $array->rol;
-                $usuario->password = $array->contrasena;
-                $usuario->id = $array->id;
-                $usuario->name = $array->name;
-                $usuario->apellido = $array->apellido;
-                $usuario->email = $array->email;
-                $usuario->save();
-
-        if($usuario->rol == 0){
+        if($user->rol == 0){
             $superAdministrador = new super_administrador();
-            $superAdministrador->id = $usuario->id;
+            $superAdministrador->id = $user->id;
             $superAdministrador->save();
         }
-        if($usuario->rol == 1){
+        if($user->rol == 1){
             $administrador = new administrador;
-            $administrador->id = $usuario->id;
+            $administrador->id = $user->id;
             $administrador->save();
         }
-        if($usuario->rol == 2){
+        if($user->rol == 2){
             $asesor = new asesor;
-            $asesor->id = $usuario->id;
+            $asesor->id = $user->id;
             $asesor->save();
         }
-        if($usuario->rol == 3){
+        if($user->rol == 3){
             $tutor = new tutor;
-            $tutor->id = $usuario->id;
+            $tutor->id = $user->id;
             $tutor->save();
         }
+        return redirect('logged_in');
+        /*
+        if (isset($_POST["usu"])) {
+            echo "LLEGO";
+            $array = json_decode($_POST["usu"]);
+            echo "LLEGO";
+            $usuario = new User;
+            $usuario->usuario = $array->user;
+            $usuario->rol = $array->rol;
+            $usuario->password = $array->contrasena;
+            $usuario->id = $array->id;
+            $usuario->name = $array->name;
+            $usuario->apellido = $array->apellido;
+            $usuario->email = $array->email;
+            $usuario->save();
+
+            if ($usuario->rol == 0) {
+                $superAdministrador = new super_administrador();
+                $superAdministrador->id = $usuario->id;
+                $superAdministrador->save();
+            }
+            if ($usuario->rol == 1) {
+                $administrador = new administrador;
+                $administrador->id = $usuario->id;
+                $administrador->save();
+            }
+            if ($usuario->rol == 2) {
+                $asesor = new asesor;
+                $asesor->id = $usuario->id;
+                $asesor->save();
+            }
+            if ($usuario->rol == 3) {
+                $tutor = new tutor;
+                $tutor->id = $usuario->id;
+                $tutor->save();
+            }
 
 
-                if($usuario->id != ""){
-                    $message ="No Funciono";
-                    return response()->json([
-                        'status'=> 'Error', 
-                        'message' => $message, 
-                    ]);
-                }
-    }
-    else{
-        echo "something went wrong";
-    }
+            if ($usuario->id != "") {
+                $message = "No Funciono";
+                redirect('logged_in');
+                return response()->json([
+                    'status' => 'Error',
+                    'message' => $message,
+                ]);
+            }
+        } else {
+            echo "something went wrong";
+        }
+        return redirect('logged_in');
+        */
     }
 
     /**

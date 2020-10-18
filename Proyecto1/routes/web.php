@@ -30,23 +30,27 @@ use App\Models\estudientes;
 |
 */
 
-Route::get('/logged_in', function(){
-    $rol = Auth::user()->rol;
-    $usuario = Auth::user();
-    if($rol == 1){//Administrador
-        return view('Administrador/inicioAdministrador')->with('usuario',$usuario);
-    }
-    if($rol == 2){//Asesor
-        return view('Asesor/inicioAsesor')->with('usuario',$usuario);
-    }
-    if($rol == 3){//Tutor
-        return view('Tutor/inicioTutor')->with('usuario',$usuario);
-    }
-    if($rol == 4){//Estudiante
-        return view('Estudiante/inicioEstudiante')->with('usuario',$usuario);
-    }
-    else{
-        return view('auth/login');
+Route::get('/logged_in', function () {
+    if (Auth::user() == null) {
+        return view('welcome.welcome');
+    } else {
+        $rol = Auth::user()->rol;
+        $usuario = Auth::user();
+        if ($rol == 0) { //Administrador
+            return view('SuperAdministrador/inicioSuperAdministrador')->with('usuario', $usuario);
+        }
+        if ($rol == 1) { //Administrador
+            return view('Administrador/inicioAdministrador')->with('usuario', $usuario);
+        }
+        if ($rol == 2) { //Asesor
+            return view('Asesor/inicioAsesor')->with('usuario', $usuario);
+        }
+        if ($rol == 3) { //Tutor
+            return view('Tutor/inicioTutor')->with('usuario', $usuario);
+        }
+        if ($rol == 4) { //Estudiante
+            return view('Estudiante/inicioEstudiante')->with('usuario', $usuario);
+        }
     }
 });
 
@@ -67,7 +71,7 @@ Route::resources([
     '/Estudiante' => EstudianteController::class,
     '/Tutor' => TutorController::class,
     '/Administrador' => AdministradorController::class,
-//    '/User' => UserController::class,
+    '/User' => UserController::class,
     '/EstudianteDetalle' => EstudianteDetalleController::class,
     '/AgendarSeguimientos' => SeguimientoController::class
 ]);
@@ -81,7 +85,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
-Route::resource('/User', UserController::class);
 Route::resource('/horario-citas', HorarioAsesorController::class);
 Route::resource('/Cursos', CursoController::class);
 

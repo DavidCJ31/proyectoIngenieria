@@ -14,7 +14,7 @@
 
 <body>
 <!--Main Navigation-->
-@include("Estudiante.headerEstudiante")
+@include('layouts.header')
 <!--Main Navigation-->
 
     <!-- Aqui empieza el  formulario -->

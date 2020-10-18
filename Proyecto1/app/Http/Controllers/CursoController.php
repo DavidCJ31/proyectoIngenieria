@@ -16,7 +16,9 @@ class CursoController extends Controller
      */
     public function index()
     {
-        return view('SuperAdministrador/Curso/Cursos');
+        $usuario = Auth::user();
+        $cursos = curso::all();
+        return view('SuperAdministrador/Curso/indexCurso')->with('cursos',$cursos)->with('usuario',$usuario);
     }
 
     /**
@@ -26,7 +28,8 @@ class CursoController extends Controller
      */
     public function create()
     {
-        //
+        $usuario = Auth::user();
+        return view('SuperAdministrador/Curso/createCursos')->with('usuario',$usuario);
     }
 
     /**
@@ -42,7 +45,7 @@ class CursoController extends Controller
         $curso->nombre = $request->input('cursoNombre');
         $curso->curso_necesario = $request->input('cursoNecesario');
         $curso->save();
-        return redirect('logged_in');
+        return redirect('/Cursos');
     }
 
     /**
