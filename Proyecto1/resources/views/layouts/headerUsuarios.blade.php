@@ -9,18 +9,11 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            @if(Auth::user() == null)
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Inicio<span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-            @else
             @switch(Auth::user()->rol)
             @case(0)
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/SuperAdministrador">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/User">Registrar Usuario</a>
@@ -49,7 +42,7 @@
             @case(1)
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/Adminitrador">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/User">Registrar Usuario</a>
@@ -69,7 +62,7 @@
             @case(2)
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/Asesor">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Detalles de asesor</a>
@@ -95,7 +88,7 @@
             @case(3)
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/Tutor">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Sesiones</a>
@@ -123,7 +116,7 @@
             @case(4)
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/Estudiante">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Agendar cita</a>
@@ -151,7 +144,6 @@
                 </li>
             </ul>
             @endswitch
-            @endif
             <ul class="navbar-nav navbar-rigth">
                 @if (Route::has('login'))
                 @auth

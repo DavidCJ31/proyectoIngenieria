@@ -24,11 +24,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="{{ asset('css/styleTable.css') }}" rel="stylesheet">
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    @if($estudiantes[4] == 2)
-        @include("Asesor.headerAsesor")
-    @else
-        @include("Estudiante.headerEstudiante")
-    @endif
+    @include('layouts.header')
 
 </head>
 

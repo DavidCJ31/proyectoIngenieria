@@ -18,12 +18,12 @@
 
 <body>
     <!--Main Navigation-->
-    @include("Administrador.headerAdministrador")
+    @include('layouts.header')
     <!--Main Navigation-->
 
     <!-- Aqui empieza el  formulario -->
     <div class="form-card">
-        <form method="post" action="/cursos">
+        <form method="post" action="/Cursos">
         @csrf
             <div class="input-group mb-3">
                 <div class="input-group-prepend">

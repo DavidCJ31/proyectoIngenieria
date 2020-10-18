@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    @include("Asesor.headerAsesor")
+@include('layouts.header')
     <!-- Aqui empieza el  formulario -->
     <div class= "form-card">
         <h4 class="text-center">VICERRECTORIA DE DOCENCIA</h4><H5 class="text-center">EXITO ACADEMICO</H5><h4 class="text-center">DISPONIBILIDAD PARA ASESORIAS</h4>

@@ -16,7 +16,7 @@
 
 <body>
     <!--Main Navigation-->
-    @include("Tutor.headerTutor")
+    @include('layouts.header')
 
     <div class="container-inicio">
         <div class="efecto-inicio">

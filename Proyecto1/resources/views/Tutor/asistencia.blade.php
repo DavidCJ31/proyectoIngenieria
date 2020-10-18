@@ -22,7 +22,7 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="{{ asset('css/styleTable.css') }}" rel="stylesheet">
-    @include("Tutor.headerTutor")
+    @include('layouts.header')
 </head>
 
 <body>

@@ -17,7 +17,7 @@ class CreateCursosTable extends Migration
             $table->string('codigo',45);
             $table->primary('codigo');
             $table->string('nombre', 45);
-            $table->string('curso_necesario', 45);
+            $table->string('curso_necesario', 45)->nullable();
         });
     }
 

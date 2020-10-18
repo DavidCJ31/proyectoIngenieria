@@ -26,7 +26,7 @@
     <link href="{{ asset('css/styleTable.css') }}" rel="stylesheet">
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
-    @include("Estudiante.headerEstudiante")
+    @include('layouts.header')
 
 </head>
 

@@ -16,7 +16,7 @@
 
 <body onload="AnnoActual()">
     <!--Main Navigation-->
-    @include("Estudiante.headerEstudiante")
+    @include('layouts.header')
     <!--Main Navigation-->
     <form method="post" action="/EstudianteDetalle" id="formInformacionDetallada">
         @csrf

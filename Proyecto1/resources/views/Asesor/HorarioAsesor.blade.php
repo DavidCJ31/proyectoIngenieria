@@ -18,7 +18,7 @@
 
 <body>
     <!--Main Navigation-->
-    @include("Asesor.headerAsesor")
+    @include('layouts.header')
     <!--Main Navigation-->
 
     <!-- Aqui empieza el  formulario -->
