@@ -73,8 +73,9 @@ Route::resources([
     '/Administrador' => AdministradorController::class,
     '/User' => UserController::class,
     '/EstudianteDetalle' => EstudianteDetalleController::class,
-    '/AgendarSeguimientos' => SeguimientoController::class
-]);
+    '/AgendarSeguimientos' => SeguimientoController::class,
+    '/Tutorias-estudiantes' => ListaCursoEstudiantes::class
+    ]);
 
 Route::get('/', function () {
     return view('welcome.welcome');

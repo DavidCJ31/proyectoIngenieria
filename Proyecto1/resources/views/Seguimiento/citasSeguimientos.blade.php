@@ -14,11 +14,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     
 </head>
 
 <body>
-  
+  <!--Main Navigation-->
+  @include("layouts.header")
+<!--Main Navigation-->
   
     <!-- Aqui empieza el  formulario -->
     <div class= "form-card">
@@ -57,7 +60,7 @@
 </div>
 </div>
 
-
+@include("layouts.footer")
 </body>
 
 </html>
