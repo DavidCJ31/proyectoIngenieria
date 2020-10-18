@@ -3,13 +3,13 @@
 <header>
     <!-- ****** Bara del header ************ -->
     <nav class="navbar navbar-expand-lg navbar-dark default-color">
-
-        <a class="logoHeader"><img src="imagenes/logo-largo.png" /></a>
+        <a class="logoHeader"><img src="imagenes/logo-largo.png" id="logoLargo" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             @if(Auth::user() == null)
+            <!-- ///////////////////////////////////////////////////////////////////////////// Header Vacio ///////////////////////////////////////////////////////////////////////////// -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Inicio<span class="sr-only">(current)</span></a>
@@ -18,6 +18,7 @@
             @else
             @switch(Auth::user()->rol)
             @case(0)
+            <!-- ///////////////////////////////////////////////////////////////////////////// Header Super Usuario ///////////////////////////////////////////////////////////////////////////// -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
@@ -30,8 +31,9 @@
                         Cursos
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/Cursos">Ver Cursos</a>
-                        <a class="dropdown-item" href="/Cursos/create">Agregar Curso</a>
+                        <a class="dropdown-item" href="/CursosDetallados">Ver Cursos</a>
+                        <a class="dropdown-item" href="/CursosDetallados/create">Agregar Curso</a>
+                        <a class="dropdown-item" href="/Cursos">Administar Cursos</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown ">
@@ -47,6 +49,7 @@
             </ul>
             @break
             @case(1)
+            <!-- ///////////////////////////////////////////////////////////////////////////// Header Administrador ///////////////////////////////////////////////////////////////////////////// -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
@@ -67,6 +70,7 @@
             </ul>
             @break
             @case(2)
+            <!-- ///////////////////////////////////////////////////////////////////////////// Header Asesor ///////////////////////////////////////////////////////////////////////////// -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
@@ -93,6 +97,7 @@
             </ul>
             @break
             @case(3)
+            <!-- ///////////////////////////////////////////////////////////////////////////// Header Tutor ///////////////////////////////////////////////////////////////////////////// -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
@@ -121,6 +126,7 @@
             </ul>
             @break
             @case(4)
+            <!-- ///////////////////////////////////////////////////////////////////////////// Header Estudiante ///////////////////////////////////////////////////////////////////////////// -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
@@ -185,5 +191,4 @@
         </div>
 
     </nav>
-
 </header>

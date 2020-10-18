@@ -27,23 +27,28 @@
     <div id="fondoTabla">
         <h1 id="TituloVista">Cursos</h1>
         <div id="marg">
-            @if($cursos->count() != 0)
+            @if($cursos != null)
             <center>
                 <table class="table table-bordered table-striped mb-0 w-auto order-table" id="example">
                     <thead>
                         <tr>
                             <th scope="col">Codigo</th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Curso Necesario</th>
+                            <th scope="col">Tutor</th>
+                            <th scope="col">Periodo</th>
+                            <th scope="col">Dia</th>
+                            <th scope="col">Hora</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($cursos as $curso)
                         <tr style="height: 10px">
-                            <td>{{$curso->codigo}}</td>
-                            <td>{{$curso->nombre}}</td>
-                            <td> {{$curso->curso_necesario}}</td>
-                            </td>
+                            <td>{{App\Models\curso::find($curso->curso_codigo)->codigo }}</td>
+                            <td>{{App\Models\curso::find($curso->curso_codigo)->nombre}}</td>
+                            <td>{{App\Models\User::find(App\Models\tutor::find($curso->tutor_id)->id)->name.' '.App\Models\User::find(App\Models\tutor::find($curso->tutor_id)->id)->apellido}}</td>
+                            <td>{{$curso->anno.' - '.$curso->periodo.' - '.$curso->num_periodo}}</td>
+                            <td>{{($curso->hora_final!=null)?$curso->hora_inicio.' - '.$curso->hora_final:$curso->hora_inicio}}</td>
+                            <td>{{$curso->dia}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -53,9 +58,6 @@
             <h2>Tabla Vacia</h2>
             @endif
         </div>
-        <form action="/Cursos/create" style="text-align: center">
-            <button type="submit" class="btn btn-primary">Agregar Curso</button>
-        </form>
     </div>
 
 

@@ -16,9 +16,8 @@ class CursoController extends Controller
      */
     public function index()
     {
-        $usuario = Auth::user();
         $cursos = curso::all();
-        return view('SuperAdministrador/Curso/indexCurso')->with('cursos',$cursos)->with('usuario',$usuario);
+        return view('SuperAdministrador/Curso/indexCurso')->with('cursos',$cursos);
     }
 
     /**
@@ -28,8 +27,7 @@ class CursoController extends Controller
      */
     public function create()
     {
-        $usuario = Auth::user();
-        return view('SuperAdministrador/Curso/createCursos')->with('usuario',$usuario);
+        return view('SuperAdministrador/Curso/createCursos');
     }
 
     /**

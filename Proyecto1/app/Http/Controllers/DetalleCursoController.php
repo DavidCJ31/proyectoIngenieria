@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\detalle_curso;
+use App\Models\curso;
+use App\Models\tutor;
 
 
 class DetalleCursoController extends Controller
@@ -16,7 +19,8 @@ class DetalleCursoController extends Controller
      */
     public function index()
     {
-
+        $cursos = detalle_curso::all();
+        return view('SuperAdministrador/CursoDetallado/indexCursoDetallados')->with('cursos',$cursos);
     }
 
     /**
@@ -26,7 +30,9 @@ class DetalleCursoController extends Controller
      */
     public function create()
     {
-        //
+        $tutores = tutor::all();
+        $cursos = curso::all();
+        return view('SuperAdministrador/CursoDetallado/createCursosDetallados')->with('cursos',$cursos)->with('tutores',$tutores);
     }
 
     /**

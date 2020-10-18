@@ -22,7 +22,7 @@ class detalle_curso extends Model
 
     public function curso()
     {
-        return $this->belongsTo('App\Models\curso', 'codigo');
+        return $this->belongsTo('App\Models\curso', 'foreign_key', 'codigo');
     }
     public function tutor()
     {

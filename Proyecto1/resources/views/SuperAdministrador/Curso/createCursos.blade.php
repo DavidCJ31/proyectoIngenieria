@@ -16,15 +16,18 @@
     </script>
 </head>
 
-<body>
+<body onload="onLoad()">
     <!--Main Navigation-->
     @include('layouts.header')
     <!--Main Navigation-->
 
     <!-- Aqui empieza el  formulario -->
     <div class="form-card">
+        <div class="card-header" style="text-align-last: center;">
+            <h4>Añadir Curso</h4>
+        </div>
         <form method="post" action="/Cursos">
-        @csrf
+            @csrf
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">CODIGO: </span>
@@ -50,3 +53,8 @@
 </body>
 
 </html>
+<script>
+    function onLoad() {
+        document.getElementById("logoLargo").src = window.location.origin + "/imagenes/logo-largo.png";
+    }
+</script>
