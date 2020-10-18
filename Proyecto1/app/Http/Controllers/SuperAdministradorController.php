@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use App\Models\curso;
 use Illuminate\Http\Request;
+use App\Models\super_administrador;
 
-class CursoController extends Controller
+class SuperAdministradorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,8 @@ class CursoController extends Controller
      */
     public function index()
     {
-        return view('SuperAdministrador/Curso/Cursos');
+        $usuario = super_administrador::find(Auth::user()->id)->user;
+        return view('SuperAdministrador/inicioSuperAdministrador')->with('usuario',$usuario);
     }
 
     /**
@@ -37,12 +38,7 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-        $curso = new curso;
-        $curso->codigo = $request->input('cursoCodigo');
-        $curso->nombre = $request->input('cursoNombre');
-        $curso->curso_necesario = $request->input('cursoNecesario');
-        $curso->save();
-        return redirect('logged_in');
+        //
     }
 
     /**

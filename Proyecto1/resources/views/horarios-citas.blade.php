@@ -200,12 +200,13 @@
       $.ajax({
           url: "horario-citas",
           type: "POST",
-          data: {horarios:JSON.stringify(horario)},
+          data: {horarios:JSON.stringify(horario), _token: '{{csrf_token()}}' },
           success: function (result) {
               console.log("success");
               console.log(result)
               calendar.fullCalendar('refetchEvents');
           }
+          
       });
     }
 

@@ -86,7 +86,7 @@
                 <label for="Administrador">Administrador</label>
                 <input class="block mt-1 w-full" id="Asesor" type="radio" name="rol" value="2" />
                 <label for="Asesor">Asesor</label>
-                <input class="block mt-1 w-full" id="Tutor" type="radio" name="rol" value="4" />
+                <input class="block mt-1 w-full" id="Tutor" type="radio" name="rol" value="3" />
                 <label for="Tutor">Tutor</label>
             </td>
             </tr>

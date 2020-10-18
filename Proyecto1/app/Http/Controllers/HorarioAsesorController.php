@@ -92,6 +92,7 @@ class HorarioAsesorController extends Controller
 
 
         //Aqui valido si ya se ingreso el horario para la misma fecha y hora
+
         $id = Auth::user()->id;
             if(isset($_POST["horarios"])){
                         $array = json_decode($_POST["horarios"]);
@@ -114,6 +115,7 @@ class HorarioAsesorController extends Controller
             else{
                 echo "something went wrong";
             }
+            
         /*
         
         $horario = new horario_asesor;
