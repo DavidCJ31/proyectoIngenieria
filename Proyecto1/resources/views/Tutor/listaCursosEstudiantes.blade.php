@@ -20,7 +20,7 @@
 
 <body>
     <!--Main Navigation-->
-    @include("Estudiante.headerEstudiante")
+    @include("layouts.header")
 <!--Main Navigation-->
   
     <!-- Aqui empieza el  formulario -->
@@ -74,7 +74,9 @@
 
     function empezar(){
         try{
-            lista_Cursos = <?php echo '["' . implode('", "', $list_cur) . '"]' ?>;
+            lista_Cursos = <?php echo  $data ?>;
+
+            console.log(lista_Cursos);
             var lista = $("#listarCursos");
             lista.innerHTML ="";
             lista_Cursos.forEach((c)=>{rowCursos(lista, c);});
@@ -109,6 +111,7 @@
             type: "GET",
             contentType: "application/json",
             success: function (estudiantes) {
+                //Aqui entra porque la respuesta es correcta
                 console.log("success");
                 console.log(estudiantes);
                 estudiantes.forEach((est)=>{rowListaEstudiante(lista, est);});

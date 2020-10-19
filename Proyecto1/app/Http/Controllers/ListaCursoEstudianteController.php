@@ -23,19 +23,22 @@ class ListaCursoEstudianteController extends Controller
         //
         $id = Auth::user()->id;
         $detalle_curso = detalle_curso::where('tutor_id', $id)->get();
-        $data = array();
+        $datos = array();
         foreach($detalle_curso as $row)
         {
-            $curso = curso::where('codigo', $row->curso_codigo)->get();
-            $data[] = array(
+            $curso = curso::where('codigo', $row->curso_codigo)->first();
+    
+            $datos[] = array(
             'id_detalle' => $row["id"],
-            'curso'   => $curso->nombre,
+            'curso'   => $curso["nombre"],
             'periodo'   => $row["periodo"],
             'hora_inicio'   => $row["hora_inicio"],
             'dia'   => $row["dia"]
             );
+            //echo $data;
         }
-        return view('Tutor/listaCursosEstudiantes')->with($data);
+        $data = json_encode($datos);
+        return view('Tutor/listaCursosEstudiantes')->with('data', $data);
     }
 
     /**
@@ -70,15 +73,15 @@ class ListaCursoEstudianteController extends Controller
         //
         try {
             $curso_estudiante = lista_curso_estudiante::where('detalle_curso_id', $id)->get();
-            $estudiantes = User::where('id', $curso_estudiante->estudiante_id)->get();
             $data = array();
-        foreach($estudiantes as $row)
+        foreach($curso_estudiante as $row)
         {
+            $estudiante = User::find($row["estudiante_id"]);
             $data[] = array(
-            'nombre' => $row["name"],
-            'apellido' => $row["apellido"],
-            'cedula' => $row["id"],
-            'correo'   => $row["email"]
+            'nombre' => $estudiante->name,
+            'apellido' => $estudiante->apellido,
+            'cedula' => $estudiante->id,
+            'correo'   => $estudiante->email
             );
         }
         return response()->json($data);

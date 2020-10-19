@@ -10,7 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SuperAdministradorController;
 use App\Http\Controllers\DetalleCursoController;
 use App\Http\Controllers\ClaseController;
-
+use App\Http\Controllers\ListaCursoEstudianteController;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\HorarioAsesorController;
 use App\Http\Controllers\CursoController;
@@ -75,7 +75,7 @@ Route::resources([
     '/Administrador' => AdministradorController::class,
     '/User' => UserController::class,
     '/EstudianteDetalle' => EstudianteDetalleController::class,
-    '/Tutorias-estudiantes' => ListaCursoEstudiantes::class,
+    '/Tutorias-estudiantes' => ListaCursoEstudianteController::class,
     '/CursosDetallados' => DetalleCursoController::class,
     '/AgendarSeguimientos' => SeguimientoController::class,
     '/Clases' => ClaseController::class
