@@ -66,13 +66,79 @@ class DetalleCursoController extends Controller
             ['dia', '=', $curso->dia]
         ])->get();
 
-            if($cursoEsta->count() == 0){
-                $curso->save();
-                
-            }
-            else{
+        if ($cursoEsta->count() == 0) {
+            $curso->save();
+            $cursoCreado = detalle_curso::where([
+                ['tutor_id', '=', $curso->tutor_id],
+                ['curso_codigo', '=', $curso->curso_codigo],
+                ['anno', '=', $curso->anno],
+                ['periodo', '=', $curso->periodo],
+                ['num_periodo', '=', $curso->num_periodo],
+                ['hora_inicio', '=', $curso->hora_inicio],
+                ['hora_final', '=', $curso->hora_final],
+                ['dia', '=', $curso->dia]
+            ])->first();
 
+            echo $cursoCreado->id;
+
+
+            switch ($cursoCreado->dia) {
+                case "Lunes":
+                    $diaIngles = "Mon";
+                    break;
+                case "Martes":
+                    $diaIngles = "Tue";
+                    break;
+                case "Miercoles":
+                    $diaIngles = "Wed";
+                    break;
+                case "Jueves":
+                    $diaIngles = "Thu";
+                    break;
+                case "Viernes":
+                    $diaIngles = "Fri";
+                    break;
+                case "Sabado":
+                    $diaIngles = "Sat";
+                    break;
+                default:
+                    $diaIngles = "Sun";
+                    break;
             }
+            echo $diaIngles . "<br>";
+            switch ($curso->periodo) {
+                case "Semestre": {
+                        if ($cursoCreado->num_periodo == 1) {
+                            $priemerdia = date("M-d-Y", mktime(0, 0, 0, 1, 1, $cursoCreado->anno));
+                            echo $priemerdia . "<br>";
+                            $ultimoDia = date("M-d-Y", mktime(0, 0, 0, 7, 0, $cursoCreado->anno));
+                            echo $ultimoDia . "<br>";
+                            $dia = strtotime($priemerdia);
+                            echo $dia . "<br>";
+                            echo date("M-d-Y", $dia) . "<br>";
+                            $i = 0;
+                           /* while (date_diff($priemerdia, $ultimoDia)) :
+                                echo date("M-d-Y", $dia) . date("D", $dia) . $i . "<br>";
+                                if (date("D", $dia) == $diaIngles) {
+                                    echo "Si es el dia <br>";
+                                }
+                                $dia = strtotime("+1 day", $dia);
+                                $i++;
+                            endwhile;*/
+                        }
+                    }
+                    break;
+                case "Cuatrimestre":
+                    break;
+                case "Trimestre":
+                    break;
+                case "Bimestre":
+                    break;
+                default:
+                    break;
+            }
+        } else {
+        }
 
 
         return redirect('/CursosDetallados');
