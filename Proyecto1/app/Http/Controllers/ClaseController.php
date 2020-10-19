@@ -8,6 +8,8 @@ use App\Models\detalle_curso;
 use App\Models\clase;
 use App\Models\curso;
 use Illuminate\Http\Request;
+use App\Models\clase;
+use App\Models\detalle_curso;
 
 class ClaseController extends Controller
 {
