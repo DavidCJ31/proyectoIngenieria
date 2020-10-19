@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\detalle_curso;
+use App\Models\clase;
+use App\Models\curso;
 use Illuminate\Http\Request;
 
 class ClaseController extends Controller
@@ -15,7 +18,26 @@ class ClaseController extends Controller
      */
     public function index()
     {
-        return view("Tutor/reporte_clases");
+        $id = Auth::user()->id;
+        $detallesCursos = detalle_curso::where('tutor_id',$id)->get();
+        $data = array();
+        foreach($detallesCursos as $row)
+        {
+            $clases = clase::where('detalle_curso_id', $row->curso_codigo)->get();
+            $curso = curso::where('codigo', $row->curso_codigo)->get();
+            foreach($clases as $clase){
+                $data[] = array(    
+                    'codigo_curso' => $row->curso_codigo,
+                    'nombre_curso'   => $curso->nombre,
+                    'aula_codigo'  => $clase["aula_codigo"],
+                    'hora_inicio' => $clase["hora_inicio"],
+                    'fecha'  => $clase["fecha"]
+                    );
+            }
+            
+        }
+        return view("Tutor/reporte_clases")->with($data);
+
     }
 
     /**

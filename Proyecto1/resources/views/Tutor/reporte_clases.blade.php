@@ -33,46 +33,33 @@
         <h4 class="text-center">REPORTE DE CLASES PARA TURORIA ESPECIALIZADA</h4>
         <br><br>
         <div class="container">
-            <div class="input-group mb-3 text-center">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Codigo Tutoria</span>
-                </div>
-                <input type="text" class="form-control" id="codigo_tutoria" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group mb-3 text-center">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Nombre tutoria</span>
-                </div>
-                <input type="text" class="form-control" id="nombre_tutoria" aria-describedby="basic-addon1">
-            </div>
-            <h6>*Puede buscar con nombre o codigo, no necesariamente ambos</h6>
-            <button type="button" class="btn btn-primary text-center" id='GenerarPDF'> Generar reporte </button>
+            <button type="button" class="btn btn-primary text-center" id='GenerarPDF'> Generar reporte a PDF </button>
 
             <table class="table table-bordered" id="dataTable">
                 <thead>
                     <tr>
-                        <th scope="col">Curso</th> <!-- Nombre del curso -->
+                        <th scope="col">Codigo del curso</th>
+                        <th scope="col">Nombre del curso</th>
                         <th scope="col">Aula</th>
-                        <th scope="col">Hora inicio</th>
                         <th scope="col">Hora final</th>
                         <th scope="col">Fecha</th>
                     </tr>
                 </thead>
                 <tbody id="tabla_clases">
-                    @foreach($clases as $clase)
+                    @foreach($data as $clase)
                     <tr style="height: 10px">
-                        <td>{{App\Models\clase::find($clase->clase_codigo)->codigo }}</td>
-                        <td>{{App\Models\clase::find($clase->clase_codigo)->nombre}}</td>
-                        <td>{{App\Models\User::find(App\Models\tutor::find($clase->tutor_id)->id)->name.' '.App\Models\User::find(App\Models\tutor::find($clase->tutor_id)->id)->apellido}}</td>
-                        <td>{{$clase->anno.' - '.$clase->periodo.' - '.$clase->num_periodo}}</td>
-                        <td>{{($clase->hora_final!=null)?$clase->hora_inicio.' - '.$clase->hora_final:$clase->hora_inicio}}</td>
-                        <td>{{$clase->dia}}</td>
+                        <td>{{ $clase["codigo_curso"] }}</td>
+                        <td>{{ $clase["nombre_curso"] }}</td>
+                        <td>{{ $clase["aula_codigo"] }}</td>
+                        <td>{{ $clase["hora_inicio"] }}</td>
+                        <td>{{ $clase["fecha"] }}</td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+
     @include("layouts.footer")
 </body>
 
@@ -98,5 +85,17 @@
                 }
             });
         });
+
     }
+    
+    function empezar(){
+        $("#GenerarReporte").on("click", function(){generarReporteClases()});
+
+    }
+    empezar();
+    function generarReporteClases(){
+        //Aqui se manda la solicitud para generar el pdf
+    }
+
+
 </script>
