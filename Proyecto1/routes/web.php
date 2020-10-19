@@ -9,6 +9,7 @@ use App\Http\Controllers\TutorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SuperAdministradorController;
 use App\Http\Controllers\DetalleCursoController;
+use App\Http\Controllers\ClaseController;
 
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\HorarioAsesorController;
@@ -76,7 +77,8 @@ Route::resources([
     '/EstudianteDetalle' => EstudianteDetalleController::class,
     '/Tutorias-estudiantes' => ListaCursoEstudiantes::class,
     '/CursosDetallados' => DetalleCursoController::class,
-    '/AgendarSeguimientos' => SeguimientoController::class
+    '/AgendarSeguimientos' => SeguimientoController::class,
+    '/Clases' => ClaseController::class
 ]);
 
 Route::get('/', function () {

@@ -15,7 +15,7 @@ class ClaseController extends Controller
      */
     public function index()
     {
-        //
+        return view("Tutor/reporte_clases");
     }
 
     /**

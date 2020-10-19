@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\detalle_curso;
 use App\Models\curso;
 use App\Models\tutor;
+use Illuminate\Support\Facades\DB;
 
 
 class DetalleCursoController extends Controller
@@ -20,7 +21,7 @@ class DetalleCursoController extends Controller
     public function index()
     {
         $cursos = detalle_curso::all();
-        return view('SuperAdministrador/CursoDetallado/indexCursoDetallados')->with('cursos',$cursos);
+        return view('SuperAdministrador/CursoDetallado/indexCursoDetallados')->with('cursos', $cursos);
     }
 
     /**
@@ -32,7 +33,7 @@ class DetalleCursoController extends Controller
     {
         $tutores = tutor::all();
         $cursos = curso::all();
-        return view('SuperAdministrador/CursoDetallado/createCursosDetallados')->with('cursos',$cursos)->with('tutores',$tutores);
+        return view('SuperAdministrador/CursoDetallado/createCursosDetallados')->with('cursos', $cursos)->with('tutores', $tutores);
     }
 
     /**
@@ -43,7 +44,38 @@ class DetalleCursoController extends Controller
      */
     public function store(Request $request)
     {
+        $curso = new detalle_curso;
+        $curso->tutor_id = $request->input('tutor');
+        $curso->curso_codigo = $request->input('cursoCodigo');
+        $curso->anno = $request->input('anno');
+        $curso->periodo = $request->input('periodo');
+        $curso->num_periodo = $request->input('numPeriodo');
+        $curso->hora_inicio = $request->input('horaInicio');
+        $curso->hora_final = $request->input('horaFinal');
+        $curso->dia = $request->input('dia');
 
+
+        $cursoEsta = detalle_curso::where([
+            ['tutor_id', '=', $curso->tutor_id],
+            ['curso_codigo', '=', $curso->curso_codigo],
+            ['anno', '=', $curso->anno],
+            ['periodo', '=', $curso->periodo],
+            ['num_periodo', '=', $curso->num_periodo],
+            ['hora_inicio', '=', $curso->hora_inicio],
+            ['hora_final', '=', $curso->hora_final],
+            ['dia', '=', $curso->dia]
+        ])->get();
+
+            if($cursoEsta->count() == 0){
+                $curso->save();
+                
+            }
+            else{
+
+            }
+
+
+        return redirect('/CursosDetallados');
     }
 
     /**

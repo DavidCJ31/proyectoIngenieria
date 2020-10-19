@@ -103,7 +103,7 @@
                     <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sesiones</a>
+                    <a class="nav-link" href="/Clases">Sesiones</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/estudiantes-asignados">Estudiantes Asignados</a>
