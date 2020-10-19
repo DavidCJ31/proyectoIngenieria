@@ -83,6 +83,8 @@
         }
     }
 
+    empezar();
+
     function rowCursos(lista, cur){
       var tr = $("<tr />");
       tr.html("<td>"+ cur.curso + "</td>"+

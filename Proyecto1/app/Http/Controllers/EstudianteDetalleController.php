@@ -19,7 +19,7 @@ class EstudianteDetalleController extends Controller
     {
         $id = Auth::user()->id;
         $estudiante = estudiante::find($id)->user;
-        return view('EStudiante/RegistroDeEntrada')->with('estudiante',$estudiante);
+        return view('Estudiante/RegistroDeEntrada')->with('estudiante',$estudiante);
     }
 
     /**

@@ -23,7 +23,6 @@ class TutorController extends Controller
     }
 
 
-
     public function vistaEstudiante()
     {
             $id = Auth::user()->id;

@@ -35,7 +35,7 @@ class ListaCursoEstudianteController extends Controller
             'dia'   => $row["dia"]
             );
         }
-        return view('listaCursosEstudiantes')->with($data);
+        return view('Tutor/listaCursosEstudiantes')->with($data);
     }
 
     /**
