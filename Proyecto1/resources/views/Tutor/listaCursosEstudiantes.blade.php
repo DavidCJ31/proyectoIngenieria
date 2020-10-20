@@ -53,7 +53,7 @@
                             <tr>
                             <th scope="col">Estudiante</th>
                             <th scope="col">Cedula</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">Correo</th>
                             </tr>
                         </thead>
                         <tbody id="listarEstudiantes">
@@ -101,23 +101,26 @@
         //Mandar aqui la peticion con el id
         try{
             var lista = $("#listarEstudiantes")
+            event.preventDefault();
+            $('#fila').closest('tr').remove();
+
             $.ajaxSetup({
             headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
             });
             $.ajax({
-            url: "AgendarSeguimientos/"+detalle,
+            url: "Tutorias-estudiantes/" + detalle,
             type: "GET",
-            contentType: "application/json",
             success: function (estudiantes) {
                 //Aqui entra porque la respuesta es correcta
                 console.log("success");
-                console.log(estudiantes);
+                //console.log(estudiantes);
                 estudiantes.forEach((est)=>{rowListaEstudiante(lista, est);});
             },
             error: function(status, error){
-                alert("Hubo un error al agendar la cita");
+                console.log(error);
+                //alert("Hubo un error 1");
             }
             });
             }catch(err){
@@ -126,7 +129,7 @@
     }
 
     function rowListaEstudiante(lista, est){
-        var tr = $("<tr />");
+        var tr = $("<tr id='fila'/>");
       tr.html("<td>"+ est.nombre +" "+est.apellido + "</td>"+
                 "<td>"+ est.cedula + "</td>"+
                 "<td>"+ est.correo + "</td>");

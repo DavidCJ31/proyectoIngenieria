@@ -81,6 +81,10 @@ Route::resources([
     '/Clases' => ClaseController::class
 ]);
 
+Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
+
+
+
 Route::get('/', function () {
     return view('welcome.welcome');
 });

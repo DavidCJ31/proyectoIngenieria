@@ -24,18 +24,18 @@ class ListaCursoEstudianteController extends Controller
         $id = Auth::user()->id;
         $detalle_curso = detalle_curso::where('tutor_id', $id)->get();
         $datos = array();
+        $cont = 0;
         foreach($detalle_curso as $row)
         {
             $curso = curso::where('codigo', $row->curso_codigo)->first();
     
-            $datos[] = array(
+            $datos[$cont++] = array(
             'id_detalle' => $row["id"],
             'curso'   => $curso["nombre"],
             'periodo'   => $row["periodo"],
             'hora_inicio'   => $row["hora_inicio"],
             'dia'   => $row["dia"]
             );
-            //echo $data;
         }
         $data = json_encode($datos);
         return view('Tutor/listaCursosEstudiantes')->with('data', $data);
@@ -69,22 +69,24 @@ class ListaCursoEstudianteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    { 
         try {
             $curso_estudiante = lista_curso_estudiante::where('detalle_curso_id', $id)->get();
-            $data = array();
+            $datos = array();
+            $cont = 0;
+            
         foreach($curso_estudiante as $row)
         {
             $estudiante = User::find($row["estudiante_id"]);
-            $data[] = array(
+            $datos[$cont++] = array(
             'nombre' => $estudiante->name,
             'apellido' => $estudiante->apellido,
             'cedula' => $estudiante->id,
             'correo'   => $estudiante->email
             );
+            //echo $estudiante;
         }
-        return response()->json($data);
+        return response($datos,200,$datos);
         } catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
             return response('Erorr a la hora de cargar los estudiantes', 400);
