@@ -106,7 +106,7 @@
                     <a class="nav-link" href="/Clases">Sesiones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/estudiantes-asignados">Estudiantes Asignados</a>
+                    <a class="nav-link" href="/Tutorias-estudiantes">Estudiantes Asignados</a>
                 </li>
                 </li>
                 <li class="nav-item">

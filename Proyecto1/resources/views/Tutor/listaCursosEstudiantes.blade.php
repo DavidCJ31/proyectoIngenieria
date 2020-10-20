@@ -101,9 +101,12 @@
         //Mandar aqui la peticion con el id
         try{
             var lista = $("#listarEstudiantes")
+            var rowCount = document.getElementById('listarEstudiantes').rows.length;
+            console.log(rowCount);
+            for(let i = 0; i< rowCount; i++){
             event.preventDefault();
             $('#fila').closest('tr').remove();
-
+            }
             $.ajaxSetup({
             headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
