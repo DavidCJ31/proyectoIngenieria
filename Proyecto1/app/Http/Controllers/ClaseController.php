@@ -8,8 +8,6 @@ use App\Models\detalle_curso;
 use App\Models\clase;
 use App\Models\curso;
 use Illuminate\Http\Request;
-use App\Models\clase;
-use App\Models\detalle_curso;
 
 class ClaseController extends Controller
 {
@@ -21,13 +19,25 @@ class ClaseController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
-        $detallesCursos = detalle_curso::where('tutor_id',$id)->get();
+        $detallesCursos = detalle_curso::where('tutor_id', $id)->get();
+        //echo $detallesCursos . "<br><br>";
         $data = array();
-        foreach($detallesCursos as $row)
-        {
-            $clases = clase::where('detalle_curso_id', $row->curso_codigo)->get();
-            $curso = curso::where('codigo', $row->curso_codigo)->get();
-            foreach($clases as $clase){
+        foreach ($detallesCursos as $row) {
+            //echo "ROW = " . $row . "<br>";
+            $clases = clase::where('detalle_curso_id', $row->id)->get();
+            //echo "CLASES = " . $clases . "<br>";
+            foreach ($clases as $clase) {
+                $detalle_curso = detalle_curso::find($clase->detalle_curso_id);
+                $data[] = array(
+                    'codigo_curso' => curso::find($detalle_curso->curso_codigo)->codigo,
+                    'nombre_curso'   => curso::find($detalle_curso->curso_codigo)->nombre,
+                    'aula_codigo'  => $clase["aula_codigo"],
+                    'hora_inicio' => $clase["hora_inicio"],
+                    'fecha'  => $clase["fecha"]
+                );
+            }
+
+            /*   foreach($clases as $clase){
                 $data[] = array(    
                     'codigo_curso' => $row->curso_codigo,
                     'nombre_curso'   => $curso->nombre,
@@ -35,10 +45,9 @@ class ClaseController extends Controller
                     'hora_inicio' => $clase["hora_inicio"],
                     'fecha'  => $clase["fecha"]
                     );
-            }
-            
+            }*/
         }
-        return view("Tutor/reporte_clases")->with($data);
+        return view("Tutor/reporte_clases")->with("data",$data);
 
     }
 
