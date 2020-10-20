@@ -94,8 +94,7 @@
                     <a class="nav-link" href="#">Sesiones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/estudiantes-asignados">Estudiantes Asignados</a>
-                </li>
+                    <a class="nav-link" href="/Tutoria-estudiantes">Estudiantes JAJAJA</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/asistencia">Asistencia</a>
