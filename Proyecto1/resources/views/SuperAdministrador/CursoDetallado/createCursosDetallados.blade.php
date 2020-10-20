@@ -72,12 +72,19 @@
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">TUTOR: </span>
+                    <select class="form-control" name="tutor" id="tutor" form="cursosDetallados" aria-describedby="basic-addon1">
+                        @foreach($tutores as $tutor)
+                        <option value="{{$tutor->id}}">{{$tutor->id.' '.App\Models\User::find($tutor->id)->name.' '.App\Models\User::find($tutor->id)->apellido}}</option>
+                        @endforeach
+                    </select>
+                    <span class="input-group-text">AULA: </span>
+                    <select class="form-control" name="aula" id="aula" form="cursosDetallados" aria-describedby="basic-addon1">
+                        @foreach($aulas as $aula)
+                        <option value="{{$aula->codigo}}">{{$aula->codigo.' '.$aula->sede}}</option>
+                        @endforeach
+                    </select>
                 </div>
-                <select class="form-control" name="tutor" id="tutor" form="cursosDetallados" aria-describedby="basic-addon1">
-                    @foreach($tutores as $tutor)
-                    <option value="{{$tutor->id}}">{{$tutor->id.' '.App\Models\User::find($tutor->id)->name.' '.App\Models\User::find($tutor->id)->apellido}}</option>
-                    @endforeach
-                </select>
+
             </div>
             <input type="submit" name="enviar" value="Registrar">
         </form>

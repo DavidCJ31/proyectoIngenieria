@@ -17,7 +17,7 @@ class CreateClasesTable extends Migration
             $table->id('id');
             $table->bigInteger('detalle_curso_id')->unsigned();
             $table->foreign('detalle_curso_id')->references('id')->on('detalle_cursos')->onDelete('cascade');
-            $table->string('aula_codigo',45);
+            $table->string('aula_codigo',45)->nullable();
             $table->foreign('aula_codigo')->references('codigo')->on('aulas')->onDelete('cascade');
 
             $table->time('hora_inicio');
