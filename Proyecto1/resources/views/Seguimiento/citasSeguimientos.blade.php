@@ -126,9 +126,7 @@
               let dia = $.fullCalendar.formatDate(info.start,"DD/MM/YYYY");
               let hora = $.fullCalendar.formatDate(info.start,"hh:mm a");
               $("#boton-desplegar").trigger("click");
-              var al = $("#modalBody");
-              al.innerHTML = " ";
-              al.append("Seguro que quiere agendar una cita el "+ dia + " a las " + hora);
+              document.getElementById("modalBody").innerHTML = "Seguro que quiere agendar una cita el "+ dia + " a las " + hora;
             }
             else{
               alert('Horario no disponible');
@@ -140,11 +138,10 @@
 
     empezar();
 
-
     function agendarUnaCita(){
       try{
-
         let obj = {id: horarioActual.id}; 
+        console.log(obj);
         $.ajaxSetup({
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -153,7 +150,7 @@
       $.ajax({
           url: "AgendarSeguimientos",
           type: "POST",
-          data: {horario:JSON.stringify(obj)},
+          data: {horario:JSON.stringify(obj) , _token: '{{csrf_token()}}' } ,
           success: function (result) {
               console.log("success");
               alert("Cita agenda correctamente");
@@ -164,7 +161,7 @@
           }
       });
       }catch(err){
-        alert("Hubo un error al agendar la cita");
+        alert("Hubo un error en la conexion con la base de datos");
       }
 
 
