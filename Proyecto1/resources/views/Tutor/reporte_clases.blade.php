@@ -41,7 +41,7 @@
                         <th scope="col">Codigo del curso</th>
                         <th scope="col">Nombre del curso</th>
                         <th scope="col">Aula</th>
-                        <th scope="col">Hora final</th>
+                        <th scope="col">Hora Inicial</th>
                         <th scope="col">Fecha</th>
                     </tr>
                 </thead>

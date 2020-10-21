@@ -51,14 +51,14 @@ class SeguimientoController extends Controller
      */
     public function store(Request $request)
     {
-        //
 
         $id = Auth::user()->id;
             if(isset($_POST["horario"])){
+                
                 $array = json_decode($_POST["horario"]);
                 //guardamos el seguimiento y buscamos el horario para actualizarlo
-
-                $horario = horario_asesor::where('id', $array->id)->get();
+                $horario = horario_asesor::where('id', $array->id)->first();
+                
                 $seguimiento = new seguimiento;
                 $seguimiento->id = 0;
                 $seguimiento->descripcion = 'Cita para seguimiento';
@@ -66,22 +66,16 @@ class SeguimientoController extends Controller
                 $seguimiento->estudiante_id = $id;
                 $seguimiento->save();
                 
+                
                 //Actualizar el horario para que ya no salga disponible y que al asesor le salga con quien es el seguimiento
-
-                $horario->titulo = "Seguimiento asignado con: ".Auth::user()->name." de cedula: ".$id;
+                $horario->titulo = "Seguimiento asignado";
                 $horario->save(); //Save tambien sirve para actualizar un registro ya existente
+                
                 return response('Success',200);
-                $horario = new horario_asesor;                
-                $horario->asesor_id = $id;
-                $horario->inicio = $array->inicio;
-                $horario->final = $array->final;
-                $horario->titulo = $array->titulo;
-                $horario->save();
             }
             else{
                 return response('Error',404);
             }
-            return response('Error',404);
     }
 
     /**

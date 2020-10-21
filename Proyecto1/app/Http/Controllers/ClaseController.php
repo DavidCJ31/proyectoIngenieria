@@ -24,7 +24,7 @@ class ClaseController extends Controller
         $data = array();
         foreach ($detallesCursos as $row) {
             //echo "ROW = " . $row . "<br>";
-            $clases = clase::where('detalle_curso_id', $row->id)->get();
+            $clases = clase::where('detalle_curso_id', $row->id)->where('fecha','<=', date("Y-m-d"))->orderBy('fecha','DESC')->get();
             //echo "CLASES = " . $clases . "<br>";
             foreach ($clases as $clase) {
                 $detalle_curso = detalle_curso::find($clase->detalle_curso_id);

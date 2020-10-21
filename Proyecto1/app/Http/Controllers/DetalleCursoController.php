@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\detalle_curso;
 use App\Models\curso;
 use App\Models\tutor;
-use Illuminate\Support\Facades\DB;
+use App\Models\clase;
+use App\Models\aula;
 
 
 class DetalleCursoController extends Controller
@@ -33,7 +34,8 @@ class DetalleCursoController extends Controller
     {
         $tutores = tutor::all();
         $cursos = curso::all();
-        return view('SuperAdministrador/CursoDetallado/createCursosDetallados')->with('cursos', $cursos)->with('tutores', $tutores);
+        $aulas = aula::all();
+        return view('SuperAdministrador/CursoDetallado/createCursosDetallados')->with('cursos', $cursos)->with('tutores', $tutores)->with('aulas', $aulas);
     }
 
     /**
@@ -44,6 +46,8 @@ class DetalleCursoController extends Controller
      */
     public function store(Request $request)
     {
+        $aula = $request->input('aula');
+
         $curso = new detalle_curso;
         $curso->tutor_id = $request->input('tutor');
         $curso->curso_codigo = $request->input('cursoCodigo');
@@ -105,26 +109,58 @@ class DetalleCursoController extends Controller
                     $diaIngles = "Sun";
                     break;
             }
-            echo $diaIngles . "<br>";
             switch ($curso->periodo) {
                 case "Semestre": {
                         if ($cursoCreado->num_periodo == 1) {
                             $priemerdia = date("M-d-Y", mktime(0, 0, 0, 1, 1, $cursoCreado->anno));
-                            echo $priemerdia . "<br>";
+                            //echo $priemerdia . "<br>";
                             $ultimoDia = date("M-d-Y", mktime(0, 0, 0, 7, 0, $cursoCreado->anno));
-                            echo $ultimoDia . "<br>";
+                            //echo $ultimoDia . "<br>";
                             $dia = strtotime($priemerdia);
-                            echo $dia . "<br>";
-                            echo date("M-d-Y", $dia) . "<br>";
+                            //echo "DIA en TIMESTAMP = ".$dia . "<br>";
+                            //echo "DIA en Date() = ".date("M-d-Y", $dia) . "<br>";
                             $i = 0;
-                           /* while (date_diff($priemerdia, $ultimoDia)) :
-                                echo date("M-d-Y", $dia) . date("D", $dia) . $i . "<br>";
+                            $d1 = date_create($priemerdia);
+                            //echo "DateTime 1 = ".$d1."<br>";
+                            $d2 = date_create($ultimoDia);
+                            //echo "DateTime 2 = ".$d2."<br>";
+                            $diff = date_diff($d1, $d2);
+                            //echo "DIFERENCIA ENTRe DIAS = ".$diff->format("%a days")."<br>";
+                            $prueba = intval($diff->format("%a")) + 1;
+                            //echo "DIFF + 1 = ".$prueba;
+                            while ($i < intval($diff->format("%a"))) :
+                                //echo date("M-d-Y", $dia) . date("D", $dia) . $i . "<br>";
                                 if (date("D", $dia) == $diaIngles) {
-                                    echo "Si es el dia <br>";
+                                    //echo "Si es el dia <br>";
+                                    $clase = new clase;
+                                    $clase->detalle_curso_id  = $cursoCreado->id;
+                                    $clase->aula_codigo = $aula;
+                                    $clase->hora_inicio = $cursoCreado->hora_inicio;
+                                    $clase->hora_final = $cursoCreado->hora_final;
+                                    $clase->fecha = date("Y-m-d", $dia);
+                                    $clase->save();
                                 }
                                 $dia = strtotime("+1 day", $dia);
                                 $i++;
-                            endwhile;*/
+                            endwhile;
+                        }
+                        if ($cursoCreado->num_periodo == 2) {
+                            $priemerdia = date("M-d-Y", mktime(0, 0, 0, 7, 1, $cursoCreado->anno));
+                            $ultimoDia = date("M-d-Y", mktime(0, 0, 0, 12, 31, $cursoCreado->anno));
+                            $dia = strtotime($priemerdia);
+                            $diff = date_diff(date_create($priemerdia), date_create($ultimoDia));
+                            for($i = 0; $i < intval($diff->format("%a")); $i++){
+                                if (date("D", $dia) == $diaIngles) {
+                                    $clase = new clase;
+                                    $clase->detalle_curso_id  = $cursoCreado->id;
+                                    $clase->aula_codigo = $aula;
+                                    $clase->hora_inicio = $cursoCreado->hora_inicio;
+                                    $clase->hora_final = $cursoCreado->hora_final;
+                                    $clase->fecha = date("Y-m-d", $dia);
+                                    $clase->save();
+                                }
+                                $dia = strtotime("+1 day", $dia);
+                            }
                         }
                     }
                     break;
@@ -139,8 +175,6 @@ class DetalleCursoController extends Controller
             }
         } else {
         }
-
-
         return redirect('/CursosDetallados');
     }
 
