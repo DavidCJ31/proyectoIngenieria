@@ -98,7 +98,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><img class="rounded-circle mr-2" width="30" height="30" src="imagenes/avatar3.jpg" />Ashton Cox</td>
+                            <td><img class="rounded-circle mr-2" width="30" height="30" src="imagenes/Avatar3.jpg" />Ashton Cox</td>
                             <td>jose@gmail.com</td>
                             <td>  
                                 <div class="form-check form-check-inline">

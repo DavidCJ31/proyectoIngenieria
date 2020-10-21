@@ -22,7 +22,7 @@
 
     <div class="container">
         <div class="card card-container">
-            <img id="profile-img" class="profile-img-card" src="Imagenes/logo.jpg" />
+            <img id="profile-img" class="profile-img-card" src="imagenes/logo.jpg" />
             <form class="form-signin" method="POST" action="{{ route('login') }}">
                 @csrf
                 <span id="reauth-email" class="reauth-email"></span>

@@ -3,8 +3,10 @@
 <header>
     <!-- ****** Bara del header ************ -->
     <nav class="navbar navbar-expand-lg navbar-dark default-color">
-
-        <h3><a href="https://www.una.ac.cr/"><img style="width:10%;" src="imagenes/logo-largo.png"/></a></h3>
+        <a href="https://www.una.ac.cr/" class="logoHeader"><img src="imagenes/logo-largo.png" id="logoLargo" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav navbar-rigth">
                 @if (Route::has('login'))
