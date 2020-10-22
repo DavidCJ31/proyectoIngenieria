@@ -90,6 +90,7 @@
                         <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
                         <a class="dropdown-item" href="/horario-citas">Guardar horario</a>
                         <a class="dropdown-item" href="/horarioAsesor">Tabla horarios</a>
+                        <a class="dropdown-item" href="/estudiante">Estudiantes a cargo</a>
                     </div>
                 </li>
             </ul>

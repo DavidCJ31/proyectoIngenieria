@@ -17,7 +17,7 @@ class EstudianteController extends Controller
     public function tablaEstudiantes(){
         $id = Auth::user()->id;
         $rol = Auth::user()->rol;
-        if($rol == 3){        
+        if($rol == 2){        
         $estudiante = estudiante::find($id)->user;
         $seguimientos = estudiante::find($id)->seguimiento;
         $lista_asesor_estu = estudiante::find($id)->lista_asesor_estudiante;
