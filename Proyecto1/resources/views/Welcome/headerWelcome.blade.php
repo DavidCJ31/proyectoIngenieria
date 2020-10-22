@@ -27,11 +27,11 @@
                     </form>
                 </li>
                 @else
-                <li class="nav-item">
+                <li class="nav-item navbar-rigth">
                     <a href="{{ route('login') }}" class="nav-link">Login</a>
                 </li>
                 @if (Route::has('register'))
-                <li class="nav-item">
+                <li class="nav-item navbar-rigth">
                     <a href="{{ route('register') }}" class="nav-link">Register</a>
                 </li>
                 @endif

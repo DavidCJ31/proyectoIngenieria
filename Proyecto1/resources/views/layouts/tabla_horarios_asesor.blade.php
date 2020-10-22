@@ -26,7 +26,7 @@
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <script src="{{ asset('js/buscadorParaTablas.js') }}" crossorigin="anonymous"></script>
 
-    @include("Asesor.headerAsesor")
+    @include("layouts.header")
 </head>
 
 <body>

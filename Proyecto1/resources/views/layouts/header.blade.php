@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             @if(Auth::user() == null)
             <!-- ///////////////////////////////////////////////////////////////////////////// Header Vacio ///////////////////////////////////////////////////////////////////////////// -->
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto navbar-rigth">
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Inicio<span class="sr-only">(current)</span></a>
                 </li>
@@ -86,10 +86,8 @@
                         Opciones
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Fomulario</a>
-                        <a class="dropdown-item" href="#">Informe mensual</a>
+                        <a class="dropdown-item" href="/referencia">Referencias</a>
                         <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
-                        <a class="dropdown-item" href="/estudiantes">Tabla estudiantes</a>
                         <a class="dropdown-item" href="/horario-citas">Guardar horario</a>
                         <a class="dropdown-item" href="/horarioAsesor">Tabla horarios</a>
                     </div>
@@ -110,7 +108,7 @@
                 </li>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/asistencia">Asistencia</a>
+                    <a class="nav-link" href="/estudiantes-asignados">Asistencia</a>
                 </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -118,9 +116,9 @@
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="#">Fomulario</a>
-                        <a class="dropdown-item" href="#">Informe mensual</a>
+                        <a class="dropdown-item" href="/informe-mensual">Informe mensual</a>
                         <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
-                        <a class="dropdown-item" href="/estudiante">Tabla estudiantes</a>
+                        <a class="dropdown-item" href="/estudiantes-asignados">Estudiantes asignados</a>
                     </div>
                 </li>
             </ul>
@@ -132,7 +130,7 @@
                     <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Agendar cita</a>
+                    <a class="nav-link" href="/AgendarSeguimientos">Agendar Seguimiento</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">Historial</a>
@@ -145,7 +143,6 @@
                         <a class="dropdown-item" href="/EstudianteDetalle">Fomulario Informacion Personal</a>
                         <a class="dropdown-item" href="#">Informe mensual</a>
                         <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
-                        <a class="dropdown-item" href="/estudiante">Tabla estudiantes</a>
                     </div>
                 </li>
             </ul>

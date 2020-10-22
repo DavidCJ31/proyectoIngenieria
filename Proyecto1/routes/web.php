@@ -126,7 +126,7 @@ Route::get('/asistencia', function () {
 Route::get('/usuarios', [PersonaController::class, 'tablaUsuarios']);
 Route::get('/estudiantes-asignados', [TutorController::class, 'vistaEstudiante']);
 Route::get('/estudiante', [EstudianteController::class, 'tablaEstudiantes']);
-//Route::get('/horarioAsesor', [HorarioAsesorController::class, 'tablaHorarios']);
+Route::get('/horarioAsesor', [HorarioAsesorController::class, 'tablaHorarios']);
 
 Route::get('/contrato', function () {
     return view('contratoDeTutoria');
