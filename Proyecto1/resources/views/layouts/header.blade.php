@@ -75,12 +75,6 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Detalles de asesor</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"></a>
-                </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Opciones
@@ -90,7 +84,6 @@
                         <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
                         <a class="dropdown-item" href="/horario-citas">Guardar horario</a>
                         <a class="dropdown-item" href="/horarioAsesor">Tabla horarios</a>
-                        <a class="dropdown-item" href="/estudiante">Estudiantes a cargo</a>
                     </div>
                 </li>
             </ul>
@@ -116,7 +109,6 @@
                         Opciones
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Fomulario</a>
                         <a class="dropdown-item" href="/informe-mensual">Informe mensual</a>
                         <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
                         <a class="dropdown-item" href="/estudiantes-asignados">Estudiantes asignados</a>
@@ -142,8 +134,8 @@
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/EstudianteDetalle">Fomulario Informacion Personal</a>
-                        <a class="dropdown-item" href="#">Informe mensual</a>
                         <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
+                        <a class="dropdown-item" href="/estudiante">Sus asesores</a>
                     </div>
                 </li>
             </ul>
