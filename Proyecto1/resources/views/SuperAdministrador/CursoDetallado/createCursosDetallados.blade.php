@@ -28,7 +28,7 @@
             @csrf
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">CODIGO: </span>
+                    <span class="input-group-text">CÓDIGO: </span>
                 </div>
                 <select class="form-control" name="cursoCodigo" id="cursoCodigo" form="cursosDetallados" aria-describedby="basic-addon1">
                     @foreach($cursos as $curso)

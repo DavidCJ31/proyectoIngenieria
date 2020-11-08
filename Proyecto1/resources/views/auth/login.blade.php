@@ -30,14 +30,14 @@
                 <input type="password" name="password" value="123456789" required autocomplete="current-password" id="inputPassword" class="form-control" required>
                 <div id="remember" class="checkbox">
                     <label>
-                        <input type="checkbox" value="remember-me"> {{ __('Remember me') }}
+                        <input type="checkbox" value="remember-me"> {{ __('Recuerdame') }}
                     </label>
                 </div>
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
             </form><!-- /form -->
             @if (Route::has('password.request'))
             <a class="forgot-password" href="{{ route('password.request') }}">
-                {{ __('Forgot your password?') }}
+                {{ __('Olvido su contraseña?') }}
             </a>
             @endif
         </div><!-- /card-container -->

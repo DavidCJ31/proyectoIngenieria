@@ -22,8 +22,8 @@
         @csrf
         <!-- Aqui empieza el  formulario -->
         <div class="form-card">
-            <h4>VICERRECTORIA DE DOCENCIA</h4>
-            <H5>EXITO ACADEMICO</H5>
+            <h4>VICERRECTORÍA DE DOCENCIA</h4>
+            <H5>ÉXITO ACADÉMICO</H5>
             <h4>REGISTRO DE ENTREVISTA</h4>
             <!-- Hilera del formulario -- nombre -->
 
@@ -115,7 +115,7 @@
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">DIRECCION ACTUAL:</span>
+                    <span class="input-group-text">DIRECCIÓN ACTUAL:</span>
                 </div>
                 <input type="text" class="form-control" name="campo-direccion" id="campo-direccion" aria-describedby="basic-addon1">
             </div>

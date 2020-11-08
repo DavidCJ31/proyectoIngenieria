@@ -19,9 +19,9 @@
 
     <!-- Aqui empieza el  formulario -->
     <div class= "form-card">
-        <h4 class="text-center">VICERRECTORIA DE DOCENCIA</h4><H5 class="text-center text-uppercase">éxito academico</H5>
-        <h5 class="text-center text-uppercase"> Informe mensual de avance academico </h5>
-        <h5 class="text-center text-uppercase"> Tutorias especializadas </h5>
+        <h4 class="text-center">VICERRECTORÍA DE DOCENCIA</h4><H5 class="text-center text-uppercase">éxito académico</H5>
+        <h5 class="text-center text-uppercase"> Informe mensual de avance académico </h5>
+        <h5 class="text-center text-uppercase"> Tutorías especializadas </h5>
 
 
         <!-- Hilera del formulario -- nombre -->

@@ -32,11 +32,11 @@
                 <table class="table table-bordered table-striped mb-0 w-auto order-table" id="example">
                     <thead>
                         <tr>
-                            <th scope="col">Codigo</th>
+                            <th scope="col">Código</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Tutor</th>
                             <th scope="col">Periodo</th>
-                            <th scope="col">Dia</th>
+                            <th scope="col">Día</th>
                             <th scope="col">Hora</th>
                         </tr>
                     </thead>

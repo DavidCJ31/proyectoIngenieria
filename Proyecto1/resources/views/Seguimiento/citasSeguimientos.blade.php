@@ -25,7 +25,7 @@
   
     <!-- Aqui empieza el  formulario -->
     <div class= "form-card">
-        <h4 class="text-center">VICERRECTORIA DE DOCENCIA</h4><H5 class="text-center">EXITO ACADEMICO</H5><h4 class="text-center">DISPONIBILIDAD PARA ASESORIAS</h4>
+        <h4 class="text-center">VICERRECTORÍA DE DOCENCIA</h4><H5 class="text-center">ÉXITO ACADÉMICO</H5><h4 class="text-center">DISPONIBILIDAD PARA ASESORIAS</h4>
         <br><br>
         <div class="container">
           <div id="calendar"></div>

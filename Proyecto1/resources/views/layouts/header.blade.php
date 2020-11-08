@@ -153,7 +153,7 @@
                 @auth
                 <li class="nav-item">
                     <a class="nav-link" href="/user/profile" :active="request()->routeIs('profile.show')">
-                        {{ __('Profile') }}
+                        {{ __('Perfil') }}
                     </a>
                 </li>
                 <li class="nav-item">
@@ -162,7 +162,7 @@
 
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                             this.closest('form').submit();">
-                            {{ __('Logout') }}
+                            {{ __('Salir') }}
                         </a>
                     </form>
                 </li>
@@ -172,7 +172,7 @@
                 </li>
                 @if (Route::has('register'))
                 <li class="nav-item">
-                    <a href="{{ route('register') }}" class="nav-link">Register</a>
+                    <a href="{{ route('register') }}" class="nav-link">Registrarse</a>
                 </li>
                 @endif
                 @endif

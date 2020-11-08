@@ -28,9 +28,9 @@
     <!-- Aqui empieza el  formulario -->
     <div class="form-card">
         <img src="imagenes/logo.jpg" class="rounded mx-auto d-block" style="width: 100px; height: 100px;">
-        <h4 class="text-center">VICERRECTORIA DE DOCENCIA</h4>
-        <H5 class="text-center">EXITO ACADEMICO</H5>
-        <h4 class="text-center">REPORTE DE CLASES PARA TURORIA ESPECIALIZADA</h4>
+        <h4 class="text-center">VICERRECTORÍA DE DOCENCIA</h4>
+        <H5 class="text-center">ÉXITO ACADÉMICO</H5>
+        <h4 class="text-center">REPORTE DE CLASES PARA TURORÍA ESPECIALIZADA</h4>
         <br><br>
         <div class="container">
             <button type="button" class="btn btn-primary text-center" id='GenerarPDF'> Generar reporte a PDF </button>
@@ -38,7 +38,7 @@
             <table class="table table-bordered" id="dataTable">
                 <thead>
                     <tr>
-                        <th scope="col">Codigo del curso</th>
+                        <th scope="col">Código del curso</th>
                         <th scope="col">Nombre del curso</th>
                         <th scope="col">Aula</th>
                         <th scope="col">Hora Inicial</th>

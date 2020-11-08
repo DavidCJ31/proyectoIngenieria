@@ -26,8 +26,8 @@
     <!-- Aqui empieza el  formulario -->
     <div class= "form-card">
     <img src="imagenes/logo.jpg" class="rounded mx-auto d-block" style = "width: 100px; height: 100px;"> 
-    <h4 class="text-center">VICERRECTORIA DE DOCENCIA</h4><H5 class="text-center">EXITO ACADEMICO</H5>
-    <h4 class="text-center">ESTUDIANTES ASIGNADOS POR TUTORIAS</h4>
+    <h4 class="text-center">VICERRECTORÍA DE DOCENCIA</h4><H5 class="text-center">ÉXITO ACADÉMICO</H5>
+    <h4 class="text-center">ESTUDIANTES ASIGNADOS POR TUTOR</h4>
         <br><br>
         <div class="container">
             <div class="row">
@@ -39,7 +39,7 @@
                             <th scope="col">Curso</th>
                             <th scope="col">Periodo</th>
                             <th scope="col">Hora inicio</th>
-                            <th scope="col">Dia</th>
+                            <th scope="col">Día</th>
                             </tr>
                         </thead>
                         <tbody id="listarCursos">

@@ -32,7 +32,7 @@
                 <table class="table table-bordered table-striped mb-0 w-auto order-table" id="example">
                     <thead>
                         <tr>
-                            <th scope="col">Codigo</th>
+                            <th scope="col">Código</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Curso Necesario</th>
                         </tr>
@@ -50,7 +50,7 @@
                 </table>
             </center>
             @else
-            <h2>Tabla Vacia</h2>
+            <h2>Tabla Vacía</h2>
             @endif
         </div>
         <form action="/Cursos/create" style="text-align: center">

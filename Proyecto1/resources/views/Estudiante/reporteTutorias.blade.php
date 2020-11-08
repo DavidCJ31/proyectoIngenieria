@@ -20,7 +20,7 @@
           <thead class="thead-dark"> 
             <tr>
               <th scope="col">Estudiante</td>
-              <th scope="col"> Detalle Curso </td>
+              <th scope="col">Detalle Curso</td>
               <th scope="col">Aula</td>
               <th scope="col">Fecha</td>
               <th scope="col">Hora inicio</td>
