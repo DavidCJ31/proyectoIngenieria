@@ -68,6 +68,10 @@ class SeguimientoController extends Controller
                 
                 
                 //Actualizar el horario para que ya no salga disponible y que al asesor le salga con quien es el seguimiento
+
+                //Antes estaba asi:
+                //$horario->titulo = "Seguimiento asignado: ".Auth::user()->name." de cedula: ".$id;
+
                 $horario->titulo = "Seguimiento asignado";
                 $horario->save(); //Save tambien sirve para actualizar un registro ya existente
                 
