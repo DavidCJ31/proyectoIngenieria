@@ -6,13 +6,10 @@
             <h3><a href="https://www.una.ac.cr/"><img style="width:90%;" src="../imagenes/logo-largo.png"/></a></h3>
         </div>
         <div class="col-sm-6 col-md-4 footer-contacts">
-            <div><span class="fa fa-map-marker footer-contacts-icon"></span>
-                <p><span class="new-line-span">Avenida 1, Calle 9.   Apartado Postal: 86-3000 </span> </p>
-            </div>
-            <div><i class="fa fa-phone footer-contacts-icon"></i>
+        <h4>Contacto</h4>
+            <div>
                 <p class="footer-center-info email text-left">Recepción: 2562-6765</p>
                 <p>Coordinación: 2277-3772</p>
-      
             </div>
             <div><i class="fa fa-envelope footer-contacts-icon"></i>
             <a href="mailto:exito@una.cr?cc=Tengo una Consulta&">Envianos un Correo</a>
@@ -33,10 +30,11 @@
             </div>
             
         </div>
-
+        <hr class="col-xs-hidden col-md-12 breakContainer"  style= "background-color:#f8f9fa;">
         <div style="text-align: center; margin: auto;">
         <br>
-        <p class="company-name" >Universidad Nacional de Costa Rica © 2020 Copyright .Todos los derechos reservados. </p>  
+       
+        <p class="company-name" >Universidad Nacional de Costa Rica © 2021 Copyright .Todos los derechos reservados. </p>  
         </div>
 </footer>
 
