@@ -19,7 +19,12 @@ class EstudianteDetalleController extends Controller
     {
         $id = Auth::user()->id;
         $estudiante = estudiante::find($id)->user;
-        return view('Estudiante/RegistroDeEntrada')->with('estudiante',$estudiante);
+        $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
+        if($estudianteDetalle == NULL){
+            return view('Estudiante/Detalle/RegistroDeEntrada')->with('estudiante',$estudiante);
+        }else{
+            return view('Estudiante/Detalle/EditEstudianteDetalle')->with('estudiante',$estudiante)->with('estudianteDetalle',$estudianteDetalle);
+        }
     }
 
     /**
