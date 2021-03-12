@@ -18,11 +18,13 @@
     <!--Main Navigation-->
     @include('layouts.header')
     <!--Main Navigation-->
-    <form method="post" action="/EstudianteDetalle" id="formInformacionDetallada">
+    <form method="post" action="/EstudianteDetalle/{{$estudiante->id}}" id="formInformacionDetallada">
         @csrf
+        @method('PUT')
+        <!--<input type="hidden" name="_method" value="PUT"> -->
         <!-- Aqui empieza el  formulario -->
         <div class="form-card">
-            <h4>VICERRECTORÍA DE DOCENCIA EDITS</h4>
+            <h4>VICERRECTORÍA DE DOCENCIA</h4>
             <H5>ÉXITO ACADÉMICO</H5>
             <h4>REGISTRO DE ENTREVISTA</h4>
             <!-- Hilera del formulario -- nombre -->
@@ -31,13 +33,13 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">NOMBRE COMPLETO:</span>
                 </div>
-                <input type="text" class="form-control" name="campo-nombre" id="campo-nombre" value="{{ $estudiante->name.' '.$estudiante->apellido }}" aria-describedby="basic-addon1" disabled>
+                <input type="text" class="form-control" id="campo-nombre" value="{{ $estudiante->name.' '.$estudiante->apellido }}" aria-describedby="basic-addon1" disabled>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">NUMERO DE IDENTIFICACIÓN:</span>
                 </div>
-                <input type="hidden" name="campo-cedula" value="{{ $estudiante->id }}">
+                <input type="hidden" value="{{ $estudiante->id }}">
                 <input type="number" class="form-control no-spin" aria-describedby="basic-addon1" value="{{ $estudiante->id }}" disabled>
             </div>
             <!-- Hilera del formulario -- cedula y telefono -->
@@ -106,7 +108,7 @@
                 <div class="input-group-append">
                     <span class="input-group-text">CORREO:</span>
                 </div>
-                <input type="email" class="form-control" name="campo-correo" id="campo-correo" aria-describedby="basic-addon2" value="{{ $estudianteDetalle->email}}" disabled>
+                <input type="email" class="form-control" name="campo-correo" id="campo-correo" aria-describedby="basic-addon2" value="{{ $estudiante->email}}" disabled>
 
                 <div class="input-group-append">
                     <span class="input-group-text">ZONA DE PROCEDENCIA:</span>
@@ -513,7 +515,7 @@
 
                     function habilitarUniversidadConsulta() {
                         document.getElementById("campo-universidad-consulta3").disabled = false;
-                        document.getElementById("campo-universidad-consulta3").value = "{{$estudianteDetalle->universidadHoraConsulta}";
+                        document.getElementById("campo-universidad-consulta3").value = "{{$estudianteDetalle->universidadHoraConsulta}}";
                     }
                 </script>
             </div>
@@ -558,7 +560,7 @@
 
                     function habilitarUniversidadPuntualClases() {
                         document.getElementById("campo-universidad-puntualClases3").disabled = false;
-                        document.getElementById("campo-universidad-puntualClases3").value = "{{$estudianteDetalle->universidadPuntualClases}";
+                        document.getElementById("campo-universidad-puntualClases3").value = "{{$estudianteDetalle->universidadPuntualClases}}";
                     }
                 </script>
             </div>
@@ -588,7 +590,7 @@
                     </table>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary" name="enviar" id='boton-enviar'>Guardar</button>
+            <button type="submit" class="btn btn-primary" name="enviar" id='boton-enviar'>Actualizar</button>
         </div>
     </form>
     @include("layouts.footer")
@@ -662,6 +664,7 @@
             }
             document.getElementById("campo-antecedente-adecuacionTipo").value = "{{$estudianteDetalle->antecedenteAdecuacionTipo}}";
         } else {
+            document.getElementById("campo-antecedente-adecuacion2").setAttribute('checked', true);
             document.getElementById("campo-antecedente-adecuacionCuando1").disabled = true;
             document.getElementById("campo-antecedente-adecuacionCuando2").disabled = true;
             document.getElementById("campo-antecedente-adecuacionTipo").disabled = true;
@@ -722,7 +725,7 @@
         } else {
             document.getElementById("campo-universidad-consulta2").setAttribute('checked', true);
             document.getElementById("campo-universidad-consulta3").disabled = false;
-            document.getElementById("campo-universidad-consulta3").value = "{{$estudianteDetalle->universidadHoraConsulta}";
+            document.getElementById("campo-universidad-consulta3").value = "{{$estudianteDetalle->universidadHoraConsulta}}";
         }
         if ("{{$estudianteDetalle->universidadPuntualClases}}" == "Si") {
             document.getElementById("campo-universidad-puntualClases1").setAttribute('checked', true);
@@ -731,7 +734,7 @@
         } else {
             document.getElementById("campo-universidad-puntualClases2").setAttribute('checked', true);
             document.getElementById("campo-universidad-puntualClases3").disabled = false;
-            document.getElementById("campo-universidad-puntualClases3").value = "{{$estudianteDetalle->universidadPuntualClases}";
+            document.getElementById("campo-universidad-puntualClases3").value = "{{$estudianteDetalle->universidadPuntualClases}}";
         }
     }
 
