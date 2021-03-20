@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\asesor;
 use App\Models\tutor;
+use App\Models\detalle_curso;
+use App\Models\curso;
+
 use Illuminate\Http\Request;
 
 class TutorController extends Controller
@@ -29,6 +32,36 @@ class TutorController extends Controller
             $usuario = tutor::find($id)->user;
             return view('Tutor/estudiantes-asignados')->with('usuario',$usuario);
     }
+
+    public function registroEstudiante()
+    {
+            /*
+            $id = Auth::user()->id;
+            $detalle_curso = detalle_curso::where('tutor_id', $id)->get();
+            return view('Tutor/listaEstudiantes')->with('data',$detalle_curso);
+            */
+            $id = Auth::user()->id;
+            $detalle_curso = detalle_curso::where('tutor_id', $id)->get();
+            $datos = array();
+            $cont = 0;
+            foreach($detalle_curso as $row)
+            {
+                $curso = curso::where('codigo', $row->curso_codigo)->first();
+        
+                $datos[$cont++] = array(
+                'id_detalle' => $row["id"],
+                'curso'   => $curso["nombre"],
+                'periodo'   => $row["periodo"],
+                'num_periodo' => $row["num_periodo"],
+                'hora_inicio'   => $row["hora_inicio"],
+                'dia'   => $row["dia"]
+                );
+            }
+            $data = json_encode($datos);
+            return view('Tutor/listaEstudiantes')->with('data', $data);
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
