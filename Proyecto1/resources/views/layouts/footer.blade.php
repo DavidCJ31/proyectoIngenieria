@@ -3,7 +3,7 @@
 <footer>
     <div class="row">
         <div class="col-sm-6 col-md-4 footer-navigation">
-            <h3><a href="https://www.una.ac.cr/"><img style="width:90%;" src="../imagenes/logo-largo.png"/></a></h3>
+            <h3><a href="https://www.una.ac.cr/"><img style="width:88%;" src="../imagenes/logo-largo.png"/></a></h3>
         </div>
         <div class="col-sm-6 col-md-4 footer-contacts">
         <h4>Contacto</h4>
@@ -17,9 +17,9 @@
         </div>
         <div class="clearfix"></div>
         <div class="col-md-4 footer-about">
-            <h4>Acerca de Nosotros</h4>
-            <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus
-                vehicula sit amet. </p>
+        <p> Exito Academico - Vicerrectoria de Docencia - UNA  </p>
+            
+          
             <div class="social-links social-icons">
                 <a href="https://www.facebook.com/VDOCENCIAUNA/"><img style="width:28px;" src="../imagenes/facebook.png"
                         class="facebook-img-card" /></a>
@@ -28,8 +28,8 @@
                 <a href="https://www.youtube.com/channel/UCUs96CKvsIuVdsdxGhWKfjA"><img src="../imagenes/youtube.png"
                         class="youtube-img-card" /></a>
             </div>
-            
         </div>
+  
         <hr class="col-xs-hidden col-md-12 breakContainer"  style= "background-color:#f8f9fa;">
         <div style="text-align: center; margin: auto;">
         <br>

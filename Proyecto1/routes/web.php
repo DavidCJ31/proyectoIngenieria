@@ -114,6 +114,11 @@ Route::get('/informe-mensual', function () {
     return view('informe-mensual');
 });
 
+// Retorna la vista de la primera solicitud de tutoria que realiza el estudiante.
+Route::get('/PrimerSeguimiento', function () {
+    return view('PrimerSeguimiento');
+});
+
 Route::get('/formulario', function () {
     return view('formulario');
 });
