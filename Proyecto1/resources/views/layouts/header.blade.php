@@ -80,6 +80,7 @@
                         Opciones
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/PrimerSeguimiento">Solicitudes de Primer Seguimiento</a>
                         <a class="dropdown-item" href="/referencia">Referencias</a>
                         <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
                         <a class="dropdown-item" href="/horario-citas">Guardar horario</a>
@@ -132,7 +133,7 @@
                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/EstudianteDetalle">Fomulario Informacion Personal</a>
                         <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
-                        <a class="dropdown-item" href="/PrimerSeguimiento">Solicitar Primer Seguimiento</a>
+                        <a class="dropdown-item" href="/PrimerSeguimiento/create">Solicitar Primer Seguimiento</a>
                         <a class="dropdown-item" href="/AgendarSeguimientos">Agendar Seguimiento</a>
                     </div>
                 </li>

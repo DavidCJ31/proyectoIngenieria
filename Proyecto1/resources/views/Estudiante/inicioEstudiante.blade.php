@@ -24,6 +24,14 @@
         </div>
     </div>
 
+    {{
+    
+    @if($estadoInformacionDetalle){
+     <!--mostrar el modal-->  
+    }
+    
+    }}
+
     @include("layouts.footer")
 </body>
 

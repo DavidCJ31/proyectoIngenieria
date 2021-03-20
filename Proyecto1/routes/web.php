@@ -15,6 +15,7 @@ use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\HorarioAsesorController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\SeguimientoController;
+use App\Http\Controllers\PrimerSeguimientoController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -89,7 +90,8 @@ Route::resources([
     '/Tutorias-estudiantes' => ListaCursoEstudianteController::class,
     '/CursosDetallados' => DetalleCursoController::class,
     '/AgendarSeguimientos' => SeguimientoController::class,
-    '/Clases' => ClaseController::class
+    '/Clases' => ClaseController::class,
+    '/PrimerSeguimiento' => PrimerSeguimientoController::class
 ]);
 
 Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
@@ -110,11 +112,6 @@ Route::resource('/Cursos', CursoController::class);
 
 Route::get('/informe-mensual', function () {
     return view('informe-mensual');
-});
-
-// Retorna la vista de la primera solicitud de tutoria que realiza el estudiante.
-Route::get('/PrimerSeguimiento', function () {
-    return view('Estudiante/PrimerSeguimiento');
 });
 
 Route::get('/referencia', function () {

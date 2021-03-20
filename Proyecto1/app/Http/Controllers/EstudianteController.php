@@ -9,6 +9,7 @@ use App\Models\estudiante;
 use App\Models\seguimiento;
 use App\Models\asesor;
 use App\Models\horario_asesor;
+use App\Models\estudiante_detalle;
 use Illuminate\Support\Facades\Auth;
 
 class EstudianteController extends Controller
@@ -39,8 +40,13 @@ class EstudianteController extends Controller
      */
     public function index()
     {
+        $id = Auth::user()->id;
         $usuario = estudiante::find(Auth::user()->id)->user;
-        return view('Estudiante/inicioEstudiante')->with('usuario',$usuario);
+        $estadoInformacionDetalle = false;
+        if (estudiante_detalle::where('estudiante_id', $id)->first()) {
+            $estadoInformacionDetalle = true;
+        }
+        return view('Estudiante/inicioEstudiante')->with('usuario',$usuario)->with('estadoInformacionDetalle', $estadoInformacionDetalle);
     }
 
     /**

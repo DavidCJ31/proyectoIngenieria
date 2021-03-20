@@ -18,10 +18,9 @@ class EstudianteDetalleController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
-        $estudiante = estudiante::find($id)->user;
         $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
         if ($estudianteDetalle == NULL) {
-            return view('Estudiante/Detalle/RegistroDeEntrada')->with('estudiante', $estudiante);
+            return redirect()->route('EstudianteDetalle.create');
         } else {
             return redirect()->route('EstudianteDetalle.edit', [$id]);
         }
@@ -34,7 +33,9 @@ class EstudianteDetalleController extends Controller
      */
     public function create()
     {
-        //
+        $id = Auth::user()->id;
+        $estudiante = estudiante::find($id)->user;
+        return view('Estudiante/Detalle/RegistroDeEntrada')->with('estudiante', $estudiante);
     }
 
     /**
