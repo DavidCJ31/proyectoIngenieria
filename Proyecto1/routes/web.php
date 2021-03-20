@@ -94,6 +94,10 @@ Route::resources([
 
 Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
 
+Route::get('/PrimerSeguimiento', function () {
+    return view('Estudiante/PrimerSeguimiento');
+});
+
 Route::get('/', function () {
     return view('welcome.welcome');
 });
