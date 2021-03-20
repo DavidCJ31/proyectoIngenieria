@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\estudiante_detalle;
+use App\Models\estudiante;
 
-class PrimerSeguimiento extends Controller
+class PrimerSeguimientoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,6 @@ class PrimerSeguimiento extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -57,7 +58,9 @@ class PrimerSeguimiento extends Controller
      */
     public function edit($id)
     {
-        //
+        $estudiante = estudiante::find($id)->user;
+        $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
+        return view('')->with('estudiante', $estudiante)->with('estudianteDetalle', $estudianteDetalle);
     }
 
     /**
