@@ -31,6 +31,7 @@ return array(
     'App\\Http\\Controllers\\PersonaController' => $baseDir . '/app/Http/Controllers/PersonaController.php',
     'App\\Http\\Controllers\\PostulanteController' => $baseDir . '/app/Http/Controllers/PostulanteController.php',
     'App\\Http\\Controllers\\SeguimientoController' => $baseDir . '/app/Http/Controllers/SeguimientoController.php',
+    'App\\Http\\Controllers\\SuperAdministradorController' => $baseDir . '/app/Http/Controllers/SuperAdministradorController.php',
     'App\\Http\\Controllers\\TutorController' => $baseDir . '/app/Http/Controllers/TutorController.php',
     'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',

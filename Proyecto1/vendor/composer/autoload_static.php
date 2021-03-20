@@ -600,6 +600,7 @@ class ComposerStaticInited50c3733badc6aa102d2e6b8c90443d
         'App\\Http\\Controllers\\PersonaController' => __DIR__ . '/../..' . '/app/Http/Controllers/PersonaController.php',
         'App\\Http\\Controllers\\PostulanteController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostulanteController.php',
         'App\\Http\\Controllers\\SeguimientoController' => __DIR__ . '/../..' . '/app/Http/Controllers/SeguimientoController.php',
+        'App\\Http\\Controllers\\SuperAdministradorController' => __DIR__ . '/../..' . '/app/Http/Controllers/SuperAdministradorController.php',
         'App\\Http\\Controllers\\TutorController' => __DIR__ . '/../..' . '/app/Http/Controllers/TutorController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
