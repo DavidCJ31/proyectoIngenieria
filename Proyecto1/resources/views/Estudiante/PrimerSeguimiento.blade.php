@@ -1,132 +1,194 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1,initial-scale=1, shrink-to-fit=no">
-
-    <title>Seguimiento Estudiantil</title>
-
-    <link rel="shortcut icon" href="Imagenes/logo-blanco.png" type="image/x-icon" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
     <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
     <link href="{{ asset('css/estilo-Form.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    @include('layouts.header')
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> 
 </head>
 
-<body style="background-color: #cc071e;">
+<body>
+<!--Main Navigation-->
+@include('layouts.header')
+<!--Main Navigation-->
+<form method="post" action="/PrimerSeguimiento" id="formPrimerSeguimiento">
+        @csrf
+    <!-- Aqui empieza el  formulario -->
+    <div class= "form-card">
+        <h4>VICERRECTORIA DE DOCENCIA</h4><H5>EXITO ACADEMICO</H5><h4>SOLICITUD DE TUTORIA</h4>
+        <!-- Hilera del formulario -- nombre -->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">NOMBRE: </span>
+            </div>
+            <input type="text" class="form-control" placeholder="Esto deberia agarrarse automaticamente"  id ="campo-nombre" aria-describedby="basic-addon1">
+          </div>
+          <!-- Hilera del formulario -- cedula y telefono -->
+          <div class="input-group mb-3">
+            <div class="input-group-append">
+                <span class="input-group-text">NUMERO DE CEDULA: </span>
+              </div>
+            <input type="text" class="form-control" placeholder="Numero de cedula (tambien automaticamente)" id="campo-cedula" aria-describedby="basic-addon2">
 
-    <div class="container" id="formRegistro">
-        <div class="card shadow-lg o-hidden border-0 my-4">
-            <div class="card-body p-0">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="p-5">
-                            <div class="text-center">
-                                <h4 class="text-dark mb-4">Registro de Usuarios</h4>
-                            </div>
-                            <form action="/User" id="registrarUsuario" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-row text-left" style="padding: 0px;">
-                                    <div class="form-group " id="message">
+            <div class="input-group-append">
+                <span class="input-group-text">TELEFONO: </span>
+              </div>
+            <input type="text" class="form-control" id="campo-telefono" aria-describedby="basic-addon2">
+          </div>
+          
+          <!-- Hilera del formulario -- Correo y beca -->
+          <div class="input-group mb-3">
+            <div class="input-group-append">
+                <span class="input-group-text">CORREO: </span>
+              </div>
+            <input type="text" class="form-control" id="campo-correo" aria-describedby="basic-addon2">
 
-                                        <div class="form-group has-feedback">
-                                            <div class="form-group has-feedback"><label
-                                                    for="cedula">Cedula</label><br><input class="form-c" type="number"
-                                                    id="id" name="id" required autofocus autocomplete="id"> </div>
-                                            <div class="form-group has-feedback"><label
-                                                    for="nombre">Nombre</label><br><input class="form-c" type="text"
-                                                    id="nombre" name="nombre" required></div>
-                                            <div class="form-group has-feedback"><label
-                                                    for="email">Email</label><br><input class="form-c" type="email"
-                                                    id="email" name="email" required> </div>
-                                            <div class="form-group has-feedback"><label
-                                                    for="telefono">Telefono</label><br><input class="form-c" type="text"
-                                                    id="telefono" name="telefono" required></div>
-                                            <div class="form-group" style=" margin-left: 40%; margin-top: 5%;">
-                                                <button class="btn btn-primary" type="submit" form="registrarUsuario"
-                                                    id='GuardarUsuario'>Registrar &nbsp;</button>
-                                            </div>
-                                            <span class="input-group-text text-uppercase">Disponibilidad de horario</span>
-                                            <div class="input-group">
-                                                <textarea class="form-control"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+            <div class="input-group-append">
+                <span class="input-group-text">BECA: </span>
+              </div>
+            <input type="text" class="form-control" id="campo-beca" aria-describedby="basic-addon2">
+          </div>
+
+          <!-- Hilera del formulario -- Carrera y ano de ingreso -->
+          <div class="input-group mb-3">
+            <div class="input-group-append">
+                <span class="input-group-text">Carrera: </span>
+              </div>
+            <input type="text" class="form-control" id="campo-carrera" aria-describedby="basic-addon2">
+
+            <div class="input-group-append">
+                <span class="input-group-text">AÑO DE INGRESO: </span>
+              </div>
+            <input type="text" class="form-control" id="campo-ingreso" aria-describedby="basic-addon2">
+          </div>
+
+          <!-- Hilera del formulario -- Materia -->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">MATERIA EN LA QUE SOLICITA TUTORIA: </span>
+            </div>
+            <input type="text" class="form-control" id ="campo-materia" aria-describedby="basic-addon1">
+          </div>
+
+          <!-- Hilera del formulario -- Profesor -->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">NOMBRE DEL/DE LA PROFESOR/A: </span>
+            </div>
+            <input type="text" class="form-control" id ="campo-profesor" aria-describedby="basic-addon1">
+          </div>
+
+          <!-- Hilera del formulario -- Creditos y ano de horas -->
+          <div class="input-group mb-3">
+            <div class="input-group-append">
+                <span class="input-group-text">CREDITOS DEL CURSO: </span>
+              </div>
+            <input type="text" class="form-control" id="campo-creditos" aria-describedby="basic-addon2">
+
+            <div class="input-group-append">
+                <span class="input-group-text">HORA DE ESTUDIO: </span>
+              </div>
+            <input type="text" class="form-control" id="campo-horas" aria-describedby="basic-addon2">
+          </div>
+
+
+
+          <span class="input-group-text text-uppercase">Síntesis de la situación:</span>
+          <div class="input-group">
+            <textarea class="form-control"></textarea>
+          </div>
+
+          <br>
+          <h5> DISPONIBILIDAD DE HORARIO  </h5>
+          <div class="table-responsive ">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th class="cuadro-tabla">HORARIOS</th>
+                  <th class="cuadro-tabla">LUNES</th>
+                  <th class="cuadro-tabla">MARTES</th>
+                  <th class="cuadro-tabla">MIERCOLES</th>
+                  <th class="cuadro-tabla">JUEVES</th>
+                  <th class="cuadro-tabla">VIERNES</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>8-10</td>
+                  <td class="cuadro-tabla opcion-tabla" hora="8-10" dia="lunes"></td>
+                  <td class="cuadro-tabla opcion-tabla" hora="8-10" dia="martes"></td>
+                  <td class="cuadro-tabla opcion-tabla" hora="8-10" dia="miercoles"></td>
+                  <td class="cuadro-tabla opcion-tabla" hora="8-10" dia="jueves"></td>
+                  <td class="cuadro-tabla opcion-tabla" hora="8-10" dia="viernes"></td>
+                </tr>
+                <tr>
+                    <td>10-12</td>
+                    <td class="cuadro-tabla opcion-tabla" hora="10-12" dia="lunes"></td>
+                    <td class="cuadro-tabla opcion-tabla" hora="10-12" dia="martes"></td>
+                    <td class="cuadro-tabla opcion-tabla" hora="10-12" dia="miercoles"></td>
+                    <td class="cuadro-tabla opcion-tabla" hora="10-12" dia="jueves"></td>
+                    <td class="cuadro-tabla opcion-tabla" hora="10-12" dia="viernes"></td>
+                  </tr>
+                
+                <tr>
+                    <td>1-3</td>
+                    <td class="cuadro-tabla opcion-tabla" hora="1-3" dia="lunes"></td>
+                    <td class="cuadro-tabla opcion-tabla" hora="1-3" dia="martes"></td>
+                    <td class="cuadro-tabla opcion-tabla" hora="1-3" dia="miercoles"></td>
+                    <td class="cuadro-tabla opcion-tabla" hora="1-3" dia="jueves"></td>
+                    <td class="cuadro-tabla opcion-tabla" hora="1-3" dia="viernes"></td>
+                  </tr>
+
+                <tr>
+                    <td>3-5</td>
+                    <td class="cuadro-tabla opcion-tabla" hora="3-5" dia="lunes"></td>
+                    <td class="cuadro-tabla opcion-tabla" hora="3-5" dia="martes"></td>
+                    <td class="cuadro-tabla opcion-tabla" hora="3-5" dia="miercoles"></td>
+                    <td class="cuadro-tabla opcion-tabla" hora="3-5" dia="jueves"></td>
+                    <td class="cuadro-tabla opcion-tabla" hora="3-5" dia="viernes"></td>
+                  </tr>
+
+                <tr>
+                    <td>5-7</td>
+                    <td class="cuadro-tabla opcion-tabla" hora="5-7" dia="lunes"></td>
+                    <td class="cuadro-tabla opcion-tabla" hora="5-7" dia="martes"></td>
+                    <td class="cuadro-tabla opcion-tabla" hora="5-7" dia="miercoles"></td>
+                    <td class="cuadro-tabla opcion-tabla" hora="5-7" dia="jueves"></td>
+                    <td class="cuadro-tabla opcion-tabla" hora="5-7" dia="viernes"></td>
+                  </tr>
+
+              </tbody>
+            </table>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-append">
+                <button type="button" class="btn btn-primary" id="boton-enviar">Enviar solicitud</button>
             </div>
         </div>
     </div>
-    </div>
+    </form>
+    @include("layouts.footer")
 </body>
-<!--  Se incluye el footer  -->
-@include("layouts.footer")
 
 </html>
 
-
-
 <script>
-function init() {
-    id2 = document.getElementById("id").value
-    name2 = document.getElementById("nombre").value
-    apellido2 = document.getElementById("apellido").value
-    email2 = document.getElementById("email").value
-    user2 = document.getElementById("usuario").value
-    contrasena2 = document.getElementById("contrasena").value
-    rol2 = document.getElementById("rol").value
-
-
-
-    let obj = {
-        id: id2,
-        name: name2,
-        apellido: apellido2,
-        email: email2,
-        user: user2,
-        contrasena: contrasena2,
-        rol: rol2
+    
+    function empezar(){
+        $(".opcion-tabla").hover(function(){
+            $(this).css("background-color", "#f6f799");
+            },function(){
+        $(this).css("background-color","white");} );
     }
-    guarda(obj);
-}
+
+    empezar();
 
 
-function guarda(datos) {
-
-    console.log("Entro a guardar con:");
-    console.log(datos);
-
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $.ajax({
-        url: "User",
-        type: "POST",
-        data: {
-            usu: JSON.stringify(datos),
-            _token: '{{csrf_token()}}'
-        },
-        success: function(result) {
-            console.log("success");
-            console.log(result);
-        }
-    });
-}
 </script>
+
+

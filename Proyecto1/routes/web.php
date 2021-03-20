@@ -94,9 +94,7 @@ Route::resources([
 
 Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
 
-Route::get('/PrimerSeguimiento', function () {
-    return view('Estudiante/PrimerSeguimiento');
-});
+
 
 Route::get('/', function () {
     return view('welcome.welcome');
@@ -116,11 +114,7 @@ Route::get('/informe-mensual', function () {
 
 // Retorna la vista de la primera solicitud de tutoria que realiza el estudiante.
 Route::get('/PrimerSeguimiento', function () {
-    return view('PrimerSeguimiento');
-});
-
-Route::get('/formulario', function () {
-    return view('formulario');
+    return view('Estudiante/PrimerSeguimiento');
 });
 
 Route::get('/referencia', function () {
