@@ -20,81 +20,66 @@
 
     @include('layouts.header')
 </head>
+<body style="background-color: #cc071e;">
 
-<body>
+    <div class="container" id="formRegistro">
+        <div class="card shadow-lg o-hidden border-0 my-4">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-flex">
+                        <div class="flex-grow-1 bg-register-image"
+                            style="background-image: url('imagenes/pruebaregistro.png');"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h4 class="text-dark mb-4">Registro de Usuarios</h4>
+                            </div>
+                            <form action="/User" id="registrarUsuario" method="POST"
+                                enctype="multipart/form-data">
+								@csrf
+                                <div class="form-row text-left" style="padding: 0px;">
+                                    <div class="form-group " id="message">
 
-    <div id="formRegistro" class="row pt-5" style="margin-left: 32%;">
-
-
-        <!-- FORM -->
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header" style="text-align-last: center;">
-                    <h4>Añadir un Usuario</h4>
+                                        <div class="form-group has-feedback" >
+                                            <div class="form-group has-feedback"><label
+                                                    for="cedula">Cedula</label><br><input class="form-c" type="number" id="id" name="id" required autofocus autocomplete="id" > </div>
+                                            <div class="form-group has-feedback"><label
+                                                    for="nombre">Nombre</label><br><input class="form-c" type="text" id="nombre" name="nombre" required ></div>
+                                            <div class="form-group has-feedback"><label
+                                                    for="apellidos">Apellidos</label><br><input class="form-c"
+                                                    type="text" id="apellido" name="apellido"  required></div>
+                                            <div class="form-group has-feedback"><label for="email">Email</label><br><input
+                                                    class="form-c" type="email" id="email" name="email"  required> </div>
+                                             <div class="form-group has-feedback"><label
+                                                    for="usuario">Usuario</label><br><input class="form-c" type="text" id="usuario" name="usuario"  required autofocus autocomplete="id"> </div>                
+											<div class="form-group has-feedback"><label
+                                                    for="password">Contraseña</label><br><input class="form-c"
+                                                    type="password" name="password" id="contrasena" required=""></div>
+											<div class="form-group has-feedback"><label
+                                                    for="confirmPassword">Confirmar Contraseña</label><br><input class="form-c"
+                                                    type="password" id="confirmPassword" name="password_confirmation" ></div>		
+                                            <div class="form-group has-feedback"><label for="rol">Rol</label>
+												<select class="form-control btn btn-secondary dropdown-toggle" name="rol" id="rol" form="registrarUsuario">
+												<option class="dropdown-item" value="0" checked>Super Administrador</option>
+												<option class="dropdown-item" value="1">Administrador</option>
+												<option class="dropdown-item" value="2">Supervisor</option>
+												<option class="dropdown-item" value="3">Tutor</option>
+												</select>
+											</div>
+                                        <div class="form-group" style=" margin-left: 40%; margin-top: 5%;">
+                                            <button class="btn btn-primary" type="submit" form="registrarUsuario" id='GuardarUsuario'>Registrar &nbsp;</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <form method="post" action="/User" id="registrarUsuario">
-                    @csrf
-                    <div class="form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">CEDULA:</span>
-                            <input type="number" id="id" name="id" required autofocus autocomplete="id" placeholder="Cedula" class="form-control no-spin">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">NOMBRE:</span>
-                            <input type="text" id="nombre" name="nombre" required required placeholder="Nombre" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">APELLIDO:</span>
-                            <input type="text" id="apellido" name="apellido" placeholder="Apellido" required class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">EMAIL:</span>
-                            <input type="email" id="email" name="email" placeholder="Email" required class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">USUARIO:</span>
-                            <input type="text" id="usuario" name="usuario" placeholder="Usuario" required autofocus autocomplete="id" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">CONTRASEÑA:</span>
-                            <input type="password" id="contrasena" name="password" required autocomplete="new-password" placeholder="Contraseña" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">CONFIRMAR CONTRASEÑA:</span>
-                            <input type="password" id="confirmPassword" name="password_confirmation" placeholder="Confirmar Contraseña" class="form-control">
-                        </div>
-                    </div>
-                    <div class="input-group mb-2">
-                        <span class="input-group-text">ROL:</span>
-                        <select class="form-control btn btn-secondary dropdown-toggle" name="rol" id="rol" form="registrarUsuario">
-                            <option class="dropdown-item" value="0" checked>Super Administrador</option>
-                            <option class="dropdown-item" value="1">Administrador</option>
-                            <option class="dropdown-item" value="2">Supervisor</option>
-                            <option class="dropdown-item" value="3">Tutor</option>
-                        </select>
-                    </div>
-                    <div colspan="2" id="boton">
-                        <button type="submit" class="btn btn-primary" form="registrarUsuario" id='GuardarUsuario'>Guardar</button>
-                        <!-- <button type="button" class="btn btn-primary" id='GuardarUsuario' onclick="init()" data-dismiss="modal">Guardar</button> -->
-                    </div>
-                </form>
             </div>
         </div>
     </div>
-
-
+    </div>
 </body>
 <!--  Se incluye el footer  -->
 @include("layouts.footer")

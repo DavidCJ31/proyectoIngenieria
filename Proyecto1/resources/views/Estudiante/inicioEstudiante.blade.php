@@ -21,8 +21,11 @@
     <div class="container-inicio">
         <div class="efecto-inicio">
             <h1> Hola {{ $usuario->name }}</h1>
+            
         </div>
     </div>
+
+    
 
     @include("layouts.footer")
 </body>

@@ -15,6 +15,7 @@ use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\HorarioAsesorController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\SeguimientoController;
+use App\Http\Controllers\PrimerSeguimientoController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -62,8 +63,19 @@ Route::get('/logged_in', function () {
 Route::get('/Tutores', [AdministradorController::class, 'tablaTutores']);
 
 // Rutas Asesor
+Route::get('/horarioAsesor', [HorarioAsesorController::class, 'tablaHorarios']);
 
 // Rutas Tutores
+Route::get('/asistencia', function () {
+    return view('Tutor/asistencia');
+});
+
+Route::get('/estudiantes-asignados', [TutorController::class, 'vistaEstudiante']);
+
+Route::get('/reporteEstudiantes', [TutorController::class, 'registroEstudiante']);
+
+Route::get('/reporteEstudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
+
 
 //Rutas Estudiantes
 
@@ -78,7 +90,10 @@ Route::resources([
     '/Tutorias-estudiantes' => ListaCursoEstudianteController::class,
     '/CursosDetallados' => DetalleCursoController::class,
     '/AgendarSeguimientos' => SeguimientoController::class,
-    '/Clases' => ClaseController::class
+    '/Clases' => ClaseController::class,
+    '/horario-citas' => HorarioAsesorController::class,
+    '/Cursos' => CursoController::class,
+    '/PrimerSeguimiento' => PrimerSeguimientoController::class
 ]);
 
 Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
@@ -93,16 +108,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-
-Route::resource('/horario-citas', HorarioAsesorController::class);
-Route::resource('/Cursos', CursoController::class);
-
 Route::get('/informe-mensual', function () {
     return view('informe-mensual');
-});
-
-Route::get('/formulario', function () {
-    return view('formulario');
 });
 
 Route::get('/referencia', function () {
@@ -118,15 +125,8 @@ Route::get('/prueba', function () {
 //Route::resource('/horario', HorarioAsesorController::class);
 
 
-
-Route::get('/asistencia', function () {
-    return view('Tutor/asistencia');
-});
-
 Route::get('/usuarios', [PersonaController::class, 'tablaUsuarios']);
-Route::get('/estudiantes-asignados', [TutorController::class, 'vistaEstudiante']);
 Route::get('/estudiante', [EstudianteController::class, 'tablaEstudiantes']);
-Route::get('/horarioAsesor', [HorarioAsesorController::class, 'tablaHorarios']);
 
 Route::get('/contrato', function () {
     return view('contratoDeTutoria');

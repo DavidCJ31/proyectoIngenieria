@@ -16,7 +16,8 @@
 <!--Main Navigation-->
 @include('layouts.header')
 <!--Main Navigation-->
-
+<form method="post" action="/PrimerSeguimiento" id="formPrimerSeguimiento">
+        @csrf
     <!-- Aqui empieza el  formulario -->
     <div class= "form-card">
         <h4>VICERRECTORIA DE DOCENCIA</h4><H5>EXITO ACADEMICO</H5><h4>SOLICITUD DE TUTORIA</h4>
@@ -25,19 +26,19 @@
             <div class="input-group-prepend">
               <span class="input-group-text">NOMBRE: </span>
             </div>
-            <input type="text" class="form-control" placeholder="Esto deberia agarrarse automaticamente" id ="campo-nombre" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="Esto deberia agarrarse automaticamente" id ="campo-nombre" aria-describedby="basic-addon1" value="{{ $estudiante->name.' '.$estudiante->apellido }}" disabled>
           </div>
           <!-- Hilera del formulario -- cedula y telefono -->
           <div class="input-group mb-3">
             <div class="input-group-append">
                 <span class="input-group-text">NUMERO DE CEDULA: </span>
               </div>
-            <input type="text" class="form-control" placeholder="Numero de cedula (tambien automaticamente)" id="campo-cedula" aria-describedby="basic-addon2">
+            <input type="text" class="form-control" placeholder="Numero de cedula (tambien automaticamente)" id="campo-cedula" aria-describedby="basic-addon2" value="{{ $estudiante->id }}" disabled>
 
             <div class="input-group-append">
                 <span class="input-group-text">TELEFONO: </span>
               </div>
-            <input type="text" class="form-control" id="campo-telefono" aria-describedby="basic-addon2">
+            <input type="text" class="form-control" id="campo-telefono" aria-describedby="basic-addon2" value="{{$estudianteDetalle->tel_celular}}" disabled>
           </div>
           
           <!-- Hilera del formulario -- Correo y beca -->
@@ -45,12 +46,12 @@
             <div class="input-group-append">
                 <span class="input-group-text">CORREO: </span>
               </div>
-            <input type="text" class="form-control" id="campo-correo" aria-describedby="basic-addon2">
+            <input type="text" class="form-control" id="campo-correo" aria-describedby="basic-addon2" value="{{ $estudiante->email}}" disabled>
 
             <div class="input-group-append">
                 <span class="input-group-text">BECA: </span>
               </div>
-            <input type="text" class="form-control" id="campo-beca" aria-describedby="basic-addon2">
+            <input type="text" class="form-control" id="campo-beca" aria-describedby="basic-addon2" value="{{ $estudianteDetalle->financiamiento}}" disabled>
           </div>
 
           <!-- Hilera del formulario -- Carrera y ano de ingreso -->
@@ -58,12 +59,12 @@
             <div class="input-group-append">
                 <span class="input-group-text">Carrera: </span>
               </div>
-            <input type="text" class="form-control" id="campo-carrera" aria-describedby="basic-addon2">
+            <input type="text" class="form-control" id="campo-carrera" aria-describedby="basic-addon2" value="{{ $estudianteDetalle->universidadCarrera}}" disabled>
 
             <div class="input-group-append">
                 <span class="input-group-text">AÑO DE INGRESO: </span>
               </div>
-            <input type="text" class="form-control" id="campo-ingreso" aria-describedby="basic-addon2">
+            <input type="text" class="form-control" id="campo-ingreso" aria-describedby="basic-addon2" value="{{ $estudianteDetalle->universidadAnnoIngreso}}" disabled>
           </div>
 
           <!-- Hilera del formulario -- Materia -->
@@ -71,7 +72,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text">MATERIA EN LA QUE SOLICITA TUTORIA: </span>
             </div>
-            <input type="text" class="form-control" id ="campo-materia" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" name="campo-materia" id ="campo-materia" aria-describedby="basic-addon1">
           </div>
 
           <!-- Hilera del formulario -- Profesor -->
@@ -79,7 +80,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text">NOMBRE DEL/DE LA PROFESOR/A: </span>
             </div>
-            <input type="text" class="form-control" id ="campo-profesor" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" name="campo-profesor" id ="campo-profesor" aria-describedby="basic-addon1">
           </div>
 
           <!-- Hilera del formulario -- Creditos y ano de horas -->
@@ -87,19 +88,19 @@
             <div class="input-group-append">
                 <span class="input-group-text">CREDITOS DEL CURSO: </span>
               </div>
-            <input type="text" class="form-control" id="campo-creditos" aria-describedby="basic-addon2">
+            <input type="text" class="form-control" name="campo-creditos" id="campo-creditos" aria-describedby="basic-addon2">
 
             <div class="input-group-append">
                 <span class="input-group-text">HORA DE ESTUDIO: </span>
               </div>
-            <input type="text" class="form-control" id="campo-horas" aria-describedby="basic-addon2">
+            <input type="text" class="form-control" name="campo-horas" id="campo-horas" aria-describedby="basic-addon2">
           </div>
 
 
 
           <span class="input-group-text text-uppercase">Síntesis de la situación:</span>
           <div class="input-group">
-            <textarea class="form-control"></textarea>
+            <textarea  name="campo-situacion" class="form-control"></textarea>
           </div>
 
           <br>
@@ -166,10 +167,11 @@
           </div>
           <div class="input-group mb-3">
             <div class="input-group-append">
-                <button type="button" class="btn btn-primary" id="boton-enviar">Enviar solicitud</button>
+                <button type="submit" class="btn btn-primary" name="enviar" id="boton-enviar">Enviar solicitud</button>
             </div>
         </div>
     </div>
+    </form>
     @include("layouts.footer")
 </body>
 

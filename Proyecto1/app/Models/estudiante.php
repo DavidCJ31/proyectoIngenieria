@@ -47,8 +47,16 @@ class estudiante extends Model
     {
         return $this->belongsToMany('App\Models\clase', 'asistencia', 'estudiante_id', 'clase_id');
     }
-    public function estudianteDetalle()
+    public function estudiante_detalle()
     {
         return $this->hasOne('App\Models\estudiante_detalle', 'estudiante_id');
+    }
+    public function primer_seguimiento()
+    {
+        return $this->hasOne('App\Models\primer_seguimiento', 'estudiante_id');
+    }
+    public function disponibilidad_estudiante()
+    {
+        return $this->hasOne('App\Models\disponibilidad_estudiante', 'estudiante_id');
     }
 }

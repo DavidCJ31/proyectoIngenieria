@@ -18,8 +18,12 @@ class EstudianteDetalleController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
-        $estudiante = estudiante::find($id)->user;
-        return view('Estudiante/RegistroDeEntrada')->with('estudiante',$estudiante);
+        $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
+        if ($estudianteDetalle == NULL) {
+            return redirect()->route('EstudianteDetalle.create');
+        } else {
+            return redirect()->route('EstudianteDetalle.edit', [$id]);
+        }
     }
 
     /**
@@ -29,7 +33,9 @@ class EstudianteDetalleController extends Controller
      */
     public function create()
     {
-        //
+        $id = Auth::user()->id;
+        $estudiante = estudiante::find($id)->user;
+        return view('Estudiante/Detalle/RegistroDeEntrada')->with('estudiante', $estudiante);
     }
 
     /**
@@ -84,6 +90,7 @@ class EstudianteDetalleController extends Controller
         $estudiante_detalle->universidadFactoresFavorecen = $request->input('campo-universidad-factoresFavorecen');
         $estudiante_detalle->universidadFactoresObtaculizan = $request->input('campo-universidad-factoresObtaculizan');
         $estudiante_detalle->save();
+        return redirect('/EstudianteDetalle');
     }
 
     /**
@@ -105,7 +112,9 @@ class EstudianteDetalleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $estudiante = estudiante::find($id)->user;
+        $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
+        return view('Estudiante/Detalle/EditEstudianteDetalle')->with('estudiante', $estudiante)->with('estudianteDetalle', $estudianteDetalle);
     }
 
     /**
@@ -117,7 +126,51 @@ class EstudianteDetalleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        estudiante_detalle::where('estudiante_id', $id)
+            ->update([
+                'fecha_nacimiento' => $request->input('campo-fecha-nacimiento'),
+                'edad' => $request->input('campo-edad'),
+                'tel_celular' => $request->input('campo-tel-celular'),
+                'tel_habitacion' => $request->input('campo-tel-habitacion'),
+                'estado_civil' => $request->input('campo-estado-civil'),
+                'hijos' => $request->input('campo-hijos'),
+                'zona_procedencia' => $request->input('campo-procedencia'),
+                'direccion_actual' => $request->input('campo-direccion'),
+                'familiares_convive' => $request->input('campo-vivenda'),
+                'familiares_relacion' => $request->input('campo-relacion'),
+                'familiares_apoyo' => $request->input('campo-apoyo'),
+                'financiamiento' => $request->input('campo-financiacion'),
+                'trabaja' => $request->input('campo-trabaja'),
+                'trabajoLugar' => $request->input('campo-trabaja-lugar'),
+                'trabajoJornada' => $request->input('campo-trabaja-jornada'),
+                'trabajoMotivo' => $request->input('campo-trabaja-motivo'),
+                'antecedenteInstitucion' => $request->input('campo-antecedente-institucion'),
+                'antecedenteModalidadEgreso' => $request->input('campo-antecedente-modalidadEgreso'),
+                'antecedenteAnnoEgreso' => $request->input('campo-antecedente-annoEgreso'),
+                'antecedenteReprobo' => $request->input('campo-antecedente-reprobo'),
+                'antecedenteMateriasDificiles' => $request->input('campo-antecedente-materiasDificiles'),
+                'antecedenteAdecuacion' => $request->input('campo-antecedente-adecuacion'),
+                'antecedenteAdecuacionCuando' => $request->input('campo-antecedente-adecuacionCuando'),
+                'antecedenteAdecuacionTipo' => $request->input('campo-antecedente-adecuacionTipo'),
+                'universidadAdecuacion' => $request->input('campo-universidad-adecuacion'),
+                'universidadCarrera' => $request->input('campo-universidad-carrera'),
+                'universidadAnnoIngreso' => $request->input('campo-universidad-ingreso'),
+                'universidadNivel' => $request->input('campo-universidad-nivel'),
+                'universidadOpcion' => $request->input('campo-universidad-opcion'),
+                'universidadMotivacion' => $request->input('campo-universidad-motivo'),
+                'universidadSatisfecho' => $request->input('campo-universidad-satisfecho'),
+                'universidadOtraCarrera' => $request->input('campo-universidad-otraCarrera'),
+                'universidadOtraCarreraInstitucion' => $request->input('campo-universidad-otraCarrera-institucion'),
+                'universidadCursosRepetidos' => $request->input('campo-universidad-cursosRepetidos'),
+                'universidadHoraConsulta' => $request->input('campo-universidad-consulta'),
+                'universidadCursosMatriculados' => $request->input('campo-universidad-cursosMatriculados'),
+                'universidadHoraEstudio' => $request->input('campo-universidad-horasEstudio'),
+                'universidadTecnicasEstudio' => $request->input('campo-universidad-tecEstudio'),
+                'universidadPuntualClases' => $request->input('campo-universidad-puntualClases'),
+                'universidadFactoresFavorecen' => $request->input('campo-universidad-factoresFavorecen'),
+                'universidadFactoresObtaculizan' => $request->input('campo-universidad-factoresObtaculizan')
+            ]);
+        return redirect('/EstudianteDetalle');
     }
 
     /**

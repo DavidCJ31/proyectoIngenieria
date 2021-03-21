@@ -80,6 +80,7 @@
                         Opciones
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/PrimerSeguimiento">Solicitudes de Primer Seguimiento</a>
                         <a class="dropdown-item" href="/referencia">Referencias</a>
                         <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
                         <a class="dropdown-item" href="/horario-citas">Guardar horario</a>
@@ -102,7 +103,10 @@
                 </li>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/estudiantes-asignados">Asistencia</a>
+                    <a class="nav-link" href="/asistencia">Asistencia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/reporteEstudiantes">Reporte Estudiantes</a>
                 </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -122,12 +126,6 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/AgendarSeguimientos">Agendar Seguimiento</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Historial</a>
-                </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Opciones
@@ -135,7 +133,8 @@
                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/EstudianteDetalle">Fomulario Informacion Personal</a>
                         <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
-                        <a class="dropdown-item" href="/estudiante">Sus asesores</a>
+                        <a class="dropdown-item" href="/PrimerSeguimiento/create">Solicitar Primer Seguimiento</a>
+                        <a class="dropdown-item" href="/AgendarSeguimientos">Agendar Seguimiento</a>
                     </div>
                 </li>
             </ul>
@@ -151,12 +150,15 @@
             <ul class="navbar-nav navbar-rigth">
                 @if (Route::has('login'))
                 @auth
-                <li class="nav-item">
-                    <a class="nav-link" href="/user/profile" :active="request()->routeIs('profile.show')">
-                        {{ __('Perfil') }}
+
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       Perfil
                     </a>
-                </li>
-                <li class="nav-item">
+                    <div class="dropdown-menu " style="margin-left: -119%;" aria-labelledby="navbarDropdownMenuLink">
+                           <a class="nav-link" href="/user/profile" :active="request()->routeIs('profile.show')">
+                        {{ __('Actualizar Perfil') }}
+                    </a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
 
@@ -165,7 +167,15 @@
                             {{ __('Salir') }}
                         </a>
                     </form>
+
+                    </div>
                 </li>
+
+
+
+
+
+
                 @else
                 <li class="nav-item">
                     <a href="{{ route('login') }}" class="nav-link">Login</a>
