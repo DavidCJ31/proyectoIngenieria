@@ -6,10 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\estudiante;
-use App\Models\seguimiento;
 use App\Models\asesor;
-use App\Models\horario_asesor;
 use App\Models\estudiante_detalle;
+use App\Models\primer_seguimiento;
 use Illuminate\Support\Facades\Auth;
 
 class EstudianteController extends Controller
@@ -46,7 +45,7 @@ class EstudianteController extends Controller
         if (estudiante_detalle::where('estudiante_id', $id)->first()) {
             $estadoInformacionDetalle = true;
         }
-        return view('Estudiante/inicioEstudiante')->with('usuario',$usuario)->with('estadoInformacionDetalle', $estadoInformacionDetalle);
+        return view('Estudiante/inicioEstudiante')->with('usuario', $usuario);
     }
 
     /**
@@ -67,7 +66,7 @@ class EstudianteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -78,7 +77,12 @@ class EstudianteController extends Controller
      */
     public function show($id)
     {
-        //
+        
+        $estudiante = estudiante::where('id', $id)->first();
+        $user = User::find($estudiante->id);
+        $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
+        $primer = primer_seguimiento::where('estudiante_id', $id)->first();
+        return view('Estudiante/ShowPrimerSeguimiento')->with('estudiante', $user)->with('estudianteDetalle', $estudianteDetalle)->with('primerSeguimiento', $primer);
     }
 
     /**

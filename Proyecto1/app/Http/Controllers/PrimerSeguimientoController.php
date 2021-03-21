@@ -21,7 +21,8 @@ class PrimerSeguimientoController extends Controller
     {
         $id = Auth::user()->id;
         $asesor = asesor::find($id)->user;
-        return view('Asesor/IndexPrimerSeguimiento')->with('asesor', $asesor);
+        $primer_seguimiento = primer_seguimiento::where('estado', 'Pendiente')->get();
+        return view('Asesor/IndexPrimerSeguimiento')->with('asesor', $asesor)->with('seguimientos', $primer_seguimiento);
     }
 
     /**
@@ -46,7 +47,13 @@ class PrimerSeguimientoController extends Controller
     public function store(Request $request)
     {
         $primer_seguimiento = new primer_seguimiento;
+        $primer_seguimiento->estudiante_id = Auth::user()->id;
         $primer_seguimiento->materiaTutoria = $request->input('campo-materia');
+        $primer_seguimiento->profesorCurso = $request->input('campo-profesor');
+        $primer_seguimiento->creditoCruso = $request->input('campo-creditos');
+        $primer_seguimiento->situacion = $request->input('campo-situacion');
+        $primer_seguimiento->tipoTutoria = 'Individual';
+        $primer_seguimiento->estado = 'Pendiente';
         $primer_seguimiento->save();
     }
 
@@ -69,9 +76,9 @@ class PrimerSeguimientoController extends Controller
      */
     public function edit($id)
     {
-        $estudiante = estudiante::find($id)->user;
-        $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
-        return view('Estudiante/PrimerSeguimiento')->with('estudiante', $estudiante)->with('estudianteDetalle', $estudianteDetalle);
+        $idAsesor = Auth::user()->id;
+        $asesor = asesor::find($idAsesor)->user;
+        return view('Asesor/CalendarizarPrimerSeguimiento')->with('asesor', $asesor);
     }
 
     /**

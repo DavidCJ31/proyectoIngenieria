@@ -16,8 +16,6 @@
 <!--Main Navigation-->
 @include('layouts.header')
 <!--Main Navigation-->
-<form method="post" action="/PrimerSeguimiento" id="formPrimerSeguimiento">
-        @csrf
     <!-- Aqui empieza el  formulario -->
     <div class= "form-card">
         <h4>VICERRECTORIA DE DOCENCIA</h4><H5>EXITO ACADEMICO</H5><h4>SOLICITUD DE TUTORIA</h4>
@@ -72,7 +70,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text">MATERIA EN LA QUE SOLICITA TUTORIA: </span>
             </div>
-            <input type="text" class="form-control" name="campo-materia" id ="campo-materia" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" id ="campo-materia" aria-describedby="basic-addon1" value="{{ $primerSeguimiento->materiaTutoria}}" disabled>
           </div>
 
           <!-- Hilera del formulario -- Profesor -->
@@ -80,7 +78,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text">NOMBRE DEL/DE LA PROFESOR/A: </span>
             </div>
-            <input type="text" class="form-control" name="campo-profesor" id ="campo-profesor" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" id ="campo-profesor" aria-describedby="basic-addon1" value="{{ $primerSeguimiento->profesorCurso}}" disabled>
           </div>
 
           <!-- Hilera del formulario -- Creditos y ano de horas -->
@@ -88,21 +86,12 @@
             <div class="input-group-append">
                 <span class="input-group-text">CREDITOS DEL CURSO: </span>
               </div>
-            <input type="text" class="form-control" name="campo-creditos" id="campo-creditos" aria-describedby="basic-addon2">
-
-            <div class="input-group-append">
-                <span class="input-group-text">HORA DE ESTUDIO: </span>
-              </div>
-            <input type="text" class="form-control" name="campo-horas" id="campo-horas" aria-describedby="basic-addon2">
+            <input type="text" class="form-control" id="campo-creditos" aria-describedby="basic-addon2" value="{{ $primerSeguimiento->creditoCruso}}" disabled>
           </div>
-
-
-
           <span class="input-group-text text-uppercase">Síntesis de la situación:</span>
           <div class="input-group">
-            <textarea  name="campo-situacion" class="form-control"></textarea>
+            <textarea  class="form-control" disabled> {{ $primerSeguimiento->situacion}} </textarea>
           </div>
-
           <br>
           <h5> DISPONIBILIDAD DE HORARIO  </h5>
           <div class="table-responsive ">
@@ -165,13 +154,7 @@
               </tbody>
             </table>
           </div>
-          <div class="input-group mb-3">
-            <div class="input-group-append">
-                <button type="submit" class="btn btn-primary" name="enviar" id="boton-enviar">Enviar solicitud</button>
-            </div>
-        </div>
     </div>
-    </form>
     @include("layouts.footer")
 </body>
 
@@ -190,5 +173,3 @@
 
 
 </script>
-
-

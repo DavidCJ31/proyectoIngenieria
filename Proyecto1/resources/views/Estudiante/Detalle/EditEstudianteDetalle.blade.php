@@ -18,7 +18,7 @@
     <!--Main Navigation-->
     @include('layouts.header')
     <!--Main Navigation-->
-    <form method="post" action="/EstudianteDetalle/{{$estudiante->id}}" id="formInformacionDetallada">
+    <form method="post" action="/EstudianteDetalle/{{$estudiante-> id}}" id="formInformacionDetallada">
         @csrf
         @method('PUT')
         <!--<input type="hidden" name="_method" value="PUT"> -->

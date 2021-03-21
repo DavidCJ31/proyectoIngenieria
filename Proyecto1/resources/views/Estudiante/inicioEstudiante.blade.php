@@ -21,16 +21,11 @@
     <div class="container-inicio">
         <div class="efecto-inicio">
             <h1> Hola {{ $usuario->name }}</h1>
+            
         </div>
     </div>
 
-    {{
     
-    @if($estadoInformacionDetalle){
-     <!--mostrar el modal-->  
-    }
-    
-    }}
 
     @include("layouts.footer")
 </body>

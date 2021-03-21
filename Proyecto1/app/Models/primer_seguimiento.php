@@ -8,7 +8,6 @@ class primer_seguimiento extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-        'id',
         'estudiante_id',
         'materiaTutoria',
         'profesorCurso',

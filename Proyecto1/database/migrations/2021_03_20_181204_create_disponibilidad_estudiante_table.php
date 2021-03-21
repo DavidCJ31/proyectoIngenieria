@@ -13,7 +13,7 @@ class CreateDisponibilidadEstudianteTable extends Migration
      */
     public function up()
     {
-        Schema::create('disponibilidad_estudiante', function (Blueprint $table) {
+        Schema::create('disponibilidad_estudiantes', function (Blueprint $table) {
             $table->id('id');
             $table->integer('estudiante_id');
             $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
@@ -29,6 +29,6 @@ class CreateDisponibilidadEstudianteTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('disponibilidad_estudiante');
+        Schema::dropIfExists('disponibilidad_estudiantes');
     }
 }

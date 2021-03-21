@@ -91,6 +91,8 @@ Route::resources([
     '/CursosDetallados' => DetalleCursoController::class,
     '/AgendarSeguimientos' => SeguimientoController::class,
     '/Clases' => ClaseController::class,
+    '/horario-citas' => HorarioAsesorController::class,
+    '/Cursos' => CursoController::class,
     '/PrimerSeguimiento' => PrimerSeguimientoController::class
 ]);
 
@@ -105,10 +107,6 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-
-
-Route::resource('/horario-citas', HorarioAsesorController::class);
-Route::resource('/Cursos', CursoController::class);
 
 Route::get('/informe-mensual', function () {
     return view('informe-mensual');

@@ -55,4 +55,8 @@ class estudiante extends Model
     {
         return $this->hasOne('App\Models\primer_seguimiento', 'estudiante_id');
     }
+    public function disponibilidad_estudiante()
+    {
+        return $this->hasOne('App\Models\disponibilidad_estudiante', 'estudiante_id');
+    }
 }
