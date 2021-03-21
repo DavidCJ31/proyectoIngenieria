@@ -96,7 +96,7 @@ Route::resources([
     '/horario-citas' => HorarioAsesorController::class,
     '/Cursos' => CursoController::class,
     '/PrimerSeguimiento' => PrimerSeguimientoController::class,
-    '/CalendarizarPrimerSeguimiento' => CalendarizarPSController::class
+    '/CalendarizarPrimerSeguimiento' => CalendarizarPSController::class,
     '/PrimerSeguimiento' => PrimerSeguimientoController::class,
     '/SeguimientoRegular' => SeguimientoRegularController::class
 ]);
