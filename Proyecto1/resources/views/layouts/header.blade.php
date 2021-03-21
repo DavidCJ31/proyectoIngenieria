@@ -3,7 +3,7 @@
 <header>
     <!-- ****** Bara del header ************ -->
     <nav class="navbar navbar-expand-lg navbar-dark default-color">
-        <a class="logoHeader"><img src="imagenes/logo-largo.png" id="logoLargo" /></a>
+        <a class="logoHeader"><img src="/imagenes/logo-largo.png" id="logoLargo" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -82,7 +82,6 @@
                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/PrimerSeguimiento">Solicitudes de Primer Seguimiento</a>
                         <a class="dropdown-item" href="/referencia">Referencias</a>
-                        <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
                         <a class="dropdown-item" href="/horario-citas">Guardar horario</a>
                         <a class="dropdown-item" href="/horarioAsesor">Tabla horarios</a>
                     </div>
@@ -114,7 +113,6 @@
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/informe-mensual">Informe mensual</a>
-                        <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
                         <a class="dropdown-item" href="/estudiantes-asignados">Estudiantes asignados</a>
                     </div>
                 </li>
@@ -132,12 +130,12 @@
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/EstudianteDetalle">Fomulario Informacion Personal</a>
-                        <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
                         <a class="dropdown-item" href="/PrimerSeguimiento/create">Solicitar Primer Seguimiento</a>
+                        <a class="dropdown-item" href="/SeguimientoRegular/create">Solicitar Seguimiento Regular</a>
                         <a class="dropdown-item" href="/AgendarSeguimientos">Agendar Seguimiento</a>
                     </div>
                 </li>
-            </ul>
+            </ul> 
             @break
             @default
             <ul class="navbar-nav mr-auto">
@@ -151,25 +149,25 @@
                 @if (Route::has('login'))
                 @auth
 
-                <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       Perfil
-                    </a>
-                    <div class="dropdown-menu " style="margin-left: -119%;" aria-labelledby="navbarDropdownMenuLink">
-                           <a class="nav-link" href="/user/profile" :active="request()->routeIs('profile.show')">
+        <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Perfil
+            </a>
+                <div class="dropdown-menu " style="margin-left: -119%;" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="nav-link" href="/user/profile" :active="request()->routeIs('profile.show')">
                         {{ __('Actualizar Perfil') }}
                     </a>
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                this.closest('form').submit();">
+                                {{ __('Salir') }}
+                            </a>
+                        </form>
 
-                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                            this.closest('form').submit();">
-                            {{ __('Salir') }}
-                        </a>
-                    </form>
+                </div>
+        </li>
 
-                    </div>
-                </li>
 
 
 

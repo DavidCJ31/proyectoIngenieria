@@ -59,4 +59,8 @@ class estudiante extends Model
     {
         return $this->hasOne('App\Models\disponibilidad_estudiante', 'estudiante_id');
     }
+    public function seguimiento_regular()
+    {
+        return $this->hasOne('App\Models\seguimiento_regular', 'estudiante_id');
+    }
 }

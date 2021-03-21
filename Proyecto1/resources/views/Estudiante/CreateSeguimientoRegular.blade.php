@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solicitud</title>
+    <title>Solicitud Regular </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
     <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
     <link href="{{ asset('css/estilo-Form.css') }}" rel="stylesheet">
@@ -16,11 +16,15 @@
 <!--Main Navigation-->
 @include('layouts.header')
 <!--Main Navigation-->
-<form method="post" action="/PrimerSeguimiento" id="formPrimerSeguimiento">
-        @csrf
+
+ <form method="post" action="/SeguimientoRegular" id="formSeguimientoRegular">
+        @csrf 
+
     <!-- Aqui empieza el  formulario -->
     <div class= "form-card">
-        <h4>VICERRECTORIA DE DOCENCIA</h4><H5>EXITO ACADEMICO</H5><h4>SOLICITUD DEL PRIMER SEGUIMIENTO</h4>
+        <h4>VICERRECTORIA DE DOCENCIA</h4><H5>EXITO ACADEMICO</H5><h4>SOLICITUD DE SEGUIMIENTO REGULAR</h4>
+        
+        <br>
         <!-- Hilera del formulario -- nombre -->
         <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -66,44 +70,14 @@
               </div>
             <input type="text" class="form-control" id="campo-ingreso" aria-describedby="basic-addon2" value="{{ $estudianteDetalle->universidadAnnoIngreso}}" disabled>
           </div>
-
-          <!-- Hilera del formulario -- Materia -->
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text">MATERIA EN LA QUE SOLICITA TUTORIA: </span>
-            </div>
-            <input type="text" class="form-control" name="campo-materia" id ="campo-materia" aria-describedby="basic-addon1">
-          </div>
-
-          <!-- Hilera del formulario -- Profesor -->
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text">NOMBRE DEL/DE LA PROFESOR/A: </span>
-            </div>
-            <input type="text" class="form-control" name="campo-profesor" id ="campo-profesor" aria-describedby="basic-addon1">
-          </div>
-
-          <!-- Hilera del formulario -- Creditos y ano de horas -->
-          <div class="input-group mb-3">
-            <div class="input-group-append">
-                <span class="input-group-text">CREDITOS DEL CURSO: </span>
-              </div>
-            <input type="text" class="form-control" name="campo-creditos" id="campo-creditos" aria-describedby="basic-addon2">
-
-            <div class="input-group-append">
-                <span class="input-group-text">HORA DE ESTUDIO: </span>
-              </div>
-            <input type="text" class="form-control" name="campo-horas" id="campo-horas" aria-describedby="basic-addon2">
-          </div>
-
-
-
           <span class="input-group-text text-uppercase">Síntesis de la situación:</span>
           <div class="input-group">
             <textarea  name="campo-situacion" class="form-control"></textarea>
           </div>
-
+          
           <br>
+          <br>
+
           <h5> DISPONIBILIDAD DE HORARIO  </h5>
           <div class="table-responsive ">
             <table class="table table-bordered">
@@ -171,7 +145,7 @@
             </div>
         </div>
     </div>
-    </form>
+      </form> 
     @include("layouts.footer")
 </body>
 

@@ -40,7 +40,8 @@
                 {{ __('Olvido su contraseña?') }}
             </a>
             @endif
+            
         </div><!-- /card-container -->
     </div><!-- /container -->
-
+    @include("layouts.footer")
 </body>

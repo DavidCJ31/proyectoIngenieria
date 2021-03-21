@@ -33,7 +33,6 @@
         <hr class="col-xs-hidden col-md-12 breakContainer"  style= "background-color:#f8f9fa;">
         <div style="text-align: center; margin: auto;">
         <br>
-       
         <p class="company-name" >Universidad Nacional de Costa Rica © 2021 Copyright .Todos los derechos reservados. </p>  
         </div>
 </footer>

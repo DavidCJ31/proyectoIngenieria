@@ -16,6 +16,7 @@ use App\Http\Controllers\HorarioAsesorController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\SeguimientoController;
 use App\Http\Controllers\PrimerSeguimientoController;
+use App\Http\Controllers\SeguimientoRegularController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -93,7 +94,8 @@ Route::resources([
     '/Clases' => ClaseController::class,
     '/horario-citas' => HorarioAsesorController::class,
     '/Cursos' => CursoController::class,
-    '/PrimerSeguimiento' => PrimerSeguimientoController::class
+    '/PrimerSeguimiento' => PrimerSeguimientoController::class,
+    '/SeguimientoRegular' => SeguimientoRegularController::class
 ]);
 
 Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
