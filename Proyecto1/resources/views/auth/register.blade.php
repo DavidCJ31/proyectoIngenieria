@@ -13,10 +13,9 @@
     @include("Welcome.headerWelcome")
     </br>
     <x-jet-authentication-card style="background-color: red;">
+   
         <x-slot name="logo">
-            <center>
-                <img id="profile-img" style="width: 80%;" class="profile-img-card" src="imagenes/logo.jpg" />
-            </center>
+   
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -69,5 +68,7 @@
                 </x-jet-button>
             </div>
         </form>
+
     </x-jet-authentication-card>
 </x-guest-layout>
+@include("layouts.footer")

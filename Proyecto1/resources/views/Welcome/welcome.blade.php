@@ -25,12 +25,9 @@
 
 <body class="antialiased">
     @include("Welcome.headerWelcome")
-    <br><br>
-    <div
-        class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
+
+    <div>
+                <br><br>  
                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
                             <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -39,7 +36,7 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="imagenes/slider1.png" class="d-block w-100" alt="..." width="420px"
+                                <img src="imagenes/carruestudiante.jpg" class="d-block w-100" alt="..." width="420px"
                                     height="450px">
                             </div>
                             <div class="carousel-item">
@@ -47,7 +44,7 @@
                                     height="450px">
                             </div>
                             <div class="carousel-item">
-                                <img src="imagenes/slider3.png" class="d-block w-100" alt="..." width="420px"
+                                <img src="imagenes/slider3.jpg" class="d-block w-100" alt="..." width="420px"
                                     height="450px">
                             </div>
                         </div>
@@ -63,11 +60,9 @@
                         </a>
                     </div>
                 </div>
-            </div>
-        </div>
-
-
-
+        <br>
+        <br>
+        <br>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

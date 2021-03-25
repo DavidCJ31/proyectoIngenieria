@@ -76,9 +76,6 @@ class PrimerSeguimientoController extends Controller
      */
     public function edit($id)
     {
-        $idAsesor = Auth::user()->id;
-        $asesor = asesor::find($idAsesor)->user;
-        return view('Asesor/CalendarizarPrimerSeguimiento')->with('asesor', $asesor);
     }
 
     /**
