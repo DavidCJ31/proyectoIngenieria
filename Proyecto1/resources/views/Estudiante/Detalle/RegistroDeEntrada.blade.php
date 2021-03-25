@@ -111,13 +111,13 @@
                 <div class="input-group-append">
                     <span class="input-group-text">ZONA DE PROCEDENCIA:</span>
                 </div>
-                <input type="text" class="form-control" name="campo-procedencia" id="campo-procedencia" aria-describedby="basic-addon2">
+                <input type="text" class="form-control" name="campo-procedencia" id="campo-procedencia" aria-describedby="basic-addon2" require>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">DIRECCIÓN ACTUAL:</span>
                 </div>
-                <input type="text" class="form-control" name="campo-direccion" id="campo-direccion" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" name="campo-direccion" id="campo-direccion" aria-describedby="basic-addon1" require>
             </div>
             <br>
             <h5> DATOS FAMILIARES </h5>
@@ -126,13 +126,13 @@
                 <div class="input-group-append">
                     <span class="input-group-text">¿Con quién/es vive? </span>
                 </div>
-                <input type="text" class="form-control" name="campo-vivenda" id="campo-vivenda" aria-describedby="basic-addon2">
+                <input type="text" class="form-control" name="campo-vivenda" id="campo-vivenda" aria-describedby="basic-addon2" require>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-append">
                     <span class="input-group-text">¿Cómo es su relación con esta/s persona/s? </span>
                 </div>
-                <input type="text" class="form-control" name="campo-relacion" id="campo-relacion" aria-describedby="basic-addon2">
+                <input type="text" class="form-control" name="campo-relacion" id="campo-relacion" aria-describedby="basic-addon2" require>
             </div>
             <div class="input-group-append">
                 <span class="input-group-text" style="margin-right: 15px;">¿Recibe el apoyo de la familia para continuar con sus estudios?: </span>
@@ -246,16 +246,16 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Nombre de la institución: </span>
                 </div>
-                <input type="text" class="form-control" name="campo-antecedente-institucion" id="campo-antecedente-institucion" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" name="campo-antecedente-institucion" id="campo-antecedente-institucion" aria-describedby="basic-addon1" require>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Modalidad de egresó </span>
                 </div>
-                <input type="text" class="form-control" name="campo-antecedente-modalidadEgreso" id="campo-antecedente-modalidadEgreso" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" name="campo-antecedente-modalidadEgreso" id="campo-antecedente-modalidadEgreso" aria-describedby="basic-addon1" require>
                 <div class="input-group-prepend">
                     <span class="input-group-text">Año en que egresó </span>
-                    <input type="number" class="form-control" name="campo-antecedente-annoEgreso" id="campo-antecedente-annoEgreso" aria-describedby="basic-addon1" min="1900" onclick="AnnoActual()">
+                    <input type="number" class="form-control" name="campo-antecedente-annoEgreso" id="campo-antecedente-annoEgreso" aria-describedby="basic-addon1" min="1900" onclick="AnnoActual()" require>
                 </div>
             </div>
             <div class="input-group mb-3">
@@ -348,17 +348,17 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Carrera que estudia: </span>
                 </div>
-                <input type="text" class="form-control" name="campo-universidad-carrera" id="campo-materia" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" name="campo-universidad-carrera" id="campo-materia" aria-describedby="basic-addon1" require>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Año de ingreso a la UNA: </span>
-                    <input type="number" class="form-control" name="campo-universidad-ingreso" id="campo-universidad-ingreso" aria-describedby="basic-addon1" min="1976">
+                    <input type="number" class="form-control" name="campo-universidad-ingreso" id="campo-universidad-ingreso" aria-describedby="basic-addon1" min="1976" require>
                 </div>
                 <div class="input-group-prepend">
                     <span class="input-group-text"> Nivel que cursa: </span>
                 </div>
-                <input type="text" class="form-control" name="campo-universidad-nivel" id="campo-universidad-nivel" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" name="campo-universidad-nivel" id="campo-universidad-nivel" aria-describedby="basic-addon1" require>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -508,7 +508,7 @@
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">¿Cuántos cursos tiene matriculados? </span>
-                    <input type="number" class="form-control" name="campo-universidad-cursosMatriculados" id="campo-universidad-cursosMatriculados" aria-describedby="basic-addon1" min="0">
+                    <input type="number" class="form-control" name="campo-universidad-cursosMatriculados" id="campo-universidad-cursosMatriculados" aria-describedby="basic-addon1" min="0" require>
                 </div>
             </div>
             <div class="input-group mb-3">

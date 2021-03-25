@@ -57,10 +57,14 @@ class estudiante extends Model
     }
     public function disponibilidad_estudiante()
     {
-        return $this->hasOne('App\Models\disponibilidad_estudiante', 'estudiante_id');
+        return $this->hasMany('App\Models\disponibilidad_estudiante', 'estudiante_id');
     }
     public function seguimiento_regular()
     {
-        return $this->hasOne('App\Models\seguimiento_regular', 'estudiante_id');
+        return $this->hasMany('App\Models\seguimiento_regular', 'estudiante_id');
+    }
+    public function reunion()
+    {
+        return $this->hasMany('App\Models\reunion', 'estudiante_id');
     }
 }

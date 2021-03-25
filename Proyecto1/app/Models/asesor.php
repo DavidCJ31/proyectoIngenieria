@@ -31,4 +31,8 @@ class asesor extends Model
     {
         return $this->belongsToMany('App\Models\estudiante', 'lista_asesor_estudiantes', 'asesor_id', 'estudiante_id');
     }
+    public function reunion()
+    {
+        return $this->hasMany('App\Models\reunion', 'estudiante_id');
+    }
 }

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use App\Models\reunion;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\estudiante_detalle;
 use App\Models\estudiante;
 use App\Models\asesor;
-use Illuminate\Support\Facades\Auth;
 
-class CalendarizarPSController extends Controller
+class ReunionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -45,10 +45,10 @@ class CalendarizarPSController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\reunion  $reunion
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(reunion $reunion)
     {
         //
     }
@@ -56,24 +56,22 @@ class CalendarizarPSController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\reunion  $reunion
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(reunion $reunion)
     {
-        $idAsesor = Auth::user()->id;
-        $asesor = asesor::find($idAsesor)->user;
-        return view('Asesor/CalendarizarReuniones')->with('asesor', $asesor);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\reunion  $reunion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, reunion $reunion)
     {
         //
     }
@@ -81,10 +79,10 @@ class CalendarizarPSController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\reunion  $reunion
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(reunion $reunion)
     {
         //
     }
