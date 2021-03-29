@@ -130,7 +130,9 @@ Route::get('/prueba', function () {
 });
 
 Route::get('/contactanos', function () {
-    $correo = new ContactanosMailable;
+    $contacto = "Hola";
+    $correo = new ContactanosMailable($contacto);
+    $correo->subject("Holamundo");
     Mail::to('exitoacademico2021@gmail.com')->send($correo);
     return "Mensaje Enviado";
 });

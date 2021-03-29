@@ -9,5 +9,6 @@
 <body>
     <h1>Correo Electronico</h1>
     <p>Este es el Primero correo</p>
+    <p>{{$estudiante->name}}</p>
 </body>
 </html>

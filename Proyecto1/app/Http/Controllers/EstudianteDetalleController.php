@@ -48,6 +48,7 @@ class EstudianteDetalleController extends Controller
      */
     public function store(Request $request)
     {
+   
 
         $estudiante_detalle = new estudiante_detalle;
         $estudiante_detalle->estudiante_id = $request->input('campo-cedula');
@@ -93,7 +94,9 @@ class EstudianteDetalleController extends Controller
         $estudiante_detalle->universidadFactoresFavorecen = $request->input('campo-universidad-factoresFavorecen');
         $estudiante_detalle->universidadFactoresObtaculizan = $request->input('campo-universidad-factoresObtaculizan');
         $estudiante_detalle->save();
-        $correo = new ContactanosMailable;
+
+        
+        $correo = new ContactanosMailable('Hola');
         Mail::to('exitoacademico2021@gmail.com')->send($correo);
         return redirect('/EstudianteDetalle');
     }
@@ -131,6 +134,9 @@ class EstudianteDetalleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $id = Auth::user()->id;
+        $estudiante = estudiante::find($id)->user;
+        
         estudiante_detalle::where('estudiante_id', $id)
             ->update([
                 'fecha_nacimiento' => $request->input('campo-fecha-nacimiento'),
@@ -175,6 +181,9 @@ class EstudianteDetalleController extends Controller
                 'universidadFactoresFavorecen' => $request->input('campo-universidad-factoresFavorecen'),
                 'universidadFactoresObtaculizan' => $request->input('campo-universidad-factoresObtaculizan')
             ]);
+                   
+        $correo = new ContactanosMailable($estudiante);
+        Mail::to('mariosiua@gmail.com')->send($correo);
         return redirect('/EstudianteDetalle');
     }
 

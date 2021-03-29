@@ -16,10 +16,13 @@ class ContactanosMailable extends Mailable
      *
      * @return void
      */
-    public $subjet = "Informacion de Contacto";
-    public function __construct()
+    public $subject = "Informacion de Contacto";
+    public $contacto = "Informacion";
+
+
+    public function __construct($contacto)
     {
-        //
+        $this->contacto = $contacto;
     }
 
     /**
@@ -29,6 +32,6 @@ class ContactanosMailable extends Mailable
      */
     public function build()
     {
-        return $this->view('contactanos');
+        return $this->view('contactanos')->with('estudiante', $this->contacto);
     }
 }
