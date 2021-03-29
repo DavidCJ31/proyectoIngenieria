@@ -4,6 +4,9 @@ namespace App\Actions\Fortify;
 
 use App\Models\estudiante;
 use App\Models\User;
+use App\Mail\newusuario;
+
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -41,7 +44,8 @@ class CreateNewUser implements CreatesNewUsers
         estudiante::create([
             'id' => $input['id']
         ]);
-
+        $correo = new newusuario($usuario);
+        Mail::to('exitoacademico2021@gmail.com')->send($correo);
         return $usuario;
     }
 }

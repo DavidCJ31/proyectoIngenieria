@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 use App\Mail\ContactanosMailable;
+use App\Mail\newusuario;
 
 
 use App\Models\User;
@@ -129,13 +130,13 @@ Route::get('/prueba', function () {
     return view('Tutor/prueba');
 });
 
-Route::get('/contactanos', function () {
-    $contacto = "Hola";
-    $correo = new ContactanosMailable($contacto);
-    $correo->subject("Holamundo");
-    Mail::to('exitoacademico2021@gmail.com')->send($correo);
-    return "Mensaje Enviado";
-});
+//Route::get('/contactanos', function () {
+//    $contacto = "Hola";
+//    $correo = new ContactanosMailable($contacto);
+//    $correo->subject("Holamundo");
+//    Mail::to('exitoacademico2021@gmail.com')->send($correo);
+//    return "Mensaje Enviado";
+//});
 
 Route::get('/usuarios', [PersonaController::class, 'tablaUsuarios']);
 Route::get('/estudiante', [EstudianteController::class, 'tablaEstudiantes']);

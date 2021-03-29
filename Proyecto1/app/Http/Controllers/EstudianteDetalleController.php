@@ -49,7 +49,9 @@ class EstudianteDetalleController extends Controller
     public function store(Request $request)
     {
    
-
+        $id = Auth::user()->id;
+        $estudiante = estudiante::find($id)->user;
+        
         $estudiante_detalle = new estudiante_detalle;
         $estudiante_detalle->estudiante_id = $request->input('campo-cedula');
         $estudiante_detalle->fecha_nacimiento = $request->input('campo-fecha-nacimiento');
@@ -96,9 +98,10 @@ class EstudianteDetalleController extends Controller
         $estudiante_detalle->save();
 
         
-        $correo = new ContactanosMailable('Hola');
-        Mail::to('exitoacademico2021@gmail.com')->send($correo);
-        return redirect('/EstudianteDetalle');
+        $correo = new ContactanosMailable($estudiante);
+        Mail::to($estudiante->email)->send($correo);
+        return redirect('/Estudiante');
+
     }
 
     /**
@@ -183,8 +186,8 @@ class EstudianteDetalleController extends Controller
             ]);
                    
         $correo = new ContactanosMailable($estudiante);
-        Mail::to('mariosiua@gmail.com')->send($correo);
-        return redirect('/EstudianteDetalle');
+        Mail::to($estudiante->email)->send($correo);
+        return redirect('/Estudiante');
     }
 
     /**

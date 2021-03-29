@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\administrador;
 use App\Models\asesor;
 use App\Models\User;
 use App\Models\tutor;
 use App\Http\Controllers\Controller;
 use App\Models\super_administrador;
+use App\Mail\newusuario;
+
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -53,6 +57,9 @@ class UserController extends Controller
         $user->rol = $request->input('rol');
         $user->save();
 
+        $correo = new newusuario($user);
+        Mail::to('exitoacademico2021@gmail.com')->send($correo);
+        
         if($user->rol == 0){
             $superAdministrador = new super_administrador();
             $superAdministrador->id = $user->id;
@@ -73,6 +80,8 @@ class UserController extends Controller
             $tutor->id = $user->id;
             $tutor->save();
         }
+
+ 
         return redirect('logged_in');
         /*
         if (isset($_POST["usu"])) {
