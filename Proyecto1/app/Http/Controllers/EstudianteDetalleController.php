@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\estudiante_detalle;
 use App\Models\estudiante;
+use App\Mail\ContactanosMailable;
 
 class EstudianteDetalleController extends Controller
 {
@@ -33,6 +34,7 @@ class EstudianteDetalleController extends Controller
      */
     public function create()
     {
+  
         $id = Auth::user()->id;
         $estudiante = estudiante::find($id)->user;
         return view('Estudiante/Detalle/RegistroDeEntrada')->with('estudiante', $estudiante);
@@ -46,6 +48,7 @@ class EstudianteDetalleController extends Controller
      */
     public function store(Request $request)
     {
+
         $estudiante_detalle = new estudiante_detalle;
         $estudiante_detalle->estudiante_id = $request->input('campo-cedula');
         $estudiante_detalle->fecha_nacimiento = $request->input('campo-fecha-nacimiento');
@@ -90,6 +93,8 @@ class EstudianteDetalleController extends Controller
         $estudiante_detalle->universidadFactoresFavorecen = $request->input('campo-universidad-factoresFavorecen');
         $estudiante_detalle->universidadFactoresObtaculizan = $request->input('campo-universidad-factoresObtaculizan');
         $estudiante_detalle->save();
+        $correo = new ContactanosMailable;
+        Mail::to('exitoacademico2021@gmail.com')->send($correo);
         return redirect('/EstudianteDetalle');
     }
 

@@ -20,6 +20,10 @@ use App\Http\Controllers\CalendarizarPSController;
 use App\Http\Controllers\SeguimientoRegularController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
+use App\Mail\ContactanosMailable;
+
 
 use App\Models\User;
 use App\Models\estudientes;
@@ -125,10 +129,11 @@ Route::get('/prueba', function () {
     return view('Tutor/prueba');
 });
 
-
-
-//Route::resource('/horario', HorarioAsesorController::class);
-
+Route::get('/contactanos', function () {
+    $correo = new ContactanosMailable;
+    Mail::to('exitoacademico2021@gmail.com')->send($correo);
+    return "Mensaje Enviado";
+});
 
 Route::get('/usuarios', [PersonaController::class, 'tablaUsuarios']);
 Route::get('/estudiante', [EstudianteController::class, 'tablaEstudiantes']);
