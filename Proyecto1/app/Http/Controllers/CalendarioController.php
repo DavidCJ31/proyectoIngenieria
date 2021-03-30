@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\estudiante;
 use App\Models\asesor;
+use App\Models\primer_seguimiento;
 
 class CalendarioController extends Controller
 {
@@ -39,10 +40,22 @@ class CalendarioController extends Controller
      */
     public function store(Request $request)
     {
-        $datosReunion = request()->except(['_token','_method','duracion', 'id']);
-        print_r($datosReunion);
-        reunion::insert($datosReunion);
-       /* $reunion = new reunion;
+        /*
+        $reunion = reunion::where('asesor_id', Auth::user()->id)
+            ->where('estudiante_id', $request->input('estudiante_id'))
+            ->where('estado', 'Pendiente')
+            ->first();
+
+        $datosReunion = request()->except(['_token', '_method', 'id']);
+
+        if ($reunion == null) {
+            print_r($datosReunion);
+            reunion::insert($datosReunion);
+        } else {
+            print_r("Error");
+        }
+*/
+        /* $reunion = new reunion;
         $reunion->id = 1;
         $reunion->asesor_id = Auth::user()->id;
         $reunion->estudiante_id = $request->input('estudiante_id');
@@ -63,8 +76,11 @@ class CalendarioController extends Controller
      * @param  \App\Models\reunion  $reunion
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
+        $reuniones = reunion::where('asesor_id', Auth::user()->id)->get();
+        $data['eventos'] = $reuniones;
+        return response()->json($data['eventos']);
     }
 
     /**
@@ -87,6 +103,9 @@ class CalendarioController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $datosReunion = request()->except(['_token', '_method']);
+        $respuesta = reunion::where('id', '=', $id)->update($datosReunion);
+        return response()->json($respuesta);
     }
 
     /**
@@ -97,6 +116,35 @@ class CalendarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $reuniones = reunion::findOrFail($id);
+        reunion::destroy($id);
+        return response()->json($id);
+    }
+
+    public function AgendarPrimerSeguimiento(Request $request)
+    {
+        $reunion = reunion::where('asesor_id', Auth::user()->id)
+            ->where('estudiante_id', $request->input('estudiante_id'))
+            ->where('estado', 'Pendiente')
+            ->first();
+        $datosReunion = request()->except(['_token', '_method', 'id']);
+
+        if ($reunion == null) {
+            print_r($datosReunion);
+            reunion::insert($datosReunion);
+            $primer_seguimiento = new primer_seguimiento;
+            $primer_seguimiento->estudiante_id = primer_seguimiento::where('estudiante_id', $request->input('estudiante_id'))->update(['estado' => 'Revisado']);
+        } else {
+            print_r("Error");
+        }
+    }
+
+    public function EliminarPrimerSeguimiento(Request $request,$id)
+    {
+        $reuniones = reunion::findOrFail($id);
+        reunion::destroy($id);
+        $primer_seguimiento = new primer_seguimiento;
+        $primer_seguimiento->estudiante_id = primer_seguimiento::where('estudiante_id', $request->input('estudiante_id'))->update(['estado' => 'Pendiente']);
+        return response()->json($id);
     }
 }

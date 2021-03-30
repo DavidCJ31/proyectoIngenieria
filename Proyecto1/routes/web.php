@@ -109,8 +109,8 @@ Route::resources([
 ]);
 
 Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
-
-
+Route::post('/Calendario/AgendarPrimerSeguimiento', [CalendarioController::class, 'AgendarPrimerSeguimiento']);
+Route::delete('/Calendario/EliminarPrimerSeguimiento/{id}', [CalendarioController::class, 'EliminarPrimerSeguimiento']);
 
 Route::get('/', function () {
     return view('welcome.welcome');

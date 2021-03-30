@@ -22,14 +22,15 @@ class CreateReunionTable extends Migration
 
             $table->dateTime('start');
             $table->dateTime('end');
+            $table->integer('duracion');
             
             $table->text('descripcion');
 
-            $table->string('tipo', 45);
+            $table->string('title', 45);
 
             $table->string('estado', 20);
 
-            $table->string('color', 20);
+            $table->string('backgroundColor', 20);
             $table->string('textColor', 20);
         });
     }

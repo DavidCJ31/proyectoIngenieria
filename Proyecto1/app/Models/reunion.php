@@ -12,10 +12,11 @@ class reunion extends Model
         'estudiante_id',
         'start',
         'end',
+        'duracion',
         'descripcion',
-        'tipo',
+        'title',
         'estado',
-        'color',
+        'backgroundColor',
         'textColor'
     ];
 

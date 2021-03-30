@@ -56,11 +56,12 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">Calendarizar Seguimiento</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" id="cerrar" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
+                        <input type="hidden" name="campo-id" id="campo-id">
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <label for="campo-fecha">Fecha</label>
@@ -100,7 +101,7 @@
                         <button id="btnAgregar" class="btn btn-success">Agregar</button>
                         <button id="btnModificar" class="btn btn-secondary">Modificar</button>
                         <button id="btnEliminar" class="btn btn-danger">Eliminar</button>
-                        <button id="btnCancelar" class="btn btn-primary">Cancelar</button>
+                        <button id="btnCancelar" data-dismiss="modal" class="btn btn-primary">Cancelar</button>
                     </div>
                 </div>
             </div>
@@ -141,31 +142,46 @@
                 }
             },
             dateClick: function(info) {
-                $('#exampleModalCenter').modal('toggle');
+                limpiarFormurario();
                 $('#campo-fecha').val(info.dateStr);
-                console.log(info);
-                calendar.addEvent({
-                    title: "Event X",
-                    date: info.dateStr
-                });
+
+                $("#btnAgregar").prop("disabled", false);
+                $("#btnModificar").prop("disabled", true);
+                $("#btnEliminar").prop("disabled", true);
+
+                $('#exampleModalCenter').modal('toggle');
+
             },
             eventClick: function(info) {
                 console.log(info);
-                console.log(info.event.title);
-                console.log(info.event.start);
-                console.log(info.event.extendedProps.descripcion);
 
+                $("#btnAgregar").prop("disabled", true);
+                $("#btnModificar").prop("disabled", false);
+                $("#btnEliminar").prop("disabled", false);
+
+                mes = (info.event.start.getMonth() + 1);
+                mes = (mes < 10) ? "0" + mes : mes;
+                dia = (info.event.start.getDate());
+                dia = (dia < 10) ? "0" + dia : dia;
+                anio = (info.event.start.getFullYear());
+
+                hora = (info.event.start.getHours());
+                hora = (hora < 10) ? "0" + hora : hora;
+                minutos = (info.event.start.getMinutes());
+                minutos = (minutos < 10) ? "0" + minutos : minutos;
+                $('#campo-id').val(info.event.id);
+                $('#campo-fecha').val(anio + "-" + mes + "-" + dia);
+                $('#campo-hora').val(hora + ":" + minutos);
+                $('#campo-duracion').val(info.event.extendedProps.duracion);
+                $('#campo-descripcion').val(info.event.extendedProps.descripcion);
+                $('#campo-tipo').val(info.event.title);
+                $('#campo-color').val(info.event.backgroundColor);
+
+                $('#exampleModalCenter').modal('toggle');
             },
-            events: [{
-                title: "Mi evento 1",
-                start: "2021-03-26 12:00:00",
-                descripcion: "Descripcion evento 1"
-            }, {
-                title: "Mi evento 2",
-                start: "2021-03-29 12:00:00",
-                descripcion: "Descripcion evento 2"
-            }]
+            events: "{{url('/Calendario/show')}}"
         });
+        
         calendar.setOption('locale', 'Es')
         calendar.render();
 
@@ -173,6 +189,23 @@
             ObjEvento = recolectarDatosGUI("POST");
             EnviarInformacion('', ObjEvento);
         });
+        $('#btnEliminar').click(function() {
+            ObjEvento = recolectarDatosGUI("DELETE");
+            EnviarInformacion('/' + $('#campo-id').val(), ObjEvento);
+        });
+        $('#btnModificar').click(function() {
+            ObjEvento = recolectarDatosGUI("PATCH");
+            EnviarInformacion('/' + $('#campo-id').val(), ObjEvento);
+        });
+
+        $('#btnCancelar').click(function() {
+            $('#exampleModalCenter').modal('hide');
+        });
+
+        $('#cerrar').click(function() {
+            $('#exampleModalCenter').modal('hide');
+        });
+
 
         function recolectarDatosGUI(method) {
             var fecha_star = $('#campo-fecha').val() + " " + $('#campo-hora').val();
@@ -186,17 +219,17 @@
             var fecha_end = $('#campo-fecha').val() + " " + hora + ":" + minuto;
 
             nuevoEvento = {
-                id: '',
+                id: $('#campo-id').val(),
                 asesor_id: '{{$asesor->id}}',
                 estudiante_id: '{{$estudiante-> id}}',
                 start: $('#campo-fecha').val() + " " + $('#campo-hora').val(),
                 end: fecha_end,
                 duracion: $('#campo-duracion').val(),
                 descripcion: $('#campo-descripcion').val(),
-                tipo: $('#campo-tipo').val(),
+                title: $('#campo-tipo').val(),
                 estado: 'Pendiente',
-                color: $('#campo-color').val(),
-                textColor: '#FFFFFF',
+                backgroundColor: $('#campo-color').val(),
+                textColor: '#000000',
                 '_token': $("meta[name='csrf-token']").attr("content"),
                 '_method': method
             }
@@ -210,11 +243,25 @@
                 data: objEvento,
                 success: function(msg) {
                     console.log(msg);
+                    $('#exampleModalCenter').modal('toggle');
+                    calendar.refetchEvents();
                 },
                 error: function() {
                     alert("Hay un error");
                 }
             });
+        }
+
+        function limpiarFormurario() {
+            $('#campo-id').val("");
+            $('#campo-fecha').val("");
+            $('#campo-hora').val("");
+            $('#campo-duracion').val("");
+            $('#campo-descripcion').val("");
+            $('#campo-tipo').val("");
+            $('#campo-color').val("");
+
+            $('#exampleModalCenter').modal('toggle');
         }
     });
 </script>
