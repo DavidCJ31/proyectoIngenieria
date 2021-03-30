@@ -129,7 +129,7 @@
                         Opciones
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/EstudianteDetalle">Fomulario Informacion Personal</a>
+                        <a class="dropdown-item" href="/EstudianteDetalle">Actulizar Informacion Personal</a>
                         <a class="dropdown-item" href="/PrimerSeguimiento/create">Solicitar Primer Seguimiento</a>
                         <a class="dropdown-item" href="/SeguimientoRegular/create">Solicitar Seguimiento Regular</a>
                         <a class="dropdown-item" href="/AgendarSeguimientos">Agendar Seguimiento</a>
