@@ -13,17 +13,24 @@ class CreateReunionTable extends Migration
      */
     public function up()
     {
-        Schema::create('reunion', function (Blueprint $table) {
+        Schema::create('reunions', function (Blueprint $table) {
             $table->id();
             $table->integer('asesor_id');
             $table->foreign('asesor_id')->references('id')->on('asesors')->onDelete('cascade');
             $table->integer('estudiante_id');
             $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
-            $table->dateTime('inicio');
-            $table->dateTime('final');
-            $table->string('descripcion', 45);
+
+            $table->dateTime('start');
+            $table->dateTime('end');
+            
+            $table->text('descripcion');
+
             $table->string('tipo', 45);
+
             $table->string('estado', 20);
+
+            $table->string('color', 20);
+            $table->string('textColor', 20);
         });
     }
 

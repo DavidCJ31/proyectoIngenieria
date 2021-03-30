@@ -63,7 +63,8 @@ class CalendarizarPSController extends Controller
     {
         $idAsesor = Auth::user()->id;
         $asesor = asesor::find($idAsesor)->user;
-        return view('Asesor/CalendarizarReuniones')->with('asesor', $asesor);
+        $estudiante = estudiante::find($id)->user;
+        return view('Asesor/CalendarizarReuniones')->with('asesor', $asesor)->with('estudiante', $estudiante);
     }
 
     /**

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\estudiante;
 use App\Models\asesor;
 
-class ReunionController extends Controller
+class CalendarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -39,7 +39,22 @@ class ReunionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datosReunion = request()->except(['_token','_method','duracion', 'id']);
+        print_r($datosReunion);
+        reunion::insert($datosReunion);
+       /* $reunion = new reunion;
+        $reunion->id = 1;
+        $reunion->asesor_id = Auth::user()->id;
+        $reunion->estudiante_id = $request->input('estudiante_id');
+        $reunion->start = $request->input('start');
+        $reunion->end = $request->input('end');
+        $reunion->descripcion = $request->input('descripcion');
+        $reunion->tipo = $request->input('tipo');
+        $reunion->estado = $request->input('estado');
+        $reunion->color = $request->input('color');
+        $reunion->textColor = $request->input('textColor');
+        */
+        //$reunion->save();
     }
 
     /**
@@ -48,9 +63,8 @@ class ReunionController extends Controller
      * @param  \App\Models\reunion  $reunion
      * @return \Illuminate\Http\Response
      */
-    public function show(reunion $reunion)
+    public function show($id)
     {
-        //
     }
 
     /**
@@ -59,7 +73,7 @@ class ReunionController extends Controller
      * @param  \App\Models\reunion  $reunion
      * @return \Illuminate\Http\Response
      */
-    public function edit(reunion $reunion)
+    public function edit($id)
     {
         //
     }
@@ -71,9 +85,8 @@ class ReunionController extends Controller
      * @param  \App\Models\reunion  $reunion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, reunion $reunion)
+    public function update(Request $request, $id)
     {
-        //
     }
 
     /**
@@ -82,7 +95,7 @@ class ReunionController extends Controller
      * @param  \App\Models\reunion  $reunion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(reunion $reunion)
+    public function destroy($id)
     {
         //
     }

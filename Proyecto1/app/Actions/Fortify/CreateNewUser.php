@@ -45,7 +45,7 @@ class CreateNewUser implements CreatesNewUsers
             'id' => $input['id']
         ]);
         $correo = new newusuario($usuario);
-        Mail::to('exitoacademico2021@gmail.com')->send($correo);
+        Mail::to($usuario->email)->send($correo);
         return $usuario;
     }
 }

@@ -88,12 +88,12 @@
             <div class="input-group-append">
                 <span class="input-group-text">CREDITOS DEL CURSO: </span>
               </div>
-            <input type="text" class="form-control" name="campo-creditos" id="campo-creditos" aria-describedby="basic-addon2">
+            <input type="number" class="form-control" name="campo-creditos" id="campo-creditos" aria-describedby="basic-addon2" min="0" max="100">
 
             <div class="input-group-append">
                 <span class="input-group-text">HORA DE ESTUDIO: </span>
               </div>
-            <input type="text" class="form-control" name="campo-horas" id="campo-horas" aria-describedby="basic-addon2">
+            <input type="time" class="form-control" name="campo-horas" id="campo-horas" aria-describedby="basic-addon2">
           </div>
 
 

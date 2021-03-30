@@ -18,6 +18,7 @@ use App\Http\Controllers\SeguimientoController;
 use App\Http\Controllers\PrimerSeguimientoController;
 use App\Http\Controllers\CalendarizarPSController;
 use App\Http\Controllers\SeguimientoRegularController;
+use App\Http\Controllers\CalendarioController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -103,7 +104,8 @@ Route::resources([
     '/PrimerSeguimiento' => PrimerSeguimientoController::class,
     '/CalendarizarPrimerSeguimiento' => CalendarizarPSController::class,
     '/PrimerSeguimiento' => PrimerSeguimientoController::class,
-    '/SeguimientoRegular' => SeguimientoRegularController::class
+    '/SeguimientoRegular' => SeguimientoRegularController::class,
+    '/Calendario' => CalendarioController::class
 ]);
 
 Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
