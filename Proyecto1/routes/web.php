@@ -14,6 +14,7 @@ use App\Http\Controllers\ListaCursoEstudianteController;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\HorarioAsesorController;
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\AulaController;
 use App\Http\Controllers\SeguimientoController;
 use App\Http\Controllers\PrimerSeguimientoController;
 use App\Http\Controllers\SeguimientoRegularController;
@@ -129,6 +130,11 @@ Route::get('/prueba', function () {
     return view('Tutor/prueba');
 });
 
+//Route::resource('/horario', HorarioAsesorController::class);
+
+Route::get('/coor', [CursoController::class, 'tablaCursos']);
+
+Route::get('/crearAula', [AulaController::class, 'create']);
 //Route::get('/contactanos', function () {
 //    $contacto = "Hola";
 //    $correo = new ContactanosMailable($contacto);
