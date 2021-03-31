@@ -14,6 +14,7 @@ use App\Http\Controllers\ListaCursoEstudianteController;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\HorarioAsesorController;
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\AulaController;
 use App\Http\Controllers\SeguimientoController;
 use App\Http\Controllers\PrimerSeguimientoController;
 use App\Http\Controllers\SeguimientoRegularController;
@@ -103,7 +104,8 @@ Route::resources([
     '/PrimerSeguimiento' => PrimerSeguimientoController::class,
     '/PrimerSeguimiento' => PrimerSeguimientoController::class,
     '/SeguimientoRegular' => SeguimientoRegularController::class,
-    '/Calendario' => CalendarioController::class
+    '/Calendario' => CalendarioController::class,
+    '/Aula' => AulaController::class
 ]);
 
 Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
@@ -132,6 +134,7 @@ Route::get('/prueba', function () {
 //Route::resource('/horario', HorarioAsesorController::class);
 
 Route::get('/coor', [CursoController::class, 'tablaCursos']);
+
 
 //Route::get('/contactanos', function () {
 //    $contacto = "Hola";
