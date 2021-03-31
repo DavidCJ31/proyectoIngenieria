@@ -16,7 +16,6 @@ use App\Http\Controllers\HorarioAsesorController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\SeguimientoController;
 use App\Http\Controllers\PrimerSeguimientoController;
-use App\Http\Controllers\CalendarizarPSController;
 use App\Http\Controllers\SeguimientoRegularController;
 use App\Http\Controllers\CalendarioController;
 use Illuminate\Support\Facades\Route;
@@ -102,15 +101,13 @@ Route::resources([
     '/horario-citas' => HorarioAsesorController::class,
     '/Cursos' => CursoController::class,
     '/PrimerSeguimiento' => PrimerSeguimientoController::class,
-    '/CalendarizarPrimerSeguimiento' => CalendarizarPSController::class,
     '/PrimerSeguimiento' => PrimerSeguimientoController::class,
     '/SeguimientoRegular' => SeguimientoRegularController::class,
     '/Calendario' => CalendarioController::class
 ]);
 
 Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
-Route::post('/Calendario/AgendarPrimerSeguimiento', [CalendarioController::class, 'AgendarPrimerSeguimiento']);
-Route::delete('/Calendario/EliminarPrimerSeguimiento/{id}', [CalendarioController::class, 'EliminarPrimerSeguimiento']);
+Route::get('/CalendarizarPrimerSeguimiento/{id}/edit', [CalendarioController::class, 'editPrimerSeguimiento'])->name('CalendarizarPrimerSeguimiento.edit');
 
 Route::get('/', function () {
     return view('welcome.welcome');

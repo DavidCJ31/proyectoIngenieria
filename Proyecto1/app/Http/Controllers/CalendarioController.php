@@ -19,7 +19,9 @@ class CalendarioController extends Controller
      */
     public function index()
     {
-        //
+        $idAsesor = Auth::user()->id;
+        $asesor = asesor::find($idAsesor)->user;
+        return view('Asesor/indexReuniones')->with('asesor', $asesor);
     }
 
     /**
@@ -40,34 +42,23 @@ class CalendarioController extends Controller
      */
     public function store(Request $request)
     {
-        /*
         $reunion = reunion::where('asesor_id', Auth::user()->id)
             ->where('estudiante_id', $request->input('estudiante_id'))
             ->where('estado', 'Pendiente')
             ->first();
-
         $datosReunion = request()->except(['_token', '_method', 'id']);
 
         if ($reunion == null) {
-            print_r($datosReunion);
-            reunion::insert($datosReunion);
+            if ($request->input('title') == "Primer Seguimiento") {
+                print_r($datosReunion);
+                reunion::insert($datosReunion);
+                $primer_seguimiento = new primer_seguimiento;
+                $primer_seguimiento->estudiante_id = primer_seguimiento::where('estudiante_id', $request->input('estudiante_id'))->update(['estado' => 'Revisado']);
+            } else {
+            }
         } else {
             print_r("Error");
         }
-*/
-        /* $reunion = new reunion;
-        $reunion->id = 1;
-        $reunion->asesor_id = Auth::user()->id;
-        $reunion->estudiante_id = $request->input('estudiante_id');
-        $reunion->start = $request->input('start');
-        $reunion->end = $request->input('end');
-        $reunion->descripcion = $request->input('descripcion');
-        $reunion->tipo = $request->input('tipo');
-        $reunion->estado = $request->input('estado');
-        $reunion->color = $request->input('color');
-        $reunion->textColor = $request->input('textColor');
-        */
-        //$reunion->save();
     }
 
     /**
@@ -114,32 +105,22 @@ class CalendarioController extends Controller
      * @param  \App\Models\reunion  $reunion
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $reuniones = reunion::findOrFail($id);
-        reunion::destroy($id);
+        //reunion::destroy($id);
         return response()->json($id);
     }
 
-    public function AgendarPrimerSeguimiento(Request $request)
+    public function editPrimerSeguimiento($id)
     {
-        $reunion = reunion::where('asesor_id', Auth::user()->id)
-            ->where('estudiante_id', $request->input('estudiante_id'))
-            ->where('estado', 'Pendiente')
-            ->first();
-        $datosReunion = request()->except(['_token', '_method', 'id']);
-
-        if ($reunion == null) {
-            print_r($datosReunion);
-            reunion::insert($datosReunion);
-            $primer_seguimiento = new primer_seguimiento;
-            $primer_seguimiento->estudiante_id = primer_seguimiento::where('estudiante_id', $request->input('estudiante_id'))->update(['estado' => 'Revisado']);
-        } else {
-            print_r("Error");
-        }
+        $idAsesor = Auth::user()->id;
+        $asesor = asesor::find($idAsesor)->user;
+        $estudiante = estudiante::find($id)->user;
+        return view('Asesor/AgendarReunion')->with('asesor', $asesor)->with('estudiante', $estudiante)->with('tipo', "Primer Seguimiento");
     }
 
-    public function EliminarPrimerSeguimiento(Request $request,$id)
+    public function eliminarPrimerSeguimiento(Request $request, $id)
     {
         $reuniones = reunion::findOrFail($id);
         reunion::destroy($id);

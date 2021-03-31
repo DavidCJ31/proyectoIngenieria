@@ -75,6 +75,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Calendario">Calendario</a>
+                </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Opciones
@@ -135,7 +138,7 @@
                         <a class="dropdown-item" href="/AgendarSeguimientos">Agendar Seguimiento</a>
                     </div>
                 </li>
-            </ul> 
+            </ul>
             @break
             @default
             <ul class="navbar-nav mr-auto">
@@ -149,14 +152,14 @@
                 @if (Route::has('login'))
                 @auth
 
-        <li class="nav-item dropdown ">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Perfil
-            </a>
-                <div class="dropdown-menu " style="margin-left: -119%;" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="nav-link" href="/user/profile" :active="request()->routeIs('profile.show')">
-                        {{ __('Actualizar Perfil') }}
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Perfil
                     </a>
+                    <div class="dropdown-menu " style="margin-left: -119%;" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="nav-link" href="/user/profile" :active="request()->routeIs('profile.show')">
+                            {{ __('Actualizar Perfil') }}
+                        </a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -165,8 +168,8 @@
                             </a>
                         </form>
 
-                </div>
-        </li>
+                    </div>
+                </li>
 
 
 

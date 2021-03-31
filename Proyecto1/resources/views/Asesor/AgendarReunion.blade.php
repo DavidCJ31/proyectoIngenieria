@@ -29,7 +29,7 @@
     <div class="form-card">
         <h4>VICERRECTORIA DE DOCENCIA</h4>
         <H5>EXITO ACADEMICO</H5>
-        <h4>CALENDARIZAR PRIMERA REUNION</h4>
+        <h4>CALENDARIZAR REUNION</h4>
 
 
 
@@ -79,11 +79,7 @@
                         </div>
                         <div class="form-group">
                             <label for="campo-tipo">Tipo de Seguimiento</label>
-                            <select class="form-control" name="campo-tipo" id="campo-tipo" form="">
-                                <option value="Seguimiento Normal">Seguimiento Normal</option>
-                                <option value="Primer Seguimiento">Primer Seguimiento</option>
-                                <option value="Ultimo Seguimiento">Ultimo Seguimiento</option>
-                            </select>
+                            <input type="text" class="form-control" name="campo-tipo" id="campo-tipo" value='{{$tipo}}' readonly>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-3">
@@ -94,8 +90,6 @@
                     </div>
                     <div class="modal-footer">
                         <button id="btnAgregar" class="btn btn-success">Agregar</button>
-                        <button id="btnModificar" class="btn btn-secondary">Modificar</button>
-                        <button id="btnEliminar" class="btn btn-danger">Eliminar</button>
                         <button id="btnCancelar" data-dismiss="modal" class="btn btn-primary">Cancelar</button>
                     </div>
                 </div>
@@ -116,12 +110,12 @@
             selectable: true,
             weekends: false,
             editable: false,
-            select: function(start, end) {
+            /*select: function(start, end) {
                 if (start.isBefore(moment())) {
                     $('#calendar').fullCalendar('unselect');
                     return false;
                 }
-            },
+            },*/
             headerToolbar: {
                 left: 'prev,next today',
                 center: 'title',
@@ -130,10 +124,8 @@
             dateClick: function(info) {
                 limpiarFormurario();
                 $('#campo-fecha').val(info.dateStr);
-
+                $('#campo-tipo').val('{{$tipo}}');
                 $("#btnAgregar").prop("disabled", false);
-                $("#btnModificar").prop("disabled", true);
-                $("#btnEliminar").prop("disabled", true);
 
                 $('#exampleModalCenter').modal('toggle');
 
@@ -142,8 +134,6 @@
                 console.log(info);
 
                 $("#btnAgregar").prop("disabled", true);
-                $("#btnModificar").prop("disabled", false);
-                $("#btnEliminar").prop("disabled", false);
 
                 mes = (info.event.start.getMonth() + 1);
                 mes = (mes < 10) ? "0" + mes : mes;
@@ -173,15 +163,7 @@
 
         $('#btnAgregar').click(function() {
             ObjEvento = recolectarDatosGUI("POST");
-            EnviarInformacion('/AgendarPrimerSeguimiento', ObjEvento);
-        });
-        $('#btnEliminar').click(function() {
-            ObjEvento = recolectarDatosGUI("DELETE");
-            EnviarInformacion('/EliminarPrimerSeguimiento/' + $('#campo-id').val(), ObjEvento);
-        });
-        $('#btnModificar').click(function() {
-            ObjEvento = recolectarDatosGUI("PATCH");
-            EnviarInformacion('/' + $('#campo-id').val(), ObjEvento);
+            EnviarInformacion('', ObjEvento);
         });
 
         $('#btnCancelar').click(function() {
