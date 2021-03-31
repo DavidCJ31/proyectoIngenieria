@@ -25,33 +25,20 @@
     <!--Main Navigation-->
     @include('layouts.header')
     <!--Main Navigation-->
-    <form method="post" action="" id="formCreateAula">
+    <form method="post" action="/Aula" id="formCreateAula">
         @csrf
-        @method('PUT')
         <!-- Aqui empieza el  formulario -->
         <div class="form-card">
             <h4>VICERRECTORIA DE DOCENCIA</h4>
             <H5>EXITO ACADEMICO</H5>
             <h4>ESPACIO PARA CREACION DE AULAS</h4>
-            <!-- Hilera del formulario -- cedula y telefono -->
-            <div class="input-group mb-3">
-                <div class="input-group-append">
-                    <span class="input-group-text">CURSO ASIGNADO: </span>
-                </div>
-                <select class="form-control" name="nombre-curso" id="nombre-curso" form="formInformacionDetallada"
-                    aria-describedby="basic-addon2" style="margin-right: 15px;">
-                    
-                    <option>Hola</option>
-                    
-                </select>
-            </div>
 
             <!-- Hilera del formulario -- Codigo Aula  -->
             <div class="input-group mb-3">
                 <div class="input-group-append">
                     <span class="input-group-text ">Codigo: </span>
                 </div>
-                <input type="text" class="form-control" id="campo-codigoAula" aria-describedby="basic-addon2">
+                <input type="text" class="form-control" id="aulaCodigo" name="aulaCodigo"  aria-describedby="basic-addon2">
             </div>
 
             <!-- Hilera del formulario -- Sede Aula  -->
@@ -59,7 +46,7 @@
                 <div class="input-group-append">
                     <span class="input-group-text ">Sede: </span>
                 </div>
-                <select type="text" class="form-control" id="campo-sedeAula" aria-describedby="basic-addon2">
+                <select type="text" class="form-control" id="aulaSede" name="aulaSede"  aria-describedby="basic-addon2"  >
                     <option>Central</option>
                 </select>
             </div>
@@ -69,12 +56,12 @@
                 <div class="input-group-append">
                     <span class="input-group-text ">Nombre: </span>
                 </div>
-                <input type="text" class="form-control" id="campo-NombreAula" aria-describedby="basic-addon2">
+                <input type="text" class="form-control" id="aulaNombre" name="aulaNombre"  aria-describedby="basic-addon2">
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-append">
-                    <button type="button" class="btn btn-primary" id="boton-enviar">Guardar</button>
+                    <button type="sudmit" class="btn btn-primary" id="boton-enviar">Guardar</button>
                 </div>
             </div>
         </div>

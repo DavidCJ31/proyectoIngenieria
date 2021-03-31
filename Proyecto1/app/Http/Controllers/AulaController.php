@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\aula;
 
 class AulaController extends Controller
 {
@@ -36,7 +37,12 @@ class AulaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $aula = new aula();
+        $aula->codigo = $request->input('aulaCodigo');
+        $aula->sede = $request->input('aulaSede');
+        $aula->nombre = $request->input('aulaNombre');
+        $aula->save();
+        return redirect('/Cursos');
     }
 
     /**
