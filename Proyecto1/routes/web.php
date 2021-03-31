@@ -104,7 +104,8 @@ Route::resources([
     '/PrimerSeguimiento' => PrimerSeguimientoController::class,
     '/PrimerSeguimiento' => PrimerSeguimientoController::class,
     '/SeguimientoRegular' => SeguimientoRegularController::class,
-    '/Calendario' => CalendarioController::class
+    '/Calendario' => CalendarioController::class,
+    '/Aula' => AulaController::class
 ]);
 
 Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
@@ -134,7 +135,7 @@ Route::get('/prueba', function () {
 
 Route::get('/coor', [CursoController::class, 'tablaCursos']);
 
-Route::get('/crearAula', [AulaController::class, 'create']);
+
 //Route::get('/contactanos', function () {
 //    $contacto = "Hola";
 //    $correo = new ContactanosMailable($contacto);
