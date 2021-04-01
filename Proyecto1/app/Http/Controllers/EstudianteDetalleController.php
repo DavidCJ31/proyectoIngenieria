@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\estudiante_detalle;
 use App\Models\estudiante;
+use App\Mail\ContactanosMailable;
 
 class EstudianteDetalleController extends Controller
 {
@@ -33,6 +34,7 @@ class EstudianteDetalleController extends Controller
      */
     public function create()
     {
+  
         $id = Auth::user()->id;
         $estudiante = estudiante::find($id)->user;
         return view('Estudiante/Detalle/RegistroDeEntrada')->with('estudiante', $estudiante);
@@ -46,6 +48,10 @@ class EstudianteDetalleController extends Controller
      */
     public function store(Request $request)
     {
+   
+        $id = Auth::user()->id;
+        $estudiante = estudiante::find($id)->user;
+        
         $estudiante_detalle = new estudiante_detalle;
         $estudiante_detalle->estudiante_id = $request->input('campo-cedula');
         $estudiante_detalle->fecha_nacimiento = $request->input('campo-fecha-nacimiento');
@@ -90,7 +96,12 @@ class EstudianteDetalleController extends Controller
         $estudiante_detalle->universidadFactoresFavorecen = $request->input('campo-universidad-factoresFavorecen');
         $estudiante_detalle->universidadFactoresObtaculizan = $request->input('campo-universidad-factoresObtaculizan');
         $estudiante_detalle->save();
-        return redirect('/EstudianteDetalle');
+
+        
+        $correo = new ContactanosMailable($estudiante);
+        Mail::to($estudiante->email)->send($correo);
+        return redirect('/Estudiante');
+
     }
 
     /**
@@ -126,6 +137,9 @@ class EstudianteDetalleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $id = Auth::user()->id;
+        $estudiante = estudiante::find($id)->user;
+        
         estudiante_detalle::where('estudiante_id', $id)
             ->update([
                 'fecha_nacimiento' => $request->input('campo-fecha-nacimiento'),
@@ -170,7 +184,10 @@ class EstudianteDetalleController extends Controller
                 'universidadFactoresFavorecen' => $request->input('campo-universidad-factoresFavorecen'),
                 'universidadFactoresObtaculizan' => $request->input('campo-universidad-factoresObtaculizan')
             ]);
-        return redirect('/EstudianteDetalle');
+                   
+        $correo = new ContactanosMailable($estudiante);
+        Mail::to($estudiante->email)->send($correo);
+        return redirect('/Estudiante');
     }
 
     /**

@@ -14,12 +14,18 @@ use App\Http\Controllers\ListaCursoEstudianteController;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\HorarioAsesorController;
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\AulaController;
 use App\Http\Controllers\SeguimientoController;
 use App\Http\Controllers\PrimerSeguimientoController;
-use App\Http\Controllers\CalendarizarPSController;
 use App\Http\Controllers\SeguimientoRegularController;
+use App\Http\Controllers\CalendarioController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
+use App\Mail\ContactanosMailable;
+use App\Mail\newusuario;
+
 
 use App\Models\User;
 use App\Models\estudientes;
@@ -96,14 +102,13 @@ Route::resources([
     '/horario-citas' => HorarioAsesorController::class,
     '/Cursos' => CursoController::class,
     '/PrimerSeguimiento' => PrimerSeguimientoController::class,
-    '/CalendarizarPrimerSeguimiento' => CalendarizarPSController::class,
-    '/PrimerSeguimiento' => PrimerSeguimientoController::class,
-    '/SeguimientoRegular' => SeguimientoRegularController::class
+    '/SeguimientoRegular' => SeguimientoRegularController::class,
+    '/Calendario' => CalendarioController::class,
+    '/Aula' => AulaController::class
 ]);
 
 Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
-
-
+Route::get('/CalendarizarPrimerSeguimiento/{id}/edit', [CalendarioController::class, 'editPrimerSeguimiento'])->name('CalendarizarPrimerSeguimiento.edit');
 
 Route::get('/', function () {
     return view('welcome.welcome');
@@ -125,10 +130,16 @@ Route::get('/prueba', function () {
     return view('Tutor/prueba');
 });
 
-
-
 //Route::resource('/horario', HorarioAsesorController::class);
 
+
+//Route::get('/contactanos', function () {
+//    $contacto = "Hola";
+//    $correo = new ContactanosMailable($contacto);
+//    $correo->subject("Holamundo");
+//    Mail::to('exitoacademico2021@gmail.com')->send($correo);
+//    return "Mensaje Enviado";
+//});
 
 Route::get('/usuarios', [PersonaController::class, 'tablaUsuarios']);
 Route::get('/estudiante', [EstudianteController::class, 'tablaEstudiantes']);

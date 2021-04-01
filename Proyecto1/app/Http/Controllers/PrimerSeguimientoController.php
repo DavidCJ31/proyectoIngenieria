@@ -9,6 +9,8 @@ use App\Models\estudiante_detalle;
 use App\Models\estudiante;
 use App\Models\asesor;
 use App\Models\primer_seguimiento;
+use App\Models\lista_curso_estudiante;
+use App\Models\reunion;
 
 class PrimerSeguimientoController extends Controller
 {
@@ -55,6 +57,7 @@ class PrimerSeguimientoController extends Controller
         $primer_seguimiento->tipoTutoria = 'Individual';
         $primer_seguimiento->estado = 'Pendiente';
         $primer_seguimiento->save();
+        return redirect('/Estudiante');
     }
 
     /**
@@ -87,7 +90,23 @@ class PrimerSeguimientoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        primer_seguimiento::where('estudiante_id', $request->input('campo-estudiante'))
+        ->update([
+            'aprovacion' => $request->input('campo-aprovada'),
+            'detalle_curso_id' => $request->input('campo-curso'),
+            'Observaciones' => $request->input('campo-observaciones'),
+            'fecha' => $request->input('campo-fecha')
+        ]);
+
+        reunion::where('id', $id)->update([
+            'estado' => 'Realizada'
+        ]);
+
+        $Curso_Estudiante = new lista_curso_estudiante;
+        $Curso_Estudiante->detalle_curso_id = $request->input('campo-curso');
+        $Curso_Estudiante->estudiante_id = $request->input('campo-estudiante');
+        $Curso_Estudiante->save();
+        return redirect('/Calendario');
     }
 
     /**

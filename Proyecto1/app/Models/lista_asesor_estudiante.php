@@ -9,7 +9,6 @@ class lista_asesor_estudiante extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-        'id',
         'asesor_id',
         'estudiante_id',
     ];

@@ -8,14 +8,16 @@ class reunion extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-        'id',
         'asesor_id',
         'estudiante_id',
-        'inicio',
-        'final',
+        'start',
+        'end',
+        'duracion',
         'descripcion',
-        'tipo',
-        'estado'
+        'title',
+        'estado',
+        'backgroundColor',
+        'textColor'
     ];
 
 

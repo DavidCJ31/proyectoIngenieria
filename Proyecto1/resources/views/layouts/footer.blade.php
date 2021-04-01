@@ -3,7 +3,7 @@
 <footer>
     <div class="row">
         <div class="col-sm-6 col-md-4 footer-navigation">
-            <h3><a href="https://www.una.ac.cr/"><img style="width:88%;" src="../imagenes/logo-largo.png"/></a></h3>
+            <h3><a href="https://www.una.ac.cr/"><img style="width:88%;" src="/imagenes/logo-largo.png"/></a></h3>
         </div>
         <div class="col-sm-6 col-md-4 footer-contacts">
         <h4>Contacto</h4>
@@ -21,11 +21,11 @@
             
           
             <div class="social-links social-icons">
-                <a href="https://www.facebook.com/VDOCENCIAUNA/"><img style="width:28px;" src="../imagenes/facebook.png"
+                <a href="https://www.facebook.com/VDOCENCIAUNA/"><img style="width:28px;" src="/imagenes/facebook.png"
                         class="facebook-img-card" /></a>
-                <a href="https://www.instagram.com/vdocenciauna/"><img src="../imagenes/instagram.png"
+                <a href="https://www.instagram.com/vdocenciauna/"><img src="/imagenes/instagram.png"
                         class="instagram-img-card" /></a>
-                <a href="https://www.youtube.com/channel/UCUs96CKvsIuVdsdxGhWKfjA"><img src="../imagenes/youtube.png"
+                <a href="https://www.youtube.com/channel/UCUs96CKvsIuVdsdxGhWKfjA"><img src="/imagenes/youtube.png"
                         class="youtube-img-card" /></a>
             </div>
         </div>

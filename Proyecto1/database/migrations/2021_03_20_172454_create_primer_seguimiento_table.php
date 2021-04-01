@@ -22,7 +22,12 @@ class CreatePrimerSeguimientoTable extends Migration
             $table->integer('creditoCruso');
             $table->string('situacion', 255);
             $table->string('tipoTutoria', 13);
-            $table->string('estado', 13);
+            $table->string('estado', 20);
+            $table->string('aprovacion', 20)->nullable();
+            $table->bigInteger('detalle_curso_id')->unsigned()->nullable();
+            $table->foreign('detalle_curso_id')->references('id')->on('detalle_cursos')->onDelete('cascade');
+            $table->text('Observaciones')->nullable();
+            $table->dateTime('fecha')->nullable();
         });
     }
 
