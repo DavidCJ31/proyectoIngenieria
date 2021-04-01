@@ -31,20 +31,6 @@
 
 <body>
 @if($datos != [] )
-<div class="card">
-    <div class="card-body">
-        <div class="media">
-            <div> <i style='font-size:24px' class='fas'>&#xf2c1;</i> </div>
-            <div class="media-body">
-                <ul class="list-unstyled fa-ul">
-                <li><i class="fa fa-user fa-li"></i><a href="#">{{$datos[0]->name}} </a></li>
-                    <li><i class="fa fa-envelope fa-li"></i><a href="#">{{$datos[0]->email}} </a></li>
-                    <li><a href="#"> Asesor </a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
 
     <div id="fondoTabla">
         <h1 id="TituloVista">Horarios</h1>
