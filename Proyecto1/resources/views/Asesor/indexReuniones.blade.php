@@ -46,9 +46,6 @@
             </div>
         </div>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-            Launch demo modal
-        </button>
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -99,6 +96,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <button id="btnReunion" class="btn btn-info">Realizar Reunion</button>
                         <button id="btnModificar" class="btn btn-secondary">Modificar</button>
                         <button id="btnEliminar" class="btn btn-danger">Eliminar</button>
                         <button id="btnCancelar" data-dismiss="modal" class="btn btn-primary">Cancelar</button>
@@ -130,6 +128,7 @@
                 console.log(info);
 
                 if (info.event.extendedProps.estado == "Realizada") {
+                    $("#btnReunion").prop("disabled", true);
                     $("#btnModificar").prop("disabled", true);
                     $("#btnEliminar").prop("disabled", true);
                     $("#campo-hora").prop("disabled", true);
@@ -137,6 +136,7 @@
                     $("#campo-descripcion").prop("disabled", true);
                     $("#campo-color").prop("disabled", true);
                 } else {
+                    $("#btnReunion").prop("disabled", false);
                     $("#btnModificar").prop("disabled", false);
                     $("#btnEliminar").prop("disabled", false);
                     $("#campo-hora").prop("disabled", false);
@@ -173,6 +173,10 @@
 
         calendar.setOption('locale', 'Es')
         calendar.render();
+
+        $('#btnReunion').click(function() {
+            window.location.href = "{{url('/Calendario')}}/" + $('#campo-id').val() + "/edit";
+        });
 
         $('#btnEliminar').click(function() {
             ObjEvento = recolectarDatosGUI("DELETE");

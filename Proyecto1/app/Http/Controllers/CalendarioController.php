@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\estudiante;
 use App\Models\asesor;
 use App\Models\primer_seguimiento;
+use Illuminate\Support\Facades\DB;
 
 class CalendarioController extends Controller
 {
@@ -82,7 +83,42 @@ class CalendarioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $idAsesor = Auth::user()->id;
+        $asesor = asesor::find($idAsesor)->user;
+        $reunion = reunion::find($id);
+        if ($reunion->title == "Primer Seguimiento") {
+            $detalle_cursos = DB::table('detalle_cursos')
+            ->select('detalle_cursos.*')
+            ->orderBy('id','DESC')
+            ->get();
+            (array) $cursos = DB::table('cursos')
+            ->select('cursos.*')
+            ->orderBy('codigo','DESC')
+            ->get();
+            $All_Info = array();
+            foreach($detalle_cursos as $curso){
+                $info_cursos = array();
+                $info_cursos[]= $curso->id;
+                $info_cursos[]= $curso->tutor_id;
+                $info_cursos[]= $curso->anno;
+                $info_cursos[]= $curso->periodo;
+                $info_cursos[]= $curso->num_periodo;
+                $info_cursos[]= $curso->hora_inicio;
+                $info_cursos[]= $curso->hora_final;
+                $info_cursos[]= $curso->dia;
+                foreach($cursos as $cur){
+                    if($curso->curso_codigo == $cur->codigo){
+                        $info_cursos[]= $cur->nombre;
+                        $info_cursos[]= $cur->curso_necesario;
+                        $All_Info[]=$info_cursos;
+                    }
+                }
+            }
+            return view('Seguimiento/FormPrimerSeguimiento')->with('asesor', $asesor)->with('reunion', $reunion)->with('info_cursos',$All_Info);
+        }
+        else{
+            return "Seguimiento Normal";
+        }
     }
 
     /**
@@ -108,7 +144,7 @@ class CalendarioController extends Controller
     public function destroy(Request $request, $id)
     {
         $reuniones = reunion::findOrFail($id);
-        //reunion::destroy($id);
+        reunion::destroy($id);
         return response()->json($id);
     }
 

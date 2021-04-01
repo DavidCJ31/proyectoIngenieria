@@ -9,7 +9,6 @@ class lista_curso_estudiante extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-        'id',
         'detalle_curso_id',
         'estudiante_id',
     ];

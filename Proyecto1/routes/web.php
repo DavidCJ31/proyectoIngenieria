@@ -102,7 +102,6 @@ Route::resources([
     '/horario-citas' => HorarioAsesorController::class,
     '/Cursos' => CursoController::class,
     '/PrimerSeguimiento' => PrimerSeguimientoController::class,
-    '/PrimerSeguimiento' => PrimerSeguimientoController::class,
     '/SeguimientoRegular' => SeguimientoRegularController::class,
     '/Calendario' => CalendarioController::class,
     '/Aula' => AulaController::class
@@ -132,8 +131,6 @@ Route::get('/prueba', function () {
 });
 
 //Route::resource('/horario', HorarioAsesorController::class);
-
-Route::get('/coor', [CursoController::class, 'tablaCursos']);
 
 
 //Route::get('/contactanos', function () {
