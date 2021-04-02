@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\referencia;
+use App\Mail\referenciamail;
 use App\Models\asesor;
-use Illuminate\Http\Request;
+
+
+
 
 class AsesorController extends Controller
 {
@@ -85,4 +91,18 @@ class AsesorController extends Controller
     {
         //
     }
+
+    
+    public function referencia(Request $request )
+    {
+        $user = new referencia;
+        $user->nombre = $request->input('nombre-estudiante');
+        $user->cedula = $request->input('cedula');
+
+        $correo = new referenciamail($user);
+        Mail::to('exitoacademico2021@gmail.com')->send($correo);
+        
+        return view('Asesor/inicioAsesor');
+    }
 }
+
