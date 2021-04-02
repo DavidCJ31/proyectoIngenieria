@@ -105,6 +105,7 @@ Route::resources([
     '/SeguimientoRegular' => SeguimientoRegularController::class,
     '/Calendario' => CalendarioController::class,
     '/Aula' => AulaController::class
+    '/DisponibilidadEstudiante' => DisponibilidadEstudianteController::class
 ]);
 
 Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);

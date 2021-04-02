@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\disponibilidad_estudiante;
 
 class DisponibilidadEstudianteController extends Controller
 {
@@ -36,6 +39,27 @@ class DisponibilidadEstudianteController extends Controller
     public function store(Request $request)
     {
         //
+        $id = Auth::user()->id;
+            if(isset($_POST["horarios"])){
+                $array = json_decode($_POST["horarios"]);
+                $horarios = disponibilidad_estudiante::where('estudiante_id', $id)->where('dia', $array->dia)->where('hora', $array->horaInicio)->get();
+                echo $horarios;
+                if(!empty($horarios[0])){ //Esto es que ya hay una solicitud de ese horario
+                    $message = $array->inicio;
+                    return response()->json([
+                        'status'=> 'Error', 
+                        'message' => $message, 
+                    ]);
+                }
+                $disponibilidadhorario = new disponibilidad_estudiante;                
+                $disponibilidadhorario->estudiante_id = $id;
+                $disponibilidadhorario->dia = $array->dia;
+                $disponibilidadhorario->hora = $array->horaInicio;
+                $disponibilidadhorario->save();
+            }
+            else{
+                echo "something went wrong";
+            }
     }
 
     /**

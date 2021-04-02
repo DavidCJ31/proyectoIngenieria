@@ -108,49 +108,99 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>8-10</td>
-                  <td class="cuadro-tabla opcion-tabla" hora="8-10" dia="lunes"></td>
-                  <td class="cuadro-tabla opcion-tabla" hora="8-10" dia="martes"></td>
-                  <td class="cuadro-tabla opcion-tabla" hora="8-10" dia="miercoles"></td>
-                  <td class="cuadro-tabla opcion-tabla" hora="8-10" dia="jueves"></td>
-                  <td class="cuadro-tabla opcion-tabla" hora="8-10" dia="viernes"></td>
+                  <td>8 am</td>
+                  <td class="cuadro-tabla opcion-tabla" inicio="8" dia="lunes" onclick="seleccionarHorario(this)"></td>
+                  <td class="cuadro-tabla opcion-tabla" inicio="8"  dia="martes" onclick="seleccionarHorario(this)"></td>
+                  <td class="cuadro-tabla opcion-tabla" inicio="8" dia="miercoles" onclick="seleccionarHorario(this)"></td>
+                  <td class="cuadro-tabla opcion-tabla" inicio="8" dia="jueves" onclick="seleccionarHorario(this)"></td>
+                  <td class="cuadro-tabla opcion-tabla" inicio="8"  dia="viernes" onclick="seleccionarHorario(this)"></td>
                 </tr>
                 <tr>
-                    <td>10-12</td>
-                    <td class="cuadro-tabla opcion-tabla" hora="10-12" dia="lunes"></td>
-                    <td class="cuadro-tabla opcion-tabla" hora="10-12" dia="martes"></td>
-                    <td class="cuadro-tabla opcion-tabla" hora="10-12" dia="miercoles"></td>
-                    <td class="cuadro-tabla opcion-tabla" hora="10-12" dia="jueves"></td>
-                    <td class="cuadro-tabla opcion-tabla" hora="10-12" dia="viernes"></td>
-                  </tr>
-                
+                  <td>9 am</td>
+                  <td class="cuadro-tabla opcion-tabla" inicio="9"  onclick="seleccionarHorario(this)"></td>
+                  <td class="cuadro-tabla opcion-tabla" inicio="9"  dia="martes" onclick="seleccionarHorario(this)"></td>
+                  <td class="cuadro-tabla opcion-tabla" inicio="9"  dia="miercoles" onclick="seleccionarHorario(this)"></td>
+                  <td class="cuadro-tabla opcion-tabla" inicio="9"  dia="jueves" onclick="seleccionarHorario(this)"></td>
+                  <td class="cuadro-tabla opcion-tabla" inicio="9"  dia="viernes" onclick="seleccionarHorario(this)"></td>
+                </tr>
                 <tr>
-                    <td>1-3</td>
-                    <td class="cuadro-tabla opcion-tabla" hora="1-3" dia="lunes"></td>
-                    <td class="cuadro-tabla opcion-tabla" hora="1-3" dia="martes"></td>
-                    <td class="cuadro-tabla opcion-tabla" hora="1-3" dia="miercoles"></td>
-                    <td class="cuadro-tabla opcion-tabla" hora="1-3" dia="jueves"></td>
-                    <td class="cuadro-tabla opcion-tabla" hora="1-3" dia="viernes"></td>
+                    <td>10 am</td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="10"  dia="lunes" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="10"  dia="martes" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="10"  dia="miercoles" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="10"  dia="jueves" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="10"  dia="viernes" onclick="seleccionarHorario(this)"></td>
+                  </tr>
+                  <tr>
+                    <td>11 am</td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="11"  dia="lunes" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="11"  dia="martes" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="11"  dia="miercoles" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="11"  dia="jueves" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="11"  dia="viernes" onclick="seleccionarHorario(this)"></td>
+                  </tr>
+                <tr>
+                    <td>1 pm</td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="13"  dia="lunes" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="13"  dia="martes" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="13"  dia="miercoles" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="13"  dia="jueves" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="13"  dia="viernes" onclick="seleccionarHorario(this)"></td>
                   </tr>
 
-                <tr>
-                    <td>3-5</td>
-                    <td class="cuadro-tabla opcion-tabla" hora="3-5" dia="lunes"></td>
-                    <td class="cuadro-tabla opcion-tabla" hora="3-5" dia="martes"></td>
-                    <td class="cuadro-tabla opcion-tabla" hora="3-5" dia="miercoles"></td>
-                    <td class="cuadro-tabla opcion-tabla" hora="3-5" dia="jueves"></td>
-                    <td class="cuadro-tabla opcion-tabla" hora="3-5" dia="viernes"></td>
+                  <tr>
+                    <td>2 pm</td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="14"  dia="lunes" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="14"  dia="martes" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="14"  dia="miercoles" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="14"  dia="jueves" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="14"  dia="viernes" onclick="seleccionarHorario(this)"></td>
                   </tr>
 
-                <tr>
-                    <td>5-7</td>
-                    <td class="cuadro-tabla opcion-tabla" hora="5-7" dia="lunes"></td>
-                    <td class="cuadro-tabla opcion-tabla" hora="5-7" dia="martes"></td>
-                    <td class="cuadro-tabla opcion-tabla" hora="5-7" dia="miercoles"></td>
-                    <td class="cuadro-tabla opcion-tabla" hora="5-7" dia="jueves"></td>
-                    <td class="cuadro-tabla opcion-tabla" hora="5-7" dia="viernes"></td>
+                  <tr>
+                    <td>3 pm</td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="15"  dia="lunes" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="15"  dia="martes" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="15"  dia="miercoles" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="15"  dia="jueves" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="15"  dia="viernes" onclick="seleccionarHorario(this)"></td>
                   </tr>
 
+                  <tr>
+                    <td>4 pm</td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="16"  dia="lunes" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="16"  dia="martes" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="16"  dia="miercoles" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="16"  dia="jueves" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="16"  dia="viernes" onclick="seleccionarHorario(this)"></td>
+                  </tr>
+
+                  <tr>
+                    <td>5 pm</td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="17"  dia="lunes" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="17"  dia="martes" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="17"  dia="miercoles" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="17"  dia="jueves" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="17"  dia="viernes" onclick="seleccionarHorario(this)"></td>
+                  </tr>
+
+                  <tr>
+                    <td>6 pm</td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="18"  dia="lunes" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="18"  dia="martes" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="18"  dia="miercoles" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="18"  dia="jueves" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="18"  dia="viernes" onclick="seleccionarHorario(this)"></td>
+                  </tr>
+
+                  <tr>
+                    <td>7 pm</td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="19"  dia="lunes" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="19"  dia="martes" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="19"  dia="miercoles" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="19"  dia="jueves" onclick="seleccionarHorario(this)"></td>
+                    <td class="cuadro-tabla opcion-tabla" inicio="19"  dia="viernes" onclick="seleccionarHorario(this)"></td>
+                  </tr>
               </tbody>
             </table>
           </div>
