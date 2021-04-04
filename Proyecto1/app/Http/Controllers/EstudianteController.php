@@ -10,6 +10,8 @@ use App\Models\asesor;
 use App\Models\estudiante_detalle;
 use App\Models\primer_seguimiento;
 use Illuminate\Support\Facades\Auth;
+use App\Models\disponibilidad_estudiante;
+use Exception;
 
 class EstudianteController extends Controller
 {
@@ -94,6 +96,24 @@ class EstudianteController extends Controller
     public function edit($id)
     {
         //
+        try {
+            $opciones = disponibilidad_estudiante::where('estudiante_id', $id)->get();
+            $datos = array();
+            $cont = 0;
+            
+        foreach($opciones as $row)
+        {
+            $datos[$cont++] = array(
+            'dia' => $row->dia,
+            'hora' => $row->hora
+            );
+        }
+        return response($datos,200,$datos);
+        } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return response('Erorr a la hora de cargar los horarios disponibles', 400);
+        }
+
     }
 
     /**
