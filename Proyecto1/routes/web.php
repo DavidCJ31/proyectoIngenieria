@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Mail;
 
 use App\Mail\ContactanosMailable;
 use App\Mail\newusuario;
+use App\Mail\referencia;
 
 
 use App\Models\User;
@@ -111,6 +112,8 @@ Route::resources([
 Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
 Route::get('/CalendarizarPrimerSeguimiento/{id}/edit', [CalendarioController::class, 'editPrimerSeguimiento'])->name('CalendarizarPrimerSeguimiento.edit');
 
+Route::post('/referencia', [AsesorController::class, 'referencia']);
+
 Route::get('/', function () {
     return view('welcome.welcome');
 });
@@ -124,7 +127,7 @@ Route::get('/informe-mensual', function () {
 });
 
 Route::get('/referencia', function () {
-    return view('referencia-orientacion');
+    return view('referencia');
 });
 
 Route::get('/prueba', function () {
@@ -141,6 +144,7 @@ Route::get('/prueba', function () {
 //    Mail::to('exitoacademico2021@gmail.com')->send($correo);
 //    return "Mensaje Enviado";
 //});
+
 
 Route::get('/usuarios', [PersonaController::class, 'tablaUsuarios']);
 Route::get('/estudiante', [EstudianteController::class, 'tablaEstudiantes']);

@@ -17,8 +17,7 @@ class newusuario extends Mailable
      * @return void
      */
 
-
-    public $subject;
+    public $subject = "Seguimiento Estudiantil";
     public $nombre;
     public $apellido;
 

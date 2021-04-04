@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creacion de usuario</title>
+    <title>actuinformacion</title>
 </head>
 <body>
 
 
     <h1>Seguimiento Estudiantil le informa:</h1>
 
-    <h3>Hola {{$user->name}} </h3>
-    <p> Le informamos por parte de Éxito académico que se creo su cuenta correctamente en el sistema.</p>
+    <h3>Hola {{$user->nombre}} {{$user->cedula}}</h3>
+    <p> Le informamos por parte de Éxito académico que su información personal se actualizo correctamente en el sistema.</p>
     <p> Le agradecemos haber completado la información.</p>
     <br>
     <br>
