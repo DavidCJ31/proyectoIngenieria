@@ -591,6 +591,7 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-primary" name="enviar" id='boton-enviar'>Actualizar</button>
+            <button type="submit" class="btn btn-primary" name="imprimir" id='boton-imprimir' onclick="window.print()">Imprimir</button>
         </div>
     </form>
     @include("layouts.footer")

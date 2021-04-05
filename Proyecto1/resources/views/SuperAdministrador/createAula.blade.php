@@ -47,7 +47,8 @@
                     <span class="input-group-text ">Sede: </span>
                 </div>
                 <select type="text" class="form-control" id="aulaSede" name="aulaSede"  aria-describedby="basic-addon2"  >
-                    <option>Central</option>
+                    <option>Central Omar Dengo</option>
+                    <option>Benjamín Núñez</option>
                 </select>
             </div>
 

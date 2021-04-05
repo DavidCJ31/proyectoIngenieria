@@ -16,7 +16,8 @@ class AulaController extends Controller
      */
     public function index()
     {
-        //
+        $aulas = aula::all();
+        return view('SuperAdministrador/AulasDetalladas')->with('aulas', $aulas);
     }
 
     /**

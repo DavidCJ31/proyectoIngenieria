@@ -27,6 +27,15 @@
                     <a class="nav-link" href="/User">Registrar Usuario</a>
                 </li>
                 <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="/Aula" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Aulas
+                    </a>
+                    <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/Aula">Ver Aulas</a>
+                        <a class="dropdown-item" href="/Aula/create">Agregar Aula</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="/Cursos" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Cursos
                     </a>
