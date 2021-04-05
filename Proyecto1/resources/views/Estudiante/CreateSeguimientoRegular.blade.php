@@ -10,6 +10,11 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 </head>
 
 <body>
@@ -17,8 +22,8 @@
 @include('layouts.header')
 <!--Main Navigation-->
 
- <form method="post" action="/SeguimientoRegular" id="formSeguimientoRegular">
-        @csrf 
+ <!--<form method="post" action="/SeguimientoRegular" id="formSeguimientoRegular">
+        @csrf -->
 
     <!-- Aqui empieza el  formulario -->
     <div class= "form-card">
@@ -191,11 +196,11 @@
           </div>
           <div class="input-group mb-3">
             <div class="input-group-append">
-                <button type="submit" class="btn btn-primary" name="enviar" id="boton-enviar">Enviar solicitud</button>
+                <button onclick="enviarHorarios()" class="btn btn-primary" name="enviar" id="boton-enviar">Enviar solicitud</button>
             </div>
         </div>
     </div>
-      </form> 
+      <!--</form>--> 
     @include("layouts.footer")
 </body>
 
@@ -209,11 +214,11 @@
             $(this).css("background-color", "#f6f799");
             },function(){
         $(this).css("background-color","white");} );
-
-        $("#boton-enviar").click(enviarHorarios());
+        console.log("Entro a empezar por lo menos")
     }
 
     empezar();
+    
     function seleccionarHorario(casilla){
         let obj = {horaInicio:casilla.getAttribute('inicio'), dia: casilla.getAttribute('dia')}   
         console.log(obj);
@@ -236,19 +241,20 @@
     }
 
     function enviarHorarios(){
+      console.log("Entro a enviar horarios");
       lista_horarios.forEach((x)=> guardarHorario(x));
     }
 
     function guardarHorario(horario){
+      console.log(horario);
       $.ajaxSetup({
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
       });
 
-      //Aqui es donde hay que cambiarlo
       $.ajax({
-          url: "horario-citas", //probablemente esto es como primer seguimiento
+          url: "SeguimientoRegular", 
           type: "POST",
           data: {horarios:JSON.stringify(horario), _token: '{{csrf_token()}}' },
           success: function (result) {
