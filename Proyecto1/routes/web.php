@@ -105,7 +105,7 @@ Route::resources([
     '/PrimerSeguimiento' => PrimerSeguimientoController::class,
     '/SeguimientoRegular' => SeguimientoRegularController::class,
     '/Calendario' => CalendarioController::class,
-    '/Aula' => AulaController::class
+    '/Aula' => AulaController::class,
     '/DisponibilidadEstudiante' => DisponibilidadEstudianteController::class
 ]);
 

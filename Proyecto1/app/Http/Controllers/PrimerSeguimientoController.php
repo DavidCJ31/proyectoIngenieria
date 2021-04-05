@@ -11,6 +11,7 @@ use App\Models\asesor;
 use App\Models\primer_seguimiento;
 use App\Models\lista_curso_estudiante;
 use App\Models\reunion;
+use App\Models\User;
 
 class PrimerSeguimientoController extends Controller
 {
@@ -68,7 +69,11 @@ class PrimerSeguimientoController extends Controller
      */
     public function show($id)
     {
-        //
+        $estudiante = estudiante::where('id', $id)->first();
+        $user = User::find($estudiante->id);
+        $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
+        $primer = primer_seguimiento::where('estudiante_id', $id)->first();
+        return view('Estudiante/ShowPrimerSeguimiento')->with('estudiante', $user)->with('estudianteDetalle', $estudianteDetalle)->with('primerSeguimiento', $primer);
     }
 
     /**
@@ -91,12 +96,12 @@ class PrimerSeguimientoController extends Controller
     public function update(Request $request, $id)
     {
         primer_seguimiento::where('estudiante_id', $request->input('campo-estudiante'))
-        ->update([
-            'aprovacion' => $request->input('campo-aprovada'),
-            'detalle_curso_id' => $request->input('campo-curso'),
-            'Observaciones' => $request->input('campo-observaciones'),
-            'fecha' => $request->input('campo-fecha')
-        ]);
+            ->update([
+                'aprovacion' => $request->input('campo-aprovada'),
+                'detalle_curso_id' => $request->input('campo-curso'),
+                'Observaciones' => $request->input('campo-observaciones'),
+                'fecha' => $request->input('campo-fecha')
+            ]);
 
         reunion::where('id', $id)->update([
             'estado' => 'Realizada'

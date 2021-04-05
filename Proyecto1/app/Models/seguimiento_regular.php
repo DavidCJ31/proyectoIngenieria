@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class seguimientoregular extends Model
+class seguimiento_regular extends Model
 {
     public $timestamps = false;
     protected $fillable = [
         'estudiante_id',
         'situacion',
-        'estado'
+        'estado',
+        'fechaSolicitud'
     ];
 
     public function estudiante()

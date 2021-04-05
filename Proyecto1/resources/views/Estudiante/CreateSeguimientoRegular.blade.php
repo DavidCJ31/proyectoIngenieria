@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,170 +19,144 @@
 </head>
 
 <body>
-<!--Main Navigation-->
-@include('layouts.header')
-<!--Main Navigation-->
+  <!--Main Navigation-->
+  @include('layouts.header')
+  <!--Main Navigation-->
 
  <!--<form method="post" action="/SeguimientoRegular" id="formSeguimientoRegular">
         @csrf -->
 
     <!-- Aqui empieza el  formulario -->
-    <div class= "form-card">
-        <h4>VICERRECTORIA DE DOCENCIA</h4><H5>EXITO ACADEMICO</H5><h4>SOLICITUD DE SEGUIMIENTO REGULAR</h4>
-        
-        <br>
-        <!-- Hilera del formulario -- nombre -->
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text">NOMBRE: </span>
-            </div>
-            <input type="text" class="form-control" placeholder="Esto deberia agarrarse automaticamente" id ="campo-nombre" aria-describedby="basic-addon1" value="{{ $estudiante->name.' '.$estudiante->apellido }}" disabled>
-          </div>
-          <!-- Hilera del formulario -- cedula y telefono -->
-          <div class="input-group mb-3">
-            <div class="input-group-append">
-                <span class="input-group-text">NUMERO DE CEDULA: </span>
-              </div>
-            <input type="text" class="form-control" placeholder="Numero de cedula (tambien automaticamente)" id="campo-cedula" aria-describedby="basic-addon2" value="{{ $estudiante->id }}" disabled>
+    <div class="form-card">
+      <h4>VICERRECTORIA DE DOCENCIA</h4>
+      <H5>EXITO ACADEMICO</H5>
+      <h4>SOLICITUD DE SEGUIMIENTO REGULAR</h4>
 
-            <div class="input-group-append">
-                <span class="input-group-text">TELEFONO: </span>
-              </div>
-            <input type="text" class="form-control" id="campo-telefono" aria-describedby="basic-addon2" value="{{$estudianteDetalle->tel_celular}}" disabled>
-          </div>
-          
-          <!-- Hilera del formulario -- Correo y beca -->
-          <div class="input-group mb-3">
-            <div class="input-group-append">
-                <span class="input-group-text">CORREO: </span>
-              </div>
-            <input type="text" class="form-control" id="campo-correo" aria-describedby="basic-addon2" value="{{ $estudiante->email}}" disabled>
+      <br>
+      <!-- Hilera del formulario -- nombre -->
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">NOMBRE: </span>
+        </div>
+        <input type="text" class="form-control" id="campo-nombre" aria-describedby="basic-addon1" value="{{ $estudiante->name.' '.$estudiante->apellido }}" disabled>
+      </div>
+      <!-- Hilera del formulario -- cedula y telefono -->
+      <div class="input-group mb-3">
+        <div class="input-group-append">
+          <span class="input-group-text">NUMERO DE CEDULA: </span>
+        </div>
+        <input type="text" class="form-control" id="campo-cedula" aria-describedby="basic-addon2" value="{{ $estudiante->id }}" disabled>
 
-            <div class="input-group-append">
-                <span class="input-group-text">BECA: </span>
-              </div>
-            <input type="text" class="form-control" id="campo-beca" aria-describedby="basic-addon2" value="{{ $estudianteDetalle->financiamiento}}" disabled>
-          </div>
+        <div class="input-group-append">
+          <span class="input-group-text">TELEFONO: </span>
+        </div>
+        <input type="text" class="form-control" id="campo-telefono" aria-describedby="basic-addon2" value="{{$estudianteDetalle->tel_celular}}" disabled>
+      </div>
 
-          <!-- Hilera del formulario -- Carrera y ano de ingreso -->
-          <div class="input-group mb-3">
-            <div class="input-group-append">
-                <span class="input-group-text">Carrera: </span>
-              </div>
-            <input type="text" class="form-control" id="campo-carrera" aria-describedby="basic-addon2" value="{{ $estudianteDetalle->universidadCarrera}}" disabled>
+      <!-- Hilera del formulario -- Correo y beca -->
+      <div class="input-group mb-3">
+        <div class="input-group-append">
+          <span class="input-group-text">CORREO: </span>
+        </div>
+        <input type="text" class="form-control" id="campo-correo" aria-describedby="basic-addon2" value="{{ $estudiante->email}}" disabled>
 
-            <div class="input-group-append">
-                <span class="input-group-text">AÑO DE INGRESO: </span>
-              </div>
-            <input type="text" class="form-control" id="campo-ingreso" aria-describedby="basic-addon2" value="{{ $estudianteDetalle->universidadAnnoIngreso}}" disabled>
-          </div>
-          <span class="input-group-text text-uppercase">Síntesis de la situación:</span>
-          <div class="input-group">
-            <textarea  name="campo-situacion" class="form-control"></textarea>
-          </div>
-          
-          <br>
-          <br>
+        <div class="input-group-append">
+          <span class="input-group-text">BECA: </span>
+        </div>
+        <input type="text" class="form-control" id="campo-beca" aria-describedby="basic-addon2" value="{{ $estudianteDetalle->financiamiento}}" disabled>
+      </div>
 
-          <h5> DISPONIBILIDAD DE HORARIO  </h5>
-          <div class="table-responsive ">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th class="cuadro-tabla">HORARIOS</th>
-                  <th class="cuadro-tabla">LUNES</th>
-                  <th class="cuadro-tabla">MARTES</th>
-                  <th class="cuadro-tabla">MIERCOLES</th>
-                  <th class="cuadro-tabla">JUEVES</th>
-                  <th class="cuadro-tabla">VIERNES</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>8 am</td>
-                  <td class="cuadro-tabla opcion-tabla" inicio="8" dia="lunes" onclick="seleccionarHorario(this)"></td>
-                  <td class="cuadro-tabla opcion-tabla" inicio="8"  dia="martes" onclick="seleccionarHorario(this)"></td>
-                  <td class="cuadro-tabla opcion-tabla" inicio="8" dia="miercoles" onclick="seleccionarHorario(this)"></td>
-                  <td class="cuadro-tabla opcion-tabla" inicio="8" dia="jueves" onclick="seleccionarHorario(this)"></td>
-                  <td class="cuadro-tabla opcion-tabla" inicio="8"  dia="viernes" onclick="seleccionarHorario(this)"></td>
-                </tr>
-                <tr>
-                  <td>9 am</td>
-                  <td class="cuadro-tabla opcion-tabla" inicio="9"  onclick="seleccionarHorario(this)"></td>
-                  <td class="cuadro-tabla opcion-tabla" inicio="9"  dia="martes" onclick="seleccionarHorario(this)"></td>
-                  <td class="cuadro-tabla opcion-tabla" inicio="9"  dia="miercoles" onclick="seleccionarHorario(this)"></td>
-                  <td class="cuadro-tabla opcion-tabla" inicio="9"  dia="jueves" onclick="seleccionarHorario(this)"></td>
-                  <td class="cuadro-tabla opcion-tabla" inicio="9"  dia="viernes" onclick="seleccionarHorario(this)"></td>
-                </tr>
-                <tr>
-                    <td>10 am</td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="10"  dia="lunes" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="10"  dia="martes" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="10"  dia="miercoles" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="10"  dia="jueves" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="10"  dia="viernes" onclick="seleccionarHorario(this)"></td>
-                  </tr>
-                  <tr>
-                    <td>11 am</td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="11"  dia="lunes" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="11"  dia="martes" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="11"  dia="miercoles" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="11"  dia="jueves" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="11"  dia="viernes" onclick="seleccionarHorario(this)"></td>
-                  </tr>
-                <tr>
-                    <td>1 pm</td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="13"  dia="lunes" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="13"  dia="martes" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="13"  dia="miercoles" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="13"  dia="jueves" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="13"  dia="viernes" onclick="seleccionarHorario(this)"></td>
-                  </tr>
+      <!-- Hilera del formulario -- Carrera y ano de ingreso -->
+      <div class="input-group mb-3">
+        <div class="input-group-append">
+          <span class="input-group-text">Carrera: </span>
+        </div>
+        <input type="text" class="form-control" id="campo-carrera" aria-describedby="basic-addon2" value="{{ $estudianteDetalle->universidadCarrera}}" disabled>
 
-                  <tr>
-                    <td>2 pm</td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="14"  dia="lunes" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="14"  dia="martes" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="14"  dia="miercoles" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="14"  dia="jueves" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="14"  dia="viernes" onclick="seleccionarHorario(this)"></td>
-                  </tr>
+        <div class="input-group-append">
+          <span class="input-group-text">AÑO DE INGRESO: </span>
+        </div>
+        <input type="text" class="form-control" id="campo-ingreso" aria-describedby="basic-addon2" value="{{ $estudianteDetalle->universidadAnnoIngreso}}" disabled>
+      </div>
+      <span class="input-group-text text-uppercase">Síntesis de la situación:</span>
+      <div class="input-group">
+        <textarea name="campo-situacion" class="form-control"></textarea>
+      </div>
+      <?php
 
-                  <tr>
-                    <td>3 pm</td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="15"  dia="lunes" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="15"  dia="martes" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="15"  dia="miercoles" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="15"  dia="jueves" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="15"  dia="viernes" onclick="seleccionarHorario(this)"></td>
-                  </tr>
+      $month = date('m');
+      $day = date('d');
+      $year = date('Y');
 
-                  <tr>
-                    <td>4 pm</td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="16"  dia="lunes" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="16"  dia="martes" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="16"  dia="miercoles" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="16"  dia="jueves" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="16"  dia="viernes" onclick="seleccionarHorario(this)"></td>
-                  </tr>
+      $today = $year . '-' . $month . '-' . $day;
+      ?>
+      <input type="hidden" value="{{$today}}" id="campo-fecha" name="campo-fecha">
+      <br>
+      <br>
 
-                  <tr>
-                    <td>5 pm</td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="17"  dia="lunes" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="17"  dia="martes" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="17"  dia="miercoles" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="17"  dia="jueves" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="17"  dia="viernes" onclick="seleccionarHorario(this)"></td>
-                  </tr>
+      <h5> DISPONIBILIDAD DE HORARIO </h5>
+      <div class="table-responsive ">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="cuadro-tabla">HORARIOS</th>
+              <th class="cuadro-tabla">LUNES</th>
+              <th class="cuadro-tabla">MARTES</th>
+              <th class="cuadro-tabla">MIERCOLES</th>
+              <th class="cuadro-tabla">JUEVES</th>
+              <th class="cuadro-tabla">VIERNES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>8 am</td>
+              <td class="cuadro-tabla opcion-tabla" inicio="8" dia="lunes" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="8" dia="martes" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="8" dia="miercoles" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="8" dia="jueves" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="8" dia="viernes" onclick="seleccionarHorario(this)"></td>
+            </tr>
+            <tr>
+              <td>9 am</td>
+              <td class="cuadro-tabla opcion-tabla" inicio="9" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="9" dia="martes" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="9" dia="miercoles" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="9" dia="jueves" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="9" dia="viernes" onclick="seleccionarHorario(this)"></td>
+            </tr>
+            <tr>
+              <td>10 am</td>
+              <td class="cuadro-tabla opcion-tabla" inicio="10" dia="lunes" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="10" dia="martes" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="10" dia="miercoles" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="10" dia="jueves" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="10" dia="viernes" onclick="seleccionarHorario(this)"></td>
+            </tr>
+            <tr>
+              <td>11 am</td>
+              <td class="cuadro-tabla opcion-tabla" inicio="11" dia="lunes" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="11" dia="martes" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="11" dia="miercoles" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="11" dia="jueves" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="11" dia="viernes" onclick="seleccionarHorario(this)"></td>
+            </tr>
+            <tr>
+              <td>1 pm</td>
+              <td class="cuadro-tabla opcion-tabla" inicio="13" dia="lunes" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="13" dia="martes" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="13" dia="miercoles" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="13" dia="jueves" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="13" dia="viernes" onclick="seleccionarHorario(this)"></td>
+            </tr>
 
-                  <tr>
-                    <td>6 pm</td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="18"  dia="lunes" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="18"  dia="martes" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="18"  dia="miercoles" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="18"  dia="jueves" onclick="seleccionarHorario(this)"></td>
-                    <td class="cuadro-tabla opcion-tabla" inicio="18"  dia="viernes" onclick="seleccionarHorario(this)"></td>
-                  </tr>
+            <tr>
+              <td>2 pm</td>
+              <td class="cuadro-tabla opcion-tabla" inicio="14" dia="lunes" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="14" dia="martes" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="14" dia="miercoles" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="14" dia="jueves" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="14" dia="viernes" onclick="seleccionarHorario(this)"></td>
+            </tr>
 
                   <tr>
                     <td>7 pm</td>
@@ -199,6 +174,7 @@
                 <button onclick="enviarHorarios()" class="btn btn-primary" name="enviar" id="boton-enviar">Enviar solicitud</button>
             </div>
         </div>
+      </div>
     </div>
       <!--</form>--> 
     @include("layouts.footer")
@@ -237,8 +213,7 @@
         }
       }
 
-      console.log(lista_horarios);
-    }
+  empezar();
 
     function enviarHorarios(){
       console.log("Entro a enviar horarios");
@@ -265,7 +240,33 @@
       });
     }
 
+    console.log(lista_horarios);
+  }
 
+  function enviarHorarios() {
+    lista_horarios.forEach((x) => guardarHorario(x));
+  }
+
+  function guardarHorario(horario) {
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+
+    //Aqui es donde hay que cambiarlo
+    $.ajax({
+      url: "horario-citas", //probablemente esto es como primer seguimiento
+      type: "POST",
+      data: {
+        horarios: JSON.stringify(horario),
+        _token: '{{csrf_token()}}'
+      },
+      success: function(result) {
+        console.log("success");
+        console.log(result)
+      }
+
+    });
+  }
 </script>
-
-

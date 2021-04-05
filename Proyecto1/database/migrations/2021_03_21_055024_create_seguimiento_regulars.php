@@ -14,11 +14,12 @@ class CreateSeguimientoRegulars extends Migration
     public function up()
     {
         Schema::create('seguimiento_regulars', function (Blueprint $table) {
+            $table->id();
             $table->integer('estudiante_id');
-            $table->unique('estudiante_id');
             $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
-            $table->string('situacion', 255);
-            $table->string('estado', 13);
+            $table->text('situacion');
+            $table->string('estado', 20);
+            $table->dateTime('fechaSolicitud');
         });
     }
 

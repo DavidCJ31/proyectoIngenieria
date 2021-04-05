@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\estudiante_detalle;
 use App\Models\estudiante;
 use App\Models\asesor;
-use App\Models\primer_seguimiento;
+use App\Models\seguimiento_regular;
 use App\Models\disponibilidad_estudiante;
 
 class SeguimientoRegularController extends Controller
@@ -22,8 +22,8 @@ class SeguimientoRegularController extends Controller
     {
         $id = Auth::user()->id;
         $asesor = asesor::find($id)->user;
-        $primer_seguimiento = primer_seguimiento::where('estado', 'Pendiente')->get();
-        return view('Asesor/IndexPrimerSeguimiento')->with('asesor', $asesor)->with('seguimientos', $primer_seguimiento);
+        $seguimiento_regular = seguimiento_regular::where('estado', 'Pendiente')->get();
+        return view('Asesor/IndexSeguimientoRegular')->with('asesor', $asesor)->with('seguimientos', $seguimiento_regular);
     }
 
     /**
@@ -47,6 +47,13 @@ class SeguimientoRegularController extends Controller
      */
     public function store(Request $request)
     {
+        $seguimiento_regular = new seguimiento_regular;
+        $seguimiento_regular->estudiante_id = Auth::user()->id;
+        $seguimiento_regular->situacion = $request->input('campo-situacion');
+        $seguimiento_regular->fechaSolicitud = $request->input('campo-fecha');
+        $seguimiento_regular->estado = 'Pendiente';
+        $seguimiento_regular->save();
+        return redirect('/Estudiante');
         //
         $id = Auth::user()->id;
             if(isset($_POST["horarios"])){

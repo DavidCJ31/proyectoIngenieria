@@ -79,12 +79,7 @@ class EstudianteController extends Controller
      */
     public function show($id)
     {
-        
-        $estudiante = estudiante::where('id', $id)->first();
-        $user = User::find($estudiante->id);
-        $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
-        $primer = primer_seguimiento::where('estudiante_id', $id)->first();
-        return view('Estudiante/ShowPrimerSeguimiento')->with('estudiante', $user)->with('estudianteDetalle', $estudianteDetalle)->with('primerSeguimiento', $primer);
+    
     }
 
     /**

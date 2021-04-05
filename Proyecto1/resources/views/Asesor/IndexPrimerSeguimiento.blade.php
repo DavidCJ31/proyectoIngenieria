@@ -51,7 +51,7 @@
                         <td>{{$seguimiento->creditoCruso}}</td>
                         <td>{{$seguimiento->situacion}}</td>
                         <td>{{$seguimiento->tipoTutoria}}</td>
-                        <td><a href="{{route('Estudiante.show', $seguimiento->estudiante_id)}}" target="_blank">Ver Solicitud</a></td>
+                        <td><a href="{{route('PrimerSeguimiento.show', $seguimiento->estudiante_id)}}" target="_blank">Ver Solicitud</a></td>
                         <td><a href="{{route('CalendarizarPrimerSeguimiento.edit', $seguimiento->estudiante_id)}}">Aceptar Solicitud</a></td>
                     </tr>
                     @endforeach
