@@ -88,35 +88,34 @@ class CalendarioController extends Controller
         $reunion = reunion::find($id);
         if ($reunion->title == "Primer Seguimiento") {
             $detalle_cursos = DB::table('detalle_cursos')
-            ->select('detalle_cursos.*')
-            ->orderBy('id','DESC')
-            ->get();
+                ->select('detalle_cursos.*')
+                ->orderBy('id', 'DESC')
+                ->get();
             (array) $cursos = DB::table('cursos')
-            ->select('cursos.*')
-            ->orderBy('codigo','DESC')
-            ->get();
+                ->select('cursos.*')
+                ->orderBy('codigo', 'DESC')
+                ->get();
             $All_Info = array();
-            foreach($detalle_cursos as $curso){
+            foreach ($detalle_cursos as $curso) {
                 $info_cursos = array();
-                $info_cursos[]= $curso->id;
-                $info_cursos[]= $curso->tutor_id;
-                $info_cursos[]= $curso->anno;
-                $info_cursos[]= $curso->periodo;
-                $info_cursos[]= $curso->num_periodo;
-                $info_cursos[]= $curso->hora_inicio;
-                $info_cursos[]= $curso->hora_final;
-                $info_cursos[]= $curso->dia;
-                foreach($cursos as $cur){
-                    if($curso->curso_codigo == $cur->codigo){
-                        $info_cursos[]= $cur->nombre;
-                        $info_cursos[]= $cur->curso_necesario;
-                        $All_Info[]=$info_cursos;
+                $info_cursos[] = $curso->id;
+                $info_cursos[] = $curso->tutor_id;
+                $info_cursos[] = $curso->anno;
+                $info_cursos[] = $curso->periodo;
+                $info_cursos[] = $curso->num_periodo;
+                $info_cursos[] = $curso->hora_inicio;
+                $info_cursos[] = $curso->hora_final;
+                $info_cursos[] = $curso->dia;
+                foreach ($cursos as $cur) {
+                    if ($curso->curso_codigo == $cur->codigo) {
+                        $info_cursos[] = $cur->nombre;
+                        $info_cursos[] = $cur->curso_necesario;
+                        $All_Info[] = $info_cursos;
                     }
                 }
             }
-            return view('Seguimiento/FormPrimerSeguimiento')->with('asesor', $asesor)->with('reunion', $reunion)->with('info_cursos',$All_Info);
-        }
-        else{
+            return view('Seguimiento/FormPrimerSeguimiento')->with('asesor', $asesor)->with('reunion', $reunion)->with('info_cursos', $All_Info);
+        } else {
             return "Seguimiento Normal";
         }
     }
@@ -145,6 +144,8 @@ class CalendarioController extends Controller
     {
         $reuniones = reunion::findOrFail($id);
         reunion::destroy($id);
+        $primer_seguimiento = new primer_seguimiento;
+        $primer_seguimiento->estudiante_id = primer_seguimiento::where('estudiante_id', $request->input('estudiante_id'))->update(['estado' => 'Pendiente']);
         return response()->json($id);
     }
 
