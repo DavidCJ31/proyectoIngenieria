@@ -10,6 +10,9 @@ use App\Models\estudiante;
 use App\Models\asesor;
 use App\Models\primer_seguimiento;
 use Illuminate\Support\Facades\DB;
+use App\Mail\agendarcitaMailable;
+use App\Mail\eliminarcitaMailable;
+use Illuminate\Support\Facades\Mail;
 
 class CalendarioController extends Controller
 {
@@ -55,11 +58,16 @@ class CalendarioController extends Controller
                 reunion::insert($datosReunion);
                 $primer_seguimiento = new primer_seguimiento;
                 $primer_seguimiento->estudiante_id = primer_seguimiento::where('estudiante_id', $request->input('estudiante_id'))->update(['estado' => 'Revisado']);
+                
             } else {
             }
         } else {
             print_r("Error");
         }
+
+       // $estudiante = estudiante::find( $request->input('estudiante_id'))->user;
+        //$correo = new agendarcitaMailable($r);
+        //Mail::to($estudiante->email)->send($correo);
     }
 
     /**
@@ -183,6 +191,7 @@ class CalendarioController extends Controller
         $asesor = asesor::find($idAsesor)->user;
         $estudiante = estudiante::find($id)->user;
         return view('Asesor/AgendarReunion')->with('asesor', $asesor)->with('estudiante', $estudiante)->with('tipo', "Primer Seguimiento");
+
     }
 
     public function eliminarPrimerSeguimiento(Request $request, $id)
@@ -192,5 +201,11 @@ class CalendarioController extends Controller
         $primer_seguimiento = new primer_seguimiento;
         $primer_seguimiento->estudiante_id = primer_seguimiento::where('estudiante_id', $request->input('estudiante_id'))->update(['estado' => 'Pendiente']);
         return response()->json($id);
+
+
+        $estudiante = estudiante::find( $request->input('estudiante_id'))->user;
+        $correo = new eliminarcitaMailable($estudiante);
+        Mail::to($estudiante->email)->send($correo);
+   
     }
 }
