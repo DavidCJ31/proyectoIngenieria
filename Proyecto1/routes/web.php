@@ -152,3 +152,9 @@ Route::get('/estudiante', [EstudianteController::class, 'tablaEstudiantes']);
 Route::get('/contrato', function () {
     return view('contratoDeTutoria');
 });
+
+// For PDF's
+
+Route::get('guardaPDF', [EstudianteController::class, 'index']);
+    
+//Route::post('store', [EstudianteController::class, 'update']);
