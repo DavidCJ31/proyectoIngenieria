@@ -68,7 +68,21 @@ class EstudianteController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $name = $request->file('file')->getClientOriginalName();
+        $id = Auth::user()->id;
+        $path = $request->file('file')->storeAs('public/archivos',$id);
+ 
+        $estudiante = new estudiante;
+ 
+        //$file->name = $name;
+        $estudiante->id = $id;
+        $estudiante->especialidad = "Bien";
+        $estudiante->archivo = $name;
+
+        $estudiante->save();
+
+        return redirect('Estudiante')->with('status', 'File Has been uploaded successfully in laravel 8');
+ 
     }
 
     /**
@@ -120,7 +134,13 @@ class EstudianteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        estudiante::where('id', $id)
+            ->update([
+                'archivo' => $request->file('file')->getClientOriginalName()
+            ]);
+        $request->file('file')->storeAs('public/'.$id,$id);
+        return redirect('/Estudiante');
     }
 
     /**
