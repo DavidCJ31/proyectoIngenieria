@@ -50,7 +50,7 @@ class CalendarioController extends Controller
         $datosReunion = request()->except(['_token', '_method', 'id']);
 
         if ($reunion == null) {
-            if ($request->input('title') == "Primer Seguimiento") {
+            if ($request->input('tipo') == "Primer Seguimiento") {
                 print_r($datosReunion);
                 reunion::insert($datosReunion);
                 $primer_seguimiento = new primer_seguimiento;
@@ -70,9 +70,37 @@ class CalendarioController extends Controller
      */
     public function show()
     {
+        /*
         $reuniones = reunion::where('asesor_id', Auth::user()->id)->get();
         $data['eventos'] = $reuniones;
         return response()->json($data['eventos']);
+        */
+
+        $data = '[';
+        $reuniones = reunion::where('asesor_id', Auth::user()->id)->get();
+        foreach ($reuniones as $reunion) {
+            $estudiante = estudiante::find($reunion->estudiante_id)->user;
+            $temp = array(
+                'id' => $reunion->id,
+                'title' => $estudiante->name . ' ' . $estudiante->apellido,
+                'asesor_id' => $reunion->asesor_id,
+                'estudiante_id' => $reunion->estudiante_id,
+                'start' => $reunion->start,
+                'end' => $reunion->end,
+                'duracion' => $reunion->duracion,
+                'descripcion' => $reunion->descripcion,
+                'tipo' => $reunion->tipo,
+                'estado' => $reunion->estado,
+                'backgroundColor' => $reunion->backgroundColor,
+                'textColor' => $reunion->textColor
+            );
+            $data = $data . json_encode($temp).',';
+        }
+        $data = substr($data, 0, -1);
+        $data = $data . ']';
+        echo $data;
+        
+        //return response()->json($data);
     }
 
     /**

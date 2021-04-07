@@ -52,7 +52,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Calendarizar Seguimiento</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
                         <button type="button" class="close" data-dismiss="modal" id="cerrar" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -126,7 +126,7 @@
             },
             eventClick: function(info) {
                 console.log(info);
-
+                document.getElementById("exampleModalLongTitle").innerHTML = "<b><u>Estudiante:</u></b> " + info.event.title;
                 if (info.event.extendedProps.estado == "Realizada") {
                     $("#btnReunion").prop("disabled", true);
                     $("#btnModificar").prop("disabled", true);
@@ -162,7 +162,7 @@
                 $('#campo-hora').val(hora + ":" + minutos);
                 $('#campo-duracion').val(info.event.extendedProps.duracion);
                 $('#campo-descripcion').val(info.event.extendedProps.descripcion);
-                $('#campo-tipo').val(info.event.title);
+                $('#campo-tipo').val(info.event.extendedProps.tipo);
                 $('#campo-color').val(info.event.backgroundColor);
                 $('#campo-estado').val(info.event.extendedProps.estado);
 
@@ -215,7 +215,7 @@
                 end: fecha_end,
                 duracion: $('#campo-duracion').val(),
                 descripcion: $('#campo-descripcion').val(),
-                title: $('#campo-tipo').val(),
+                tipo: $('#campo-tipo').val(),
                 estado: $('#campo-estado').val(),
                 backgroundColor: $('#campo-color').val(),
                 textColor: '#000000',

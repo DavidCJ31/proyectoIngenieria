@@ -26,7 +26,7 @@ class CreateReunionTable extends Migration
             
             $table->text('descripcion');
 
-            $table->string('title', 45);
+            $table->string('tipo', 45);
 
             $table->string('estado', 20);
 

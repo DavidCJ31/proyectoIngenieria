@@ -150,7 +150,7 @@
                 $('#campo-hora').val(hora + ":" + minutos);
                 $('#campo-duracion').val(info.event.extendedProps.duracion);
                 $('#campo-descripcion').val(info.event.extendedProps.descripcion);
-                $('#campo-tipo').val(info.event.title);
+                $('#campo-tipo').val(info.event.extendedProps.tipo);
                 $('#campo-color').val(info.event.backgroundColor);
 
                 $('#exampleModalCenter').modal('toggle');
@@ -194,7 +194,7 @@
                 end: fecha_end,
                 duracion: $('#campo-duracion').val(),
                 descripcion: $('#campo-descripcion').val(),
-                title: $('#campo-tipo').val(),
+                tipo: $('#campo-tipo').val(),
                 estado: 'Pendiente',
                 backgroundColor: $('#campo-color').val(),
                 textColor: '#000000',
