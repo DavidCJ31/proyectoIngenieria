@@ -236,7 +236,7 @@
 
   function enviarDatos() {
     console.log(recolectarDatosGUI());
-    if (condition) {
+    if ($("#campo-situacion").val && lista_horarios.length !== 0) {
       $.ajax({
         url: "{{url('/SeguimientoRegular')}}",
         type: "POST",
@@ -250,7 +250,7 @@
         }
       });
     } else {
-
+      alert("Completar todos los campos");
     }
 
   }
