@@ -98,7 +98,7 @@
                     <div class="modal-footer">
                         <button id="btnReunion" class="btn btn-info">Realizar Reunion</button>
                         <button id="btnModificar" class="btn btn-secondary">Modificar</button>
-                        <button id="btnEliminar" class="btn btn-danger">Eliminar</button>
+                        <button id="btnEliminar" class="btn btn-danger">Reprogramar</button>
                         <button id="btnCancelar" data-dismiss="modal" class="btn btn-primary">Cancelar</button>
                     </div>
                 </div>
