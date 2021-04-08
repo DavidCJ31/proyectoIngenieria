@@ -13,9 +13,9 @@
     @include("Welcome.headerWelcome")
     </br>
     <x-jet-authentication-card style="background-color: red;">
-   
+
         <x-slot name="logo">
-   
+
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
