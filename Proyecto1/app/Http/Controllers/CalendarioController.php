@@ -58,16 +58,17 @@ class CalendarioController extends Controller
                 reunion::insert($datosReunion);
                 $primer_seguimiento = new primer_seguimiento;
                 $primer_seguimiento->estudiante_id = primer_seguimiento::where('estudiante_id', $request->input('estudiante_id'))->update(['estado' => 'Revisado']);
-                
+                //Aqui se obtiene el id de la reunion
+                $r  = reunion::select('id')->orderByDesc('id')->limit(1)->first();
+                $reunionDatos = reunion::find($r->id);
+                $estudiante = estudiante::find( $request->input('estudiante_id'))->user;
+                $correo = new agendarcitaMailable($reunionDatos);
+                Mail::to($estudiante->email)->send($correo);
             } else {
             }
         } else {
             print_r("Error");
         }
-
-       // $estudiante = estudiante::find( $request->input('estudiante_id'))->user;
-        //$correo = new agendarcitaMailable($r);
-        //Mail::to($estudiante->email)->send($correo);
     }
 
     /**
@@ -102,12 +103,12 @@ class CalendarioController extends Controller
                 'backgroundColor' => $reunion->backgroundColor,
                 'textColor' => $reunion->textColor
             );
-            $data = $data . json_encode($temp).',';
+            $data = $data . json_encode($temp) . ',';
         }
         $data = substr($data, 0, -1);
         $data = $data . ']';
         echo $data;
-        
+
         //return response()->json($data);
     }
 
@@ -191,7 +192,6 @@ class CalendarioController extends Controller
         $asesor = asesor::find($idAsesor)->user;
         $estudiante = estudiante::find($id)->user;
         return view('Asesor/AgendarReunion')->with('asesor', $asesor)->with('estudiante', $estudiante)->with('tipo', "Primer Seguimiento");
-
     }
 
     public function eliminarPrimerSeguimiento(Request $request, $id)
@@ -203,9 +203,8 @@ class CalendarioController extends Controller
         return response()->json($id);
 
 
-        $estudiante = estudiante::find( $request->input('estudiante_id'))->user;
+        $estudiante = estudiante::find($request->input('estudiante_id'))->user;
         $correo = new eliminarcitaMailable($estudiante);
         Mail::to($estudiante->email)->send($correo);
-   
     }
 }
