@@ -47,35 +47,60 @@ class SeguimientoRegularController extends Controller
      */
     public function store(Request $request)
     {
-        $seguimiento_regular = new seguimiento_regular;
-        $seguimiento_regular->estudiante_id = Auth::user()->id;
-        $seguimiento_regular->situacion = $request->input('campo-situacion');
-        $seguimiento_regular->fechaSolicitud = $request->input('campo-fecha');
-        $seguimiento_regular->estado = 'Pendiente';
-        $seguimiento_regular->save();
-        return redirect('/Estudiante');
-        //
+
+        $s = seguimiento_regular::where('estudiante_id', Auth::user()->id)
+            ->where('estado', 'Pendiente')->fist();
+        if ($s == null) {
+            $seguimiento_regular = new seguimiento_regular;
+            $seguimiento_regular->estudiante_id = Auth::user()->id;
+            $seguimiento_regular->situacion = $request->input('situacion');
+            $seguimiento_regular->estado = $request->input('estado');
+            $seguimiento_regular->fechaSolicitud = $request->input('fechaSolicitud');
+            $seguimiento_regular->save();
+            print_r($seguimiento_regular);
+        }
+        //disponibilidad_estudiante::where('estudiante_id', Auth::user()->id)->delete();
+        $lista_horarios = json_decode(stripslashes($_POST['horarios']));
+        if ($lista_horarios == null) {
+            print_r('vacio');
+        } else {
+            foreach ($lista_horarios as $horario) {
+                $h = new disponibilidad_estudiante;
+                $h->estudiante_id = Auth::user()->id;
+                $h->dia = $horario->dia;
+                $h->hora = $horario->horaInicio;
+                $h->save();
+                print_r($horario);
+            }
+            print_r('lleno');
+        }
+
+
+
+
+
+        /*
         $id = Auth::user()->id;
-            if(isset($_POST["horarios"])){
-                $array = json_decode($_POST["horarios"]);
-                $horarios = disponibilidad_estudiante::where('estudiante_id', $id)->where('dia', $array->dia)->where('hora', $array->horaInicio)->get();
-                echo $horarios;
-                if(!empty($horarios[0])){ //Esto es que ya hay una solicitud de ese horario
-                    $message = $array->inicio;
-                    return response()->json([
-                        'status'=> 'Error', 
-                        'message' => $message, 
-                    ]);
-                }
-                $disponibilidadhorario = new disponibilidad_estudiante;                
-                $disponibilidadhorario->estudiante_id = $id;
-                $disponibilidadhorario->dia = $array->dia;
-                $disponibilidadhorario->hora = $array->horaInicio;
-                $disponibilidadhorario->save();
+        if (isset($_POST["horarios"])) {
+            $array = json_decode($_POST["horarios"]);
+            $horarios = disponibilidad_estudiante::where('estudiante_id', $id)->where('dia', $array->dia)->where('hora', $array->horaInicio)->get();
+            echo $horarios;
+            if (!empty($horarios[0])) { //Esto es que ya hay una solicitud de ese horario
+                $message = $array->inicio;
+                return response()->json([
+                    'status' => 'Error',
+                    'message' => $message,
+                ]);
             }
-            else{
-                echo "something went wrong";
-            }
+            $disponibilidadhorario = new disponibilidad_estudiante;
+            $disponibilidadhorario->estudiante_id = $id;
+            $disponibilidadhorario->dia = $array->dia;
+            $disponibilidadhorario->hora = $array->horaInicio;
+            $disponibilidadhorario->save();
+        } else {
+            echo "something went wrong";
+        }
+        */
     }
 
     /**
@@ -110,7 +135,7 @@ class SeguimientoRegularController extends Controller
     public function update(Request $request, $id)
     {
         //
-  
+
     }
 
     /**
