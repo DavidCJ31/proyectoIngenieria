@@ -242,8 +242,14 @@
         type: "POST",
         data: recolectarDatosGUI(),
         success: function(result) {
-          console.log("success");
-          console.log(result);
+          if (result == 'Exito') {
+            alert("Solicitud agregada con Exito");
+            window.location.href = "{{url('/Estudiante')}}";
+          }
+          if (result == 'Error') {
+            alert("Ya hay una solicitud en proceso");
+            window.location.href = "{{url('/Estudiante')}}";
+          }
         },
         error: function() {
           alert("Hay un error");

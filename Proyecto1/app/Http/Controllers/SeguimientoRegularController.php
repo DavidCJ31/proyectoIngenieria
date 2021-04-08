@@ -58,16 +58,15 @@ class SeguimientoRegularController extends Controller
             $seguimiento_regular->estado = $request->input('estado');
             $seguimiento_regular->fechaSolicitud = $request->input('fechaSolicitud');
             $seguimiento_regular->save();
-            print_r('Seguimiento Guardado con Exito');
+            print_r('Exito');
         } else {
-            print_r('Error Guardando el Seguimiento');
+            print_r('Error');
         }
 
         disponibilidad_estudiante::where('estudiante_id', Auth::user()->id)->delete();
 
         $lista_horarios = json_decode(stripslashes($_POST['horarios']));
         if ($lista_horarios == null) {
-            print_r('La lista Esta Vacia');
         } else {
             foreach ($lista_horarios as $horario) {
                 $h = new disponibilidad_estudiante;
@@ -76,7 +75,6 @@ class SeguimientoRegularController extends Controller
                 $h->hora = $horario->horaInicio;
                 $h->save();
             }
-            print_r('Horarios Guardados con Exito');
         }
     }
 
