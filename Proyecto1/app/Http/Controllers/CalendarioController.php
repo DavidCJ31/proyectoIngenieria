@@ -179,11 +179,27 @@ class CalendarioController extends Controller
      */
     public function destroy(Request $request, $id)
     {
+        $reunionDatos = reunion::find($id);
+        $estudiante = estudiante::find( $request->input('estudiante_id'))->user;
+        $correo = new eliminarcitaMailable($reunionDatos);
+        Mail::to($estudiante->email)->send($correo);
         $reuniones = reunion::findOrFail($id);
         reunion::destroy($id);
         $primer_seguimiento = new primer_seguimiento;
         $primer_seguimiento->estudiante_id = primer_seguimiento::where('estudiante_id', $request->input('estudiante_id'))->update(['estado' => 'Pendiente']);
+        
+
+        
+     
+        
+        
+        
         return response()->json($id);
+
+
+
+
+
     }
 
     public function editPrimerSeguimiento($id)

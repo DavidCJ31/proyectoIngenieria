@@ -11,7 +11,7 @@
 
     <h1>Seguimiento Estudiantil le informa:</h1>
 
-    <h3>Hola {{$estudiante->name}} </h3>
+    <h3>Hola {{$estudiante->name}} {{$estudiante->apellido}} </h3>
     <p> Le informamos por parte de Éxito académico que su información personal se actualizo correctamente en el sistema.</p>
     <p> Le agradecemos haber completado la información.</p>
     <br>

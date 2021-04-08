@@ -20,9 +20,9 @@ class eliminarcitaMailable extends Mailable
     public $nombre;
     public $apellido;
 
-    public function __construct($nombre)
+    public function __construct($start)
     {
-        $this->nombre = $nombre;
+        $this->start = $start;
     }
 
 
@@ -33,6 +33,6 @@ class eliminarcitaMailable extends Mailable
      */
     public function build()
     {
-        return $this->view('correos/eliminarcita')->with('estudiante', $this->nombre);
+        return $this->view('correos/eliminarcita')->with('reunion', $this->start);
     }
 }

@@ -11,9 +11,10 @@
 
     <h1>Seguimiento Estudiantil le informa:</h1>
 
-    <h3>Hola {{$user->name}} </h3>
-    <p> Le informamos por parte de Éxito académico su cita en el sistema fue eliminada de forma exitosa.</p>
-    <p> Le agradecemos haber completado la información.</p>
+    <h3>Hola {{ App\Models\User::find($reunion->estudiante_id)->name}} {{ App\Models\User::find($reunion->estudiante_id)->apellido}}</h3>
+    <p> Le informamos por parte de seguimiento estudiantil que la cita que tenia calendarizada para el dia {{$reunion->start}} fue eliminada del sistema para reprogramarla.</p>
+    <p> Cuando se calendarize de nuevo se le enviara un correo.</p>
+    <p> Muchas gracias por su comprension ante el incoveniente.</p>
     <br>
     <br>
     <br>
