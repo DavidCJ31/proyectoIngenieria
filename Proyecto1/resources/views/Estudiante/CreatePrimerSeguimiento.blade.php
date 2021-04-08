@@ -20,7 +20,7 @@
         @csrf
     <!-- Aqui empieza el  formulario -->
     <div class= "form-card">
-        <h4>VICERRECTORIA DE DOCENCIA</h4><H5>EXITO ACADEMICO</H5><h4>SOLICITUD DEL PRIMER SEGUIMIENTO</h4>
+        <h4 style="text-align: center;" >VICERRECTORIA DE DOCENCIA</h4><H5 style="text-align: center;" >EXITO ACADEMICO</H5><h4 style="text-align: center;" >SOLICITUD DEL PRIMER SEGUIMIENTO</h4>
         <!-- Hilera del formulario -- nombre -->
         <div class="input-group mb-3">
             <div class="input-group-prepend">

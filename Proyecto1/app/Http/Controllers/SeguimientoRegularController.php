@@ -10,6 +10,7 @@ use App\Models\estudiante;
 use App\Models\asesor;
 use App\Models\seguimiento_regular;
 use App\Models\disponibilidad_estudiante;
+use App\Models\User;
 
 class SeguimientoRegularController extends Controller
 {
@@ -85,9 +86,15 @@ class SeguimientoRegularController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
+    
+        {
+            $estudiante = estudiante::where('id', $id)->first();
+            $user = User::find($estudiante->id);
+            $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
+            $primer = seguimiento_regular::where('estudiante_id', $id)->first();
+            return view('Estudiante/ShowSeguimientoRegular')->with('estudiante', $user)->with('estudianteDetalle', $estudianteDetalle)->with('SeguimientoRegular', $primer);
+        }
+    
 
     /**
      * Show the form for editing the specified resource.

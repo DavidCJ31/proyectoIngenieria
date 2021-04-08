@@ -210,6 +210,14 @@ class CalendarioController extends Controller
         return view('Asesor/AgendarReunion')->with('asesor', $asesor)->with('estudiante', $estudiante)->with('tipo', "Primer Seguimiento");
     }
 
+    public function editSeguimientoRegular($id)
+    {
+        $idAsesor = Auth::user()->id;
+        $asesor = asesor::find($idAsesor)->user;
+        $estudiante = estudiante::find($id)->user;
+        return view('Asesor/AgendarReunion')->with('asesor', $asesor)->with('estudiante', $estudiante)->with('tipo', "Seguimiento Regular");
+    }
+
     public function eliminarPrimerSeguimiento(Request $request, $id)
     {
         $reuniones = reunion::findOrFail($id);

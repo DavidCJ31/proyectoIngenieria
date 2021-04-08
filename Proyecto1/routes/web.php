@@ -111,6 +111,7 @@ Route::resources([
 
 Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
 Route::get('/CalendarizarPrimerSeguimiento/{id}/edit', [CalendarioController::class, 'editPrimerSeguimiento'])->name('CalendarizarPrimerSeguimiento.edit');
+Route::get('/CalendarizarSeguimientoRegular/{id}/edit', [CalendarioController::class, 'editSeguimientoRegular'])->name('CalendarizarSeguimientoRegular.edit');
 
 Route::post('/referencia', [AsesorController::class, 'referencia']);
 
@@ -133,18 +134,6 @@ Route::get('/referencia', function () {
 Route::get('/prueba', function () {
     return view('Tutor/prueba');
 });
-
-//Route::resource('/horario', HorarioAsesorController::class);
-
-
-//Route::get('/contactanos', function () {
-//    $contacto = "Hola";
-//    $correo = new ContactanosMailable($contacto);
-//    $correo->subject("Holamundo");
-//    Mail::to('exitoacademico2021@gmail.com')->send($correo);
-//    return "Mensaje Enviado";
-//});
-
 
 Route::get('/usuarios', [PersonaController::class, 'tablaUsuarios']);
 Route::get('/estudiante', [EstudianteController::class, 'tablaEstudiantes']);
