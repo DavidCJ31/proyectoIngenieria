@@ -123,7 +123,7 @@ class CalendarioController extends Controller
         $idAsesor = Auth::user()->id;
         $asesor = asesor::find($idAsesor)->user;
         $reunion = reunion::find($id);
-        if ($reunion->title == "Primer Seguimiento") {
+        if ($reunion->tipo == "Primer Seguimiento") {
             $detalle_cursos = DB::table('detalle_cursos')
                 ->select('detalle_cursos.*')
                 ->orderBy('id', 'DESC')

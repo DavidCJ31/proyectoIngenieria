@@ -51,7 +51,7 @@ class PrimerSeguimientoController extends Controller
     public function store(Request $request)
     {
         $s = primer_seguimiento::where('estudiante_id', Auth::user()->id)
-        ->where('estado', 'Pendiente')->get();
+            ->where('estado', 'Pendiente')->get();
 
         if (empty($s[0])) {
             $primer_seguimiento = new primer_seguimiento;
@@ -63,15 +63,14 @@ class PrimerSeguimientoController extends Controller
             $primer_seguimiento->tipoTutoria = 'Individual';
             $primer_seguimiento->estado = 'Pendiente';
             $primer_seguimiento->save();
-            print_r('Seguimiento Guardado con Exito');
+            print_r('Exito');
         } else {
-            print_r('Error Guardando el Seguimiento');
+            print_r('Error');
         }
 
         disponibilidad_estudiante::where('estudiante_id', Auth::user()->id)->delete();
         $lista_horarios = json_decode(stripslashes($_POST['horarios']));
         if ($lista_horarios == null) {
-            print_r('La lista Esta Vacia');
         } else {
             foreach ($lista_horarios as $horario) {
                 $h = new disponibilidad_estudiante;
@@ -80,12 +79,7 @@ class PrimerSeguimientoController extends Controller
                 $h->hora = $horario->horaInicio;
                 $h->save();
             }
-            print_r('Horarios Guardados con Exito');
         }
-
-
-
-        return redirect('/Estudiante');
     }
 
     /**
