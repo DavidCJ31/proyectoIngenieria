@@ -54,38 +54,7 @@
                 </div>
  
                 <div class="container mt-4">
- 
- <h2 class="text-center">File Upload in Laravel 8 - Tutsmake.com</h2>
 
-     <form method="POST" enctype="multipart/form-data" id="upload-file" action="/Estudiante/{{ $usuario->id }}" >
-     @csrf
-        @method('PUT')                
-         <div class="row">
-
-             <div class="col-md-12">
-                 <div class="form-group">
-                     <input type="file" name="file" placeholder="Escoger archivo" id="file">
-                       @error('file')
-                       <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                       @enderror
-                 </div>
-             </div>
-                
-             <div class="col-md-12">
-                 <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-             </div>
-         </div>     
-     </form>
-</div>
-</div> 
-
-<a href="storage/{{$usuario->id}}/{{$usuario->id}}.docx"><button>{{$usuario->id}}.docx</button></a>
-
-<!--<iframe width="100%"
-	height="850"
-	src="https://docs.google.com/document/d/1q673PBte-biMvyu2jRtRjyPh1T5yJo4WKxEDgJUB_uI/edit?usp=sharing">
-</iframe>
--->
 </div>
 
 </body>
