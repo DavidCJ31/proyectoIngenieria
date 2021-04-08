@@ -8,23 +8,38 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
 </script>
 
-
+<script>
+    function ValidateEmail()
+        {
+            var email = document.getElementById('email');
+            var mailformat = /^[a-zA-Z^0-9_`{|}~-]+@est.una.ac.cr/;
+            if(email.value.match(mailformat)){
+                return true;
+            }
+            else
+            {
+                alert("Invalid email address!");
+                return false;
+            }
+        }
+</script>
+<!-- {{ route('register') }} -->
 <x-guest-layout>
     @include("Welcome.headerWelcome")
     </br>
     <x-jet-authentication-card style="background-color: red;">
-
+   
         <x-slot name="logo">
-
+   
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" name="registro" action="{{ route('register') }}" onsubmit="return ValidateEmail()">
             @csrf
             <x-jet-input type="hidden" name="rol" :value="3" />
             <div>
-                <x-jet-label value="{{ __('Cedula') }}" />
+                <x-jet-label value="{{ __('Cedula') }}"/>
                 <x-jet-input class="block mt-1 w-full" type="number" name="id" :value="old('id')" required autofocus autocomplete="id" />
             </div>
 
@@ -40,7 +55,7 @@
 
             <div class="mt-4">
                 <x-jet-label value="{{ __('Email') }}" />
-                <x-jet-input class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-jet-input class="block mt-1 w-full" type="email" name="email" id="email" :value="old('email')" required />
             </div>
 
             <div>
@@ -64,7 +79,7 @@
                     {{ __('Ya esta registrado?') }}
                 </a>
                 <x-jet-button class="ml-4">
-                    {{ __('Registrase') }}
+                {{ __('Registrarse') }}
                 </x-jet-button>
             </div>
         </form>
