@@ -159,6 +159,42 @@
           </tr>
 
           <tr>
+                <td>3 pm</td>
+                <td class="cuadro-tabla opcion-tabla" inicio="15" dia="lunes" onclick="seleccionarHorario(this)"></td>
+                <td class="cuadro-tabla opcion-tabla" inicio="15" dia="martes" onclick="seleccionarHorario(this)"></td>
+                <td class="cuadro-tabla opcion-tabla" inicio="15" dia="miercoles" onclick="seleccionarHorario(this)"></td>
+                <td class="cuadro-tabla opcion-tabla" inicio="15" dia="jueves" onclick="seleccionarHorario(this)"></td>
+                <td class="cuadro-tabla opcion-tabla" inicio="15" dia="viernes" onclick="seleccionarHorario(this)"></td>
+              </tr>
+
+              <tr>
+                <td>4 pm</td>
+                <td class="cuadro-tabla opcion-tabla" inicio="16" dia="lunes" onclick="seleccionarHorario(this)"></td>
+                <td class="cuadro-tabla opcion-tabla" inicio="16" dia="martes" onclick="seleccionarHorario(this)"></td>
+                <td class="cuadro-tabla opcion-tabla" inicio="16" dia="miercoles" onclick="seleccionarHorario(this)"></td>
+                <td class="cuadro-tabla opcion-tabla" inicio="16" dia="jueves" onclick="seleccionarHorario(this)"></td>
+                <td class="cuadro-tabla opcion-tabla" inicio="16" dia="viernes" onclick="seleccionarHorario(this)"></td>
+              </tr>
+
+              <tr>
+                <td>5 pm</td>
+                <td class="cuadro-tabla opcion-tabla" inicio="17" dia="lunes" onclick="seleccionarHorario(this)"></td>
+                <td class="cuadro-tabla opcion-tabla" inicio="17" dia="martes" onclick="seleccionarHorario(this)"></td>
+                <td class="cuadro-tabla opcion-tabla" inicio="17" dia="miercoles" onclick="seleccionarHorario(this)"></td>
+                <td class="cuadro-tabla opcion-tabla" inicio="17" dia="jueves" onclick="seleccionarHorario(this)"></td>
+                <td class="cuadro-tabla opcion-tabla" inicio="17" dia="viernes" onclick="seleccionarHorario(this)"></td>
+              </tr>
+
+              <tr>
+                <td>6 pm</td>
+                <td class="cuadro-tabla opcion-tabla" inicio="18" dia="lunes" onclick="seleccionarHorario(this)"></td>
+                <td class="cuadro-tabla opcion-tabla" inicio="18" dia="martes" onclick="seleccionarHorario(this)"></td>
+                <td class="cuadro-tabla opcion-tabla" inicio="18" dia="miercoles" onclick="seleccionarHorario(this)"></td>
+                <td class="cuadro-tabla opcion-tabla" inicio="18" dia="jueves" onclick="seleccionarHorario(this)"></td>
+                <td class="cuadro-tabla opcion-tabla" inicio="18" dia="viernes" onclick="seleccionarHorario(this)"></td>
+              </tr>
+
+          <tr>
             <td>7 pm</td>
             <td class="cuadro-tabla opcion-tabla" inicio="19" dia="lunes" onclick="seleccionarHorario(this)"></td>
             <td class="cuadro-tabla opcion-tabla" inicio="19" dia="martes" onclick="seleccionarHorario(this)"></td>
@@ -236,7 +272,7 @@
 
   function enviarDatos() {
     console.log(recolectarDatosGUI());
-    if ($("#campo-situacion").val && lista_horarios.length !== 0) {
+    if ($("#campo-situacion").val() && lista_horarios.length !== 0) {
       $.ajax({
         url: "{{url('/SeguimientoRegular')}}",
         type: "POST",
