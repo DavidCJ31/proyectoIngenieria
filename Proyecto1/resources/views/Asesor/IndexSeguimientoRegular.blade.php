@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1,initial-scale=1, shrink-to-fit=no">
 
-    <title>Solicitudes </title>
+    <title>Solicitudes Regulares </title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
@@ -26,18 +26,14 @@
 <body>
 
     <div id="fondoTabla">
-        <h1 id="TituloVista">Solicitudes</h1>
+        <h1 id="TituloVista">Solicitudes Regulares</h1>
         <div id="marg">
             <table class="table table-bordered table-striped mb-0 w-auto order-table" id="example">
                 <thead>
                     <tr>
                         <th scope="col">CEDULA</th>
                         <th scope="col">NOMBRE</th>
-                        <th scope="col">MATERIA EN LA QUE SOLICITA TUTORIA</th>
-                        <th scope="col">NOMBRE DEL/DE LA PROFESOR/A</th>
-                        <th scope="col">CREDITOS DEL CURSO</th>
                         <th scope="col">SITUACION</th>
-                        <th scope="col">TIPO TUTORIA</th>
                         <th scope="col" colspan="2">ACCIONES</th>
                     </tr>
                 </thead>
@@ -46,13 +42,9 @@
                     <tr style="height: 10px">
                         <td>{{$seguimiento->estudiante_id}}</td>
                         <td>{{App\Models\User::find(App\Models\estudiante::find($seguimiento->estudiante_id)->id)->name}}</td>
-                        <td>{{$seguimiento->materiaTutoria}}</td>
-                        <td>{{$seguimiento->profesorCurso}}</td>
-                        <td>{{$seguimiento->creditoCruso}}</td>
                         <td>{{$seguimiento->situacion}}</td>
-                        <td>{{$seguimiento->tipoTutoria}}</td>
-                        <td><a href="{{route('Estudiante.show', $seguimiento->estudiante_id)}}" target="_blank">Ver Solicitud</a></td>
-                        <td><a href="{{route('', )}}">Aceptar Solicitud</a></td>
+                        <td><a href="" target="_blank">Ver Solicitud</a></td>
+                        <td><a href="{{route('CalendarizarSeguimientoRegular.edit', $seguimiento->estudiante_id)}}">Aceptar Solicitud</a></td>
                     </tr>
                     @endforeach
                 </tbody>
