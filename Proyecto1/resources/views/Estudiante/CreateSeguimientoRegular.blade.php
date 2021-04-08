@@ -236,17 +236,22 @@
 
   function enviarDatos() {
     console.log(recolectarDatosGUI());
-    $.ajax({
-      url: "{{url('/SeguimientoRegular')}}",
-      type: "POST",
-      data: recolectarDatosGUI(),
-      success: function(result) {
-        console.log("success");
-        console.log(result);
-      },
-      error: function() {
-        alert("Hay un error");
-      }
-    });
+    if (condition) {
+      $.ajax({
+        url: "{{url('/SeguimientoRegular')}}",
+        type: "POST",
+        data: recolectarDatosGUI(),
+        success: function(result) {
+          console.log("success");
+          console.log(result);
+        },
+        error: function() {
+          alert("Hay un error");
+        }
+      });
+    } else {
+
+    }
+
   }
 </script>
