@@ -43,7 +43,7 @@
                         <td>{{$seguimiento->estudiante_id}}</td>
                         <td>{{App\Models\User::find(App\Models\estudiante::find($seguimiento->estudiante_id)->id)->name}}</td>
                         <td>{{$seguimiento->situacion}}</td>
-                        <td><a href="" target="_blank">Ver Solicitud</a></td>
+                        <td><a href="javascript:window.open('{{route('SeguimientoRegular.show', $seguimiento->estudiante_id)}}','','width=1584,height=864,left=100,top=50,toolbar=yes');void 0" target="_blank">Ver Solicitud</a></td>
                         <td><a href="{{route('CalendarizarSeguimientoRegular.edit', $seguimiento->estudiante_id)}}">Aceptar Solicitud</a></td>
                     </tr>
                     @endforeach

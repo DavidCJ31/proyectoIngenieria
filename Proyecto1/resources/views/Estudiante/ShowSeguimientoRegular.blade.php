@@ -66,7 +66,7 @@
           </div>
           <span class="input-group-text text-uppercase">Síntesis de la situación:</span>
           <div class="input-group">
-            <textarea  class="form-control" disabled> {{ $primerSeguimiento->situacion}} </textarea>
+            <textarea  class="form-control" disabled> {{ $SeguimientoRegular->situacion}} </textarea>
           </div>
           <br>
           <h5> DISPONIBILIDAD DE HORARIO  </h5>

@@ -212,13 +212,13 @@
                 success: function(msg) {
                     if (msg == "Error") {
                         alert("El estudiante ya tiene una reunion calendarizada");
-                        window.location.href = "{{url('/PrimerSeguimiento')}}";
+                        window.location.href = "{{url('/Asesor')}}";
                     } else {
                         console.log(msg);
                         $('#exampleModalCenter').modal('toggle');
                         calendar.refetchEvents();
                         alert("Reunion calendarizada con exito");
-                        window.location.href = "{{url('/PrimerSeguimiento')}}";
+                        window.location.href = "{{url('/Asesor')}}";
                     }
                 },
                 error: function() {

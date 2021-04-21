@@ -91,7 +91,7 @@ class SeguimientoRegularController extends Controller
             $estudiante = estudiante::where('id', $id)->first();
             $user = User::find($estudiante->id);
             $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
-            $primer = seguimiento_regular::where('estudiante_id', $id)->first();
+            $primer = seguimiento_regular::where('estudiante_id', $id)->where('estado', 'Pendiente')->first();
             return view('Estudiante/ShowSeguimientoRegular')->with('estudiante', $user)->with('estudianteDetalle', $estudianteDetalle)->with('SeguimientoRegular', $primer);
         }
     

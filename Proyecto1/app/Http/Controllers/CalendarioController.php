@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use App\Mail\agendarcitaMailable;
 use App\Mail\eliminarcitaMailable;
 use Illuminate\Support\Facades\Mail;
+use App\Models\seguimiento_regular;
 
 class CalendarioController extends Controller
 {
@@ -65,6 +66,16 @@ class CalendarioController extends Controller
                 $correo = new agendarcitaMailable($reunionDatos);
                 Mail::to($estudiante->email)->send($correo);
             } else {
+                print_r($datosReunion);
+                reunion::insert($datosReunion);
+                $seguimiento = new seguimiento_regular;
+                $seguimiento->estudiante_id = seguimiento_regular::where('estudiante_id', $request->input('estudiante_id'))->update(['estado' => 'Revisado']);
+                //Aqui se obtiene el id de la reunion
+                $r  = reunion::select('id')->orderByDesc('id')->limit(1)->first();
+                $reunionDatos = reunion::find($r->id);
+                $estudiante = estudiante::find( $request->input('estudiante_id'))->user;
+                $correo = new agendarcitaMailable($reunionDatos);
+                Mail::to($estudiante->email)->send($correo);
             }
         } else {
             print_r("Error");
