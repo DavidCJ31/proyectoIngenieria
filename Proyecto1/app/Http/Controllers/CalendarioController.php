@@ -164,7 +164,7 @@ class CalendarioController extends Controller
             }
             return view('Seguimiento/FormPrimerSeguimiento')->with('asesor', $asesor)->with('reunion', $reunion)->with('info_cursos', $All_Info);
         } else {
-            return "Seguimiento Normal";
+            return view('Seguimiento/SeguimientoIndividualForm')->with('asesor', $asesor)->with('reunion', $reunion);
         }
     }
 

@@ -11,6 +11,7 @@ use App\Models\asesor;
 use App\Models\seguimiento_regular;
 use App\Models\disponibilidad_estudiante;
 use App\Models\User;
+use App\Models\reunion;
 
 class SeguimientoRegularController extends Controller
 {
@@ -86,15 +87,15 @@ class SeguimientoRegularController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    
-        {
-            $estudiante = estudiante::where('id', $id)->first();
-            $user = User::find($estudiante->id);
-            $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
-            $primer = seguimiento_regular::where('estudiante_id', $id)->where('estado', 'Pendiente')->first();
-            return view('Estudiante/ShowSeguimientoRegular')->with('estudiante', $user)->with('estudianteDetalle', $estudianteDetalle)->with('SeguimientoRegular', $primer);
-        }
-    
+
+    {
+        $estudiante = estudiante::where('id', $id)->first();
+        $user = User::find($estudiante->id);
+        $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
+        $primer = seguimiento_regular::where('estudiante_id', $id)->where('estado', 'Pendiente')->first();
+        return view('Estudiante/ShowSeguimientoRegular')->with('estudiante', $user)->with('estudianteDetalle', $estudianteDetalle)->with('SeguimientoRegular', $primer);
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -116,8 +117,18 @@ class SeguimientoRegularController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        seguimiento_regular::where('estudiante_id', $request->input('campo-estudiante'))
+            ->update([
+                'aprovacion' => $request->input('campo-aprovada'),
+                'detalle_curso_id' => $request->input('campo-curso'),
+                'Observaciones' => $request->input('campo-observaciones'),
+                'fecha' => $request->input('campo-fecha')
+            ]);
 
+        reunion::where('id', $id)->update([
+            'estado' => 'Realizada'
+        ]);
+        return redirect('/Calendario');
     }
 
     /**
