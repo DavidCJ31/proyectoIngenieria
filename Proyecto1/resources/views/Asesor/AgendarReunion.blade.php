@@ -220,14 +220,14 @@
                 data: objEvento,
                 success: function(msg) {
                     if (msg == "Error") {
-                        mostrarMensaje('error',"El estudiante ya tiene una reunion calendarizada");
-                        window.location.href = "{{url('/PrimerSeguimiento')}}";
+                        alert("El estudiante ya tiene una reunion calendarizada");
+                        window.location.href = "{{url('/Asesor')}}";
                     } else {
                         console.log(msg);
                         $('#exampleModalCenter').modal('toggle');
                         calendar.refetchEvents();
-                        mostrarMensaje('success',"Reunion calendarizada con exito");
-                        window.location.href = "{{url('/PrimerSeguimiento')}}";
+                        alert("Reunion calendarizada con exito");
+                        window.location.href = "{{url('/Asesor')}}";
                     }
                 },
                 error: function() {
