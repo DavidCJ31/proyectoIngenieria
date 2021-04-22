@@ -52,7 +52,7 @@ class UserController extends Controller
         $user->name = $request->input('nombre');
         $user->apellido = $request->input('apellido');
         $user->email = $request->input('email');
-        $user->usuario = $request->input('usuario');
+        $user->usuario = ucwords($user->name) . "". ucwords($user->apellido[0]);
         $user->password = Hash::make($request->input('password'));
         $user->rol = $request->input('rol');
         $user->save();

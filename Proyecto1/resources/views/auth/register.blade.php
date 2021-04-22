@@ -7,70 +7,86 @@
 </script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
 </script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+<script src="{{ asset('js/validaciones.js') }}"></script>
+<!-- {{ route('register') }} -->
 
 <script>
-    function ValidateEmail()
-        {
-            var email = document.getElementById('email');
-            var mailformat = /^[a-zA-Z^0-9_`{|}~-]+@est.una.ac.cr/;
-            if(email.value.match(mailformat)){
-                return true;
-            }
-            else
-            {
-                alert("Invalid email address!");
-                return false;
-            }
-        }
+$(document).ready(function(){
+    $("#cedula").mask("000000000");
+    $("#usuario").val($("#nombre").val() + $("#apellidos").val());
+});
 </script>
-<!-- {{ route('register') }} -->
-<x-guest-layout>
+
+
+<x-guest-layout style="background-color: red;">
     @include("Welcome.headerWelcome")
-    </br>
-    <x-jet-authentication-card style="background-color: red;">
-   
+    <x-jet-authentication-card>
+
         <x-slot name="logo">
-   
+
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
 
-        <form method="POST" name="registro" action="{{ route('register') }}" onsubmit="return ValidateEmail()">
+        <div class="mensaje-container" id="mensaje-info" style="display:none;">
+            <div class="col-3 icono-mensaje d-flex align-items-center" id="icono-mensaje"></div>
+            <div class="col-9 texto-mensaje d-flex align-items-center text-center mx-2" id="texto-mensaje" style="color: #046704e8; ">Mensaje</div>
+        </div>
+
+        <form method="POST" name="registro" action="{{ route('register') }}" onsubmit="return validaCamposRegistro()">
             @csrf
             <x-jet-input type="hidden" name="rol" :value="3" />
+            <img id="profile-img" class="profile-img-card" src="imagenes/logo.jpg" />
             <div>
-                <x-jet-label value="{{ __('Cedula') }}"/>
-                <x-jet-input class="block mt-1 w-full" type="number" name="id" :value="old('id')" required autofocus autocomplete="id" />
+                <h1><strong>Indicaciones</strong></h1>
+                <label>Los campos con un <span style="color:red"><strong>*</strong></span> rojo son obligatorios</label>
+                <br />
+            </div>
+
+            <div>
+                <div class="mt-3">
+                    <x-jet-label value="Cédula en formato 208880999" />
+                </div>
+                <label>Cédula<span style="color:red"><strong>*</strong></span></label>
+                <x-jet-input class="block mt-1 w-full" type="text" name="id" :value="old('id')" id="cedula" required autofocus autocomplete="id" />
             </div>
 
             <div class="mt-4">
-                <x-jet-label value="{{ __('Nombre') }}" />
-                <x-jet-input class="block mt-1 w-full" type="text" name="nombre" :value="old('nombre')" required />
+                <label>Nombre<span style="color:red"><strong>*</strong></span></label>
+                <x-jet-input class="block mt-1 w-full" type="text" name="nombre" :value="old('nombre')" required id="nombre" />
             </div>
 
             <div class="mt-4">
-                <x-jet-label value="{{ __('Apellido') }}" />
-                <x-jet-input class="block mt-1 w-full" type="test" name="apellido" :value="old('apellido')" required />
+                <label>Apellidos<span style="color:red"><strong>*</strong></span></label>
+                <x-jet-input class="block mt-1 w-full" type="test" name="apellido" :value="old('apellido')" required id="apellidos" />
             </div>
 
             <div class="mt-4">
-                <x-jet-label value="{{ __('Email') }}" />
+                <div class="mt-3">
+                    <x-jet-label value="Utilizar el correo institucional  nombre.apellido.apellido@est.una.ac.cr" />
+                </div>
+                <label>Email<span style="color:red"><strong>*</strong></span></label>
                 <x-jet-input class="block mt-1 w-full" type="email" name="email" id="email" :value="old('email')" required />
             </div>
 
             <div>
-                <x-jet-label value="{{ __('Usuario') }}" />
-                <x-jet-input class="block mt-1 w-full" type="text" name="usuario" :value="old('usuario')" required autofocus autocomplete="id" />
-            </div>
-
-
-            <div class="mt-4">
-                <x-jet-label value="{{ __('Contraseña') }}" />
-                <x-jet-input class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                <label>El usuario se genera automaticamente con su nombre y apellido</label>
+                <x-jet-input class="block mt-1 w-full" type="text" name="usuario" id="usuario" :value="old('nombre')" autocomplete="new-username" />
             </div>
 
             <div class="mt-4">
-                <x-jet-label value="{{ __('Confirmar contraseña') }}" />
+                <div class="mt-3">
+                    <x-jet-label value="La contraseña debe tener 8 caracteres minimo y contener numeros y letras" />
+                </div>
+                <label>Contraseña<span style="color:red"><strong>*</strong></span></label>
+                <x-jet-input class="block mt-1 w-full" type="password" name="password" id="password" required autocomplete="new-password" />
+            </div>
+
+            <div class="mt-4">
+                <label>Comfirmar contraseña<span style="color:red"><strong>*</strong></span></label>
                 <x-jet-input class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
@@ -79,7 +95,7 @@
                     {{ __('Ya esta registrado?') }}
                 </a>
                 <x-jet-button class="ml-4">
-                {{ __('Registrarse') }}
+                    {{ __('Registrarse') }}
                 </x-jet-button>
             </div>
         </form>

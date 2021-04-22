@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
+    <script src="{{ asset('js/validaciones.js') }}" ></script>
 </head>
 
 <body onload="AnnoActual()">
@@ -26,7 +27,11 @@
             <H5>ÉXITO ACADÉMICO</H5>
             <h4>REGISTRO DE ENTREVISTA</h4>
             <!-- Hilera del formulario -- nombre -->
-
+            <h3>Indicaciones</h3>
+            <label>Llenar todos los campos con datos reales</label>
+            <br>
+            <label>Los campos con un <span><strong style="color:red">*</strong></span> rojo son obligatorios</label>
+            <p></p>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">NOMBRE COMPLETO:</span>
@@ -43,29 +48,29 @@
             <!-- Hilera del formulario -- cedula y telefono -->
             <div class="input-group mb-3">
                 <div class="input-group-append">
-                    <span class="input-group-text">FECHA DE NACIMIENTO:</span>
-                    <input type="date" class="form-control" name="campo-fecha-nacimiento" id="campo-fecha-nacimiento" aria-describedby="basic-addon2" require>
+                    <span class="input-group-text"><strong style="color:red">*</strong>FECHA DE NACIMIENTO:</span>
+                    <input type="date" class="form-control" name="campo-fecha-nacimiento" id="campo-fecha-nacimiento" aria-describedby="basic-addon2" require onblur="calEdad()">
                 </div>
                 <div class="input-group-append">
                     <span class="input-group-text">EDAD:</span>
-                    <input type="number" class="form-control" name="campo-edad" id="campo-edad" aria-describedby="basic-addon2" autocomplete="off" require min="16" max="100">
+                    <input type="number" class="form-control" name="campo-edad" id="campo-edad" aria-describedby="basic-addon2" autocomplete="off" require min="16" max="100" disabled>
                 </div>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-append">
-                    <span class="input-group-text">TEL. CELULAR:</span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>TEL. CELULAR:</span>
                 </div>
                 <input type="number" class="form-control no-spin" placeholder="Celular" name="campo-tel-celular" id="campo-tel-celular" aria-describedby="basic-addon2" require>
 
                 <div class="input-group-append">
-                    <span class="input-group-text">TEL. HABITABIÓN:</span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>TEL. HABITABIÓN:</span>
                 </div>
                 <input type="number" class="form-control no-spin" placeholder="Habitacion" name="campo-tel-habitacion" id="campo-tel-habitacion" aria-describedby="basic-addon2" require>
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-append">
-                    <span class="input-group-text">ESTADO CIVIL:</span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>ESTADO CIVIL:</span>
                 </div>
                 <select class="form-control" name="campo-estado-civil" id="campo-estado-civil" form="formInformacionDetallada" aria-describedby="basic-addon2" style="margin-right: 15px;">
                     <option value="Soltero(a)">Soltero(a)</option>
@@ -109,13 +114,13 @@
                 <input type="email" class="form-control" name="campo-correo" id="campo-correo" aria-describedby="basic-addon2" value="{{ $estudiante->email}}" disabled>
 
                 <div class="input-group-append">
-                    <span class="input-group-text">ZONA DE PROCEDENCIA:</span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>ZONA DE PROCEDENCIA:</span>
                 </div>
                 <input type="text" class="form-control" name="campo-procedencia" id="campo-procedencia" aria-describedby="basic-addon2" require>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">DIRECCIÓN ACTUAL:</span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>DIRECCIÓN ACTUAL:</span>
                 </div>
                 <input type="text" class="form-control" name="campo-direccion" id="campo-direccion" aria-describedby="basic-addon1" require>
             </div>
@@ -124,18 +129,18 @@
             <!-- Hilera del formulario -- Carrera y ano de ingreso -->
             <div class="input-group mb-3">
                 <div class="input-group-append">
-                    <span class="input-group-text">¿Con quién/es vive? </span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>¿Con quién/es vive? </span>
                 </div>
                 <input type="text" class="form-control" name="campo-vivenda" id="campo-vivenda" aria-describedby="basic-addon2" require>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-append">
-                    <span class="input-group-text">¿Cómo es su relación con esta/s persona/s? </span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>¿Cómo es su relación con esta/s persona/s? </span>
                 </div>
                 <input type="text" class="form-control" name="campo-relacion" id="campo-relacion" aria-describedby="basic-addon2" require>
             </div>
             <div class="input-group-append">
-                <span class="input-group-text" style="margin-right: 15px;">¿Recibe el apoyo de la familia para continuar con sus estudios?: </span>
+                <span class="input-group-text" style="margin-right: 15px;"><strong style="color:red">*</strong>¿Recibe el apoyo de la familia para continuar con sus estudios?: </span>
 
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="campo-apoyo" id="campo-apoyo1" value="Si" onclick="habilitarCampoApoyo3()" checked>
@@ -159,7 +164,7 @@
             </script>
             <br>
             <h5> SITUACIÓN SOCIOECONOMICA </h5>
-            <h6> Forma en que financia los estudio universitarios </h6>
+            <h6><strong style="color:red">*</strong> Forma en que financia los estudio universitarios </h6>
 
             <div class="input-group mb-3">
                 <div class="form-check form-check-inline">
@@ -200,7 +205,7 @@
                 </script>
                 <div class="form-check form-check-inline">
                     <!-- Trabaja -->
-                    <label class="form-check-label" for="inlineRadio1" style="margin-right: 5px;">Trabaja:</label>
+                    <label class="form-check-label" for="inlineRadio1" style="margin-right: 5px;"><strong style="color:red">*</strong>Trabaja:</label>
                     <!-- Si o NO -->
                     <input class="form-check-input" type="radio" name="campo-trabaja" id="campo-trabaja1" value="Si" onclick="habilitarTrabajo()">
                     <label class="form-check-label" for="campo-trabaja1" style="margin-right: 5px;">Si</label>
@@ -244,35 +249,35 @@
             <!-- Hilera del formulario -- Materia -->
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Nombre de la institución: </span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>Nombre de la institución: </span>
                 </div>
                 <input type="text" class="form-control" name="campo-antecedente-institucion" id="campo-antecedente-institucion" aria-describedby="basic-addon1" require>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Modalidad de egresó </span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>Modalidad de egresó </span>
                 </div>
                 <input type="text" class="form-control" name="campo-antecedente-modalidadEgreso" id="campo-antecedente-modalidadEgreso" aria-describedby="basic-addon1" require>
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Año en que egresó </span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>Año en que egresó </span>
                     <input type="number" class="form-control" name="campo-antecedente-annoEgreso" id="campo-antecedente-annoEgreso" aria-describedby="basic-addon1" min="1900" onclick="AnnoActual()" require>
                 </div>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">¿Reprobó algún nivel durante la secundaria? ¿Cual? </span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>¿Reprobó algún nivel durante la secundaria? ¿Cual? </span>
                 </div>
                 <input type="text" class="form-control" name="campo-antecedente-reprobo" id="campo-antecedente-reprobo" value="No" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">¿Cuáles materias representaron mayor dificultad? </span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>¿Cuáles materias representaron mayor dificultad? </span>
                 </div>
                 <input type="text" class="form-control" name="campo-antecedente-materiasDificiles" id="campo-antecedente-materiasDificiles" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" style="margin-right: 10px;">¿Requirió algún tipo de adecuación curricular? </span>
+                    <span class="input-group-text" style="margin-right: 10px;"><strong style="color:red">*</strong>¿Requirió algún tipo de adecuación curricular? </span>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="campo-antecedente-adecuacion" id="campo-antecedente-adecuacion1" value="Si" onclick="habilitarAdecuacion()">
                         <label class="form-check-label" for="campo-antecedente-adecuacion1">Si</label>
@@ -295,7 +300,7 @@
                         <input class="form-check-input" type="radio" name="campo-antecedente-adecuacionCuando" id="campo-antecedente-adecuacionCuando2" value="Secundaria" disabled>
                         <label class="form-check-label" for="campo-antecedente-adecuacionCuando2">Secundaria</label>
                     </div>
-                    <span class="input-group-text">¿Qué tipo de adecuación?</span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>¿Qué tipo de adecuación?</span>
                 </div>
                 <input type="text" class="form-control" name="campo-antecedente-adecuacionTipo" id="campo-antecedente-adecuacionTipo" aria-describedby="basic-addon1" disabled>
             </div>
@@ -321,7 +326,7 @@
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" style="margin-right: 10px;">Posee actualmente algun tipo de adecuación curricular</span>
+                    <span class="input-group-text" style="margin-right: 10px;"><strong style="color:red">*</strong>Posee actualmente algun tipo de adecuación curricular</span>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="campo-universidad-adecuacion" id="campo-universidad-adecuacion1" onclick="deshabilitarUniversidadAdecuacion()">
                         <label class="form-check-label" for="campo-universidad-adecuacion1">Si</label>
@@ -346,23 +351,23 @@
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Carrera que estudia: </span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>Carrera que estudia: </span>
                 </div>
                 <input type="text" class="form-control" name="campo-universidad-carrera" id="campo-materia" aria-describedby="basic-addon1" require>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Año de ingreso a la UNA: </span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>Año de ingreso a la UNA: </span>
                     <input type="number" class="form-control" name="campo-universidad-ingreso" id="campo-universidad-ingreso" aria-describedby="basic-addon1" min="1976" require>
                 </div>
                 <div class="input-group-prepend">
-                    <span class="input-group-text"> Nivel que cursa: </span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>Nivel que cursa: </span>
                 </div>
                 <input type="text" class="form-control" name="campo-universidad-nivel" id="campo-universidad-nivel" aria-describedby="basic-addon1" require>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" style="margin-right: 10px;">Fue su primera opción la carrera que estudia?</span>
+                    <span class="input-group-text" style="margin-right: 10px;"><strong style="color:red">*</strong>Fue su primera opción la carrera que estudia?</span>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="campo-universidad-opcion" id="campo-universidad-opcion1" checked value="Si" onclick="deshabilitarUniversidadOpcion()">
                         <label class="form-check-label" for="campo-universidad-opcion1">Si</label>
@@ -388,13 +393,13 @@
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">¿Que lo motivó a estudiar esa carrera? </span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>¿Que lo motivó a estudiar esa carrera? </span>
                 </div>
                 <input type="text" class="form-control" name="campo-universidad-motivo" id="campo-universidad-motivo" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" style="margin-right: 10px;">¿Se encuenta satisfecho/a con la eleccion de carrera?</span>
+                    <span class="input-group-text" style="margin-right: 10px;"><strong style="color:red">*</strong>¿Se encuenta satisfecho/a con la eleccion de carrera?</span>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="campo-universidad-satisfecho" id="campo-universidad-satisfecho1" value="Si" checked onclick="deshabilitarUniversidadSatisfecho()">
                         <label class="form-check-label" for="campo-universidad-satisfecho1">Si</label>
@@ -420,7 +425,7 @@
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" style="margin-right: 10px;">¿Estudió o estudia otra carrera?</span>
+                    <span class="input-group-text" style="margin-right: 10px;"><strong style="color:red">*</strong>¿Estudió o estudia otra carrera?</span>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="campo-universidad-otraCarrera" id="campo-universidad-otraCarrera1" onclick="habilitarUniversidadOtraCarrera()">
                         <label class="form-check-label" for="campo-universidad-otraCarrera1">Si</label>
@@ -481,7 +486,7 @@
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" style="margin-right: 10px;">¿Asiste a la hora consulta con los profesores de los cursos?</span>
+                    <span class="input-group-text" style="margin-right: 10px;"><strong style="color:red">*</strong>¿Asiste a la hora consulta con los profesores de los cursos?</span>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="campo-universidad-consulta" id="campo-universidad-consulta1" value="Si" checked onclick="deshabilitarUniversidadConsulta()">
                         <label class="form-check-label" for="campo-universidad-consulta1">Si</label>
@@ -507,25 +512,25 @@
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">¿Cuántos cursos tiene matriculados? </span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>¿Cuántos cursos tiene matriculados? </span>
                     <input type="number" class="form-control" name="campo-universidad-cursosMatriculados" id="campo-universidad-cursosMatriculados" aria-describedby="basic-addon1" min="0" require>
                 </div>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">¿Cuántas horas de estudio independiente dedica a esos cursos? </span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>¿Cuántas horas de estudio independiente dedica a esos cursos? </span>
                     <input type="number" class="form-control" name="campo-universidad-horasEstudio" id="campo-universidad-horasEstudio" aria-describedby="basic-addon1" min=0>
                 </div>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">¿Qué tecnicas de estudio emplea? </span>
+                    <span class="input-group-text"><strong style="color:red">*</strong>¿Qué tecnicas de estudio emplea? </span>
                 </div>
                 <input type="text" class="form-control" name="campo-universidad-tecEstudio" id="campo-universidad-tecEstudio" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" style="margin-right: 10px;">¿Asiste puntualmente a clases?</span>
+                    <span class="input-group-text" style="margin-right: 10px;"><strong style="color:red">*</strong>¿Asiste puntualmente a clases?</span>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="campo-universidad-puntualClases" id="campo-universidad-puntualClases1" value="Si" checked onclick="deshabilitarUniversidadPuntualClases()">
                         <label class="form-check-label" for="campo-universidad-puntualClases1">Si</label>
@@ -551,7 +556,7 @@
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Mencione los factores que considera, han favorecido u obstaculidado en su
+                    <span class="input-group-text"><strong style="color:red">*</strong>Mencione los factores que considera, han favorecido u obstaculidado en su
                         rendiminento academico:</span>
                 </div>
                 <div id="divTabla">

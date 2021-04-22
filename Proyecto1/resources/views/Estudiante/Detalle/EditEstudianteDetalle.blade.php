@@ -46,11 +46,11 @@
             <div class="input-group mb-3">
                 <div class="input-group-append">
                     <span class="input-group-text">FECHA DE NACIMIENTO:</span>
-                    <input type="date" class="form-control" name="campo-fecha-nacimiento" id="campo-fecha-nacimiento" aria-describedby="basic-addon2" require value="{{$estudianteDetalle->fecha_nacimiento}}">
+                    <input type="date" class="form-control" name="campo-fecha-nacimiento" id="campo-fecha-nacimiento" aria-describedby="basic-addon2" require value="{{$estudianteDetalle->fecha_nacimiento}}" >
                 </div>
                 <div class="input-group-append">
                     <span class="input-group-text">EDAD:</span>
-                    <input type="number" class="form-control" name="campo-edad" id="campo-edad" aria-describedby="basic-addon2" autocomplete="off" require min="16" max="100" value="{{$estudianteDetalle->edad}}">
+                    <input type="number" class="form-control" name="campo-edad" id="campo-edad" aria-describedby="basic-addon2" autocomplete="off" require min="16" max="100" value="{{$estudianteDetalle->edad}}" disabled>
                 </div>
             </div>
             <div class="input-group mb-3">

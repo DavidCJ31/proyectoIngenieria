@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
     <link href="{{ asset('css/estilo-Form.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/mensaje.css') }}" rel="stylesheet">
 
     <script src='https://cdn.jsdelivr.net/npm/moment@2.27.0/min/moment.min.js'></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -19,12 +20,20 @@
     <link href="{{ asset('fullcalendar-5.5.1/lib/main.css') }}" rel="stylesheet">
     <script src="{{ asset('fullcalendar-5.5.1/lib/main.js') }}"></script>
     <script src="{{ asset('fullcalendar-5.5.1/lib/locales/es.js') }}"></script>
+    <script src="{{ asset('js/mensaje.js') }}" ></script>
 </head>
 
 <body>
     <!--Main Navigation-->
     @include('layouts.header')
     <!--Main Navigation-->
+
+    <!-- Mensaje que se despliega-->
+    <div class="mensaje-container" id="mensaje-info" style="display:none;">
+        <div class="col-3 icono-mensaje d-flex align-items-center" id="icono-mensaje"></div>
+        <div class="col-9 texto-mensaje d-flex align-items-center text-center mx-2" id="texto-mensaje" style="color: #046704e8; ">Mensaje</div>
+    </div>
+
     <!-- Aqui empieza el  formulario -->
     <div class="form-card">
         <h4>VICERRECTORIA DE DOCENCIA</h4>
@@ -211,18 +220,18 @@
                 data: objEvento,
                 success: function(msg) {
                     if (msg == "Error") {
-                        alert("El estudiante ya tiene una reunion calendarizada");
+                        mostrarMensaje('error',"El estudiante ya tiene una reunion calendarizada");
                         window.location.href = "{{url('/PrimerSeguimiento')}}";
                     } else {
                         console.log(msg);
                         $('#exampleModalCenter').modal('toggle');
                         calendar.refetchEvents();
-                        alert("Reunion calendarizada con exito");
+                        mostrarMensaje('success',"Reunion calendarizada con exito");
                         window.location.href = "{{url('/PrimerSeguimiento')}}";
                     }
                 },
                 error: function() {
-                    alert("Hay un error");
+                    mostrarMensaje('error',"Error en el servidor");
                 }
             });
         }
@@ -239,4 +248,5 @@
             $('#exampleModalCenter').modal('toggle');
         }
     });
+
 </script>

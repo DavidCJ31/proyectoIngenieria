@@ -16,6 +16,7 @@
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
+    <script src="https://kit.fontawesome.com/39f4ebbbea.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="{{ asset('css/styleTable.css') }}" rel="stylesheet">
     <script src="{{ asset('js/buscadorParaTablas.js') }}" crossorigin="anonymous"></script>
@@ -24,35 +25,42 @@
 </head>
 
 <body>
+    <div class="row mt-3">
+        <div class="col-12">
 
-    <div id="fondoTabla">
-        <h1 id="TituloVista">Solicitudes Regulares</h1>
-        <div id="marg">
-            <table class="table table-bordered table-striped mb-0 w-auto order-table" id="example">
-                <thead>
-                    <tr>
-                        <th scope="col">CEDULA</th>
-                        <th scope="col">NOMBRE</th>
-                        <th scope="col">SITUACION</th>
-                        <th scope="col" colspan="2">ACCIONES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($seguimientos as $seguimiento)
-                    <tr style="height: 10px">
-                        <td>{{$seguimiento->estudiante_id}}</td>
-                        <td>{{App\Models\User::find(App\Models\estudiante::find($seguimiento->estudiante_id)->id)->name}}</td>
-                        <td>{{$seguimiento->situacion}}</td>
-                        <td><a href="" target="_blank">Ver Solicitud</a></td>
-                        <td><a href="{{route('CalendarizarSeguimientoRegular.edit', $seguimiento->estudiante_id)}}">Aceptar Solicitud</a></td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <div class="card" style="margin: 1rem;">
+                <!-- /.card-header -->
+                <div class=" card-header titulo mb-2">
+                    <span><i class="fas fa-bars"></i> &nbsp;Listado de solicitudes regulares</span>
+                </div>
+                <!-- /.card-body -->
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">CEDULA</th>
+                                <th scope="col">NOMBRE</th>
+                                <th scope="col">SITUACION</th>
+                                <th scope="col" colspan="2">ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-solicitudes">
+                            @foreach($seguimientos as $seguimiento)
+                            <tr style="height: 10px">
+                                <td>{{$seguimiento->estudiante_id}}</td>
+                                <td>{{App\Models\User::find(App\Models\estudiante::find($seguimiento->estudiante_id)->id)->name}}</td>
+                                <td>{{$seguimiento->situacion}}</td>
+                                <td><a href="" target="_blank"><button class='btn btn-warning btn-sm'><i class="fa fa-id-card-o" aria-hidden="true"></i> Ver Solicitud</button></a></td>
+                                <td><a href="{{route('CalendarizarSeguimientoRegular.edit', $seguimiento->estudiante_id)}}"><button class='btn btn-primary btn-sm'><i class="fa fa-check-circle-o" aria-hidden="true"></i> Aceptar Solicitud</button></a></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /.card -->
         </div>
     </div>
-
-
 </body>
 @include("layouts.footer")
 

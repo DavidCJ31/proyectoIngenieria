@@ -43,7 +43,7 @@ class AulaController extends Controller
         $aula->sede = $request->input('aulaSede');
         $aula->nombre = $request->input('aulaNombre');
         $aula->save();
-        return redirect('/Cursos');
+        return redirect('/Aula');
     }
 
     /**
