@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\solicitud_seguimiento_regular;
+use App\Models\solicitudes_seguimiento_regular;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +23,7 @@ class SolicitudSeguimientoRegularController extends Controller
     {
         $id = Auth::user()->id;
         $asesor = asesor::find($id)->user;
-        $seguimiento_regular = solicitud_seguimiento_regular::where('estado', 'Pendiente')->get();
+        $seguimiento_regular = solicitudes_seguimiento_regular::where('estado', 'Pendiente')->get();
         return view('Asesor/IndexSeguimientoRegular')->with('asesor', $asesor)->with('seguimientos', $seguimiento_regular);
     }
 
@@ -48,12 +48,12 @@ class SolicitudSeguimientoRegularController extends Controller
      */
     public function store(Request $request)
     {
-        $s = solicitud_seguimiento_regular::where('estudiante_id', Auth::user()->id)
+        $s = solicitudes_seguimiento_regular::where('estudiante_id', Auth::user()->id)
             ->where('estado', 'Pendiente')->get();
-        //print_r($s);
+        print_r($s);
 
         if (empty($s[0])) {
-            $seguimiento_regular = new solicitud_seguimiento_regular;
+            $seguimiento_regular = new solicitudes_seguimiento_regular;
             $seguimiento_regular->estudiante_id = Auth::user()->id;
             $seguimiento_regular->situacion = $request->input('situacion');
             $seguimiento_regular->estado = $request->input('estado');
@@ -82,7 +82,7 @@ class SolicitudSeguimientoRegularController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\solicitud_seguimiento_regular  $solicitud_seguimiento_regular
+     * @param  \App\Models\solicitudes_seguimiento_regular  $solicitudes_seguimiento_regular
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -90,17 +90,17 @@ class SolicitudSeguimientoRegularController extends Controller
         $estudiante = estudiante::where('id', $id)->first();
         $user = User::find($estudiante->id);
         $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
-        $primer = solicitud_seguimiento_regular::where('estudiante_id', $id)->where('estado', 'Pendiente')->first();
+        $primer = solicitudes_seguimiento_regular::where('estudiante_id', $id)->where('estado', 'Pendiente')->first();
         return view('Estudiante/ShowSeguimientoRegular')->with('estudiante', $user)->with('estudianteDetalle', $estudianteDetalle)->with('SeguimientoRegular', $primer);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\solicitud_seguimiento_regular  $solicitud_seguimiento_regular
+     * @param  \App\Models\solicitudes_seguimiento_regular  $solicitudes_seguimiento_regular
      * @return \Illuminate\Http\Response
      */
-    public function edit(solicitud_seguimiento_regular $solicitud_seguimiento_regular)
+    public function edit(solicitudes_seguimiento_regular $solicitudes_seguimiento_regular)
     {
         //
     }
@@ -109,10 +109,10 @@ class SolicitudSeguimientoRegularController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\solicitud_seguimiento_regular  $solicitud_seguimiento_regular
+     * @param  \App\Models\solicitudes_seguimiento_regular  $solicitudes_seguimiento_regular
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, solicitud_seguimiento_regular $solicitud_seguimiento_regular)
+    public function update(Request $request, solicitudes_seguimiento_regular $solicitudes_seguimiento_regular)
     {
         //
     }
@@ -120,10 +120,10 @@ class SolicitudSeguimientoRegularController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\solicitud_seguimiento_regular  $solicitud_seguimiento_regular
+     * @param  \App\Models\solicitudes_seguimiento_regular  $solicitudes_seguimiento_regular
      * @return \Illuminate\Http\Response
      */
-    public function destroy(solicitud_seguimiento_regular $solicitud_seguimiento_regular)
+    public function destroy(solicitudes_seguimiento_regular $solicitudes_seguimiento_regular)
     {
         //
     }

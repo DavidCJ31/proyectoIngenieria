@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\solicitud_primer_seguimiento;
+use App\Models\solicitudes_primer_seguimiento;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +23,7 @@ class SolicitudPrimerSeguimientoController extends Controller
     {
         $id = Auth::user()->id;
         $asesor = asesor::find($id)->user;
-        $primer_seguimiento = solicitud_primer_seguimiento::where('estado', 'Pendiente')->get();
+        $primer_seguimiento = solicitudes_primer_seguimiento::where('estado', 'Pendiente')->get();
         return view('Asesor/IndexPrimerSeguimiento')->with('asesor', $asesor)->with('seguimientos', $primer_seguimiento);
     }
 
@@ -48,36 +48,35 @@ class SolicitudPrimerSeguimientoController extends Controller
      */
     public function store(Request $request)
     {
-        $s = solicitud_primer_seguimiento::where('estudiante_id', Auth::user()->id)
-        ->where('estado', 'Pendiente')->get();
-
-    if (empty($s[0])) {
-        $primer_seguimiento = new solicitud_primer_seguimiento;
-        $primer_seguimiento->estudiante_id = Auth::user()->id;
-        $primer_seguimiento->materiaTutoria = $request->input('materia');
-        $primer_seguimiento->profesorCurso = $request->input('profesor');
-        $primer_seguimiento->creditoCruso = $request->input('creditos');
-        $primer_seguimiento->situacion = $request->input('situacion');
-        $primer_seguimiento->tipoTutoria = 'Individual';
-        $primer_seguimiento->estado = 'Pendiente';
-        $primer_seguimiento->save();
-        print_r('Exito');
-    } else {
-        print_r('Error');
-    }
-
-    disponibilidad_estudiante::where('estudiante_id', Auth::user()->id)->delete();
-    $lista_horarios = json_decode(stripslashes($_POST['horarios']));
-    if ($lista_horarios == null) {
-    } else {
-        foreach ($lista_horarios as $horario) {
-            $h = new disponibilidad_estudiante;
-            $h->estudiante_id = Auth::user()->id;
-            $h->dia = $horario->dia;
-            $h->hora = $horario->horaInicio;
-            $h->save();
+        $s = solicitudes_primer_seguimiento::where('estudiante_id', Auth::user()->id)
+            ->where('estado', 'Pendiente')->get();
+        if (empty($s[0])) {
+            $primer_seguimiento = new solicitudes_primer_seguimiento;
+            $primer_seguimiento->estudiante_id = Auth::user()->id;
+            $primer_seguimiento->materiaTutoria = $request->input('materia');
+            $primer_seguimiento->profesorCurso = $request->input('profesor');
+            $primer_seguimiento->creditoCruso = $request->input('creditos');
+            $primer_seguimiento->situacion = $request->input('situacion');
+            $primer_seguimiento->tipoTutoria = 'Individual';
+            $primer_seguimiento->estado = 'Pendiente';
+            $primer_seguimiento->save();
+            print_r('Exito');
+        } else {
+            print_r('Error');
         }
-    }
+
+        disponibilidad_estudiante::where('estudiante_id', Auth::user()->id)->delete();
+        $lista_horarios = json_decode(stripslashes($_POST['horarios']));
+        if ($lista_horarios == null) {
+        } else {
+            foreach ($lista_horarios as $horario) {
+                $h = new disponibilidad_estudiante;
+                $h->estudiante_id = Auth::user()->id;
+                $h->dia = $horario->dia;
+                $h->hora = $horario->horaInicio;
+                $h->save();
+            }
+        }
     }
 
     /**
@@ -91,7 +90,7 @@ class SolicitudPrimerSeguimientoController extends Controller
         $estudiante = estudiante::where('id', $id)->first();
         $user = User::find($estudiante->id);
         $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
-        $primer = solicitud_primer_seguimiento::where('estudiante_id', $id)->first();
+        $primer = solicitudes_primer_seguimiento::where('estudiante_id', $id)->first();
         return view('Estudiante/ShowPrimerSeguimiento')->with('estudiante', $user)->with('estudianteDetalle', $estudianteDetalle)->with('primerSeguimiento', $primer);
     }
 
@@ -101,7 +100,7 @@ class SolicitudPrimerSeguimientoController extends Controller
      * @param  \App\Models\solicitud_primer_seguimiento  $solicitud_primer_seguimiento
      * @return \Illuminate\Http\Response
      */
-    public function edit(solicitud_primer_seguimiento $solicitud_primer_seguimiento)
+    public function edit(solicitudes_primer_seguimiento $solicitud_primer_seguimiento)
     {
         //
     }
@@ -113,7 +112,7 @@ class SolicitudPrimerSeguimientoController extends Controller
      * @param  \App\Models\solicitud_primer_seguimiento  $solicitud_primer_seguimiento
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, solicitud_primer_seguimiento $solicitud_primer_seguimiento)
+    public function update(Request $request, solicitudes_primer_seguimiento $solicitud_primer_seguimiento)
     {
         //
     }
@@ -124,7 +123,7 @@ class SolicitudPrimerSeguimientoController extends Controller
      * @param  \App\Models\solicitud_primer_seguimiento  $solicitud_primer_seguimiento
      * @return \Illuminate\Http\Response
      */
-    public function destroy(solicitud_primer_seguimiento $solicitud_primer_seguimiento)
+    public function destroy(solicitudes_primer_seguimiento $solicitud_primer_seguimiento)
     {
         //
     }

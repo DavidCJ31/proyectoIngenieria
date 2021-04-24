@@ -15,6 +15,8 @@ use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\HorarioAsesorController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\AulaController;
+use App\Http\Controllers\SolicitudPrimerSeguimientoController;
+use App\Http\Controllers\SolicitudSeguimientoRegularController;
 use App\Http\Controllers\SeguimientoController;
 use App\Http\Controllers\PrimerSeguimientoController;
 use App\Http\Controllers\SeguimientoRegularController;
@@ -102,8 +104,8 @@ Route::resources([
     '/Clases' => ClaseController::class,
     '/horario-citas' => HorarioAsesorController::class,
     '/Cursos' => CursoController::class,
-    '/PrimerSeguimiento' => SolicitudPrimerSeguimientoController::class,
-    '/SeguimientoRegular' => SolicitudSeguimientoRegularController::class,
+    '/SolicitudPrimerSeguimiento' => SolicitudPrimerSeguimientoController::class,
+    '/SolicitudSeguimientoRegular' => SolicitudSeguimientoRegularController::class,
     '/Calendario' => CalendarioController::class,
     '/Aula' => AulaController::class,
     '/DisponibilidadEstudiante' => DisponibilidadEstudianteController::class

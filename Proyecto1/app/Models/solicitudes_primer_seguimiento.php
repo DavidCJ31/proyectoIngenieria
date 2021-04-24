@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class solicitud_primer_seguimiento extends Model
+class solicitudes_primer_seguimiento extends Model
 {
     public $timestamps = false;
     protected $fillable = [
