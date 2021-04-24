@@ -17,7 +17,7 @@ class CreateEstudiantesTable extends Migration
             $table->integer('id');
             $table->primary('id');
             $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('especialidad', 45)->nullable();
+            $table->string('estado', 45)->nullable();
             $table->string('archivo',255)->nullable();
         });
     }

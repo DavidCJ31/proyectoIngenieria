@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePrimerSeguimientoTable extends Migration
+class CreateSolicitudesPrimerSeguimientosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreatePrimerSeguimientoTable extends Migration
      */
     public function up()
     {
-        Schema::create('primer_seguimientos', function (Blueprint $table) {
+        Schema::create('solicitudes_primer_seguimientos', function (Blueprint $table) {
+            $table->id();
             $table->integer('estudiante_id');
-            $table->unique('estudiante_id');
             $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
             $table->string('materiaTutoria', 45);
             $table->string('profesorCurso', 45);
@@ -23,11 +23,7 @@ class CreatePrimerSeguimientoTable extends Migration
             $table->string('situacion', 255);
             $table->string('tipoTutoria', 13);
             $table->string('estado', 20);
-            $table->string('aprovacion', 20)->nullable();
-            $table->bigInteger('detalle_curso_id')->unsigned()->nullable();
-            $table->foreign('detalle_curso_id')->references('id')->on('detalle_cursos')->onDelete('cascade');
-            $table->text('Observaciones')->nullable();
-            $table->dateTime('fecha')->nullable();
+            $table->dateTime('fechaSolicitud')->nullable();
         });
     }
 
@@ -38,6 +34,6 @@ class CreatePrimerSeguimientoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('primer_seguimientos');
+        Schema::dropIfExists('solicitudes_primer_seguimientos');
     }
 }

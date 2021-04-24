@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class primer_seguimiento extends Model
@@ -9,12 +10,10 @@ class primer_seguimiento extends Model
     public $timestamps = false;
     protected $fillable = [
         'estudiante_id',
-        'materiaTutoria',
-        'profesorCurso',
-        'creditoCruso',
-        'situacion',
-        'tipoTutoria',
-        'estado'
+        'aprovacion',
+        'detalle_curso_id',
+        'observaciones',
+        'fecha'
     ];
 
     public function estudiante()

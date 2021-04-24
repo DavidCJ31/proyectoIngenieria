@@ -102,8 +102,8 @@ Route::resources([
     '/Clases' => ClaseController::class,
     '/horario-citas' => HorarioAsesorController::class,
     '/Cursos' => CursoController::class,
-    '/PrimerSeguimiento' => PrimerSeguimientoController::class,
-    '/SeguimientoRegular' => SeguimientoRegularController::class,
+    '/PrimerSeguimiento' => SolicitudPrimerSeguimientoController::class,
+    '/SeguimientoRegular' => SolicitudSeguimientoRegularController::class,
     '/Calendario' => CalendarioController::class,
     '/Aula' => AulaController::class,
     '/DisponibilidadEstudiante' => DisponibilidadEstudianteController::class
