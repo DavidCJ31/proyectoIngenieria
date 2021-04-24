@@ -50,7 +50,7 @@ class SolicitudSeguimientoRegularController extends Controller
     {
         $s = solicitudes_seguimiento_regular::where('estudiante_id', Auth::user()->id)
             ->where('estado', 'Pendiente')->get();
-        print_r($s);
+        //print_r($s);
 
         if (empty($s[0])) {
             $seguimiento_regular = new solicitudes_seguimiento_regular;

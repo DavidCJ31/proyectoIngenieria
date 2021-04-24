@@ -313,7 +313,7 @@
             icon: 'error',
             title: 'Oops...',
             text: 'Ha habido un problema!',
-          })
+          });
         }
       });
     } else {
@@ -321,7 +321,7 @@
         icon: 'warning',
         title: 'Oops...',
         text: 'Completa los campos por favor!'
-      })
+      });
     }
   }
 </script>
