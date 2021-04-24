@@ -14,6 +14,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
@@ -28,9 +29,9 @@
 
   <!-- Aqui empieza el  formulario -->
   <div class="form-card">
-    <h4 style="text-align: center;" > VICERRECTORIA DE DOCENCIA</h4>
-    <H5 style="text-align: center;" > EXITO ACADEMICO</H5>
-    <h4 style="text-align: center;" > SOLICITUD DE SEGUIMIENTO REGULAR</h4>
+    <h4 style="text-align: center;"> VICERRECTORIA DE DOCENCIA</h4>
+    <H5 style="text-align: center;"> EXITO ACADEMICO</H5>
+    <h4 style="text-align: center;"> SOLICITUD DE SEGUIMIENTO REGULAR</h4>
 
     <br>
     <!-- Hilera del formulario -- nombre -->
@@ -118,7 +119,7 @@
           </tr>
           <tr>
             <td>9 am</td>
-            <td class="cuadro-tabla opcion-tabla" inicio="9" onclick="seleccionarHorario(this)"></td>
+            <td class="cuadro-tabla opcion-tabla" inicio="9" dia="lunes" onclick="seleccionarHorario(this)"></td>
             <td class="cuadro-tabla opcion-tabla" inicio="9" dia="martes" onclick="seleccionarHorario(this)"></td>
             <td class="cuadro-tabla opcion-tabla" inicio="9" dia="miercoles" onclick="seleccionarHorario(this)"></td>
             <td class="cuadro-tabla opcion-tabla" inicio="9" dia="jueves" onclick="seleccionarHorario(this)"></td>
@@ -159,40 +160,40 @@
           </tr>
 
           <tr>
-                <td>3 pm</td>
-                <td class="cuadro-tabla opcion-tabla" inicio="15" dia="lunes" onclick="seleccionarHorario(this)"></td>
-                <td class="cuadro-tabla opcion-tabla" inicio="15" dia="martes" onclick="seleccionarHorario(this)"></td>
-                <td class="cuadro-tabla opcion-tabla" inicio="15" dia="miercoles" onclick="seleccionarHorario(this)"></td>
-                <td class="cuadro-tabla opcion-tabla" inicio="15" dia="jueves" onclick="seleccionarHorario(this)"></td>
-                <td class="cuadro-tabla opcion-tabla" inicio="15" dia="viernes" onclick="seleccionarHorario(this)"></td>
-              </tr>
+            <td>3 pm</td>
+            <td class="cuadro-tabla opcion-tabla" inicio="15" dia="lunes" onclick="seleccionarHorario(this)"></td>
+            <td class="cuadro-tabla opcion-tabla" inicio="15" dia="martes" onclick="seleccionarHorario(this)"></td>
+            <td class="cuadro-tabla opcion-tabla" inicio="15" dia="miercoles" onclick="seleccionarHorario(this)"></td>
+            <td class="cuadro-tabla opcion-tabla" inicio="15" dia="jueves" onclick="seleccionarHorario(this)"></td>
+            <td class="cuadro-tabla opcion-tabla" inicio="15" dia="viernes" onclick="seleccionarHorario(this)"></td>
+          </tr>
 
-              <tr>
-                <td>4 pm</td>
-                <td class="cuadro-tabla opcion-tabla" inicio="16" dia="lunes" onclick="seleccionarHorario(this)"></td>
-                <td class="cuadro-tabla opcion-tabla" inicio="16" dia="martes" onclick="seleccionarHorario(this)"></td>
-                <td class="cuadro-tabla opcion-tabla" inicio="16" dia="miercoles" onclick="seleccionarHorario(this)"></td>
-                <td class="cuadro-tabla opcion-tabla" inicio="16" dia="jueves" onclick="seleccionarHorario(this)"></td>
-                <td class="cuadro-tabla opcion-tabla" inicio="16" dia="viernes" onclick="seleccionarHorario(this)"></td>
-              </tr>
+          <tr>
+            <td>4 pm</td>
+            <td class="cuadro-tabla opcion-tabla" inicio="16" dia="lunes" onclick="seleccionarHorario(this)"></td>
+            <td class="cuadro-tabla opcion-tabla" inicio="16" dia="martes" onclick="seleccionarHorario(this)"></td>
+            <td class="cuadro-tabla opcion-tabla" inicio="16" dia="miercoles" onclick="seleccionarHorario(this)"></td>
+            <td class="cuadro-tabla opcion-tabla" inicio="16" dia="jueves" onclick="seleccionarHorario(this)"></td>
+            <td class="cuadro-tabla opcion-tabla" inicio="16" dia="viernes" onclick="seleccionarHorario(this)"></td>
+          </tr>
 
-              <tr>
-                <td>5 pm</td>
-                <td class="cuadro-tabla opcion-tabla" inicio="17" dia="lunes" onclick="seleccionarHorario(this)"></td>
-                <td class="cuadro-tabla opcion-tabla" inicio="17" dia="martes" onclick="seleccionarHorario(this)"></td>
-                <td class="cuadro-tabla opcion-tabla" inicio="17" dia="miercoles" onclick="seleccionarHorario(this)"></td>
-                <td class="cuadro-tabla opcion-tabla" inicio="17" dia="jueves" onclick="seleccionarHorario(this)"></td>
-                <td class="cuadro-tabla opcion-tabla" inicio="17" dia="viernes" onclick="seleccionarHorario(this)"></td>
-              </tr>
+          <tr>
+            <td>5 pm</td>
+            <td class="cuadro-tabla opcion-tabla" inicio="17" dia="lunes" onclick="seleccionarHorario(this)"></td>
+            <td class="cuadro-tabla opcion-tabla" inicio="17" dia="martes" onclick="seleccionarHorario(this)"></td>
+            <td class="cuadro-tabla opcion-tabla" inicio="17" dia="miercoles" onclick="seleccionarHorario(this)"></td>
+            <td class="cuadro-tabla opcion-tabla" inicio="17" dia="jueves" onclick="seleccionarHorario(this)"></td>
+            <td class="cuadro-tabla opcion-tabla" inicio="17" dia="viernes" onclick="seleccionarHorario(this)"></td>
+          </tr>
 
-              <tr>
-                <td>6 pm</td>
-                <td class="cuadro-tabla opcion-tabla" inicio="18" dia="lunes" onclick="seleccionarHorario(this)"></td>
-                <td class="cuadro-tabla opcion-tabla" inicio="18" dia="martes" onclick="seleccionarHorario(this)"></td>
-                <td class="cuadro-tabla opcion-tabla" inicio="18" dia="miercoles" onclick="seleccionarHorario(this)"></td>
-                <td class="cuadro-tabla opcion-tabla" inicio="18" dia="jueves" onclick="seleccionarHorario(this)"></td>
-                <td class="cuadro-tabla opcion-tabla" inicio="18" dia="viernes" onclick="seleccionarHorario(this)"></td>
-              </tr>
+          <tr>
+            <td>6 pm</td>
+            <td class="cuadro-tabla opcion-tabla" inicio="18" dia="lunes" onclick="seleccionarHorario(this)"></td>
+            <td class="cuadro-tabla opcion-tabla" inicio="18" dia="martes" onclick="seleccionarHorario(this)"></td>
+            <td class="cuadro-tabla opcion-tabla" inicio="18" dia="miercoles" onclick="seleccionarHorario(this)"></td>
+            <td class="cuadro-tabla opcion-tabla" inicio="18" dia="jueves" onclick="seleccionarHorario(this)"></td>
+            <td class="cuadro-tabla opcion-tabla" inicio="18" dia="viernes" onclick="seleccionarHorario(this)"></td>
+          </tr>
 
           <tr>
             <td>7 pm</td>
@@ -271,28 +272,49 @@
 
 
   function enviarDatos() {
-    console.log(recolectarDatosGUI());
+    //console.log(recolectarDatosGUI());
     if ($("#campo-situacion").val() && lista_horarios.length !== 0) {
       $.ajax({
-        url: "{{url('/SeguimientoRegular')}}",
+        url: "{{url('/SolicitudSeguimientoRegular')}}",
         type: "POST",
         data: recolectarDatosGUI(),
         success: function(result) {
+          console.log(result)
           if (result == 'Exito') {
-            alert("Solicitud agregada con Exito");
-            window.location.href = "{{url('/Estudiante')}}";
+            Swal.fire({
+              icon: 'success',
+              title: 'Exito',
+              text: 'Solicitud Agrega con Exito!',
+              showConfirmButton: false,
+              timer: 2000
+            });
+            setTimeout(function() {
+              window.location.href = "{{url('/Estudiante')}}";
+            }, 2000);
           }
           if (result == 'Error') {
-            alert("Ya hay una solicitud en proceso");
-            window.location.href = "{{url('/Estudiante')}}";
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Ya hay una solitidud en proceso!',
+            });
           }
         },
-        error: function() {
-          alert("Hay un error");
+        error: function(result) {
+          console.log(result.responseText);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ha habido un problema!',
+          });
         }
       });
     } else {
-      alert("Completar todos los campos");
+      Swal.fire({
+        icon: 'warning',
+        title: 'Oops...',
+        text: 'Completa los campos por favor!'
+      });
     }
 
   }
