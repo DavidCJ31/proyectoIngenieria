@@ -50,7 +50,7 @@
                                 <td>{{$seguimiento->estudiante_id}}</td>
                                 <td>{{App\Models\User::find(App\Models\estudiante::find($seguimiento->estudiante_id)->id)->name}}</td>
                                 <td>{{$seguimiento->situacion}}</td>
-                                <td><a href="" target="_blank"><button class='btn btn-warning btn-sm'><i class="fa fa-id-card-o" aria-hidden="true"></i> Ver Solicitud</button></a></td>
+                                <td><a href="javascript:window.open('{{route('SolicitudSeguimientoRegular.show', $seguimiento->estudiante_id)}}','','width=1584,height=864,left=100,top=50,toolbar=yes');void 0"><button class='btn btn-warning btn-sm'>Ver</button></a></td>
                                 <td><a href="{{route('CalendarizarSeguimientoRegular.edit', $seguimiento->estudiante_id)}}"><button class='btn btn-primary btn-sm'><i class="fa fa-check-circle-o" aria-hidden="true"></i> Aceptar Solicitud</button></a></td>
                             </tr>
                             @endforeach
