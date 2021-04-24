@@ -10,14 +10,15 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 </head>
 
 <body>
 <!--Main Navigation-->
-@include('layouts.header')
 <!--Main Navigation-->
     <!-- Aqui empieza el  formulario -->
-    <div class= "form-card">
+  <div class= "form-card">
         <h4>VICERRECTORIA DE DOCENCIA</h4><H5>EXITO ACADEMICO</H5><h4>SOLICITUD DE TUTORIA</h4>
         <!-- Hilera del formulario -- nombre -->
         <div class="input-group mb-3">
@@ -230,7 +231,7 @@
     @include("layouts.footer")
 
     <!-- Modal -->
-    <div id= "modal-error" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div id= "modal-error" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -250,6 +251,10 @@
       </div>
     </div>
 
+    <button type="button" class="btn btn-primary" data-toggle="modal"  id="botonMostrar" data-target="#modal-error" hidden>
+    Launch demo modal
+    </button>
+
 
 </body>
 
@@ -258,39 +263,39 @@
 <script>
     let cedEst = 0;
     function empezar(){
-      cedEst = $("#campo-cedula").getAttribute('numeroCed');
-      $("#modal-error").modal('hide');
+      cedEst = $("#campo-cedula").attr('numeroCed');
+      console.log(cedEst);
       solicitarHorarios();
     }
-    empezar();
+    empezar();    
+
     function solicitarHorarios(){
       if(cedEst == 0){
         console.log("No funciono el trucazo");
       }
       else{
         try{
-          $.ajaxSetup({
+          $.ajax({
             headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-            });
-            console.log(cedEst);
-          $.ajax({
-            url: "Estudiante/" + cedEst + "edit",
+            },
+            url: "/Estudiante/"+ cedEst,
             type: "GET",
             success: function (horarios) {
                 //Aqui entra porque la respuesta es correcta
                 console.log("success");
-                //console.log(estudiantes);
+                console.log(horarios);
                 horarios.forEach((hor)=>{asignarHorario(hor);});
             },
             error: function(status, error){
                 console.log(error);
-                $("#modal-error").modal('show');
+                console.log("Entro al ajax, pero dio error")
+                $("#botonMostrar").click();
             }
             });
           }catch(err){
-            $("#modal-error").modal('show');
+            console.log(err);
+            $("#botonMostrar").click()
             }
 
       }

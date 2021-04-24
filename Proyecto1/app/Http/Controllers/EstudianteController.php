@@ -93,7 +93,24 @@ class EstudianteController extends Controller
      */
     public function show($id)
     {
-    
+        try {
+            $opciones = disponibilidad_estudiante::where('estudiante_id', $id)->get();
+            $datos = array();
+            $cont = 0;
+            
+            foreach($opciones as $row)
+                {
+                    $datos[$cont++] = array(
+                    'dia' => $row->dia,
+                    'hora' => $row->hora
+                    );
+                }
+
+        return response($datos,200,$datos);
+        } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return response('Erorr a la hora de cargar los horarios disponibles', 400);
+        }
     }
 
     /**
@@ -105,6 +122,10 @@ class EstudianteController extends Controller
     public function edit($id)
     {
         //
+
+        echo "entro aqui";
+
+        /*
         try {
             $opciones = disponibilidad_estudiante::where('estudiante_id', $id)->get();
             $datos = array();
@@ -122,6 +143,7 @@ class EstudianteController extends Controller
             echo 'Caught exception: ',  $e->getMessage(), "\n";
             return response('Erorr a la hora de cargar los horarios disponibles', 400);
         }
+        */
 
     }
 

@@ -57,7 +57,7 @@
                                 <td>{{$seguimiento->creditoCruso}}</td>
                                 <td>{{$seguimiento->situacion}}</td>
                                 <td>{{$seguimiento->tipoTutoria}}</td>
-                                <td><a href="javascript:window.open('{{route('PrimerSeguimiento.show', $seguimiento->estudiante_id)}}','','width=1584,height=864,left=100,top=50,toolbar=yes');void 0"><button class='btn btn-warning btn-sm'>Ver</button></a></td>
+                                <td><a href="javascript:window.open('{{route('SolicitudPrimerSeguimiento.show', $seguimiento->estudiante_id)}}','','width=1584,height=864,left=100,top=50,toolbar=yes');void 0"><button class='btn btn-warning btn-sm'>Ver</button></a></td>
                                 <td><a href="{{route('CalendarizarPrimerSeguimiento.edit', $seguimiento->estudiante_id)}}"><button class='btn btn-primary btn-sm'>Aceptar</button></a></td>
                             </tr>
                             @endforeach
