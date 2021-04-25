@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\seguimiento_regular;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\reunion;
 
 class SeguimientoRegularController extends Controller
 {
@@ -68,9 +69,20 @@ class SeguimientoRegularController extends Controller
      * @param  \App\Models\seguimiento_regular  $seguimiento_regular
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, seguimiento_regular $seguimiento_regular)
+    public function update(Request $request, $id)
     {
-        //
+        seguimiento_regular::where('estudiante_id', $request->input('campo-estudiante'))->where('estado')
+        ->update([
+            'aprovacion' => $request->input('campo-aprovada'),
+            'detalle_curso_id' => $request->input('campo-curso'),
+            'Observaciones' => $request->input('campo-observaciones'),
+            'fecha' => $request->input('campo-fecha')
+        ]);
+
+    reunion::where('id', $id)->update([
+        'estado' => 'Realizada'
+    ]);
+    return redirect('/Calendario');
     }
 
     /**

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\reunion;
+use App\Models\primer_seguimiento;
+use App\Models\lista_curso_estudiante;
 
 class PrimerSeguimientoController extends Controller
 {
@@ -35,7 +38,24 @@ class PrimerSeguimientoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $primer_seguimiento = new primer_seguimiento;
+        $primer_seguimiento->estudiante_id = $request->input('campo-estudiante');
+        $primer_seguimiento->aprovacion = $request->input('campo-aprovada');
+        $primer_seguimiento->detalle_curso_id = $request->input('campo-curso');
+        $primer_seguimiento->observaciones = $request->input('campo-observaciones');
+        $primer_seguimiento->archivo = $request->input('campo-archivo');
+        $primer_seguimiento->fecha = $request->input('campo-fecha');
+        $primer_seguimiento->save();
+
+        reunion::where('id', $request->input('campo-id'))->update([
+            'estado' => 'Realizada'
+        ]);
+
+        $Curso_Estudiante = new lista_curso_estudiante;
+        $Curso_Estudiante->detalle_curso_id = $request->input('campo-curso');
+        $Curso_Estudiante->estudiante_id = $request->input('campo-estudiante');
+        $Curso_Estudiante->save();
+        return redirect('/Calendario');
     }
 
     /**
@@ -69,7 +89,6 @@ class PrimerSeguimientoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**
