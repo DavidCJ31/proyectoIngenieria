@@ -23,7 +23,6 @@
   <!--Main Navigation-->
   <form method="post" action="/SeguimientoRegular" id="formSeguimientoIndividual">
     @csrf
-    @method('PUT')
     <!-- Aqui empieza el  formulario -->
     <input type="hidden" name="campo-id" id="campo-id" value="{{$reunion->id}}">
     <input type="hidden" name="campo-estudiante" id="campo-estudiante" value="{{$reunion->estudiante_id}}">
@@ -71,7 +70,7 @@
           <input type="file" class="form-control" name="archivo" id="archivos" aria-describedby="basic-addon1">
         </div>
       </div>
-      <button type="button" id="boton-enviar" class="btn btn-primary">Enviar solicitud</button>
+      <button type="submit" id="boton-enviar" class="btn btn-primary">Enviar solicitud</button>
   </form>
 
 

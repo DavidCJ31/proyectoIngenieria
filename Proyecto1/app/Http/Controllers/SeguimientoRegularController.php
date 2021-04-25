@@ -37,7 +37,18 @@ class SeguimientoRegularController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $seguimiento_regular = new seguimiento_regular;
+        $seguimiento_regular->estudiante_id = $request->input('campo-estudiante');
+        $seguimiento_regular->situacion = $request->input('campo-sintesis');
+        $seguimiento_regular->acuerdos = $request->input('campo-acuerdos');
+        $seguimiento_regular->archivo = $request->input('archivo');
+        $seguimiento_regular->fecha = $request->input('campo-fecha');
+        $seguimiento_regular->save();
+
+        reunion::where('id', $request->input('campo-id'))->update([
+            'estado' => 'Realizada'
+        ]);
+        return redirect('/Calendario');
     }
 
     /**
