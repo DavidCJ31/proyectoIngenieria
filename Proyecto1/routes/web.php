@@ -46,7 +46,7 @@ use App\Models\estudientes;
 
 Route::get('/logged_in', function () {
     if (Auth::user() == null) {
-        return view('welcome.welcome');
+        return view('Welcome.welcome');
     } else {
         $rol = Auth::user()->rol;
         $usuario = Auth::user();
@@ -120,7 +120,7 @@ Route::get('/CalendarizarSeguimientoRegular/{id}/edit', [CalendarioController::c
 Route::post('/referencia', [AsesorController::class, 'referencia']);
 
 Route::get('/', function () {
-    return view('welcome.welcome');
+    return redirect('/logged_in');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
