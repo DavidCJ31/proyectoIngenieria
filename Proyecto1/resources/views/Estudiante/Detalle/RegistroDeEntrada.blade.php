@@ -12,7 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
-    <script src="{{ asset('js/validaciones.js') }}" ></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="{{ asset('js/validaciones.js') }}"></script>
 </head>
 
 <body onload="AnnoActual()">
@@ -583,12 +584,22 @@
             <button type="submit" class="btn btn-primary" name="enviar" id='boton-enviar'>Guardar</button>
         </div>
     </form>
-        @include("layouts.footer")
+    @include("layouts.footer")
 </body>
 
 </html>
 
 <script>
+    $(document).ready(function() {
+        Swal.fire({
+            position: 'center',
+            icon: 'info',
+            title: 'Por favor completa tu datos personales',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    });
+
     function empezar() {
         $(".opcion-tabla").hover(function() {
             $(this).css("background-color", "#f6f799");

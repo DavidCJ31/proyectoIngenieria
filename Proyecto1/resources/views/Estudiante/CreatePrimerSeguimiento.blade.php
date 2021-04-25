@@ -11,7 +11,7 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -228,6 +228,10 @@
 </html>
 
 <script>
+  $(document).ready(function() {
+    ValidarDatos();
+  });
+
   let lista_horarios = [];
   let copy_lista_horarios = [];
 
@@ -323,5 +327,65 @@
         text: 'Completa los campos por favor!'
       });
     }
+  }
+
+  function ValidarDatos() {
+    $.ajax({
+      url: '/Estudiante/ValidarPrimerSeguimiento',
+      type: 'get',
+      dataType: 'JSON',
+      success: function(response) {
+        switch (response) {
+          case 1:
+            Swal.fire({
+              icon: 'warning',
+              title: 'Ya has iniciado un seguimiento',
+              text: 'Quieres iniciar un nuevo seguimiento?',
+              showDenyButton: true,
+              showCancelButton: false,
+              confirmButtonText: 'Si',
+              denyButtonText: 'No',
+              allowOutsideClick: false,
+              allowEscapeKey: false,
+            }).then((result) => {
+              if (result.isConfirmed) {
+                Swal.close()
+              } else if (result.isDenied) {
+                window.location.href = "/Estudiante";
+              }
+            });
+            break;
+          case 2:
+            Swal.fire({
+              icon: 'warning',
+              title: 'El estudiante ya tiene una solicitud en curso',
+              allowOutsideClick: false,
+              allowEscapeKey: false,
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.href = "/Estudiante";
+              }
+            });
+            break;
+          default:
+
+            break;
+        }
+
+
+      },
+      error: function(result) {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Complete sus datos personales.',
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = "/EstudianteDetalle";
+          }
+        })
+      }
+    });
   }
 </script>

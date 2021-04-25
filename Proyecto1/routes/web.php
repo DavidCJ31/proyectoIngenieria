@@ -21,6 +21,7 @@ use App\Http\Controllers\SeguimientoController;
 use App\Http\Controllers\PrimerSeguimientoController;
 use App\Http\Controllers\SeguimientoRegularController;
 use App\Http\Controllers\CalendarioController;
+use App\Http\Controllers\DisponibilidadEstudianteController;
 use App\Http\Controllers\CalendarioTutorController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -88,8 +89,9 @@ Route::get('/reporteEstudiantes', [TutorController::class, 'registroEstudiante']
 
 Route::get('/reporteEstudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
 
-
-//Rutas Estudiantes
+Route::get('/Estudiante/ValidarDetalle', [EstudianteController::class, 'ValidarDetalle'])->name('Estudiante.ValidarDetalle');
+Route::get('/Estudiante/ValidarPrimerSeguimiento', [EstudianteController::class, 'ValidarPrimerSeguimiento']);
+Route::get('/Estudiante/ValidarSeguimientoNormal', [EstudianteController::class, 'ValidarSeguimientoNormal']);
 
 Route::resources([
     '/SuperAdministrador' => SuperAdministradorController::class,

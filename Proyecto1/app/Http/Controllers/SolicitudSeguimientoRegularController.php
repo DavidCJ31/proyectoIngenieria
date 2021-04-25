@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\solicitudes_seguimiento_regular;
+use App\Models\solicitudes_primer_seguimiento;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +38,16 @@ class SolicitudSeguimientoRegularController extends Controller
         $id = Auth::user()->id;
         $estudiante = estudiante::find($id)->user;
         $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
-        return view('Estudiante/CreateSeguimientoRegular')->with('estudiante', $estudiante)->with('estudianteDetalle', $estudianteDetalle);
+        $primer_seguimiento = solicitudes_primer_seguimiento::where('estudiante_id', $id)->orderBy('id', 'desc')->first();
+        if ($estudianteDetalle == null) {
+            return redirect('/EstudianteDetalle');
+        } else {
+            if ($primer_seguimiento == null) {
+                return redirect('/SolicitudPrimerSeguimiento/create');
+            } else {
+                return view('Estudiante/CreateSeguimientoRegular')->with('estudiante', $estudiante)->with('estudianteDetalle', $estudianteDetalle);
+            }
+        }
     }
 
     /**

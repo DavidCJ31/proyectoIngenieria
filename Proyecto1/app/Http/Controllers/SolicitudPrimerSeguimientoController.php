@@ -37,7 +37,11 @@ class SolicitudPrimerSeguimientoController extends Controller
         $id = Auth::user()->id;
         $estudiante = estudiante::find($id)->user;
         $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
-        return view('Estudiante/CreatePrimerSeguimiento')->with('estudiante', $estudiante)->with('estudianteDetalle', $estudianteDetalle);
+        if ($estudianteDetalle == null) {
+            return redirect('/EstudianteDetalle');
+        } else {
+            return view('Estudiante/CreatePrimerSeguimiento')->with('estudiante', $estudiante)->with('estudianteDetalle', $estudianteDetalle);
+        }
     }
 
     /**
