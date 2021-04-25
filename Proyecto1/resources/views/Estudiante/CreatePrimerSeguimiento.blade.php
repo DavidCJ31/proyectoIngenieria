@@ -14,6 +14,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
@@ -126,7 +127,7 @@
             </tr>
             <tr>
               <td>9 am</td>
-              <td class="cuadro-tabla opcion-tabla" inicio="9" onclick="seleccionarHorario(this)"></td>
+              <td class="cuadro-tabla opcion-tabla" inicio="9" dia="lunes" onclick="seleccionarHorario(this)"></td>
               <td class="cuadro-tabla opcion-tabla" inicio="9" dia="martes" onclick="seleccionarHorario(this)"></td>
               <td class="cuadro-tabla opcion-tabla" inicio="9" dia="miercoles" onclick="seleccionarHorario(this)"></td>
               <td class="cuadro-tabla opcion-tabla" inicio="9" dia="jueves" onclick="seleccionarHorario(this)"></td>
@@ -236,7 +237,6 @@
     }, function() {
       $(this).css("background-color", "white");
     });
-    console.log("Entro a empezar por lo menos")
   }
 
   empezar();
@@ -279,32 +279,49 @@
 
 
   function enviarDatos() {
-    console.log(recolectarDatosGUI());
+    //console.log(recolectarDatosGUI());
     if ($("#campo-situacion").val() && lista_horarios.length !== 0 && $('#campo-creditos').val() && $('#campo-profesor').val() && $('#campo-creditos').val()) {
       $.ajax({
-        url: "{{url('/PrimerSeguimiento')}}",
+        url: "{{url('/SolicitudPrimerSeguimiento')}}",
         type: "POST",
         data: recolectarDatosGUI(),
         success: function(result) {
+          console.log(result);
           if (result == 'Exito') {
-            mostrarMensaje('error',"Solicitud agregada con Exito");
-            window.location.href = "{{url('/Estudiante')}}";
+            Swal.fire({
+              icon: 'success',
+              title: 'Exito',
+              text: 'Solicitud Agrega con Exito!',
+              showConfirmButton: false,
+              timer: 2000
+            });
+            setTimeout(function() {
+              window.location.href = "{{url('/Estudiante')}}";
+            }, 2000);
           }
           if (result == 'Error') {
-            mostrarMensaje('error',"Ya hay una solicitud en proceso");
-            window.location.href = "{{url('/Estudiante')}}";
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Ya hay una solitidud en proceso!',
+            });
           }
         },
-        error: function() {
-          mostrarMensaje('error',"Hay un error");
+        error: function(result) {
+          console.log(result.responseText);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ha habido un problema!',
+          });
         }
       });
     } else {
-      mostrarMensaje('error',"Completar todos los campos");
+      Swal.fire({
+        icon: 'warning',
+        title: 'Oops...',
+        text: 'Completa los campos por favor!'
+      });
     }
-
   }
-</script>
-
-
 </script>

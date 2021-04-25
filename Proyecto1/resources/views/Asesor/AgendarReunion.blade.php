@@ -20,7 +20,8 @@
     <link href="{{ asset('fullcalendar-5.5.1/lib/main.css') }}" rel="stylesheet">
     <script src="{{ asset('fullcalendar-5.5.1/lib/main.js') }}"></script>
     <script src="{{ asset('fullcalendar-5.5.1/lib/locales/es.js') }}"></script>
-    <script src="{{ asset('js/mensaje.js') }}" ></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="{{ asset('js/mensaje.js') }}"></script>
 </head>
 
 <body>
@@ -220,18 +221,34 @@
                 data: objEvento,
                 success: function(msg) {
                     if (msg == "Error") {
-                        mostrarMensaje("error","El estudiante ya tiene una reunion calendarizada");
-                        window.location.href = "{{url('/Asesor')}}";
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'El estudiante ya tiene una reunion pendiente!',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+                        setTimeout(function() {
+                            window.location.href = "{{url('/Asesor')}}";
+                        }, 2000);
                     } else {
                         console.log(msg);
                         $('#exampleModalCenter').modal('toggle');
                         calendar.refetchEvents();
-                        mostrarMensaje("error","Reunion calendarizada con exito");
-                        window.location.href = "{{url('/Asesor')}}";
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Exito',
+                            text: 'Reunion Calendarizada con Exito!',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+                        setTimeout(function() {
+                            window.location.href = "{{url('/Asesor')}}";
+                        }, 2000);
                     }
                 },
                 error: function() {
-                    mostrarMensaje('error',"Error en el servidor");
+                    mostrarMensaje('error', "Error en el servidor");
                 }
             });
         }
@@ -248,5 +265,4 @@
             $('#exampleModalCenter').modal('toggle');
         }
     });
-
 </script>

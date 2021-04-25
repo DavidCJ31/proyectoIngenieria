@@ -92,8 +92,8 @@
                         Opciones
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/PrimerSeguimiento">Solicitudes de Primer Contacto</a>
-                        <a class="dropdown-item" href="/SeguimientoRegular">Solicitudes de seguimiento regular</a>
+                        <a class="dropdown-item" href="/SolicitudPrimerSeguimiento">Solicitudes de Primer Contacto</a>
+                        <a class="dropdown-item" href="/SolicitudSeguimientoRegular">Solicitudes de seguimiento regular</a>
                         <a class="dropdown-item" href="/horario-citas">Guardar horario</a>
                     </div>
                 </li>
@@ -141,8 +141,8 @@
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/EstudianteDetalle">Actulizar Informacion Personal</a>
-                        <a class="dropdown-item" href="/PrimerSeguimiento/create">Solicitar Primer Contacto</a>
-                        <a class="dropdown-item" href="/SeguimientoRegular/create">Solicitar Seguimiento Regular</a>
+                        <a class="dropdown-item" href="/SolicitudPrimerSeguimiento/create">Solicitar Primer Contacto</a>
+                        <a class="dropdown-item" href="/SolicitudSeguimientoRegular/create">Solicitar Seguimiento Regular</a>
                     </div>
                 </li>
             </ul>
