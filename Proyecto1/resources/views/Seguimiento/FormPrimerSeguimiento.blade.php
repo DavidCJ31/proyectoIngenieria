@@ -21,9 +21,8 @@
     <!--Main Navigation-->
     @include('layouts.header')
     <!--Main Navigation-->
-    <form method="post" action="/PrimerSeguimiento/{{$reunion-> id}}" id="formPrimerSeguimiento">
+    <form method="post" action="/PrimerSeguimiento" id="formPrimerSeguimiento">
         @csrf
-        @method('PUT')
         <!-- Aqui empieza el  formulario -->
         <input type="hidden" name="campo-id" id="campo-id" value="{{$reunion->id}}">
         <input type="hidden" name="campo-estudiante" id="campo-estudiante" value="{{$reunion->estudiante_id}}">

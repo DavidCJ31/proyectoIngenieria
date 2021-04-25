@@ -14,6 +14,8 @@ use App\Mail\agendarcitaMailable;
 use App\Mail\eliminarcitaMailable;
 use Illuminate\Support\Facades\Mail;
 use App\Models\seguimiento_regular;
+use App\Models\solicitudes_primer_seguimiento;
+use App\Models\solicitudes_seguimiento_regular;
 
 class CalendarioController extends Controller
 {
@@ -52,28 +54,25 @@ class CalendarioController extends Controller
             ->where('estado', 'Pendiente')
             ->first();
         $datosReunion = request()->except(['_token', '_method', 'id']);
-
         if ($reunion == null) {
             if ($request->input('tipo') == "Primer Seguimiento") {
                 print_r($datosReunion);
                 reunion::insert($datosReunion);
-                $primer_seguimiento = new primer_seguimiento;
-                $primer_seguimiento->estudiante_id = primer_seguimiento::where('estudiante_id', $request->input('estudiante_id'))->update(['estado' => 'Revisado']);
+                solicitudes_primer_seguimiento::where('estudiante_id', $request->input('estudiante_id'))->update(['estado' => 'Revisado']);
                 //Aqui se obtiene el id de la reunion
                 $r  = reunion::select('id')->orderByDesc('id')->limit(1)->first();
                 $reunionDatos = reunion::find($r->id);
-                $estudiante = estudiante::find( $request->input('estudiante_id'))->user;
+                $estudiante = estudiante::find($request->input('estudiante_id'))->user;
                 $correo = new agendarcitaMailable($reunionDatos);
                 Mail::to($estudiante->email)->send($correo);
             } else {
                 print_r($datosReunion);
                 reunion::insert($datosReunion);
-                $seguimiento = new seguimiento_regular;
-                $seguimiento->estudiante_id = seguimiento_regular::where('estudiante_id', $request->input('estudiante_id'))->update(['estado' => 'Revisado']);
+                solicitudes_seguimiento_regular::where('estudiante_id', $request->input('estudiante_id'))->update(['estado' => 'Revisado']);
                 //Aqui se obtiene el id de la reunion
                 $r  = reunion::select('id')->orderByDesc('id')->limit(1)->first();
                 $reunionDatos = reunion::find($r->id);
-                $estudiante = estudiante::find( $request->input('estudiante_id'))->user;
+                $estudiante = estudiante::find($request->input('estudiante_id'))->user;
                 $correo = new agendarcitaMailable($reunionDatos);
                 Mail::to($estudiante->email)->send($correo);
             }
@@ -191,26 +190,21 @@ class CalendarioController extends Controller
     public function destroy(Request $request, $id)
     {
         $reunionDatos = reunion::find($id);
-        $estudiante = estudiante::find( $request->input('estudiante_id'))->user;
+        $estudiante = estudiante::find($request->input('estudiante_id'))->user;
         $correo = new eliminarcitaMailable($reunionDatos);
         Mail::to($estudiante->email)->send($correo);
         $reuniones = reunion::findOrFail($id);
         reunion::destroy($id);
         $primer_seguimiento = new primer_seguimiento;
         $primer_seguimiento->estudiante_id = primer_seguimiento::where('estudiante_id', $request->input('estudiante_id'))->update(['estado' => 'Pendiente']);
-        
 
-        
-     
-        
-        
-        
+
+
+
+
+
+
         return response()->json($id);
-
-
-
-
-
     }
 
     public function editPrimerSeguimiento($id)
