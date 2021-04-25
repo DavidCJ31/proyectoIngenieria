@@ -109,6 +109,9 @@
                     <a class="nav-link" href="/Clases">Sesiones</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/calendarioTutor">Calendario</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/Tutorias-estudiantes">Estudiantes Asignados</a>
                 </li>
                 </li>

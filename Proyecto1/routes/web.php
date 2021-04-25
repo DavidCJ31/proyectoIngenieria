@@ -21,6 +21,7 @@ use App\Http\Controllers\SeguimientoController;
 use App\Http\Controllers\PrimerSeguimientoController;
 use App\Http\Controllers\SeguimientoRegularController;
 use App\Http\Controllers\CalendarioController;
+use App\Http\Controllers\CalendarioTutorController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -110,7 +111,8 @@ Route::resources([
     '/SeguimientoRegular' => SeguimientoRegularController::class,
     '/Calendario' => CalendarioController::class,
     '/Aula' => AulaController::class,
-    '/DisponibilidadEstudiante' => DisponibilidadEstudianteController::class
+    '/DisponibilidadEstudiante' => DisponibilidadEstudianteController::class,
+    '/calendarioTutor' => CalendarioTutorController::class
 ]);
 
 Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
