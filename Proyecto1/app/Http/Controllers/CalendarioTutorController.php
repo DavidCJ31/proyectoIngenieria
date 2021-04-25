@@ -67,7 +67,8 @@ class CalendarioTutorController extends Controller
                     'title' => $curso->nombre,
                     'tutor_id' => $detalle->tutor_id,
                     'clase_id' => $clase->id,
-                    'curso_id' => $detalle->curso_codigo,
+                    'curso_codigo' => $detalle->curso_codigo,
+                    'curso_id' => $detalle->id,
                     'start' => $clase->fecha . ' '. $clase->hora_inicio,
                     'end' => $clase->fecha . ' '. $clase->hora_final,
                     'nombre_curso' => $curso->nombre

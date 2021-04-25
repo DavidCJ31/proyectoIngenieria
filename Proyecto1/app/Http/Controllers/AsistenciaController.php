@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\asistencia;
 use Illuminate\Http\Request;
 
 class AsistenciaController extends Controller
@@ -47,7 +48,8 @@ class AsistenciaController extends Controller
      */
     public function show($id)
     {
-        //
+        $asistencia = asistencia::where('clase_id', $id)->get();
+        return $asistencia;
     }
 
     /**

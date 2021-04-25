@@ -25,16 +25,15 @@ class ListaCursoEstudianteController extends Controller
         $detalle_curso = detalle_curso::where('tutor_id', $id)->get();
         $datos = array();
         $cont = 0;
-        foreach($detalle_curso as $row)
-        {
+        foreach ($detalle_curso as $row) {
             $curso = curso::where('codigo', $row->curso_codigo)->first();
-    
+
             $datos[$cont++] = array(
-            'id_detalle' => $row["id"],
-            'curso'   => $curso["nombre"],
-            'periodo'   => $row["periodo"],
-            'hora_inicio'   => $row["hora_inicio"],
-            'dia'   => $row["dia"]
+                'id_detalle' => $row["id"],
+                'curso'   => $curso["nombre"],
+                'periodo'   => $row["periodo"],
+                'hora_inicio'   => $row["hora_inicio"],
+                'dia'   => $row["dia"]
             );
         }
         $data = json_encode($datos);
@@ -69,24 +68,23 @@ class ListaCursoEstudianteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    { 
+    {
         try {
             $curso_estudiante = lista_curso_estudiante::where('detalle_curso_id', $id)->get();
             $datos = array();
             $cont = 0;
-            
-        foreach($curso_estudiante as $row)
-        {
-            $estudiante = User::find($row["estudiante_id"]);
-            $datos[$cont++] = array(
-            'nombre' => $estudiante->name,
-            'apellido' => $estudiante->apellido,
-            'cedula' => $estudiante->id,
-            'correo'   => $estudiante->email
-            );
-            //echo $estudiante;
-        }
-        return response($datos,200,$datos);
+
+            foreach ($curso_estudiante as $row) {
+                $estudiante = User::find($row["estudiante_id"]);
+                $datos[$cont++] = array(
+                    'nombre' => $estudiante->name,
+                    'apellido' => $estudiante->apellido,
+                    'cedula' => $estudiante->id,
+                    'correo'   => $estudiante->email
+                );
+                //echo $estudiante;
+            }
+            return response($datos, 200, $datos);
         } catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
             return response('Erorr a la hora de cargar los estudiantes', 400);
@@ -125,5 +123,11 @@ class ListaCursoEstudianteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function listar($id)
+    {
+        $lista_estudiante = lista_curso_estudiante::where('detalle_curso_id', $id)->get();
+        return $lista_estudiante;
     }
 }

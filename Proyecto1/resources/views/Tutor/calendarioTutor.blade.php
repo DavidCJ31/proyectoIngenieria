@@ -34,70 +34,25 @@
         <!-- Disponibilidad del Estudiante -->
         <!-- Aqui empieza el  formulario -->
         <div class="form-card">
-            <h4 class="text-center">VICERRECTORIA DE DOCENCIA</h4>
-            <H5 class="text-center">EXITO ACADEMICO</H5>
-            <h4 class="text-center">DISPONIBILIDAD PARA ASESORIAS</h4>
-            <br><br>
             <div class="container">
                 <div id="calendar"></div>
             </div>
         </div>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-            Launch demo modal
-        </button>
-
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Calendarizar Seguimiento</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Asistencia de Estudiantes</h5>
                         <button type="button" class="close" data-dismiss="modal" id="cerrar" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" name="campo-id" id="campo-id">
-                        <div class="form-row">
-                            <div class="form-group col-md-5">
-                                <label for="campo-fecha">Fecha</label>
-                                <input type="date" class="form-control" name="campo-fecha" id="campo-fecha" disabled>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="campo-hora">Hora</label>
-                                <input type="time" class="form-control" name="campo-hora" id="campo-hora" placeholder="Hora" min="07:00" max="21:00" required>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="campo-duracion">Duracion(Horas)</label>
-                                <input type="number" class="form-control" name="campo-duracion" id="campo-duracion" placeholder="duracion" min="1" max="2" value="1" required pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==1) return false;">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="campo-descripcion">Descripcion</label>
-                            <textarea class="form-control" name="campo-descripcion" id="campo-descripcion" placeholder="descripcion"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="campo-tipo">Tipo de Seguimiento</label>
-                            <select class="form-control" name="campo-tipo" id="campo-tipo" form="">
-                                <option value="Seguimiento Normal">Seguimiento Normal</option>
-                                <option value="Primer Seguimiento">Primer Seguimiento</option>
-                                <option value="Ultimo Seguimiento">Ultimo Seguimiento</option>
-                            </select>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
-                                <label for="campo-color">Color</label>
-                                <input type="color" class="form-control" name="campo-color" id="campo-color" placeholder="color">
-                            </div>
-                        </div>
+
                     </div>
                     <div class="modal-footer">
-                        <button id="btnAgregar" class="btn btn-success">Agregar</button>
-                        <button id="btnModificar" class="btn btn-secondary">Modificar</button>
-                        <button id="btnEliminar" class="btn btn-danger">Eliminar</button>
+                        <button id="btnEnviar" class="btn btn-success">Enviar</button>
                         <button id="btnCancelar" data-dismiss="modal" class="btn btn-primary">Cancelar</button>
                     </div>
                 </div>
@@ -125,57 +80,31 @@
                 }
             },
             headerToolbar: {
-                left: 'prev,next today Miboton',
+                left: 'prev,next today',
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
             },
-            customButtons: {
-                Miboton: {
-                    text: "Boton",
-                    click: function() {
-                        alert("Hola MUNDO");
-                        $('#exampleModalCenter').modal('toggle');
-                    }
-                }
-            },
-            dateClick: function(info) {
-                limpiarFormurario();
-                $('#campo-fecha').val(info.dateStr);
-
-                $("#btnAgregar").prop("disabled", false);
-                $("#btnModificar").prop("disabled", true);
-                $("#btnEliminar").prop("disabled", true);
-
-                $('#exampleModalCenter').modal('toggle');
-
-            },
             eventClick: function(info) {
                 console.log(info);
-
-                $("#btnAgregar").prop("disabled", true);
-                $("#btnModificar").prop("disabled", false);
-                $("#btnEliminar").prop("disabled", false);
-
-                mes = (info.event.start.getMonth() + 1);
-                mes = (mes < 10) ? "0" + mes : mes;
-                dia = (info.event.start.getDate());
-                dia = (dia < 10) ? "0" + dia : dia;
-                anio = (info.event.start.getFullYear());
-                hora = (info.event.start.getHours());
-                hora = (hora < 10) ? "0" + hora : hora;
-                minutos = (info.event.start.getMinutes());
-                minutos = (minutos < 10) ? "0" + minutos : minutos;
-
+                cargarEstudiantes(info.event.extendedProps.curso_id);
+                cargarAsistencia(info.event.id);
                 $('#exampleModalCenter').modal('toggle');
             },
             events: "{{url('/calendarioTutor/show')}}"
         });
-        
+
         calendar.setOption('locale', 'Es')
         calendar.render();
 
-        function recolectarDatosGUI(method) {
-        }
+        $('#btnCancelar').click(function() {
+            $('#exampleModalCenter').modal('hide');
+        });
+
+        $('#cerrar').click(function() {
+            $('#exampleModalCenter').modal('hide');
+        });
+
+        function recolectarDatosGUI(method) {}
 
         function EnviarInformacion(accion, objEvento) {
             $.ajax({
@@ -193,7 +122,32 @@
             });
         }
 
-        function limpiarFormurario() {
+        function cargarEstudiantes(curso_id) {
+            $.ajax({
+                url: '/ListaCursoEstudiante/' + curso_id,
+                type: 'get',
+                dataType: 'JSON',
+                success: function(response) {
+                    console.log(response);
+                    return response
+                },
+                error: function(result) {}
+            });
         }
+
+        function cargarAsistencia(clase_id) {
+            $.ajax({
+                url: '/Asistencia/' + clase_id,
+                type: 'get',
+                dataType: 'JSON',
+                success: function(response) {
+                    console.log(response);
+                    return response
+                },
+                error: function(result) {}
+            });
+        }
+
+        function limpiarFormurario() {}
     });
 </script>

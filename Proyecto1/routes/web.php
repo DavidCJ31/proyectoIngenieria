@@ -23,6 +23,7 @@ use App\Http\Controllers\SeguimientoRegularController;
 use App\Http\Controllers\CalendarioController;
 use App\Http\Controllers\DisponibilidadEstudianteController;
 use App\Http\Controllers\CalendarioTutorController;
+use App\Http\Controllers\AsistenciaController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -93,6 +94,8 @@ Route::get('/Estudiante/ValidarDetalle', [EstudianteController::class, 'ValidarD
 Route::get('/Estudiante/ValidarPrimerSeguimiento', [EstudianteController::class, 'ValidarPrimerSeguimiento']);
 Route::get('/Estudiante/ValidarSeguimientoNormal', [EstudianteController::class, 'ValidarSeguimientoNormal']);
 
+Route::get('/ListaCursoEstudiante/{id}', [ListaCursoEstudianteController::class, 'listar']);
+
 Route::resources([
     '/SuperAdministrador' => SuperAdministradorController::class,
     '/Asesor' => AsesorController::class,
@@ -114,7 +117,8 @@ Route::resources([
     '/Calendario' => CalendarioController::class,
     '/Aula' => AulaController::class,
     '/DisponibilidadEstudiante' => DisponibilidadEstudianteController::class,
-    '/calendarioTutor' => CalendarioTutorController::class
+    '/calendarioTutor' => CalendarioTutorController::class,
+    '/Asistencia' => AsistenciaController::class
 ]);
 
 Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
