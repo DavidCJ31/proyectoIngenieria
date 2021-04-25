@@ -128,7 +128,7 @@
               document.getElementById("modalBody").innerHTML = "Seguro que quiere agendar una cita el "+ dia + " a las " + hora;
             }
             else{
-              alert('Horario no disponible');
+              mostrarMensaje("error",'Horario no disponible');
             }
             },
 
@@ -152,15 +152,15 @@
           data: {horario:JSON.stringify(obj) , _token: '{{csrf_token()}}' } ,
           success: function (result) {
               console.log("success");
-              alert("Cita agenda correctamente");
+              mostrarMensaje("success","Cita agenda correctamente");
               calendar.fullCalendar('refetchEvents');
           },
           error: function(status, error){
-            alert("Hubo un error al agendar la cita");
+            mostrarMensaje("error","Hubo un error al agendar la cita");
           }
       });
       }catch(err){
-        alert("Hubo un error en la conexion con la base de datos");
+        mostrarMensaje("error","Hubo un error en la conexion con la base de datos");
       }
 
 

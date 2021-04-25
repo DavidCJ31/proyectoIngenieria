@@ -247,7 +247,7 @@
                     calendar.refetchEvents();
                 },
                 error: function() {
-                    alert("Hay un error");
+                    mostrarMensaje("error","Hay un error");
                 }
             });
         }

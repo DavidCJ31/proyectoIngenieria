@@ -279,20 +279,21 @@
         data: recolectarDatosGUI(),
         success: function(result) {
           if (result == 'Exito') {
-            alert("Solicitud agregada con Exito");
+            mostrarMensaje("success","Solicitud agregada con Exito");
             window.location.href = "{{url('/Estudiante')}}";
           }
           if (result == 'Error') {
-            alert("Ya hay una solicitud en proceso");
+            mostrarMensaje("error","Ya hay una solicitud en proceso");
             window.location.href = "{{url('/Estudiante')}}";
           }
         },
         error: function() {
-          alert("Hay un error");
+
+          mostrarMensaje("error","Hay un error");
         }
       });
     } else {
-      alert("Completar todos los campos");
+      mostrarMensaje("error","Completar todos los campos");
     }
 
   }

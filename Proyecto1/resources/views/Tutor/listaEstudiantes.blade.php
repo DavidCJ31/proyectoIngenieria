@@ -83,7 +83,7 @@
             lista_Cursos.forEach((c)=>{rowCursos(lista, c);});
             
         }catch(error){
-            alert("Error al cargar la lista de cursos");
+            mostrarMensaje("error","Error al cargar la lista de cursos");
         }
     }
 
@@ -129,7 +129,7 @@
             }
             });
             }catch(err){
-            alert("Hubo un error al agendar la cita");
+                mostrarMensaje("error","Hubo un error al agendar la cita");
             }
     }
 
