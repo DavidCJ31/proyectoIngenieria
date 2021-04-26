@@ -62,6 +62,8 @@ Route::get('/logged_in', function () {
 });
 Route::get('/horarioAsesor', [HorarioAsesorController::class, 'tablaHorarios']);
 
+Route::get('/Estudiante/Listar', [EstudianteController::class, 'listar']);
+
 Route::get('/Estudiante/ValidarDetalle', [EstudianteController::class, 'ValidarDetalle'])->name('Estudiante.ValidarDetalle');
 Route::get('/Estudiante/ValidarPrimerSeguimiento', [EstudianteController::class, 'ValidarPrimerSeguimiento']);
 Route::get('/Estudiante/ValidarSeguimientoNormal', [EstudianteController::class, 'ValidarSeguimientoNormal']);

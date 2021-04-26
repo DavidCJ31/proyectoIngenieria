@@ -1,5 +1,7 @@
 <link href="{{ asset('css/styleHeader.css') }}" rel="stylesheet">
 <link rel="shortcut icon" href="Imagenes/logo-blanco.png" type="image/x-icon" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 <header>
 
     <!-- Modal -->
@@ -16,7 +18,8 @@
                     <div class="form-row">
                         <div class="form-group col-md-5">
                             <label for="campo-id">Cédula</label>
-                            <input type="text" class="form-control" name="campo-id" id="campo-id">
+                            <input type="text" class="form-control" name="campo-id" id="campo-id" list="listEstudiantes">
+                            <datalist id="listEstudiantes"></datalist>
                         </div>
                     </div>
                 </div>
@@ -199,6 +202,27 @@
 </header>
 
 <script>
+    $(document).ready(function() {
+        $.ajax({
+            url: '/Estudiante/Listar',
+            type: 'get',
+            dataType: 'JSON',
+            success: function(response) {
+                var len = response.length;
+                for (var i = 0; i < len; i++) {
+                    var id = response[i].id;
+                    var nombre = response[i].nombre;
+                    var apellido = response[i].apellido;
+                    $('#listEstudiantes').append($('<option>', {
+                        value: id,
+                        text: nombre + " " + apellido
+                    }));
+                }
+            },
+            error: function(result) {}
+        });
+    });
+
     $('#seguimientoModal').click(function() {
         $('#ModalBuscar').modal('show');
     });
@@ -207,6 +231,10 @@
     });
 
     $('#btnCancelar').click(function() {
+        $('#ModalBuscar').modal('hide');
+    });
+
+    $('#cerrar').click(function() {
         $('#ModalBuscar').modal('hide');
     });
 </script>

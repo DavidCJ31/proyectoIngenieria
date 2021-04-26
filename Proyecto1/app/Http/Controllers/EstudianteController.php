@@ -268,4 +268,23 @@ class EstudianteController extends Controller
             return 3;
         }
     }
+
+    public function listar()
+    {
+        $data = '[';
+
+        foreach (estudiante::all() as $estudiantes) {
+            $user = User::find($estudiantes->id);
+
+            $temp = array(
+                'id' => $estudiantes->id,
+                'nombre' => $user->name,
+                'apellido' => $user->apellido
+            );
+            $data = $data . json_encode($temp) . ',';
+        }
+        $data = substr($data, 0, -1);
+        $data = $data . ']';
+        return $data;
+    }
 }
