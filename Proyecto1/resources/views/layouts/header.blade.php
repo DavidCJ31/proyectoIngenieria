@@ -45,16 +45,6 @@
                         <a class="dropdown-item" href="/Cursos">Administar Cursos</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Opciones
-                    </a>
-                    <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
-                        <a class="dropdown-item" href="/estudiante">Tabla estudiantes</a>
-                        <a class="dropdown-item" href="/Tutores">Tabla Tutores</a>
-                    </div>
-                </li>
             </ul>
             @break
             @case(1)
@@ -65,16 +55,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/User">Registrar Usuario</a>
-                </li>
-                <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Opciones
-                    </a>
-                    <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/usuarios">Tabla usuarios</a>
-                        <a class="dropdown-item" href="/estudiante">Tabla estudiantes</a>
-                        <a class="dropdown-item" href="/Tutores">Tabla Tutores</a>
-                    </div>
                 </li>
             </ul>
             @break
@@ -109,23 +89,10 @@
                     <a class="nav-link" href="/Clases">Sesiones</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/calendarioTutor">Calendario</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/Tutorias-estudiantes">Estudiantes Asignados</a>
-                </li>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/asistencia">Asistencia</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/reporteEstudiantes">Reporte Estudiantes</a>
-                </li>
-                <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Opciones
-                    </a>
-                    <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/informe-mensual">Informe mensual</a>
-                        <a class="dropdown-item" href="/estudiantes-asignados">Estudiantes asignados</a>
-                    </div>
                 </li>
             </ul>
             @break

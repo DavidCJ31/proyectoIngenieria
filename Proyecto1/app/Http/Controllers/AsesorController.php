@@ -91,18 +91,5 @@ class AsesorController extends Controller
     {
         //
     }
-
-    
-    public function referencia(Request $request )
-    {
-        $user = new referencia;
-        $user->nombre = $request->input('nombre-estudiante');
-        $user->cedula = $request->input('cedula');
-
-        $correo = new referenciamail($user);
-        Mail::to('exitoacademico2021@gmail.com')->send($correo);
-        
-        return view('Asesor/inicioAsesor');
-    }
 }
 

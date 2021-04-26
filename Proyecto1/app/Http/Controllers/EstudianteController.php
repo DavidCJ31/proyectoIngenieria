@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Storage;
 use ZipArchive;
 use File;
 use App\Models\disponibilidad_estudiante;
+use App\Models\solicitudes_primer_seguimiento;
+use App\Models\solicitudes_seguimiento_regular;
 use Exception;
 
 class EstudianteController extends Controller
@@ -238,5 +240,51 @@ class EstudianteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function ValidarDetalle()
+    {
+        $id = Auth::user()->id;
+        $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
+        if ($estudianteDetalle != NULL) {
+            return $estudianteDetalle;
+        } else {
+            return null;
+        }
+    }
+
+    public function ValidarPrimerSeguimiento()
+    {
+        $id = Auth::user()->id;
+        $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
+        if ($estudianteDetalle == NULL) {
+            return null;
+        }
+        $primer_seguimiento = solicitudes_primer_seguimiento::where('estudiante_id', $id)->orderBy('id', 'desc')->first();
+        if ($primer_seguimiento != NULL) {
+            if ($primer_seguimiento->estado == "Revisado") {
+                return 1;
+            } else {
+                return 2;
+            }
+        } else {
+            return 3;
+        }
+    }
+
+    public function ValidarSeguimientoNormal()
+    {
+        $id = Auth::user()->id;
+        $primer_seguimiento = solicitudes_primer_seguimiento::where('estudiante_id', $id)->orderBy('id', 'desc')->first();
+        $seguimiento_regular = solicitudes_seguimiento_regular::where('estudiante_id', $id)->orderBy('id', 'desc')->first();
+        if ($primer_seguimiento != NULL && $primer_seguimiento->estado == "Pendiente") {
+            return 1;
+        }
+        if ($seguimiento_regular != NULL && $seguimiento_regular->estado == "Pendiente") {
+            return 2;
+        }
+        else{
+            return 3;
+        }
     }
 }
