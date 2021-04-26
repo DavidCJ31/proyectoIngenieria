@@ -114,22 +114,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/Tutorias-estudiantes">Estudiantes Asignados</a>
                 </li>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/asistencia">Asistencia</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/reporteEstudiantes">Reporte Estudiantes</a>
-                </li>
-                <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Opciones
-                    </a>
-                    <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/informe-mensual">Informe mensual</a>
-                        <a class="dropdown-item" href="/estudiantes-asignados">Estudiantes asignados</a>
-                    </div>
-                </li>
             </ul>
             @break
             @case(4)

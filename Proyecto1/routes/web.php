@@ -26,15 +26,6 @@ use App\Http\Controllers\CalendarioTutorController;
 use App\Http\Controllers\AsistenciaController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
-
-use App\Mail\ContactanosMailable;
-use App\Mail\newusuario;
-use App\Mail\referencia;
-
-
-use App\Models\User;
-use App\Models\estudientes;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,25 +61,7 @@ Route::get('/logged_in', function () {
         }
     }
 });
-
-// Rutas Super Administrador
-
-// Rutas Administrador
-Route::get('/Tutores', [AdministradorController::class, 'tablaTutores']);
-
-// Rutas Asesor
 Route::get('/horarioAsesor', [HorarioAsesorController::class, 'tablaHorarios']);
-
-// Rutas Tutores
-Route::get('/asistencia', function () {
-    return view('Tutor/asistencia');
-});
-
-Route::get('/estudiantes-asignados', [TutorController::class, 'vistaEstudiante']);
-
-Route::get('/reporteEstudiantes', [TutorController::class, 'registroEstudiante']);
-
-Route::get('/reporteEstudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
 
 Route::get('/Estudiante/ValidarDetalle', [EstudianteController::class, 'ValidarDetalle'])->name('Estudiante.ValidarDetalle');
 Route::get('/Estudiante/ValidarPrimerSeguimiento', [EstudianteController::class, 'ValidarPrimerSeguimiento']);
@@ -125,8 +98,6 @@ Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class,
 Route::get('/CalendarizarPrimerSeguimiento/{id}/edit', [CalendarioController::class, 'editPrimerSeguimiento'])->name('CalendarizarPrimerSeguimiento.edit');
 Route::get('/CalendarizarSeguimientoRegular/{id}/edit', [CalendarioController::class, 'editSeguimientoRegular'])->name('CalendarizarSeguimientoRegular.edit');
 
-Route::post('/referencia', [AsesorController::class, 'referencia']);
-
 Route::get('/', function () {
     return redirect('/logged_in');
 });
@@ -134,25 +105,6 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-
-Route::get('/informe-mensual', function () {
-    return view('informe-mensual');
-});
-
-Route::get('/referencia', function () {
-    return view('referencia');
-});
-
-Route::get('/prueba', function () {
-    return view('Tutor/prueba');
-});
-
-Route::get('/usuarios', [PersonaController::class, 'tablaUsuarios']);
-Route::get('/estudiante', [EstudianteController::class, 'tablaEstudiantes']);
-
-Route::get('/contrato', function () {
-    return view('contratoDeTutoria');
-});
 
 // For PDF's
 

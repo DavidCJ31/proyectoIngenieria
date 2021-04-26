@@ -11,47 +11,6 @@ use Illuminate\Support\Facades\DB;
 
 class AdministradorController extends Controller
 {
-
-    public function tablaTutores(){
-        $id = Auth::user()->id;
-        $rol = Auth::user()->rol;
-        if($rol == 1){
-        $adiministrador = administrador::find($id)->user;
-        $tutor = DB::table('tutors')->select('tutors.*')->get();
-        $con = 0;
-        $tutores = [];
-        foreach ($tutor as $value) {
-            $tutores[$con++] = DB::table('users')->select('users.*')->where('id', $value->id)->get();
-        }
-        $datos = [$adiministrador,$tutores,$rol];
-        return view("Administrador/tabla_tutores")->with('tutores',$datos);
-        }else{
-            $datos = [$adiministrador,$tutores,$rol];
-            echo "LLEGO";
-            return view("Administrador/tabla_tutores")->with('tutores',$datos);
-        }
-    }
-
-    public function buscador(Request $request){
-        $id = Auth::user()->id;
-        $rol = Auth::user()->rol;
-        if($rol == 1){
-        $adiministrador = administrador::find($id)->user;
-        $tutor = DB::table('tutors')->select('tutors.*')->where("id","like",$request->texto."%")->take(5)->get();
-        $con = 0;
-        $tutores = [];
-        foreach ($tutor as $value) {
-            $tutores[$con++] = DB::table('users')->select('users.*')->where('id', $value->id)->get();
-        }
-        $datos = [$adiministrador,$tutores,$rol];
-        return view("Administrador/tabla_tutores")->with('tutores',$datos);
-        }else{
-            $datos = [$adiministrador,0,$rol];
-            echo "LLEGO";
-            return view("Administrador/tabla_tutores")->with('tutores',$datos);
-        }
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -60,7 +19,7 @@ class AdministradorController extends Controller
     public function index()
     {
         $usuario = administrador::find(Auth::user()->id)->user;
-        return view('Administrador/inicioAdministrador')->with('usuario',$usuario);
+        return view('Administrador/inicioAdministrador')->with('usuario', $usuario);
     }
 
     /**
