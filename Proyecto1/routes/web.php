@@ -107,8 +107,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 // For PDF's
 
-Route::get('/guardaPDF', [EstudianteController::class, 'index']);
-Route::get('/MisSeguimientos', [EstudianteController::class, 'seguimientos']);
+Route::get('/MisSeguimientos/{id}', [EstudianteController::class, 'seguimientos']);
 Route::get('/Descargar', [EstudianteController::class, 'descargar']);
 Route::get('/DescargarTodos', [EstudianteController::class, 'descargarTodos']);
     

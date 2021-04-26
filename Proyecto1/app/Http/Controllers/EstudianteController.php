@@ -22,29 +22,12 @@ use Exception;
 class EstudianteController extends Controller
 {
 
-    public function tablaEstudiantes()
+    public function seguimientos($id)
     {
-        $id = Auth::user()->id;
-        $rol = Auth::user()->rol;
-        if ($rol == 4) {
-            $estudiante = estudiante::find($id)->user;
-            $seguimientos = estudiante::find($id)->seguimiento;
-            $lista_asesor_estu = estudiante::find($id)->lista_asesor_estudiante;
-            $asesor = asesor::find($lista_asesor_estu[0]->asesor_id)->user;
-            $horario = asesor::find($lista_asesor_estu[0]->asesor_id)->horario_asesor;
-            $datos = [$estudiante, $seguimientos, $asesor, $horario, $rol];
-            return view('tabla_estudiantes')->with('estudiantes', $datos);
-        } else {
-            $asesor = asesor::find($id)->user;
-            $datos = [$asesor, 0, 0, 0, $rol];
-            return view('tabla_estudiantes')->with('estudiantes', $datos);
-        }
-    }
-
-    public function seguimientos()
-    {
-        $primer_seguimiento = primer_seguimiento::where('estudiante_id', "207600155")->get();
-        $otros_seguimientos = seguimiento_regular::where('estudiante_id', "207600155")->get();
+        //$primer_seguimiento = primer_seguimiento::where('estudiante_id', $id)->whereNotNull('archivo')->get();
+        //$otros_seguimientos = seguimiento_regular::where('estudiante_id', $id)->whereNotNull('archivo')->get();
+        $primer_seguimiento = primer_seguimiento::where('estudiante_id', $id)->get();
+        $otros_seguimientos = seguimiento_regular::where('estudiante_id', $id)->get();
         $seguimientos = [];
         $con = 0;
         foreach ($primer_seguimiento as $row) {
@@ -82,24 +65,23 @@ class EstudianteController extends Controller
             $seguimientos[$con++] = [$row->estudiante_id, $row->fecha, $row->archivo];
         }
         $zip = new ZipArchive;
-   
-        $fileName = 'seguimientos-'.$request->id.'.zip';
-   
+
+        $fileName = 'seguimientos-' . $request->id . '.zip';
+
         $path = Storage::disk('public')->path("");
 
-        if ($zip->open($path.$fileName, ZipArchive::CREATE) === TRUE)
-        {
-            $files = File::files($path.$request->id);
-   
+        if ($zip->open($path . $fileName, ZipArchive::CREATE) === TRUE) {
+            $files = File::files($path . $request->id);
+
             foreach ($files as $key => $value) {
                 $relativeNameInZipFile = basename($value);
                 $zip->addFile($value, $relativeNameInZipFile);
             }
-             
+
             $zip->close();
         }
-    
-        return response()->download($path.$fileName);
+
+        return response()->download($path . $fileName);
     }
 
 
@@ -282,8 +264,7 @@ class EstudianteController extends Controller
         }
         if ($seguimiento_regular != NULL && $seguimiento_regular->estado == "Pendiente") {
             return 2;
-        }
-        else{
+        } else {
             return 3;
         }
     }

@@ -37,7 +37,7 @@
                 <div class=" card-header titulo mb-2">
                     <span><i class="fas fa-bars"></i> &nbsp;Listado de Solicitudes</span>
                     @if(count($seguimientos) != 0)
-                    <a href="/DescargarTodos/?id={{$seguimientos[0][0]}}" ><button class='btn btn-primary btn-sm' style="position: absolute; right: 1rem;"> Descargar toda la carpeta</button></a>
+                    <a href="/DescargarTodos/?id={{$seguimientos[0][0]}}"><button class='btn btn-primary btn-sm' style="position: absolute; right: 1rem;"> Descargar toda la carpeta</button></a>
                     @endif
                 </div>
                 <!-- /.card-body -->
@@ -48,7 +48,7 @@
                                 <th scope="col">Estudiante</th>
                                 <th scope="col">Fecha</th>
                                 <th scope="col">Seguimiento</th>
-                                <th scope="col" colspan="2">ACCIONE</th>
+                                <th scope="col" colspan="2">ACCION</th>
                             </tr>
                         </thead>
                         <tbody id="tabla-solicitudes">
@@ -58,7 +58,9 @@
                                 <td>{{ $seguimiento[1] }}</td>
                                 <td>{{ $seguimiento[2] }}</td>
                                 <td>
-                                <a href="/Descargar/?id={{$seguimiento[0]}}&file={{$seguimiento[2]}}" ><button class='btn btn-primary'>Descargar</button></a>
+                                    @if($seguimiento[2] != NULL)
+                                    <a href="/Descargar/?id={{$seguimiento[0]}}&file={{$seguimiento[2]}}"><button class='btn btn-primary'>Descargar</button></a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach
