@@ -11,7 +11,6 @@ use App\Http\Controllers\SuperAdministradorController;
 use App\Http\Controllers\DetalleCursoController;
 use App\Http\Controllers\ClaseController;
 use App\Http\Controllers\ListaCursoEstudianteController;
-use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\HorarioAsesorController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\AulaController;
@@ -109,5 +108,3 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // For PDF's
 
 Route::get('guardaPDF', [EstudianteController::class, 'index']);
-    
-//Route::post('store', [EstudianteController::class, 'update']);

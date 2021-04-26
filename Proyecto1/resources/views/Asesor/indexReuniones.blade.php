@@ -19,6 +19,7 @@
     <link href="{{ asset('fullcalendar-5.5.1/lib/main.css') }}" rel="stylesheet">
     <script src="{{ asset('fullcalendar-5.5.1/lib/main.js') }}"></script>
     <script src="{{ asset('fullcalendar-5.5.1/lib/locales/es.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body>
@@ -29,18 +30,8 @@
     <div class="form-card">
         <h4>VICERRECTORIA DE DOCENCIA</h4>
         <H5>EXITO ACADEMICO</H5>
-        <h4>CALENDARIZAR PRIMERA REUNION</h4>
-
-
-
-        <h5> DISPONIBILIDAD DE HORARIO </h5>
-        <!-- Disponibilidad del Estudiante -->
-        <!-- Aqui empieza el  formulario -->
+        <h4>HORARIO ASESOR</h4>
         <div class="form-card">
-            <h4 class="text-center">VICERRECTORIA DE DOCENCIA</h4>
-            <H5 class="text-center">EXITO ACADEMICO</H5>
-            <h4 class="text-center">DISPONIBILIDAD PARA ASESORIAS</h4>
-            <br><br>
             <div class="container">
                 <div id="calendar"></div>
             </div>
@@ -98,7 +89,7 @@
                     <div class="modal-footer">
                         <button id="btnReunion" class="btn btn-info">Realizar Reunion</button>
                         <button id="btnModificar" class="btn btn-secondary">Modificar</button>
-                        <button id="btnEliminar" class="btn btn-danger">Reprogramar</button>
+                        <button id="btnEliminar" class="btn btn-danger">Eliminar</button>
                         <button id="btnCancelar" data-dismiss="modal" class="btn btn-primary">Cancelar</button>
                     </div>
                 </div>
@@ -181,10 +172,24 @@
         $('#btnEliminar').click(function() {
             ObjEvento = recolectarDatosGUI("DELETE");
             EnviarInformacion('/' + $('#campo-id').val(), ObjEvento);
+            Swal.fire({
+                icon: 'success',
+                title: 'Exito',
+                text: 'Se elimino la reunión con exito!',
+                showConfirmButton: false,
+                timer: 2000
+            });
         });
         $('#btnModificar').click(function() {
             ObjEvento = recolectarDatosGUI("PATCH");
             EnviarInformacion('/' + $('#campo-id').val(), ObjEvento);
+            Swal.fire({
+                icon: 'success',
+                title: 'Exito',
+                text: 'Se modifico la reunión con exito!',
+                showConfirmButton: false,
+                timer: 2000
+            });
         });
 
         $('#btnCancelar').click(function() {

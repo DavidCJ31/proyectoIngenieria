@@ -40,17 +40,7 @@
         <h4>VICERRECTORIA DE DOCENCIA</h4>
         <H5>EXITO ACADEMICO</H5>
         <h4>CALENDARIZAR REUNION</h4>
-
-
-
-        <h5> DISPONIBILIDAD DE HORARIO </h5>
-        <!-- Disponibilidad del Estudiante -->
-        <!-- Aqui empieza el  formulario -->
         <div class="form-card">
-            <h4 class="text-center">VICERRECTORIA DE DOCENCIA</h4>
-            <H5 class="text-center">EXITO ACADEMICO</H5>
-            <h4 class="text-center">DISPONIBILIDAD PARA ASESORIAS</h4>
-            <br><br>
             <div class="container">
                 <div id="calendar"></div>
             </div>
@@ -76,7 +66,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="campo-hora">Hora</label>
-                                <input type="time" class="form-control" name="campo-hora" id="campo-hora" placeholder="Hora" min="07:00" max="21:00" required>
+                                <input type="time" class="form-control" name="campo-hora" id="campo-hora" placeholder="Hora" min="07:00" max="21:00" step="1800" required>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="campo-duracion">Duracion(Horas)</label>

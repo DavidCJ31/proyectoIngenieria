@@ -195,15 +195,11 @@ class CalendarioController extends Controller
         Mail::to($estudiante->email)->send($correo);
         $reuniones = reunion::findOrFail($id);
         reunion::destroy($id);
-        $primer_seguimiento = new primer_seguimiento;
-        $primer_seguimiento->estudiante_id = primer_seguimiento::where('estudiante_id', $request->input('estudiante_id'))->update(['estado' => 'Pendiente']);
-
-
-
-
-
-
-
+        if ($request->input('tipo') == "Primer Seguimiento") {
+            solicitudes_primer_seguimiento::where('estudiante_id', $request->input('estudiante_id'))->orderBy('id', 'desc')->first()->update(['estado' => 'Pendiente']);
+        } else {
+            solicitudes_seguimiento_regular::where('estudiante_id', $request->input('estudiante_id'))->orderBy('id', 'desc')->first()->update(['estado' => 'Pendiente']);
+        }
         return response()->json($id);
     }
 
