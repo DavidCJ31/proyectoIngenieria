@@ -1,6 +1,33 @@
 <link href="{{ asset('css/styleHeader.css') }}" rel="stylesheet">
 <link rel="shortcut icon" href="Imagenes/logo-blanco.png" type="image/x-icon" />
 <header>
+
+    <!-- Modal -->
+    <div class="modal fade" id="ModalBuscar" tabindex="-1" role="dialog" aria-labelledby="ModalBuscarTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalBuscarTitle">Buscar por cédula</h5>
+                    <button type="button" class="close" data-dismiss="modal" id="cerrar" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-5">
+                            <label for="campo-id">Cédula</label>
+                            <input type="text" class="form-control" name="campo-id" id="campo-id">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnBuscar" class="btn btn-info">Buscar</button>
+                    <button id="btnCancelar" data-dismiss="modal" class="btn btn-primary">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN Modal -->
     <!-- ****** Bara del header ************ -->
     <nav class="navbar navbar-expand-lg navbar-dark default-color">
         <a class="logoHeader"><img src="/imagenes/logo-largo.png" id="logoLargo" /></a>
@@ -63,6 +90,9 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a type="button" class="nav-link" id="seguimientoModal">Seguimientos</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/Calendario">Calendario</a>
@@ -167,3 +197,16 @@
 
     </nav>
 </header>
+
+<script>
+    $('#seguimientoModal').click(function() {
+        $('#ModalBuscar').modal('show');
+    });
+    $('#btnBuscar').click(function() {
+        window.location.href = "{{url('/Seguimientos')}}/" + $('#campo-id').val();
+    });
+
+    $('#btnCancelar').click(function() {
+        $('#ModalBuscar').modal('hide');
+    });
+</script>
