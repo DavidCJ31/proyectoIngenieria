@@ -9,6 +9,7 @@ use App\Models\curso;
 use App\Models\lista_curso_estudiante;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\estudiante;
 use Exception;
 
 class ListaCursoEstudianteController extends Controller
@@ -127,7 +128,23 @@ class ListaCursoEstudianteController extends Controller
 
     public function listar($id)
     {
+        $data = '[';
         $lista_estudiante = lista_curso_estudiante::where('detalle_curso_id', $id)->get();
-        return $lista_estudiante;
+        foreach ($lista_estudiante as $row) {
+            $estudiante = estudiante::find($row->estudiante_id)->user;
+            $detalle_curso = detalle_curso::find($row->detalle_curso_id);
+            $temp = array(
+                'id' => $row->id,
+                'detalle_curso_id' => $row->detalle_curso_id,
+                'curso_codigo' => $detalle_curso->curso_codigo,
+                'estudiante_id' => $row->estudiante_id,
+                'nombre' => $estudiante->name,
+                'apellido' => $estudiante->apellido,
+            );
+            $data = $data . json_encode($temp) . ',';
+        }
+        $data = substr($data, 0, -1);
+        $data = $data . ']';
+        return $data;
     }
 }
