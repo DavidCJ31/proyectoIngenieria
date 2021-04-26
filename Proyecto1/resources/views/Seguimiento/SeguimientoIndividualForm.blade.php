@@ -21,7 +21,7 @@
 <body>
   <!--Main Navigation-->
   <!--Main Navigation-->
-  <form method="post" action="/SeguimientoRegular" id="formSeguimientoIndividual">
+  <form method="post" action="/SeguimientoRegular" id="formSeguimientoIndividual" enctype="multipart/form-data">
     @csrf
     <!-- Aqui empieza el  formulario -->
     <input type="hidden" name="campo-id" id="campo-id" value="{{$reunion->id}}">
@@ -31,7 +31,7 @@
     <div class="form-card">
       <h4 class="text-center">VICERRECTORIA DE DOCENCIA</h4>
       <H5 class="text-center">EXITO ACADEMICO</H5>
-      <h4 class="text-center">SOLICITUD DE TUTORIA</h4>
+      <h4 class="text-center">ESPACIO PARA USO DE LA COORDINACIÓN</h4>
 
       <!-- Hilera del formulario -- cedula y telefono -->
       <div class="input-group mb-3">
@@ -67,7 +67,7 @@
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text">Archivo</span>
-          <input type="file" class="form-control" name="archivo" id="archivos" aria-describedby="basic-addon1">
+          <input type="file" class="form-control" name="archivo" id="archivo" aria-describedby="basic-addon1">
         </div>
       </div>
       <button type="submit" id="boton-enviar" class="btn btn-primary">Enviar solicitud</button>

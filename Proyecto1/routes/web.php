@@ -148,6 +148,9 @@ Route::get('/contrato', function () {
 
 // For PDF's
 
-Route::get('guardaPDF', [EstudianteController::class, 'index']);
+Route::get('/guardaPDF', [EstudianteController::class, 'index']);
+Route::get('/MisSeguimientos', [EstudianteController::class, 'seguimientos']);
+Route::get('/Descargar', [EstudianteController::class, 'descargar']);
+Route::get('/DescargarTodos', [EstudianteController::class, 'descargarTodos']);
     
 //Route::post('store', [EstudianteController::class, 'update']);

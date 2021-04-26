@@ -6,6 +6,7 @@ use App\Models\seguimiento_regular;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\reunion;
+use Illuminate\Support\Facades\Auth;
 
 class SeguimientoRegularController extends Controller
 {
@@ -41,7 +42,12 @@ class SeguimientoRegularController extends Controller
         $seguimiento_regular->estudiante_id = $request->input('campo-estudiante');
         $seguimiento_regular->situacion = $request->input('campo-sintesis');
         $seguimiento_regular->acuerdos = $request->input('campo-acuerdos');
-        $seguimiento_regular->archivo = $request->input('archivo');
+        // Guarda el archivo
+        $name = $request->file('archivo')->getClientOriginalName();
+        $seguimiento_regular->archivo = $name;
+        $request->file('archivo')->storeAs('public/'.$seguimiento_regular->estudiante_id,$name);
+        //----------------------------------------------------------------
+
         $seguimiento_regular->fecha = $request->input('campo-fecha');
         $seguimiento_regular->save();
 

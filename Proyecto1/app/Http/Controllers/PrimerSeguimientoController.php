@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\reunion;
 use App\Models\primer_seguimiento;
+use Illuminate\Support\Facades\Auth;
 use App\Models\lista_curso_estudiante;
+
 
 class PrimerSeguimientoController extends Controller
 {
@@ -43,7 +45,14 @@ class PrimerSeguimientoController extends Controller
         $primer_seguimiento->aprovacion = $request->input('campo-aprovada');
         $primer_seguimiento->detalle_curso_id = $request->input('campo-curso');
         $primer_seguimiento->observaciones = $request->input('campo-observaciones');
-        $primer_seguimiento->archivo = $request->input('campo-archivo');
+
+        // Guarda el archivo
+        $name = $request->file('archivo')->getClientOriginalName();
+        $primer_seguimiento->archivo = $name;
+
+        $request->file('archivo')->storeAs('public/'.$primer_seguimiento->estudiante_id,$name);
+        //----------------------------------------------------------------
+
         $primer_seguimiento->fecha = $request->input('campo-fecha');
         $primer_seguimiento->save();
 

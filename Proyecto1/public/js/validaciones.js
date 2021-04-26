@@ -49,7 +49,6 @@ function calEdad(){
     var ageDifMs = Date.now() - fechaNacimiento;
     var ageDate = new Date(ageDifMs);
     edad.value = ageDate.getUTCFullYear() - 1970;
-    alert(ageDate.getUTCFullYear() - 1970)
 }
 
 function validadCedula(){

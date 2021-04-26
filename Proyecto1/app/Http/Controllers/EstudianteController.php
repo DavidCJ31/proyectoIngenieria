@@ -9,30 +9,97 @@ use App\Models\estudiante;
 use App\Models\asesor;
 use App\Models\estudiante_detalle;
 use App\Models\primer_seguimiento;
+use App\Models\seguimiento_regular;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use ZipArchive;
+use File;
 use App\Models\disponibilidad_estudiante;
 use Exception;
 
 class EstudianteController extends Controller
 {
 
-    public function tablaEstudiantes(){
+    public function tablaEstudiantes()
+    {
         $id = Auth::user()->id;
         $rol = Auth::user()->rol;
-        if($rol == 4){        
-        $estudiante = estudiante::find($id)->user;
-        $seguimientos = estudiante::find($id)->seguimiento;
-        $lista_asesor_estu = estudiante::find($id)->lista_asesor_estudiante;
-        $asesor = asesor::find($lista_asesor_estu[0]->asesor_id)->user;
-        $horario = asesor::find($lista_asesor_estu[0]->asesor_id)->horario_asesor;
-        $datos = [$estudiante, $seguimientos, $asesor, $horario, $rol];
-        return view('tabla_estudiantes')->with('estudiantes',$datos);
-        }else{
+        if ($rol == 4) {
+            $estudiante = estudiante::find($id)->user;
+            $seguimientos = estudiante::find($id)->seguimiento;
+            $lista_asesor_estu = estudiante::find($id)->lista_asesor_estudiante;
+            $asesor = asesor::find($lista_asesor_estu[0]->asesor_id)->user;
+            $horario = asesor::find($lista_asesor_estu[0]->asesor_id)->horario_asesor;
+            $datos = [$estudiante, $seguimientos, $asesor, $horario, $rol];
+            return view('tabla_estudiantes')->with('estudiantes', $datos);
+        } else {
             $asesor = asesor::find($id)->user;
-            $datos = [$asesor,0,0,0,$rol];
-            return view('tabla_estudiantes')->with('estudiantes',$datos);
+            $datos = [$asesor, 0, 0, 0, $rol];
+            return view('tabla_estudiantes')->with('estudiantes', $datos);
         }
     }
+
+    public function seguimientos()
+    {
+        $primer_seguimiento = primer_seguimiento::where('estudiante_id', "207600155")->get();
+        $otros_seguimientos = seguimiento_regular::where('estudiante_id', "207600155")->get();
+        $seguimientos = [];
+        $con = 0;
+        foreach ($primer_seguimiento as $row) {
+            $seguimientos[$con++] = [$row->estudiante_id, $row->fecha, $row->archivo];
+        }
+        foreach ($otros_seguimientos as $row) {
+            $seguimientos[$con++] = [$row->estudiante_id, $row->fecha, $row->archivo];
+        }
+        return view('Estudiante/Detalle/seguimientosEstudiante')->with('seguimientos', $seguimientos);
+    }
+
+    public function descargar(Request $request)
+    {
+        if (Storage::disk('public')->exists("$request->id/$request->file")) {
+            $path = Storage::disk('public')->path("$request->id/$request->file");
+            $content = file_get_contents($path);
+            return response($content)->withHeaders([
+                'Content-Type' => mime_content_type($path)
+            ]);
+        }
+        return redirect('/404');
+    }
+
+    public function descargarTodos(Request $request)
+    {
+
+        $primer_seguimiento = primer_seguimiento::where('estudiante_id', $request->id)->get();
+        $otros_seguimientos = seguimiento_regular::where('estudiante_id', $request->id)->get();
+        $seguimientos = [];
+        $con = 0;
+        foreach ($primer_seguimiento as $row) {
+            $seguimientos[$con++] = [$row->estudiante_id, $row->fecha, $row->archivo];
+        }
+        foreach ($otros_seguimientos as $row) {
+            $seguimientos[$con++] = [$row->estudiante_id, $row->fecha, $row->archivo];
+        }
+        $zip = new ZipArchive;
+   
+        $fileName = 'seguimientos-'.$request->id.'.zip';
+   
+        $path = Storage::disk('public')->path("");
+
+        if ($zip->open($path.$fileName, ZipArchive::CREATE) === TRUE)
+        {
+            $files = File::files($path.$request->id);
+   
+            foreach ($files as $key => $value) {
+                $relativeNameInZipFile = basename($value);
+                $zip->addFile($value, $relativeNameInZipFile);
+            }
+             
+            $zip->close();
+        }
+    
+        return response()->download($path.$fileName);
+    }
+
 
     /**
      * Display a listing of the resource.
@@ -70,10 +137,10 @@ class EstudianteController extends Controller
     {
         $name = $request->file('file')->getClientOriginalName();
         $id = Auth::user()->id;
-        $path = $request->file('file')->storeAs('public/archivos',$id);
- 
+        $path = $request->file('file')->storeAs('public/archivos', $id);
+
         $estudiante = new estudiante;
- 
+
         //$file->name = $name;
         $estudiante->id = $id;
         $estudiante->especialidad = "Bien";
@@ -82,7 +149,6 @@ class EstudianteController extends Controller
         $estudiante->save();
 
         return redirect('Estudiante')->with('status', 'File Has been uploaded successfully in laravel 8');
- 
     }
 
     /**
@@ -97,16 +163,15 @@ class EstudianteController extends Controller
             $opciones = disponibilidad_estudiante::where('estudiante_id', $id)->get();
             $datos = array();
             $cont = 0;
-            
-            foreach($opciones as $row)
-                {
-                    $datos[$cont++] = array(
+
+            foreach ($opciones as $row) {
+                $datos[$cont++] = array(
                     'dia' => $row->dia,
                     'hora' => $row->hora
-                    );
-                }
+                );
+            }
 
-        return response($datos,200,$datos);
+            return response($datos, 200, $datos);
         } catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
             return response('Erorr a la hora de cargar los horarios disponibles', 400);
@@ -144,7 +209,6 @@ class EstudianteController extends Controller
             return response('Erorr a la hora de cargar los horarios disponibles', 400);
         }
         */
-
     }
 
     /**
@@ -156,12 +220,12 @@ class EstudianteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         estudiante::where('id', $id)
             ->update([
                 'archivo' => $request->file('file')->getClientOriginalName()
             ]);
-        $request->file('file')->storeAs('public/'.$id,$id);
+        $request->file('file')->storeAs('public/' . $id, $id);
         return redirect('/Estudiante');
     }
 

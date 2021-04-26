@@ -13,6 +13,7 @@ class primer_seguimiento extends Model
         'aprovacion',
         'detalle_curso_id',
         'observaciones',
+        'archivo',
         'fecha'
     ];
 

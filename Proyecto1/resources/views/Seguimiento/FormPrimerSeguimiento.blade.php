@@ -21,7 +21,7 @@
     <!--Main Navigation-->
     @include('layouts.header')
     <!--Main Navigation-->
-    <form method="post" action="/PrimerSeguimiento" id="formPrimerSeguimiento">
+    <form method="post" action="/PrimerSeguimiento" id="formPrimerSeguimiento" enctype="multipart/form-data">
         @csrf
         <!-- Aqui empieza el  formulario -->
         <input type="hidden" name="campo-id" id="campo-id" value="{{$reunion->id}}">
@@ -66,12 +66,19 @@
                 <textarea name="campo-observaciones" class="form-control"></textarea>
             </div>
 
+            <!-- Aqui va el archivo que se necesita -->
             <div class="input-group mb-3">
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-primary" id="boton-enviar">Enviar</button>
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Archivo</span>
+                    <input type="file" class="form-control" name="archivo" id="archivo" aria-describedby="basic-addon1">
                 </div>
             </div>
+            <div class="input-group mb-3">
+            <button type="submit" id="boton-enviar" class="btn btn-primary">Enviar</button>
+            </div>
+
         </div>
+
     </form>
     @include("layouts.footer")
 </body>
