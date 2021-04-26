@@ -40,7 +40,7 @@
         </div>
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">Asistencia de Estudiantes</h5>
@@ -48,20 +48,19 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                    <h6 id='idClase'></h6>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                            <th scope="col">Estudiante</th>
-                            <th scope="col">Cedula</th>
-                            <th scope="col">Correo</th>
-                            <th scope="col">Presente</th>
-                            </tr>
-                        </thead>
-                        <tbody id="listarEstudiantes">
-                        </tbody>
-                    </table>
+                    <div class="modal-body table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Estudiante</th>
+                                    <th scope="col">Cedula</th>
+                                    <th scope="col">Correo</th>
+                                    <th scope="col">Presente</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listarEstudiantes">
+                            </tbody>
+                        </table>
                     </div>
                     <div class="modal-footer">
                         <button id="btnEnviar" class="btn btn-success">Enviar</button>
@@ -78,8 +77,8 @@
 </html>
 
 <script>
-
     let listaEstudiantes = [];
+    let listaAsistencia = [];
     let claseIdTemp = 0;
     let datosTemp;
     document.addEventListener('DOMContentLoaded', function() {
@@ -130,14 +129,13 @@
         function recolectarDatosGUI() {
             console.log("Entro a recolectar Datps GUI");
             console.log(listaEstudiantes);
-            listaEstudiantes.forEach((est)=>{
+            listaEstudiantes.forEach((est) => {
                 var asistencia
-                if($("#checkbox-"+est.estudiante_id).prop("checked")==true){
-                    console.log("Es check box de "+ est.estudiante_id +" esta chequeado");
+                if ($("#checkbox-" + est.estudiante_id).prop("checked") == true) {
+                    console.log("Es check box de " + est.estudiante_id + " esta chequeado");
                     asistencia = 1; // presente
-                }
-                else{
-                    console.log("Es check box de "+ est.estudiante_id +" no esta chequeado");
+                } else {
+                    console.log("Es check box de " + est.estudiante_id + " no esta chequeado");
                     asistencia = 2; //ausente
                 }
                 datosTemp = {
@@ -150,7 +148,7 @@
 
             });
 
-           
+
         }
 
         function EnviarInformacion(datos) {
@@ -183,7 +181,7 @@
                 dataType: 'JSON',
                 success: function(estudiantes) {
                     listaEstudiantes = estudiantes;
-                    console.log(estudiantes);
+                    console.log(listaEstudiantes);
                     cargarListaEstudiantes(estudiantes);
                 },
                 error: function(result) {}
@@ -192,7 +190,7 @@
 
         function cargarAsistencia(clase_id) {
             console.log("Clase id: " + clase_id);
-            /*
+            listaAsistencia = [];
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -201,34 +199,50 @@
                 type: 'get',
                 dataType: 'JSON',
                 success: function(response) {
-                    console.log(response);
-                    return response
+                    cargarListaAsistencia(response);
                 },
                 error: function(result) {}
             });
-            */
+
         }
 
-        function cargarListaEstudiantes(estudiantes){
+        function cargarListaAsistencia(asistencia) {
+            var lista = $("#listarEstudiantes")
+            var rowCount = document.getElementById('listarEstudiantes').rows.length;
+            for (let i = 0; i < rowCount; i++) {
+                for (let j = 0; j < asistencia.length; j++) {
+                    var cell = $('#checkbox-' + asistencia[j].estudiante_id)
+                    if (asistencia[j].presencialidad == 1) {
+                        cell.prop( "checked" ,"true");
+                    } else {
+                        cell.prop("checked ", "false");
+                    }
+                }
+            }
+        }
+
+        function cargarListaEstudiantes(estudiantes) {
             var lista = $("#listarEstudiantes")
             var rowCount = document.getElementById('listarEstudiantes').rows.length;
             console.log(rowCount);
-            for(let i = 0; i< rowCount; i++){
-            $('#fila').closest('tr').remove();
+            for (let i = 0; i < rowCount; i++) {
+                $('#fila').closest('tr').remove();
             }
-            estudiantes.forEach((est)=>{rowListaEstudiante(lista, est);});
+            estudiantes.forEach((est) => {
+                rowListaEstudiante(lista, est);
+            });
         }
 
-        function rowListaEstudiante(lista, est){
+        function rowListaEstudiante(lista, est) {
             var tr = $("<tr id='fila'/>");
-            tr.html("<td>"+ est.nombre +" "+est.apellido + "</td>"+
-                    "<td>"+ est.estudiante_id + "</td>"+
-                    "<td>"+ est.correo + "</td>" + 
-                    "<td>"+
-                    "<center><div><input class='form-check-input' type='checkbox' id='checkbox-"+est.estudiante_id+"' value='' aria-label=''></div></center>"+
-                    "</td>"
+            tr.html("<td>" + est.nombre + " " + est.apellido + "</td>" +
+                "<td>" + est.estudiante_id + "</td>" +
+                "<td>" + est.correo + "</td>" +
+                "<td>" +
+                "<center><div><input class='form-check-input' type='checkbox' id='checkbox-" + est.estudiante_id + "' value='' aria-label=''></div></center>" +
+                "</td>"
 
-                    );
+            );
             lista.append(tr);
         }
 
