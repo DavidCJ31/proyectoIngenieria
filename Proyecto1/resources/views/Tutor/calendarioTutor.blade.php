@@ -39,7 +39,7 @@
             </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -49,7 +49,19 @@
                         </button>
                     </div>
                     <div class="modal-body">
-
+                    <h6 id='idClase'></h6>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                            <th scope="col">Estudiante</th>
+                            <th scope="col">Cedula</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Presente</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listarEstudiantes">
+                        </tbody>
+                    </table>
                     </div>
                     <div class="modal-footer">
                         <button id="btnEnviar" class="btn btn-success">Enviar</button>
@@ -66,6 +78,10 @@
 </html>
 
 <script>
+
+    let listaEstudiantes = [];
+    let claseIdTemp = 0;
+    let datosTemp;
     document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -85,7 +101,9 @@
                 right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
             },
             eventClick: function(info) {
+                //Limpiar el model
                 console.log(info);
+                claseIdTemp = parseInt(info.event.id);
                 cargarEstudiantes(info.event.extendedProps.curso_id);
                 cargarAsistencia(info.event.id);
                 $('#exampleModalCenter').modal('toggle');
@@ -104,16 +122,47 @@
             $('#exampleModalCenter').modal('hide');
         });
 
-        function recolectarDatosGUI(method) {}
+        $('#btnEnviar').click(function() {
+            recolectarDatosGUI();
+            $('#exampleModalCenter').modal('hide');
+        });
 
-        function EnviarInformacion(accion, objEvento) {
+        function recolectarDatosGUI() {
+            console.log("Entro a recolectar Datps GUI");
+            console.log(listaEstudiantes);
+            listaEstudiantes.forEach((est)=>{
+                var asistencia
+                if($("#checkbox-"+est.estudiante_id).prop("checked")==true){
+                    console.log("Es check box de "+ est.estudiante_id +" esta chequeado");
+                    asistencia = 1; // presente
+                }
+                else{
+                    console.log("Es check box de "+ est.estudiante_id +" no esta chequeado");
+                    asistencia = 2; //ausente
+                }
+                datosTemp = {
+                    clase: claseIdTemp,
+                    estudiante: est.estudiante_id,
+                    presencialidad: asistencia
+                }
+
+                EnviarInformacion(datosTemp);
+
+            });
+
+           
+        }
+
+        function EnviarInformacion(datos) {
             $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 type: "POST",
-                url: "{{url('/Calendario')}}" + accion,
-                data: objEvento,
+                url: "{{url('/Asistencia')}}",
+                data: datos,
                 success: function(msg) {
                     console.log(msg);
-                    $('#exampleModalCenter').modal('toggle');
                     calendar.refetchEvents();
                 },
                 error: function() {
@@ -123,20 +172,31 @@
         }
 
         function cargarEstudiantes(curso_id) {
+            listaEstudiantes = [];
+            console.log("Curso id: " + curso_id);
             $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 url: '/ListaCursoEstudiante/' + curso_id,
                 type: 'get',
                 dataType: 'JSON',
-                success: function(response) {
-                    console.log(response);
-                    return response
+                success: function(estudiantes) {
+                    listaEstudiantes = estudiantes;
+                    console.log(estudiantes);
+                    cargarListaEstudiantes(estudiantes);
                 },
                 error: function(result) {}
             });
         }
 
         function cargarAsistencia(clase_id) {
+            console.log("Clase id: " + clase_id);
+            /*
             $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 url: '/Asistencia/' + clase_id,
                 type: 'get',
                 dataType: 'JSON',
@@ -146,6 +206,30 @@
                 },
                 error: function(result) {}
             });
+            */
+        }
+
+        function cargarListaEstudiantes(estudiantes){
+            var lista = $("#listarEstudiantes")
+            var rowCount = document.getElementById('listarEstudiantes').rows.length;
+            console.log(rowCount);
+            for(let i = 0; i< rowCount; i++){
+            $('#fila').closest('tr').remove();
+            }
+            estudiantes.forEach((est)=>{rowListaEstudiante(lista, est);});
+        }
+
+        function rowListaEstudiante(lista, est){
+            var tr = $("<tr id='fila'/>");
+            tr.html("<td>"+ est.nombre +" "+est.apellido + "</td>"+
+                    "<td>"+ est.estudiante_id + "</td>"+
+                    "<td>"+ est.correo + "</td>" + 
+                    "<td>"+
+                    "<center><div><input class='form-check-input' type='checkbox' id='checkbox-"+est.estudiante_id+"' value='' aria-label=''></div></center>"+
+                    "</td>"
+
+                    );
+            lista.append(tr);
         }
 
         function limpiarFormurario() {}

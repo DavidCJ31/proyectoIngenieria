@@ -140,6 +140,7 @@ class ListaCursoEstudianteController extends Controller
                 'estudiante_id' => $row->estudiante_id,
                 'nombre' => $estudiante->name,
                 'apellido' => $estudiante->apellido,
+                'correo' => $estudiante->email,
             );
             $data = $data . json_encode($temp) . ',';
         }
