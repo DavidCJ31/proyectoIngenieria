@@ -102,6 +102,7 @@
             eventClick: function(info) {
                 //Limpiar el model
                 console.log(info);
+                $("#btnEnviar").prop("disabled", false);
                 claseIdTemp = parseInt(info.event.id);
                 cargarEstudiantes(info.event.extendedProps.curso_id);
                 cargarAsistencia(info.event.id);
@@ -207,41 +208,36 @@
         }
 
         function cargarListaAsistencia(asistencia) {
-            var lista = $("#listarEstudiantes")
-            var rowCount = document.getElementById('listarEstudiantes').rows.length;
-            for (let i = 0; i < rowCount; i++) {
-                for (let j = 0; j < asistencia.length; j++) {
+            for (let j = 0; j < asistencia.length; j++) {
                     var cell = $('#checkbox-' + asistencia[j].estudiante_id)
+                    $("#trasistencia-"+asistencia[j].estudiante_id).addClass("table-success")
+                    $("#btnEnviar").prop("disabled", true)
                     if (asistencia[j].presencialidad == 1) {
                         cell.prop( "checked" ,"true");
+                        cell.prop("disabled", true)
                     } else {
                         cell.prop("checked ", "false");
+                        cell.prop("disabled", true)
                     }
                 }
-            }
         }
 
         function cargarListaEstudiantes(estudiantes) {
             var lista = $("#listarEstudiantes")
-            var rowCount = document.getElementById('listarEstudiantes').rows.length;
-            console.log(rowCount);
-            for (let i = 0; i < rowCount; i++) {
-                $('#fila').closest('tr').remove();
-            }
+            $("#listarEstudiantes").empty();
             estudiantes.forEach((est) => {
                 rowListaEstudiante(lista, est);
             });
         }
 
         function rowListaEstudiante(lista, est) {
-            var tr = $("<tr id='fila'/>");
+            var tr = $("<tr id='trasistencia-"+ est.estudiante_id +"'/>");
             tr.html("<td>" + est.nombre + " " + est.apellido + "</td>" +
                 "<td>" + est.estudiante_id + "</td>" +
                 "<td>" + est.correo + "</td>" +
                 "<td>" +
                 "<center><div><input class='form-check-input' type='checkbox' id='checkbox-" + est.estudiante_id + "' value='' aria-label=''></div></center>" +
                 "</td>"
-
             );
             lista.append(tr);
         }
