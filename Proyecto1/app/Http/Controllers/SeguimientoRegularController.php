@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\reunion;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class SeguimientoRegularController extends Controller
 {
@@ -45,11 +46,19 @@ class SeguimientoRegularController extends Controller
         // Guarda el archivo
         $name = $request->file('archivo')->getClientOriginalName();
         $seguimiento_regular->archivo = $name;
-        $request->file('archivo')->storeAs('public/'.$seguimiento_regular->estudiante_id,$name);
+        $request->file('archivo')->storeAs('public/' . $seguimiento_regular->estudiante_id, $name);
         //----------------------------------------------------------------
 
         $seguimiento_regular->fecha = $request->input('campo-fecha');
         $seguimiento_regular->save();
+
+        $data = [
+            'estudiante_id' =>  $request->input('campo-estudiante'),
+            'situacion' =>  $request->input('campo-sintesis'),
+            'acuerdos' =>  $request->input('campo-acuerdos')
+        ];
+        $pdf = PDF::loadView('PDF/seguimientoRegular', $data)
+            ->save(storage_path('app/public/' . $seguimiento_regular->estudiante_id) . '/' . 'seguimientoRegular-' . $seguimiento_regular->estudiante_id . '-' . $seguimiento_regular->id . '.pdf');
 
         reunion::where('id', $request->input('campo-id'))->update([
             'estado' => 'Realizada'
@@ -89,17 +98,17 @@ class SeguimientoRegularController extends Controller
     public function update(Request $request, $id)
     {
         seguimiento_regular::where('estudiante_id', $request->input('campo-estudiante'))->where('estado')
-        ->update([
-            'aprovacion' => $request->input('campo-aprovada'),
-            'detalle_curso_id' => $request->input('campo-curso'),
-            'Observaciones' => $request->input('campo-observaciones'),
-            'fecha' => $request->input('campo-fecha')
-        ]);
+            ->update([
+                'aprovacion' => $request->input('campo-aprovada'),
+                'detalle_curso_id' => $request->input('campo-curso'),
+                'Observaciones' => $request->input('campo-observaciones'),
+                'fecha' => $request->input('campo-fecha')
+            ]);
 
-    reunion::where('id', $id)->update([
-        'estado' => 'Realizada'
-    ]);
-    return redirect('/Calendario');
+        reunion::where('id', $id)->update([
+            'estado' => 'Realizada'
+        ]);
+        return redirect('/Calendario');
     }
 
     /**
