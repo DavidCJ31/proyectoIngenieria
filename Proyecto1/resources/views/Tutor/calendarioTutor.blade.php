@@ -19,6 +19,7 @@
     <link href="{{ asset('fullcalendar-5.5.1/lib/main.css') }}" rel="stylesheet">
     <script src="{{ asset('fullcalendar-5.5.1/lib/main.js') }}"></script>
     <script src="{{ asset('fullcalendar-5.5.1/lib/locales/es.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body>
@@ -63,6 +64,7 @@
                         </table>
                     </div>
                     <div class="modal-footer">
+                        <button id='btnEliminar' type="button" class="btn btn-danger" > Eliminar </button>
                         <button id="btnEnviar" class="btn btn-success">Enviar</button>
                         <button id="btnCancelar" data-dismiss="modal" class="btn btn-primary">Cancelar</button>
                     </div>
@@ -115,16 +117,72 @@
         calendar.render();
 
         $('#btnCancelar').click(function() {
+            console.log("Si entra")
             $('#exampleModalCenter').modal('hide');
         });
 
         $('#cerrar').click(function() {
             $('#exampleModalCenter').modal('hide');
         });
+        
+        $('#btnEliminar').click(function() {
+            console.log("Entra en eliminar")
+            swal.fire({
+                title: 'Seguro que quiere eliminar esta clase?',
+                text: "No podras cambiarlo despues de enviada",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Si, eliminar!',
+                cancelButtonText: 'No, cancelar!',
+                reverseButtons: true
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    eliminarClase();
+                    $('#exampleModalCenter').modal('hide');
+                    swal.fire(
+                    'Eliminada!',
+                    'Se elimino la clase'
+                    )
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swal.fire(
+                    'Cancelado'
+                    )
+                }
+                })
+            //$('#exampleModalCenter').modal('hide');
+        });
 
         $('#btnEnviar').click(function() {
-            recolectarDatosGUI();
-            $('#exampleModalCenter').modal('hide');
+            swal.fire({
+                title: 'Seguro?',
+                text: "No podras cambiarlo despues de enviada",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonText: 'Si, enviar!',
+                cancelButtonText: 'No, cancelar!',
+                reverseButtons: true
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    recolectarDatosGUI();
+                    $('#exampleModalCenter').modal('hide');
+                    swal.fire(
+                    'Enviado!',
+                    'Lista de asistencia enviada.'
+                    )
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swal.fire(
+                    'Cancelado'
+                    )
+                }
+                })
+            //recolectarDatosGUI();
+            //$('#exampleModalCenter').modal('hide');
         });
 
         function recolectarDatosGUI() {
@@ -165,7 +223,11 @@
                     calendar.refetchEvents();
                 },
                 error: function() {
-                    alert("Hay un error");
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error al enviar los datos. Asistencias no agregadas'
+                    })
                 }
             });
         }
@@ -240,6 +302,27 @@
                 "</td>"
             );
             lista.append(tr);
+        }
+
+        function eliminarClase(){
+            console.log("Clase id: " + claseIdTemp);
+            listaAsistencia = [];
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '/Clases/' + claseIdTemp,
+                type: 'DELETE',
+                dataType: 'JSON',
+                success: function(response) {
+                    console.log("Se supone que se elimino la mierda")
+                    window.location.reload();
+                },
+                error: function(result) {
+                    console.log("Pues no se elimino la basura esa")
+                }
+            });
+
         }
 
         function limpiarFormurario() {}

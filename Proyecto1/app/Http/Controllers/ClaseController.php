@@ -8,6 +8,7 @@ use App\Models\detalle_curso;
 use App\Models\clase;
 use App\Models\curso;
 use Illuminate\Http\Request;
+use Exception;
 
 class ClaseController extends Controller
 {
@@ -115,5 +116,14 @@ class ClaseController extends Controller
     public function destroy($id)
     {
         //
+        try {
+            $clase = clase::find($id);
+            $clase -> delete();
+            return response("Eliminado correctament",200);
+        } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return response('Erorr a la hora de eliminar la clase', 400);
+        }
+        
     }
 }
