@@ -138,6 +138,7 @@
                 }).then((result) => {
                 if (result.isConfirmed) {
                     eliminarClase();
+                    calendar.refetchEvents();
                     $('#exampleModalCenter').modal('hide');
                     swal.fire(
                     'Eliminada!',
@@ -315,11 +316,11 @@
                 type: 'DELETE',
                 dataType: 'JSON',
                 success: function(response) {
-                    console.log("Se supone que se elimino la mierda")
-                    window.location.reload();
+                    //console.log("Se supone que se elimino la mierda")
+                    //window.location.reload();
                 },
                 error: function(result) {
-                    console.log("Pues no se elimino la basura esa")
+                    //console.log("Pues no se elimino la basura esa")
                 }
             });
 
