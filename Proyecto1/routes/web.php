@@ -23,6 +23,8 @@ use App\Http\Controllers\CalendarioController;
 use App\Http\Controllers\DisponibilidadEstudianteController;
 use App\Http\Controllers\CalendarioTutorController;
 use App\Http\Controllers\AsistenciaController;
+use App\Http\Controllers\CalendarioEstudianteController;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -92,6 +94,7 @@ Route::resources([
     '/Aula' => AulaController::class,
     '/DisponibilidadEstudiante' => DisponibilidadEstudianteController::class,
     '/calendarioTutor' => CalendarioTutorController::class,
+    '/calendarioEstudiante' => CalendarioEstudianteController::class,
     '/Asistencia' => AsistenciaController::class
 ]);
 

@@ -28,9 +28,10 @@
     <!--Main Navigation-->
     <!-- Aqui empieza el  formulario -->
     <div class="form-card">
-        <h4>VICERRECTORIA DE DOCENCIA</h4>
-        <H5>EXITO ACADEMICO</H5>
-        <h4>CALENDARIO DE TUTORIAS</h4>
+        <h4 class="text-center" >VICERRECTORIA DE DOCENCIA</h4>
+        <H5 class="text-center" >EXITO ACADEMICO</H5>
+        <h4 class="text-center" >CALENDARIO DE TUTORIAS</h4>
+        <h3 class="text-center">{{$usuario->name}} {{$usuario->apellido}}</h3>
 
         <!-- Disponibilidad del Estudiante -->
         <!-- Aqui empieza el  formulario -->
