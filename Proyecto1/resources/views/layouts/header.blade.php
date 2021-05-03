@@ -135,6 +135,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/SolicitudSeguimientosEstudiante">Solicitudes<span class="sr-only">(current)</span></a>
+                </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Opciones
@@ -144,7 +147,7 @@
                         <a class="dropdown-item" href="/SolicitudPrimerSeguimiento/create">Solicitar Primer Contacto</a>
                         <a class="dropdown-item" href="/SolicitudSeguimientoRegular/create">Solicitar Seguimiento Regular</a>
                     </div>
-                </li>
+                </li>                
             </ul>
             @break
             @default
@@ -158,7 +161,9 @@
             <ul class="navbar-nav navbar-rigth">
                 @if (Route::has('login'))
                 @auth
-
+                <a class="nav-link" >
+                    {{Auth::user()->name}} {{Auth::user()->apellido}}
+                </a>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Perfil
@@ -177,11 +182,6 @@
 
                     </div>
                 </li>
-
-
-
-
-
 
 
                 @else

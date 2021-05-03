@@ -107,6 +107,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+
+// Solicitudes seguimiento estudiante
+Route::get('/SolicitudSeguimientosEstudiante', [SolicitudPrimerSeguimientoController::class, 'seguimientosEstudiante']);
+
 // For PDF's
 
 Route::get('/Seguimientos/{id}', [EstudianteController::class, 'seguimientos']);

@@ -39,9 +39,10 @@
     <div class="form-card">
         <h4>VICERRECTORIA DE DOCENCIA</h4>
         <H5>EXITO ACADEMICO</H5>
-        <h4>CALENDARIZAR REUNION</h4>
+        <h4>CALENDARIZAR REUNION</h4>   
         <div class="form-card">
             <div class="container">
+                <h5>Calendario de {{Auth::user()->name}} {{Auth::user()->apellido}}</h5>
                 <div id="calendar"></div>
             </div>
         </div>
@@ -90,7 +91,6 @@
                     </div>
                     <div class="modal-footer">
                         <button id="btnAgregar" class="btn btn-success">Agregar</button>
-                        <button id="btnCancelar" data-dismiss="modal" class="btn btn-primary">Cancelar</button>
                     </div>
                 </div>
             </div>

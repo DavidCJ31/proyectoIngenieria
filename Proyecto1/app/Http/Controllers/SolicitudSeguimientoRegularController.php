@@ -15,6 +15,7 @@ use App\Models\User;
 
 class SolicitudSeguimientoRegularController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *

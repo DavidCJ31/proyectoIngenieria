@@ -33,17 +33,18 @@
         <h4>HORARIO ASESOR</h4>
         <div class="form-card">
             <div class="container">
+            <h5>Calendario de {{Auth::user()->name}} {{Auth::user()->apellido}}</h5>
                 <div id="calendar"></div>
             </div>
         </div>
         <!-- Button trigger modal -->
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                        <h5 class="modal-title" id="ModalLongTitle"></h5>
                         <button type="button" class="close" data-dismiss="modal" id="cerrar" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -89,8 +90,7 @@
                     <div class="modal-footer">
                         <button id="btnReunion" class="btn btn-info">Realizar Reunion</button>
                         <button id="btnModificar" class="btn btn-secondary">Modificar</button>
-                        <button id="btnEliminar" class="btn btn-danger">Eliminar</button>
-                        <button id="btnCancelar" data-dismiss="modal" class="btn btn-primary">Cancelar</button>
+                        <button id="btnEliminar" class="btn btn-danger">Cancelar cita</button>
                     </div>
                 </div>
             </div>
@@ -103,6 +103,14 @@
 </html>
 
 <script>
+    $('#btnCancelar').click(function() {
+        $('#ModalCenter').modal().hide();
+    });
+
+    $('#cerrar').click(function() {
+        $('#ModalCenter').modal().hide();
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -117,7 +125,7 @@
             },
             eventClick: function(info) {
                 console.log(info);
-                document.getElementById("exampleModalLongTitle").innerHTML = "<b><u>Estudiante:</u></b> " + info.event.title;
+                document.getElementById("ModalLongTitle").innerHTML = "<b><u>Estudiante:</u></b> " + info.event.title;
                 if (info.event.extendedProps.estado == "Realizada") {
                     $("#btnReunion").prop("disabled", true);
                     $("#btnModificar").prop("disabled", true);
@@ -157,7 +165,7 @@
                 $('#campo-color').val(info.event.backgroundColor);
                 $('#campo-estado').val(info.event.extendedProps.estado);
 
-                $('#exampleModalCenter').modal('toggle');
+                $('#ModalCenter').modal('toggle');
             },
             events: "{{url('/Calendario/show')}}"
         });
@@ -190,14 +198,6 @@
                 showConfirmButton: false,
                 timer: 2000
             });
-        });
-
-        $('#btnCancelar').click(function() {
-            $('#exampleModalCenter').modal('hide');
-        });
-
-        $('#cerrar').click(function() {
-            $('#exampleModalCenter').modal('hide');
         });
 
 
@@ -237,11 +237,11 @@
                 data: objEvento,
                 success: function(msg) {
                     console.log(msg);
-                    $('#exampleModalCenter').modal('toggle');
+                    $('#ModalCenter').modal('toggle');
                     calendar.refetchEvents();
                 },
                 error: function() {
-                    mostrarMensaje("error","Hay un error");
+                    mostrarMensaje("error", "Hay un error");
                 }
             });
         }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\solicitudes_seguimiento_regular;
 use App\Models\solicitudes_primer_seguimiento;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,6 +15,22 @@ use App\Models\User;
 
 class SolicitudPrimerSeguimientoController extends Controller
 {
+
+    public function seguimientosEstudiante()
+    {
+        $id = Auth::user()->id;
+        $estudiante = estudiante::where('id', $id)->first();
+        $user = User::find($estudiante->id);
+        $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
+        $primerosSeguimientos = solicitudes_seguimiento_regular::where('estudiante_id', $id)->where('estado', 'Pendiente')->get();
+        $otrosSeguimientos = solicitudes_primer_seguimiento::where('estudiante_id', $id)->where('estado', 'Pendiente')->get();
+        if(count($primerosSeguimientos) == 1){
+            return view('Estudiante/SolicitudesDeSeguimientos')->with('estudiante', $user)->with('estudianteDetalle', $estudianteDetalle)->with('seguimientos', $primerosSeguimientos);
+        }else{
+            return view('Estudiante/SolicitudesDeSeguimientos')->with('estudiante', $user)->with('estudianteDetalle', $estudianteDetalle)->with('seguimientos', $otrosSeguimientos);
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
