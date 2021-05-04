@@ -20,66 +20,103 @@
 
     @include('layouts.header')
 </head>
+
 <body style="background-color: #cc071e;">
-
-    <div class="container" id="formRegistro">
-        <div class="card shadow-lg o-hidden border-0 my-4">
-            <div class="card-body p-0">
-                <div class="row">
-                    <div class="col-lg-5 d-none d-lg-flex">
-                        <div class="flex-grow-1 bg-register-image"
-                            style="background-image: url('imagenes/pruebaregistro.png');"></div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="p-5">
-                            <div class="text-center">
-                                <h4 class="text-dark mb-4">Registro de Usuarios</h4>
-                            </div>
-                            <form action="/User" id="registrarUsuario" method="POST"
-                                enctype="multipart/form-data">
-								@csrf
-                                <div class="form-row text-left" style="padding: 0px;">
-                                    <div class="form-group " id="message">
-
-                                        <div class="form-group has-feedback" >
-                                            <div class="form-group has-feedback"><label
-                                                    for="cedula">Cedula</label><br><input class="form-c" type="number" id="id" name="id" required autofocus autocomplete="id" > </div>
-                                            <div class="form-group has-feedback"><label
-                                                    for="nombre">Nombre</label><br><input class="form-c" type="text" id="nombre" name="nombre" required ></div>
-                                            <div class="form-group has-feedback"><label
-                                                    for="apellidos">Apellidos</label><br><input class="form-c"
-                                                    type="text" id="apellido" name="apellido"  required></div>
-                                            <div class="form-group has-feedback"><label for="email">Email</label><br><input
-                                                    class="form-c" type="email" id="email" name="email"  required> </div>
-                                             <div class="form-group has-feedback"><label
-                                                    for="usuario">Usuario</label><br><input class="form-c" type="text" id="usuario" name="usuario"  required autofocus autocomplete="id"> </div>                
-											<div class="form-group has-feedback"><label
-                                                    for="password">Contraseña</label><br><input class="form-c"
-                                                    type="password" name="password" id="contrasena" required=""></div>
-											<div class="form-group has-feedback"><label
-                                                    for="confirmPassword">Confirmar Contraseña</label><br><input class="form-c"
-                                                    type="password" id="confirmPassword" name="password_confirmation" ></div>		
-                                            <div class="form-group has-feedback"><label for="rol">Rol</label>
-												<select class="form-control btn btn-secondary dropdown-toggle" name="rol" id="rol" form="registrarUsuario">
-												<option class="dropdown-item" value="0" checked>Super Administrador</option>
-												<option class="dropdown-item" value="1">Administrador</option>
-												<option class="dropdown-item" value="2">Supervisor</option>
-												<option class="dropdown-item" value="3">Tutor</option>
-												</select>
-											</div>
-                                        <div class="form-group" style=" margin-left: 40%; margin-top: 5%;">
-                                            <button class="btn btn-primary" type="submit" form="registrarUsuario" id='GuardarUsuario'>Registrar &nbsp;</button>
-                                        </div>
-                                    </div>
+    <form action="/User" id="registrarUsuario" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="container mt-5 p-0">
+            <div class="row mb-2">
+                <span class="display-4 text-white">Registro de Usuarios</span>
+            </div>
+            <div class="row mb-5" style="background-color: #fff; padding: 4rem 2rem 6rem 2rem; border-radius: 10px;  box-shadow: 0px 0px 7px 0.2px #626262;">
+                <div class="mensaje-container" id="mensaje-info" style="display:none;  ">
+                    <div class="col-3 icono-mensaje d-flex align-items-center" id="icono-mensaje"></div>
+                    <div class="col-9 texto-mensaje d-flex align-items-center text-center mx-2" id="texto-mensaje" style="color: #046704e8; ">Participante agregado correctamente</div>
+                </div>
+                <div class="col-sm-12 col-md-6 float-sm-none d-flex justify-content-center align-items-center ">
+                    <div class="container-fluid p-0">
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group mb-4">
+                                    <input class="form-control" type="text" id="cedula" name="id" placeholder="Cédula" required autofocus autocomplete="id">
+                                    <span class="input-group-text"><i class="fas fa-id-card text-primary"></i></span>
                                 </div>
-                            </form>
+                            </div>
+                            <div class="col">
+                                <div class="input-group mb-4">
+                                    <input class="form-control" type="text" id="usuario" name="usuario" placeholder="Usuario" required autofocus autocomplete="id">
+
+                                    <span class="input-group-text"><i class="fas fa-user text-primary"></i></span>
+                                </div>
+                            </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group mb-4">
+                                    <input class="form-control" type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                                    <span class="input-group-text"><i class="fas fa-user text-primary"></i></span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group mb-4">
+                                    <input class="form-control" placeholder="Correo" type="email" id="email" name="email" required>
+                                    <span class="input-group-text"><i class="fas fa-envelope text-primary"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group mb-4">
+                                    <input class="form-control" placeholder="Apellidos" type="text" id="apellido" name="apellido" required>
+                                    <span class="input-group-text"><i class="fas fa-user text-primary"></i></span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group mb-4">
+                                    <input class="form-control" placeholder="Contraseña" type="password" name="password" id="contrasena" required>
+                                    <span class="input-group-text"><i class="fas fa-key text-primary"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group mb-4">
+                                    <select class="form-control btn btn-secondary dropdown-toggle" name="rol" id="rol" form="registrarUsuario">
+                                        <option class="dropdown-item" value="0" checked>Super Administrador</option>
+                                        <option class="dropdown-item" value="1">Administrador</option>
+                                        <option class="dropdown-item" value="2">Supervisor</option>
+                                        <option class="dropdown-item" value="3">Tutor</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <input class="form-control" placeholder="Confirmar contraseña" type="password" id="confirmPassword" name="password_confirmation">
+                                    <span class="input-group-text"><i class="fas fa-key text-primary"></i></span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center mb-3">
+                            <button class="btn btn-outline-primary btn-lg w-100" type="submit" form="registrarUsuario" id='GuardarUsuario'>Registrar &nbsp;</button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-12 col-md-6 d-flex justify-content-end">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <img src="imagenes/pruebaregistro.png" alt="" class="img-responsive" style="max-width: 100%;">
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
+    </form>
+
 </body>
 <!--  Se incluye el footer  -->
 @include("layouts.footer")

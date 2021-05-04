@@ -36,6 +36,8 @@ $(document).ready(function(){
             <div class="col-9 texto-mensaje d-flex align-items-center text-center mx-2" id="texto-mensaje" style="color: #046704e8; ">Mensaje</div>
         </div>
 
+        <div class="container mt-5 p-0" >
+
         <form method="POST" name="registro" action="{{ route('register') }}" onsubmit="return validaCamposRegistro()">
             @csrf
             <x-jet-input type="hidden" name="rol" :value="3" />
@@ -99,6 +101,7 @@ $(document).ready(function(){
                 </x-jet-button>
             </div>
         </form>
+        </div>
 
     </x-jet-authentication-card>
 </x-guest-layout>

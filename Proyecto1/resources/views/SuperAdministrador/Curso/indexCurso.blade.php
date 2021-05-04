@@ -24,40 +24,50 @@
 </head>
 
 <body>
-    <div id="fondoTabla">
-        <h1 id="TituloVista">Cursos</h1>
-        <div id="marg">
-            @if($cursos->count() != 0)
-            <center>
-                <table class="table table-bordered table-striped mb-0 w-auto order-table" id="example">
-                    <thead>
-                        <tr>
-                            <th scope="col">Código</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Curso Necesario</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($cursos as $curso)
-                        <tr style="height: 10px">
-                            <td>{{$curso->codigo}}</td>
-                            <td>{{$curso->nombre}}</td>
-                            <td> {{$curso->curso_necesario}}</td>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </center>
-            @else
-            <h2>Tabla Vacía</h2>
-            @endif
-        </div>
-        <form action="/Cursos/create" style="text-align: center">
-            <button type="submit" class="btn btn-primary">Agregar Curso</button>
-        </form>
-    </div>
 
+    <div class="row mt-3">
+        <div class="col-12">
+
+            <div class="card" style="margin: 1rem;">
+                <div class="card-header titulo mb-2">
+                    <h3 id="TituloVista">Cursos</h3>
+                </div>
+                <div class="card-body ">
+                    @if($cursos->count() != 0)
+                    <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Código</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Curso Necesario</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($cursos as $curso)
+                            <tr style="height: 10px">
+                                <td>{{$curso->codigo}}</td>
+                                <td>{{$curso->nombre}}</td>
+                                <td> {{$curso->curso_necesario}}</td>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    </div>
+                    @else
+                    <h2>Tabla Vacía</h2>
+                    @endif
+                </div>
+                <div class="card-footer">
+                    <form action="/Cursos/create" style="text-align: center">
+                        <button type="submit" class="btn btn-primary">Agregar Curso</button>
+                    </form>
+                </div>
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
 
 </body>
 @include("layouts.footer")

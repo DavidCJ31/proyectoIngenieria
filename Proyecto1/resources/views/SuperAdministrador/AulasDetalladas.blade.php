@@ -24,36 +24,43 @@
 </head>
 
 <body>
-    <div id="fondoTabla">
-        <h1 id="TituloVista">Aulas</h1>
-        <div id="marg">
-            @if($aulas != null)
-            <center>
-                <table class="table table-bordered table-striped mb-0 w-auto order-table" id="example">
-                    <thead>
-                        <tr>
-                            <th scope="col">Código</th>
-                            <th scope="col">Sede</th>
-                            <th scope="col">Nombre</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($aulas as $aula)
-                        <tr style="height: 10px">
-                            <td>{{ $aula->codigo }}</td>
-                            <td>{{ $aula->sede }}</td>
-                            <td>{{ $aula->nombre }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </center>
-            @else
-            <h2>Tabla Vacia</h2>
-            @endif
+    <div class="row mt-3">
+        <div class="col-12">
+
+            <div class="card" style="margin: 1rem;">
+                <div class="card-header titulo mb-2">
+                    <h3 id="TituloVista">Aulas</h3>
+                </div>
+                <div class="card-body ">
+                    @if($aulas != null)
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Código</th>
+                                    <th scope="col">Sede</th>
+                                    <th scope="col">Nombre</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($aulas as $aula)
+                                <tr style="height: 10px">
+                                    <td>{{ $aula->codigo }}</td>
+                                    <td>{{ $aula->sede }}</td>
+                                    <td>{{ $aula->nombre }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    @else
+                    <h2>Tabla Vacia</h2>
+                    @endif
+                </div>
+            </div>
+            <!-- /.card -->
         </div>
     </div>
-
 
 </body>
 @include("layouts.footer")
