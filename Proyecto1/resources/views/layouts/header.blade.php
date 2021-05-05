@@ -56,6 +56,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/User">Registrar Usuario</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Asesores">Eliminar asesores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Tutores">Eliminar tutores</a>
+                </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="/Aula" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Aulas

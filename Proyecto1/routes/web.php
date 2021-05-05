@@ -114,6 +114,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // Solicitudes seguimiento estudiante
 Route::get('/SolicitudSeguimientosEstudiante', [SolicitudPrimerSeguimientoController::class, 'seguimientosEstudiante']);
 
+
+// Eliminar Asesores
+Route::get('/Asesores', [AsesorController::class, 'show']);
+Route::get('/EliminarAsesor/{id}/destroy', [AsesorController::class, 'destroy'])->name('EliminarAsesor.destroy');
+Route::get('/Tutores', [TutorController::class, 'show']);
+Route::get('/EliminarTutor/{id}/destroy', [TutorController::class, 'destroy'])->name('EliminarTutor.destroy');
+
 // For PDF's
 
 Route::get('/Seguimientos/{id}', [EstudianteController::class, 'seguimientos']);

@@ -8,6 +8,7 @@ use App\Models\asesor;
 use App\Models\tutor;
 use App\Models\detalle_curso;
 use App\Models\curso;
+use App\Models\user;
 
 use Illuminate\Http\Request;
 
@@ -81,9 +82,10 @@ class TutorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $tutores = user::where('rol', 3)->get();        
+        return view('SuperAdministrador/Tutores')->with('tutores',$tutores);
     }
 
     /**
@@ -117,6 +119,10 @@ class TutorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tutor = tutor::findOrFail($id);
+        $tutor->delete();
+        $user = user::findOrFail($id);
+        $user->delete();
+        return $this->show();
     }
 }

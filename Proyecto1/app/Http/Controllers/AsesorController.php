@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\referencia;
 use App\Mail\referenciamail;
 use App\Models\asesor;
+use App\Models\user;
 
 
 
@@ -53,9 +54,11 @@ class AsesorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $asesores = user::where('rol', 2)->get();
+        
+        return view('SuperAdministrador/Asesores')->with('asesores',$asesores);
     }
 
     /**
@@ -89,7 +92,11 @@ class AsesorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $asesor = asesor::findOrFail($id);
+        $asesor->delete();
+        $user = user::findOrFail($id);
+        $user->delete();
+        return $this->show();
     }
 }
 
