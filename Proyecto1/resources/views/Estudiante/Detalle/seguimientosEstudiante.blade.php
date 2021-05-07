@@ -35,8 +35,10 @@
             <div class="card" style="margin: 1rem;">
                 <!-- /.card-header -->
                 <div class=" card-header titulo mb-2">
-                    <span><i class="fas fa-bars"></i> &nbsp;Listado de Solicitudes</span>
+                    <span><i class="fas fa-bars"></i> &nbsp;Listado de Solicitudes de 
                     @if(count($seguimientos) != 0)
+                    {{$seguimientos[0][0]}} {{$seguimientos[0][1]}}
+                    </span>
                     <a href="/DescargarTodos/?id={{$seguimientos[0][0]}}"><button class='btn btn-primary btn-sm' style="position: absolute; right: 1rem;"> Descargar toda la carpeta</button></a>
                     @endif
                 </div>
@@ -48,15 +50,15 @@
                                 <th scope="col">Estudiante</th>
                                 <th scope="col">Fecha</th>
                                 <th scope="col">Seguimiento</th>
-                                <th scope="col" colspan="2">ACCION</th>
+                                <th scope="col" colspan="2">ACCIÓN</th>
                             </tr>
                         </thead>
                         <tbody id="tabla-solicitudes">
                             @foreach($seguimientos as $seguimiento)
                             <tr style="height: 10px">
-                                <td>{{ $seguimiento[0] }}</td>
-                                <td>{{ $seguimiento[1] }}</td>
                                 <td>{{ $seguimiento[2] }}</td>
+                                <td>{{ $seguimiento[3] }}</td>
+                                <td>{{ $seguimiento[4] }}</td>
                                 <td>
                                     @if($seguimiento[2] != NULL)
                                     <a href="/Descargar/?id={{$seguimiento[0]}}&file={{$seguimiento[2]}}"><button class='btn btn-primary'>Descargar</button></a>

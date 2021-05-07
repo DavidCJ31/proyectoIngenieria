@@ -178,16 +178,34 @@
         });
 
         $('#btnEliminar').click(function() {
-            ObjEvento = recolectarDatosGUI("DELETE");
-            EnviarInformacion('/' + $('#campo-id').val(), ObjEvento);
-            Swal.fire({
-                icon: 'success',
-                title: 'Exito',
-                text: 'Se elimino la reunión con exito!',
-                showConfirmButton: false,
-                timer: 2000
-            });
+            swal.fire({
+                title: 'Seguro que quiere cancelar esta cita?',
+                text: "Podras reasignarla mas tarde",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Si, cancelarla!',
+                cancelButtonText: 'No, cancelarla!',
+                reverseButtons: true
+                }).then((result) => {
+                if (result.isConfirmed) {
+
+                    ObjEvento = recolectarDatosGUI("DELETE");
+                    EnviarInformacion('/' + $('#campo-id').val(), ObjEvento);
+                    swal.fire(
+                    'Eliminada!',
+                    'Se elimino la reunión con exito!'
+                    )
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swal.fire(
+                    'Cancelado'
+                    )
+                }
+                })
         });
+
         $('#btnModificar').click(function() {
             ObjEvento = recolectarDatosGUI("PATCH");
             EnviarInformacion('/' + $('#campo-id').val(), ObjEvento);

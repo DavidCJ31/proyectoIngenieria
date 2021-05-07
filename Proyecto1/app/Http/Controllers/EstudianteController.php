@@ -28,13 +28,14 @@ class EstudianteController extends Controller
         //$otros_seguimientos = seguimiento_regular::where('estudiante_id', $id)->whereNotNull('archivo')->get();
         $primer_seguimiento = primer_seguimiento::where('estudiante_id', $id)->get();
         $otros_seguimientos = seguimiento_regular::where('estudiante_id', $id)->get();
+        $estudiante = user::where('id', $id)->first();
         $seguimientos = [];
         $con = 0;
         foreach ($primer_seguimiento as $row) {
-            $seguimientos[$con++] = [$row->estudiante_id, $row->fecha, $row->archivo];
+            $seguimientos[$con++] = [$estudiante->name,$estudiante->apellido,$row->estudiante_id, $row->fecha, $row->archivo];
         }
         foreach ($otros_seguimientos as $row) {
-            $seguimientos[$con++] = [$row->estudiante_id, $row->fecha, $row->archivo];
+            $seguimientos[$con++] = [$estudiante->name,$estudiante->apellido,$row->estudiante_id, $row->fecha, $row->archivo];
         }
         return view('Estudiante/Detalle/seguimientosEstudiante')->with('seguimientos', $seguimientos);
     }
