@@ -62,46 +62,6 @@ Route::get('/logged_in', function () {
         }
     }
 });
-Route::get('/horarioAsesor', [HorarioAsesorController::class, 'tablaHorarios']);
-
-Route::get('/Estudiante/Listar', [EstudianteController::class, 'listar']);
-
-Route::get('/Estudiante/ValidarDetalle', [EstudianteController::class, 'ValidarDetalle'])->name('Estudiante.ValidarDetalle');
-Route::get('/Estudiante/ValidarPrimerSeguimiento', [EstudianteController::class, 'ValidarPrimerSeguimiento']);
-Route::get('/Estudiante/ValidarSeguimientoNormal', [EstudianteController::class, 'ValidarSeguimientoNormal']);
-
-Route::get('/ListaCursoEstudiante/{id}', [ListaCursoEstudianteController::class, 'listar']);
-
-Route::resources([
-    '/SuperAdministrador' => SuperAdministradorController::class,
-    '/Asesor' => AsesorController::class,
-    '/Estudiante' => EstudianteController::class,
-    '/Tutor' => TutorController::class,
-    '/Administrador' => AdministradorController::class,
-    '/User' => UserController::class,
-    '/EstudianteDetalle' => EstudianteDetalleController::class,
-    '/Tutorias-estudiantes' => ListaCursoEstudianteController::class,
-    '/CursosDetallados' => DetalleCursoController::class,
-    '/AgendarSeguimientos' => SeguimientoController::class,
-    '/Clases' => ClaseController::class,
-    '/horario-citas' => HorarioAsesorController::class,
-    '/Cursos' => CursoController::class,
-    '/SolicitudPrimerSeguimiento' => SolicitudPrimerSeguimientoController::class,
-    '/SolicitudSeguimientoRegular' => SolicitudSeguimientoRegularController::class,
-    '/PrimerSeguimiento' => PrimerSeguimientoController::class,
-    '/SeguimientoRegular' => SeguimientoRegularController::class,
-    '/Calendario' => CalendarioController::class,
-    '/Aula' => AulaController::class,
-    '/DisponibilidadEstudiante' => DisponibilidadEstudianteController::class,
-    '/calendarioTutor' => CalendarioTutorController::class,
-    '/calendarioEstudiante' => CalendarioEstudianteController::class,
-    '/Asistencia' => AsistenciaController::class
-]);
-
-Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show']);
-Route::get('/CalendarizarPrimerSeguimiento/{id}/edit', [CalendarioController::class, 'editPrimerSeguimiento'])->name('CalendarizarPrimerSeguimiento.edit');
-Route::get('/CalendarizarSeguimientoRegular/{id}/edit', [CalendarioController::class, 'editSeguimientoRegular'])->name('CalendarizarSeguimientoRegular.edit');
-
 Route::get('/', function () {
     return redirect('/logged_in');
 });
@@ -110,21 +70,67 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::group(['middleware' => 'auth'], function () {
 
-// Solicitudes seguimiento estudiante
-Route::get('/SolicitudSeguimientosEstudiante', [SolicitudPrimerSeguimientoController::class, 'seguimientosEstudiante']);
+    Route::get('/horarioAsesor', [HorarioAsesorController::class, 'tablaHorarios']);
+
+    Route::get('/Estudiante/Listar', [EstudianteController::class, 'listar']);
+
+    Route::get('/Estudiante/ValidarDetalle', [EstudianteController::class, 'ValidarDetalle'])->name('Estudiante.ValidarDetalle');
+    Route::get('/Estudiante/ValidarPrimerSeguimiento', [EstudianteController::class, 'ValidarPrimerSeguimiento']);
+    Route::get('/Estudiante/ValidarSeguimientoNormal', [EstudianteController::class, 'ValidarSeguimientoNormal']);
+
+    Route::get('/ListaCursoEstudiante/{id}', [ListaCursoEstudianteController::class, 'listar']);
 
 
-// Eliminar Asesores
-Route::get('/Asesores', [AsesorController::class, 'show']);
-Route::get('/EliminarAsesor/{id}/destroy', [AsesorController::class, 'destroy'])->name('EliminarAsesor.destroy');
-Route::get('/Tutores', [TutorController::class, 'show']);
-Route::get('/EliminarTutor/{id}/destroy', [TutorController::class, 'destroy'])->name('EliminarTutor.destroy');
+    Route::resources([
+        '/SuperAdministrador' => SuperAdministradorController::class,
+        '/Asesor' => AsesorController::class,
+        '/Estudiante' => EstudianteController::class,
+        '/Tutor' => TutorController::class,
+        '/Administrador' => AdministradorController::class,
+        '/User' => UserController::class,
+        '/EstudianteDetalle' => EstudianteDetalleController::class,
+        '/Tutorias-estudiantes' => ListaCursoEstudianteController::class,
+        '/CursosDetallados' => DetalleCursoController::class,
+        '/AgendarSeguimientos' => SeguimientoController::class,
+        '/Clases' => ClaseController::class,
+        '/horario-citas' => HorarioAsesorController::class,
+        '/Cursos' => CursoController::class,
+        '/SolicitudPrimerSeguimiento' => SolicitudPrimerSeguimientoController::class,
+        '/SolicitudSeguimientoRegular' => SolicitudSeguimientoRegularController::class,
+        '/PrimerSeguimiento' => PrimerSeguimientoController::class,
+        '/SeguimientoRegular' => SeguimientoRegularController::class,
+        '/Calendario' => CalendarioController::class,
+        '/Aula' => AulaController::class,
+        '/DisponibilidadEstudiante' => DisponibilidadEstudianteController::class,
+        '/calendarioTutor' => CalendarioTutorController::class,
+        '/calendarioEstudiante' => CalendarioEstudianteController::class,
+        '/Asistencia' => AsistenciaController::class
+    ]);
 
-// For PDF's
 
-Route::get('/Seguimientos/{id}', [EstudianteController::class, 'seguimientos']);
-Route::get('/Descargar', [EstudianteController::class, 'descargar']);
-Route::get('/DescargarTodos', [EstudianteController::class, 'descargarTodos']);
-    
+    Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show'])->middleware('auth');
+    Route::get('/CalendarizarPrimerSeguimiento/{id}/edit', [CalendarioController::class, 'editPrimerSeguimiento'])->name('CalendarizarPrimerSeguimiento.edit');
+    Route::get('/CalendarizarSeguimientoRegular/{id}/edit', [CalendarioController::class, 'editSeguimientoRegular'])->name('CalendarizarSeguimientoRegular.edit');
+
+
+
+
+    // Solicitudes seguimiento estudiante
+    Route::get('/SolicitudSeguimientosEstudiante', [SolicitudPrimerSeguimientoController::class, 'seguimientosEstudiante']);
+
+
+    // Eliminar Asesores
+    Route::get('/Asesores', [AsesorController::class, 'show']);
+    Route::get('/EliminarAsesor/{id}/destroy', [AsesorController::class, 'destroy'])->name('EliminarAsesor.destroy');
+    Route::get('/Tutores', [TutorController::class, 'show']);
+    Route::get('/EliminarTutor/{id}/destroy', [TutorController::class, 'destroy'])->name('EliminarTutor.destroy');
+
+    // For PDF's
+
+    Route::get('/Seguimientos/{id}', [EstudianteController::class, 'seguimientos']);
+    Route::get('/Descargar', [EstudianteController::class, 'descargar']);
+    Route::get('/DescargarTodos', [EstudianteController::class, 'descargarTodos']);
+});
 //Route::post('store', [EstudianteController::class, 'update']);
