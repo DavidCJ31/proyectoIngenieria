@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\reunion;
 use Illuminate\Support\Facades\Auth;
+use App\Models\user;
 use Barryvdh\DomPDF\Facade as PDF;
 
 class SeguimientoRegularController extends Controller
@@ -51,11 +52,15 @@ class SeguimientoRegularController extends Controller
 
         $seguimiento_regular->fecha = $request->input('campo-fecha');
         $seguimiento_regular->save();
-
+        $estudiante = user::find($request->input('campo-estudiante'));
         $data = [
+            'id' =>  $seguimiento_regular->id,
             'estudiante_id' =>  $request->input('campo-estudiante'),
+            'estudiante_nombre' =>  $estudiante->name." ".$estudiante->apellido,
+            'estudiante_correo' =>  $estudiante->email,
             'situacion' =>  $request->input('campo-sintesis'),
-            'acuerdos' =>  $request->input('campo-acuerdos')
+            'acuerdos' =>  $request->input('campo-acuerdos'),
+            'fecha' =>  $request->input('campo-fecha')
         ];
         $pdf = PDF::loadView('PDF/seguimientoRegular', $data)
             ->save(storage_path('app/public/' . $seguimiento_regular->estudiante_id) . '/' . 'seguimientoRegular-' . $seguimiento_regular->estudiante_id . '-' . $seguimiento_regular->id . '.pdf');

@@ -82,7 +82,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/ListaCursoEstudiante/{id}', [ListaCursoEstudianteController::class, 'listar']);
 
-
     Route::resources([
         '/SuperAdministrador' => SuperAdministradorController::class,
         '/Asesor' => AsesorController::class,
@@ -113,10 +112,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show'])->middleware('auth');
     Route::get('/CalendarizarPrimerSeguimiento/{id}/edit', [CalendarioController::class, 'editPrimerSeguimiento'])->name('CalendarizarPrimerSeguimiento.edit');
     Route::get('/CalendarizarSeguimientoRegular/{id}/edit', [CalendarioController::class, 'editSeguimientoRegular'])->name('CalendarizarSeguimientoRegular.edit');
-
-
-
-
     // Solicitudes seguimiento estudiante
     Route::get('/SolicitudSeguimientosEstudiante', [SolicitudPrimerSeguimientoController::class, 'seguimientosEstudiante']);
 
