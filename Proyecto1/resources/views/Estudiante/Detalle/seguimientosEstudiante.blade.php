@@ -35,7 +35,7 @@
             <div class="card" style="margin: 1rem;">
                 <!-- /.card-header -->
                 <div class=" card-header titulo mb-2">
-                    <span><i class="fas fa-bars"></i> &nbsp;Listado de Solicitudes de
+                    <span><i class="fas fa-bars"></i> &nbsp;Listado de seguimientos de
                         @if(count($seguimientos) != 0)
                         {{$seguimientos[0][0]}} {{$seguimientos[0][1]}}
                     </span>
