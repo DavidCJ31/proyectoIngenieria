@@ -39,7 +39,7 @@
                         @if(count($seguimientos) != 0)
                         {{$seguimientos[0][2]}} {{$seguimientos[0][4]}}
                     </span>
-                    <a href="/DescargarTodos/?id={{$seguimientos[0][2]}}"><button class='btn btn-primary btn-sm' style="position: absolute; right: 1rem;"> Descargar toda la carpeta</button></a>
+                    <a href="/DescargarTodos/?id={{$seguimientos[0][3]}}"><button class='btn btn-primary btn-sm' style="position: absolute; right: 1rem;"> Descargar toda la carpeta</button></a>
                     @endif
                 </div>
                 <!-- /.card-body -->
@@ -50,19 +50,18 @@
                                 <th scope="col">Estudiante</th>
                                 <th scope="col">Fecha</th>
                                 <th scope="col">Seguimiento</th>
-                                <th scope="col" colspan="2">ACCIÓN</th>
+                                <th scope="col" colspan="2">Archivo</th>
                             </tr>
                         </thead>
                         <tbody id="tabla-solicitudes">
                             @foreach($seguimientos as $seguimiento)
                             <tr style="height: 10px">
-                                <td>{{ $seguimiento[2] }}</td>
                                 <td>{{ $seguimiento[3] }}</td>
                                 <td>{{ $seguimiento[4] }}</td>
-                                <td>{{ $seguimiento[5] }}<a href="/DescargarPDF/?id={{$seguimiento[2]}}&file=seguimientoRegular-{{$seguimiento[2]}}-{{$seguimiento[5]}}.pdf"><button class='btn btn-primary'>Descargar PDF</button></a></td>
+                                <td><a href="/DescargarPDF/?id={{$seguimiento[2]}}&file=seguimientoRegular-{{$seguimiento[2]}}-{{$seguimiento[5]}}.pdf"><button class='btn btn-primary'>Descargar</button></a></td>
                                 <td>
-                                    @if($seguimiento[2] != NULL)
-                                    <a href="/Descargar/?id={{$seguimiento[2]}}&file={{$seguimiento[4]}}"><button class='btn btn-primary'>Descargar</button></a>
+                                    @if($seguimiento[3] != NULL)
+                                    <a href="/Descargar/?id={{$seguimiento[3]}}&file={{$seguimiento[5]}}"><button class='btn btn-primary'>Descargar</button></a>
                                     @endif
                                 </td>
                             </tr>
