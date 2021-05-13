@@ -18,16 +18,6 @@
 </head>
 <body>
 
-
-<div id="Imagen404" style="padding: 10% 10% 0% 10%; text-align: center;">
-<h3><a href="https://www.una.ac.cr/"><img style="width:65%;" src="/imagenes/logo-largo.png" /></a></h3>
-</div>
-
-
-
-
-
-
 <br><br><br>
 
 </body>
@@ -47,7 +37,7 @@
     allowEnterKey: false,
     showConfirmButton: false,
     showCancelButton: false,
-    timer: 5000,
+    timer: 4800,
             timerProgressBar: true,
                 didOpen: (toast) => {
                 toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -57,7 +47,7 @@
         })
         setTimeout(function() {
             location.href = "http://127.0.0.1:8000/logged_in";
-        }, 5000);
+        }, 4200);
 
      
   
