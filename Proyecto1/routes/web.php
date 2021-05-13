@@ -126,6 +126,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/Seguimientos/{id}', [EstudianteController::class, 'seguimientos']);
     Route::get('/Descargar', [EstudianteController::class, 'descargar']);
+    Route::get('/DescargarPDF', [EstudianteController::class, 'descargarPDF']);
     Route::get('/DescargarTodos', [EstudianteController::class, 'descargarTodos']);
 });
 //Route::post('store', [EstudianteController::class, 'update']);

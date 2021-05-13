@@ -35,9 +35,9 @@
             <div class="card" style="margin: 1rem;">
                 <!-- /.card-header -->
                 <div class=" card-header titulo mb-2">
-                    <span><i class="fas fa-bars"></i> &nbsp;Listado de Solicitudes de 
-                    @if(count($seguimientos) != 0)
-                    {{$seguimientos[0][2]}} {{$seguimientos[0][4]}}
+                    <span><i class="fas fa-bars"></i> &nbsp;Listado de Solicitudes de
+                        @if(count($seguimientos) != 0)
+                        {{$seguimientos[0][2]}} {{$seguimientos[0][4]}}
                     </span>
                     <a href="/DescargarTodos/?id={{$seguimientos[0][2]}}"><button class='btn btn-primary btn-sm' style="position: absolute; right: 1rem;"> Descargar toda la carpeta</button></a>
                     @endif
@@ -59,6 +59,7 @@
                                 <td>{{ $seguimiento[2] }}</td>
                                 <td>{{ $seguimiento[3] }}</td>
                                 <td>{{ $seguimiento[4] }}</td>
+                                <td>{{ $seguimiento[5] }}<a href="/DescargarPDF/?id={{$seguimiento[2]}}&file=seguimientoRegular-{{$seguimiento[2]}}-{{$seguimiento[5]}}.pdf"><button class='btn btn-primary'>Descargar PDF</button></a></td>
                                 <td>
                                     @if($seguimiento[2] != NULL)
                                     <a href="/Descargar/?id={{$seguimiento[2]}}&file={{$seguimiento[4]}}"><button class='btn btn-primary'>Descargar</button></a>

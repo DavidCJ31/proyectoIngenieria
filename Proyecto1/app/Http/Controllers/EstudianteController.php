@@ -32,15 +32,27 @@ class EstudianteController extends Controller
         $seguimientos = [];
         $con = 0;
         foreach ($primer_seguimiento as $row) {
-            $seguimientos[$con++] = [$estudiante->name,$estudiante->apellido,$row->estudiante_id, $row->fecha, $row->archivo];
+            $seguimientos[$con++] = [$estudiante->name,$estudiante->apellido,$row->estudiante_id, $row->fecha, $row->archivo, $row->id];
         }
         foreach ($otros_seguimientos as $row) {
-            $seguimientos[$con++] = [$estudiante->name,$estudiante->apellido,$row->estudiante_id, $row->fecha, $row->archivo];
+            $seguimientos[$con++] = [$estudiante->name,$estudiante->apellido,$row->estudiante_id, $row->fecha, $row->archivo, $row->id];
         }
         return view('Estudiante/Detalle/seguimientosEstudiante')->with('seguimientos', $seguimientos);
     }
 
     public function descargar(Request $request)
+    {
+        if (Storage::disk('public')->exists("$request->id/$request->file")) {
+            $path = Storage::disk('public')->path("$request->id/$request->file");
+            $content = file_get_contents($path);
+            return response($content)->withHeaders([
+                'Content-Type' => mime_content_type($path)
+            ]);
+        }
+        return redirect('/404');
+    }
+
+    public function descargarPDF(Request $request)
     {
         if (Storage::disk('public')->exists("$request->id/$request->file")) {
             $path = Storage::disk('public')->path("$request->id/$request->file");

@@ -45,25 +45,28 @@ class PrimerSeguimientoController extends Controller
         $primer_seguimiento->aprovacion = $request->input('campo-aprovada');
         $primer_seguimiento->detalle_curso_id = $request->input('campo-curso');
         $primer_seguimiento->observaciones = $request->input('campo-observaciones');
-
-        // Guarda el archivo
         $name = $request->file('archivo')->getClientOriginalName();
         $primer_seguimiento->archivo = $name;
-
-        $request->file('archivo')->storeAs('public/'.$primer_seguimiento->estudiante_id,$name);
-        //----------------------------------------------------------------
-
         $primer_seguimiento->fecha = $request->input('campo-fecha');
-        $primer_seguimiento->save();
 
+        if ($primer_seguimiento->aprovacion == "Aprobada") {
+            $primer_seguimiento->save();
+
+            // Guarda el archivo
+            $request->file('archivo')->storeAs('public/' . $primer_seguimiento->estudiante_id, $name);
+            reunion::where('id', $request->input('campo-id'))->update([
+                'estado' => 'Realizada'
+            ]);
+
+            $Curso_Estudiante = new lista_curso_estudiante;
+            $Curso_Estudiante->detalle_curso_id = $request->input('campo-curso');
+            $Curso_Estudiante->estudiante_id = $request->input('campo-estudiante');
+            $Curso_Estudiante->save();
+        } else {
+        }
         reunion::where('id', $request->input('campo-id'))->update([
             'estado' => 'Realizada'
         ]);
-
-        $Curso_Estudiante = new lista_curso_estudiante;
-        $Curso_Estudiante->detalle_curso_id = $request->input('campo-curso');
-        $Curso_Estudiante->estudiante_id = $request->input('campo-estudiante');
-        $Curso_Estudiante->save();
         return redirect('/Calendario');
     }
 
