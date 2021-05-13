@@ -36,12 +36,12 @@
                 <div class="input-group-append">
                     <span class="input-group-text" style="margin-right: 10px;">Aprobada:</span>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="campo-aprovada" id="campo-aprovada1" value="Aprobada">
+                        <input class="form-check-input" type="radio" name="campo-aprovada" id="campo-aprovada1" value="Aprobada" checked onclick="deshabilitarCampo()">
                         <label class="form-check-label" for="campo-aprovada1">Si</label>
                     </div>
                     <span class="input-group-text" style="margin-right: 10px;">No aprobada:</span>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="campo-aprovada" id="campo-aprovada2" value="No aprobada" checked>
+                        <input class="form-check-input" type="radio" name="campo-aprovada" id="campo-aprovada2" value="No aprobada" onclick="deshabilitarCampo()">
                         <label class="form-check-label" for="campo-aprovada2">No</label>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="input-group mb-3">
-            <button type="submit" id="boton-enviar" class="btn btn-primary">Enviar</button>
+                <button type="submit" id="boton-enviar" class="btn btn-primary">Enviar</button>
             </div>
 
         </div>
@@ -86,13 +86,13 @@
 </html>
 
 <script>
-    function empezar() {
-        $(".opcion-tabla").hover(function() {
-            $(this).css("background-color", "#f6f799");
-        }, function() {
-            $(this).css("background-color", "white");
-        });
+    function deshabilitarCampo() {
+        if (document.getElementById("campo-aprovada1").checked) {
+            document.getElementById("campo-curso").disabled = false;
+        }
+        if (document.getElementById("campo-aprovada2").checked) {
+            document.getElementById("campo-curso").disabled = true;
+            document.getElementById("campo-curso").value = "";
+        }
     }
-
-    empezar();
 </script>

@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\curso;
+use App\Models\detalle_curso;
 use Illuminate\Http\Request;
 use App\Models\reunion;
 use App\Models\primer_seguimiento;
 use Illuminate\Support\Facades\Auth;
 use App\Models\lista_curso_estudiante;
+use Barryvdh\DomPDF\Facade as PDF;
+use App\Models\user;
 
 
 class PrimerSeguimientoController extends Controller
@@ -43,27 +47,56 @@ class PrimerSeguimientoController extends Controller
         $primer_seguimiento = new primer_seguimiento;
         $primer_seguimiento->estudiante_id = $request->input('campo-estudiante');
         $primer_seguimiento->aprovacion = $request->input('campo-aprovada');
-        $primer_seguimiento->detalle_curso_id = $request->input('campo-curso');
         $primer_seguimiento->observaciones = $request->input('campo-observaciones');
-        $name = $request->file('archivo')->getClientOriginalName();
-        $primer_seguimiento->archivo = $name;
-        $primer_seguimiento->fecha = $request->input('campo-fecha');
-
-        if ($primer_seguimiento->aprovacion == "Aprobada") {
-            $primer_seguimiento->save();
-
+        if ($request->file('archivo') != null) {
             // Guarda el archivo
+            $name = $request->file('archivo')->getClientOriginalName();
+            $primer_seguimiento->archivo = $name;
             $request->file('archivo')->storeAs('public/' . $primer_seguimiento->estudiante_id, $name);
-            reunion::where('id', $request->input('campo-id'))->update([
-                'estado' => 'Realizada'
-            ]);
+        }
+        $primer_seguimiento->fecha = $request->input('campo-fecha');
+        if ($primer_seguimiento->aprovacion == "Aprobada") {
+            $primer_seguimiento->detalle_curso_id = $request->input('campo-curso');
 
+            //asigna al estudiante al curso
             $Curso_Estudiante = new lista_curso_estudiante;
             $Curso_Estudiante->detalle_curso_id = $request->input('campo-curso');
             $Curso_Estudiante->estudiante_id = $request->input('campo-estudiante');
             $Curso_Estudiante->save();
+
+            $primer_seguimiento->save();
+            $curso = detalle_curso::find($primer_seguimiento->detalle_curso_id);
+            $tutor = user::find($curso->tutor_id);
+            $estudiante = user::find($request->input('campo-estudiante'));
+            $data = [
+                'id' =>  $primer_seguimiento->id,
+                'estudiante_id' =>  $request->input('campo-estudiante'),
+                'estudiante_nombre' =>  $estudiante->name . " " . $estudiante->apellido,
+                'estudiante_correo' =>  $estudiante->email,
+                'aprovacion' =>  $request->input('campo-aprovada'),
+                'detalle_curso_codigo' =>  $curso->curso_codigo,
+                'detalle_curso_nombre' => curso::find($curso->curso_codigo)->nombre,
+                'nombre_tutor' =>  $tutor->name . " " . $tutor->apellido,
+                'observaciones' =>  $request->input('campo-observaciones'),
+                'fecha' =>  $request->input('campo-fecha')
+            ];
         } else {
+            $primer_seguimiento->save();
+            $estudiante = user::find($request->input('campo-estudiante'));
+            $data = [
+                'id' =>  $primer_seguimiento->id,
+                'estudiante_id' =>  $request->input('campo-estudiante'),
+                'estudiante_nombre' =>  $estudiante->name . " " . $estudiante->apellido,
+                'estudiante_correo' =>  $estudiante->email,
+                'aprovacion' =>  $request->input('campo-aprovada'),
+                'detalle_curso_codigo' =>  $primer_seguimiento->detalle_curso_id,
+                'observaciones' =>  $request->input('campo-observaciones'),
+                'fecha' =>  $request->input('campo-fecha')
+            ];
         }
+        $pdf = PDF::loadView('PDF/primerSeguimiento', $data)
+            ->save(storage_path('app/public/' . $primer_seguimiento->estudiante_id) . '/' . 'primerSeguimiento-' . $primer_seguimiento->estudiante_id . '-' . $primer_seguimiento->id . '.pdf');
+
         reunion::where('id', $request->input('campo-id'))->update([
             'estado' => 'Realizada'
         ]);

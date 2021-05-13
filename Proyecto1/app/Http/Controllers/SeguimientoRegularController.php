@@ -44,10 +44,12 @@ class SeguimientoRegularController extends Controller
         $seguimiento_regular->estudiante_id = $request->input('campo-estudiante');
         $seguimiento_regular->situacion = $request->input('campo-sintesis');
         $seguimiento_regular->acuerdos = $request->input('campo-acuerdos');
-        // Guarda el archivo
-        $name = $request->file('archivo')->getClientOriginalName();
-        $seguimiento_regular->archivo = $name;
-        $request->file('archivo')->storeAs('public/' . $seguimiento_regular->estudiante_id, $name);
+        if ($request->file('archivo') != null) {
+            // Guarda el archivo
+            $name = $request->file('archivo')->getClientOriginalName();
+            $seguimiento_regular->archivo = $name;
+            $request->file('archivo')->storeAs('public/' . $seguimiento_regular->estudiante_id, $name);
+        }
         //----------------------------------------------------------------
 
         $seguimiento_regular->fecha = $request->input('campo-fecha');
@@ -56,7 +58,7 @@ class SeguimientoRegularController extends Controller
         $data = [
             'id' =>  $seguimiento_regular->id,
             'estudiante_id' =>  $request->input('campo-estudiante'),
-            'estudiante_nombre' =>  $estudiante->name." ".$estudiante->apellido,
+            'estudiante_nombre' =>  $estudiante->name . " " . $estudiante->apellido,
             'estudiante_correo' =>  $estudiante->email,
             'situacion' =>  $request->input('campo-sintesis'),
             'acuerdos' =>  $request->input('campo-acuerdos'),
