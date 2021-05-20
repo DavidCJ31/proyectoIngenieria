@@ -26,6 +26,8 @@
     @include('layouts.header')
     <!--Main Navigation-->
     <!-- Aqui empieza el  formulario -->
+    {{ $contador = 0 }}
+
     <div class="form-card">
         <h4>VICERRECTORIA DE DOCENCIA</h4>
         <H5>EXITO ACADEMICO</H5>
@@ -49,6 +51,7 @@
                             <tr>
                                 <th scope="col">Estudiante</th>
                                 <th scope="col">Fecha</th>
+                                <th scope="col">Documento</th>
                                 <th scope="col">Seguimiento</th>
                                 <th scope="col" colspan="2">Archivo</th>
                             </tr>
@@ -56,9 +59,15 @@
                         <tbody id="tabla-solicitudes">
                             @foreach($seguimientos as $seguimiento)
                             <tr style="height: 10px">
+                                <td>{{ $seguimiento[2] }}</td>
                                 <td>{{ $seguimiento[3] }}</td>
                                 <td>{{ $seguimiento[4] }}</td>
-                                <td><a href="/DescargarPDF/?id={{$seguimiento[2]}}&file=seguimientoRegular-{{$seguimiento[2]}}-{{$seguimiento[5]}}.pdf"><button class='btn btn-primary'>Descargar</button></a></td>
+                                @if( $contador++ == 0)
+                                    <td><a href="/DescargarPDF/?id={{$seguimiento[2]}}&file=primerSeguimiento-{{$seguimiento[2]}}-{{$seguimiento[5]}}.pdf"><button class='btn btn-primary'>Descargar</button></a></td>
+                                @else
+                                    <td><a href="/DescargarPDF/?id={{$seguimiento[2]}}&file=seguimientoRegular-{{$seguimiento[2]}}-{{$seguimiento[5]}}.pdf"><button class='btn btn-primary'>Descargar</button></a></td>
+                                @endif
+
                                 <td>
                                     @if($seguimiento[3] != NULL)
                                     <a href="/Descargar/?id={{$seguimiento[2]}}&file={{$seguimiento[4]}}"><button class='btn btn-primary'>Descargar</button></a>
