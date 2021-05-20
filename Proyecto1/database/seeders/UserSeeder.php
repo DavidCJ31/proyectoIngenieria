@@ -22,12 +22,12 @@ class UserSeeder extends Seeder
     {
         //Super Usuario
         $user = new User;
-        $user->id = 123;
-        $user->name = 'admin';
-        $user->apellido = 'admin';
-        $user->email = 'admin@hotmail.com';
-        $user->usuario = ucwords('admin');
-        $user->password = Hash::make('123456789');
+        $user->id = 112760481;
+        $user->name = 'Priscilla';
+        $user->apellido = 'Venegas Herrera';
+        $user->email = 'priscilla.venegas.herrera@una.cr';
+        $user->usuario = ucwords('PriscillaVenegasHerrera');
+        $user->password = Hash::make('Exito2021');
         $user->rol = 0;
         $user->save();
 
@@ -37,12 +37,12 @@ class UserSeeder extends Seeder
 
         //Asesores
         $user = new User;
-        $user->id = 123;
-        $user->name = 'admin';
-        $user->apellido = 'admin';
-        $user->email = 'admin@hotmail.com';
-        $user->usuario = ucwords('admin');
-        $user->password = Hash::make('123456789');
+        $user->id = 109850886;
+        $user->name = 'Laura';
+        $user->apellido = 'Ramirez Chavarria';
+        $user->email = 'laura.ramirez.chavarria@una.cr';
+        $user->usuario = ucwords('LauraRamirezChavarria');
+        $user->password = Hash::make('Exito2021');
         $user->rol = 0;
         $user->save();
         $asesor = new asesor;
@@ -51,12 +51,12 @@ class UserSeeder extends Seeder
 
         //Tutores
         $user = new User;
-        $user->id = 123;
-        $user->name = 'admin';
-        $user->apellido = 'admin';
-        $user->email = 'admin@hotmail.com';
-        $user->usuario = ucwords('admin');
-        $user->password = Hash::make('123456789');
+        $user->id = 401910902;
+        $user->name = 'Jacqueline';
+        $user->apellido = 'Gonzalez Espinoza';
+        $user->email = 'jacqueline.gonzalez.espinoza@una.cr';
+        $user->usuario = ucwords('JacquelineGonzalezEspinoza');
+        $user->password = Hash::make('Exito2021');
         $user->rol = 0;
         $user->save();
         $tutor = new tutor;
