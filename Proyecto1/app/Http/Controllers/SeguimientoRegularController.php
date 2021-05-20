@@ -70,7 +70,7 @@ class SeguimientoRegularController extends Controller
             'estudiante_nombre' =>  $user->name . " " . $user->apellido,
             'estudiante_correo' =>  $user->email,
             'situacion' =>  $request->input('campo-sintesis'),
-            'acuerdos' =>  $request->input('campo-acuerdos')."\n\nUltimo Seguimiento",
+            'acuerdos' =>  $seguimiento_regular->acuerdos,
             'fecha' =>  $request->input('campo-fecha')
         ];
         $pdf = PDF::loadView('PDF/seguimientoRegular', $data)
