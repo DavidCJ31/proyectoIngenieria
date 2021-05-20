@@ -22,18 +22,32 @@ class UserSeeder extends Seeder
     {
         //Super Usuario
         $user = new User;
+        $user->id = 123;
+        $user->name = 'admin';
+        $user->apellido = 'admin';
+        $user->email = 'admin@hotmail.com';
+        $user->usuario = ucwords('admin');
+        $user->password = Hash::make('123456789');
+        $user->rol = 0;
+        $user->save();
+        $super_administrador = new super_administrador();
+        $super_administrador->id = $user->id;
+        $super_administrador->save();
+
+        //Asesores
+        $user = new User;
         $user->id = 112760481;
         $user->name = 'Priscilla';
         $user->apellido = 'Venegas Herrera';
         $user->email = 'priscilla.venegas.herrera@una.cr';
         $user->usuario = ucwords('PriscillaVenegasHerrera');
         $user->password = Hash::make('Exito2021');
-        $user->rol = 0;
+        $user->rol = 2;
         $user->save();
+        $asesor = new asesor;
+        $asesor->id = $user->id;
+        $asesor->save();
 
-        $superAdministrador = new super_administrador();
-        $superAdministrador->id = $user->id;
-        $superAdministrador->save();
 
         $user = new User;
         $user->id = 502830045;
