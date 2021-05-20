@@ -274,6 +274,8 @@ class EstudianteController extends Controller
             } else {
                 return 2;
             }
+        }else {
+            return 4;
         }
     }
 

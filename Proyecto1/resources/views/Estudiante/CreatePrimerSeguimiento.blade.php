@@ -335,6 +335,7 @@
       type: 'get',
       dataType: 'JSON',
       success: function(response) {
+        console.log(response)
         switch (response) {
           case 1:
             Swal.fire({
@@ -387,6 +388,7 @@
 
       },
       error: function(result) {
+        console.log(result)
         Swal.fire({
           icon: 'warning',
           title: 'Complete sus datos personales.',
