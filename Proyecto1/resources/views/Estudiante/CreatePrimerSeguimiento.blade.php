@@ -367,6 +367,18 @@
               }
             });
             break;
+          case 3:
+            Swal.fire({
+              icon: 'warning',
+              title: 'Ya realizaste tu primer contacto.\n¡¡¡Por favor solicita un seguimiento normal!!!',
+              allowOutsideClick: false,
+              allowEscapeKey: false,
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.href = "/SolicitudSeguimientoRegular/create";
+              }
+            });
+            break;
           default:
 
             break;

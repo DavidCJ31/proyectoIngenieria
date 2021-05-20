@@ -42,7 +42,8 @@ class CreateNewUser implements CreatesNewUsers
             'usuario' => $input['usuario'],
         ]);
         estudiante::create([
-            'id' => $input['id']
+            'id' => $input['id'],
+            'estado' => 'Activo'
         ]);
         $correo = new newusuario($usuario);
         Mail::to($usuario->email)->send($correo);

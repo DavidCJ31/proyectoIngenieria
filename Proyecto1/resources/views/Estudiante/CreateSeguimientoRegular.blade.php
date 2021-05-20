@@ -330,6 +330,7 @@
       type: 'get',
       dataType: 'JSON',
       success: function(response) {
+        console.log(response)
         switch (response) {
           case 1:
             Swal.fire({
@@ -355,14 +356,25 @@
               }
             });
             break;
+          case 3:
+            Swal.fire({
+              icon: 'warning',
+              title: 'Los seguimientos del estudiante han finalizado.\n\n¡¡¡Por favor solicitar un nuevo proceso!!!',
+              allowOutsideClick: false,
+              allowEscapeKey: false,
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.href = "/SolicitudPrimerSeguimiento/create";
+              }
+            });
+            break;
           default:
 
             break;
         }
-
-
       },
       error: function(result) {
+        console.log(result)
         Swal.fire({
           icon: 'warning',
           title: 'Complete sus datos personales.',

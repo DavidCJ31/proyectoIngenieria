@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $usuario = Auth::user();
+        $usuario = super_administrador::find(Auth::user()->id)->user;
         return view('SuperAdministrador.registerUsuarios')->with('usuario', $usuario);
     }
 

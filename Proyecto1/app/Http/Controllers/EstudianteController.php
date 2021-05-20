@@ -32,10 +32,10 @@ class EstudianteController extends Controller
         $seguimientos = [];
         $con = 0;
         foreach ($primer_seguimiento as $row) {
-            $seguimientos[$con++] = [$estudiante->name,$estudiante->apellido,$row->estudiante_id, $row->fecha, $row->archivo, $row->id];
+            $seguimientos[$con++] = [$estudiante->name, $estudiante->apellido, $row->estudiante_id, $row->fecha, $row->archivo, $row->id];
         }
         foreach ($otros_seguimientos as $row) {
-            $seguimientos[$con++] = [$estudiante->name,$estudiante->apellido,$row->estudiante_id, $row->fecha, $row->archivo, $row->id];
+            $seguimientos[$con++] = [$estudiante->name, $estudiante->apellido, $row->estudiante_id, $row->fecha, $row->archivo, $row->id];
         }
         return view('Estudiante/Detalle/seguimientosEstudiante')->with('seguimientos', $seguimientos);
     }
@@ -106,12 +106,19 @@ class EstudianteController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
-        $usuario = estudiante::find(Auth::user()->id)->user;
-        $estadoInformacionDetalle = false;
-        if (estudiante_detalle::where('estudiante_id', $id)->first()) {
-            $estadoInformacionDetalle = true;
+        $usuario = estudiante::find(Auth::user()->id);
+        switch ($usuario->estado) {
+            case 'Activo':
+            case 'Finalizado':
+                return view('Estudiante/inicioEstudiante')->with('usuario', $usuario->user);
+                break;
+            case 'Bloqueado':
+                Auth::logout();
+                return view('Estudiante/Bloqueado');
+                break;
+            case 'Inactivo':
+                break;
         }
-        return view('Estudiante/inicioEstudiante')->with('usuario', $usuario);
     }
 
     /**
@@ -251,6 +258,7 @@ class EstudianteController extends Controller
     public function ValidarPrimerSeguimiento()
     {
         $id = Auth::user()->id;
+        $estudiante = estudiante::find($id);
         $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
         if ($estudianteDetalle == NULL) {
             return null;
@@ -258,27 +266,35 @@ class EstudianteController extends Controller
         $primer_seguimiento = solicitudes_primer_seguimiento::where('estudiante_id', $id)->orderBy('id', 'desc')->first();
         if ($primer_seguimiento != NULL) {
             if ($primer_seguimiento->estado == "Revisado") {
-                return 1;
+                if ($estudiante->estado == 'Finalizado') {
+                    return 1;
+                } else {
+                    return 3;
+                }
             } else {
                 return 2;
             }
-        } else {
-            return 3;
         }
     }
 
     public function ValidarSeguimientoNormal()
     {
         $id = Auth::user()->id;
+        $estudiante = estudiante::find($id);
         $primer_seguimiento = solicitudes_primer_seguimiento::where('estudiante_id', $id)->orderBy('id', 'desc')->first();
         $seguimiento_regular = solicitudes_seguimiento_regular::where('estudiante_id', $id)->orderBy('id', 'desc')->first();
+        $estudianteDetalle = estudiante_detalle::where('estudiante_id', $id)->first();
+        if ($estudianteDetalle == NULL) {
+            return null;
+        }
+        if ($estudiante->estado == 'Finalizado') {
+            return 3;
+        }
         if ($primer_seguimiento != NULL && $primer_seguimiento->estado == "Pendiente") {
             return 1;
         }
         if ($seguimiento_regular != NULL && $seguimiento_regular->estado == "Pendiente") {
             return 2;
-        } else {
-            return 3;
         }
     }
 
@@ -299,5 +315,14 @@ class EstudianteController extends Controller
         $data = substr($data, 0, -1);
         $data = $data . ']';
         return $data;
+    }
+
+    public function BloquearEstudiante($id_estudiante)
+    {
+        $estudiante = estudiante::find($id_estudiante);
+        $estudiante->estado = "Bloqueado";
+        $estudiante->save();
+        solicitudes_primer_seguimiento::where('estudiante_id', $id_estudiante)->update(['estado' => 'Revisado']);
+        return redirect('/SolicitudPrimerSeguimiento');
     }
 }

@@ -58,7 +58,7 @@ Route::get('/logged_in', function () {
             return view('Tutor/inicioTutor')->with('usuario', $usuario);
         }
         if ($rol == 4) { //Estudiante
-            return view('Estudiante/inicioEstudiante')->with('usuario', $usuario);
+            return redirect('Estudiante');
         }
     }
 });
@@ -112,6 +112,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/Tutorias-estudiantes/{id}', [ListaCursoEstudianteController::class, 'show'])->middleware('auth');
     Route::get('/CalendarizarPrimerSeguimiento/{id}/edit', [CalendarioController::class, 'editPrimerSeguimiento'])->name('CalendarizarPrimerSeguimiento.edit');
     Route::get('/CalendarizarSeguimientoRegular/{id}/edit', [CalendarioController::class, 'editSeguimientoRegular'])->name('CalendarizarSeguimientoRegular.edit');
+    Route::get('/BloquearEstudiante/{id}', [EstudianteController::class, 'BloquearEstudiante'])->name('BloquearEstudiante.block');
     // Solicitudes seguimiento estudiante
     Route::get('/SolicitudSeguimientosEstudiante', [SolicitudPrimerSeguimientoController::class, 'seguimientosEstudiante']);
 

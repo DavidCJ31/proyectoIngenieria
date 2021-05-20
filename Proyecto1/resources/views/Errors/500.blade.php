@@ -49,7 +49,7 @@
 
         })
         setTimeout(function() {
-            location.href = "http://127.0.0.1:8000/logged_in";
+            location.href = "logged_in";
         }, 4200);
 
      
