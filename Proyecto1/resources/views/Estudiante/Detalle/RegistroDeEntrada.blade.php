@@ -54,7 +54,7 @@
                 </div>
                 <div class="input-group-append">
                     <span class="input-group-text">EDAD:</span>
-                    <input type="number" class="form-control" name="campo-edad" id="campo-edad" aria-describedby="basic-addon2" autocomplete="off" require min="16" max="100" disabled>
+                    <input type="number" class="form-control" name="campo-edad" id="campo-edad" aria-describedby="basic-addon2" require min="16" max="100" readonly>
                 </div>
             </div>
             <div class="input-group mb-3">
