@@ -34,8 +34,8 @@ $(document).ready(function(){
             <form class="form-signin" method="POST" action="{{ route('login') }}">
                 @csrf
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="id" name="id" value="207600154" required autofocus id="inputEmail" class="form-control" placeholder="Cédula">
-                <input type="password" name="password" value="123456789" required autocomplete="current-password" id="inputPassword" placeholder="Contraseña" class="form-control" required>
+                <input type="id" name="id" value="" required autofocus id="inputEmail" class="form-control" placeholder="Cédula">
+                <input type="password" name="password" value="" required autocomplete="current-password" id="inputPassword" placeholder="Contraseña" class="form-control" required>
                 <div id="remember" class="checkbox">
                     <label>
                         <input type="checkbox" value="remember-me"> {{ __('Recuerdame') }}

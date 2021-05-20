@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\asesor;
+use App\Models\estudiante;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -58,7 +59,6 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('Exito2021');
         $user->rol = 0;
         $user->save();
-
         $superAdministrador = new super_administrador();
         $superAdministrador->id = $user->id;
         $superAdministrador->save();
@@ -129,5 +129,34 @@ class UserSeeder extends Seeder
         $tutor = new tutor;
         $tutor->id = $user->id;
         $tutor->save();
+
+        //Estudiantes
+        $user = new User;
+        $user->id = 207600764;
+        $user->name = 'David';
+        $user->apellido = 'Cordero';
+        $user->email = 'davidcordero@una.cr';
+        $user->usuario = ucwords('DavidCordero');
+        $user->password = Hash::make('123456789');
+        $user->rol = 4;
+        $user->save();
+        $estudiante = new estudiante();
+        $estudiante->id = $user->id;
+        $estudiante->estado = 'Activo';
+        $estudiante->save();
+
+        $user = new User;
+        $user->id = 207770701;
+        $user->name = 'Mario';
+        $user->apellido = 'Siu';
+        $user->email = ' mario.siu.araya@est.una.ac.cr';
+        $user->usuario = ucwords('MarioSiu');
+        $user->password = Hash::make('123456789');
+        $user->rol = 4;
+        $user->save();
+        $estudiante = new estudiante;
+        $estudiante->id = $user->id;
+        $estudiante->estado = 'Activo';
+        $estudiante->save();
     }
 }
