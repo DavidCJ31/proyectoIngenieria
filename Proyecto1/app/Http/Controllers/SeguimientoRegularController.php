@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\reunion;
 use Illuminate\Support\Facades\Auth;
+use App\Models\estudiante;
 use App\Models\user;
 use Barryvdh\DomPDF\Facade as PDF;
 
@@ -43,7 +44,15 @@ class SeguimientoRegularController extends Controller
         $seguimiento_regular = new seguimiento_regular;
         $seguimiento_regular->estudiante_id = $request->input('campo-estudiante');
         $seguimiento_regular->situacion = $request->input('campo-sintesis');
-        $seguimiento_regular->acuerdos = $request->input('campo-acuerdos');
+        if ($request->input('campo-finalizar')) {
+            $seguimiento_regular->acuerdos = $request->input('campo-acuerdos')."\n\nUltimo Seguimiento";
+            $estudiante = estudiante::find($request->input('campo-estudiante'));
+            $estudiante->estado = "Finalizado";
+            $estudiante->save();
+        }
+        else {
+            $seguimiento_regular->acuerdos = $request->input('campo-acuerdos');
+        }
         if ($request->file('archivo') != null) {
             // Guarda el archivo
             $name = $request->file('archivo')->getClientOriginalName();
@@ -54,14 +63,14 @@ class SeguimientoRegularController extends Controller
 
         $seguimiento_regular->fecha = $request->input('campo-fecha');
         $seguimiento_regular->save();
-        $estudiante = user::find($request->input('campo-estudiante'));
+        $user = user::find($request->input('campo-estudiante'));
         $data = [
             'id' =>  $seguimiento_regular->id,
             'estudiante_id' =>  $request->input('campo-estudiante'),
-            'estudiante_nombre' =>  $estudiante->name . " " . $estudiante->apellido,
-            'estudiante_correo' =>  $estudiante->email,
+            'estudiante_nombre' =>  $user->name . " " . $user->apellido,
+            'estudiante_correo' =>  $user->email,
             'situacion' =>  $request->input('campo-sintesis'),
-            'acuerdos' =>  $request->input('campo-acuerdos'),
+            'acuerdos' =>  $request->input('campo-acuerdos')."\n\nUltimo Seguimiento",
             'fecha' =>  $request->input('campo-fecha')
         ];
         $pdf = PDF::loadView('PDF/seguimientoRegular', $data)

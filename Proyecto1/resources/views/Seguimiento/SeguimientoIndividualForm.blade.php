@@ -64,6 +64,11 @@
         </div>
       </div>
       <textarea class="form-control" id="campo-acuerdos" name="campo-acuerdos" rows="3"></textarea><br>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" name="campo-finalizar" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Finalizar Seguimientos</label>
+      </div>
+      <br>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text">Archivo</span>

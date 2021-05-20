@@ -296,6 +296,7 @@ class EstudianteController extends Controller
         if ($seguimiento_regular != NULL && $seguimiento_regular->estado == "Pendiente") {
             return 2;
         }
+        return 4;
     }
 
     public function listar()
