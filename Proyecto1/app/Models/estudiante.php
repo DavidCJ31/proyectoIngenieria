@@ -13,7 +13,7 @@ class estudiante extends Model
     public $timestamps = false;
     protected $fillable = [
         'id',
-        'especialidad',
+        'estado',
         'archivo'
     ];
 

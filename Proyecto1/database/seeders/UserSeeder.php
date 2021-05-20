@@ -35,6 +35,20 @@ class UserSeeder extends Seeder
         $superAdministrador->id = $user->id;
         $superAdministrador->save();
 
+        $user = new User;
+        $user->id = 502830045;
+        $user->name = 'Kattia';
+        $user->apellido = 'Salas Perez';
+        $user->email = 'kattia.salas.perez@una.cr';
+        $user->usuario = ucwords('KattiaSalasPerez');
+        $user->password = Hash::make('Exito2021');
+        $user->rol = 0;
+        $user->save();
+
+        $superAdministrador = new super_administrador();
+        $superAdministrador->id = $user->id;
+        $superAdministrador->save();
+
         //Asesores
         $user = new User;
         $user->id = 109850886;
@@ -43,7 +57,33 @@ class UserSeeder extends Seeder
         $user->email = 'laura.ramirez.chavarria@una.cr';
         $user->usuario = ucwords('LauraRamirezChavarria');
         $user->password = Hash::make('Exito2021');
-        $user->rol = 0;
+        $user->rol = 2;
+        $user->save();
+        $asesor = new asesor;
+        $asesor->id = $user->id;
+        $asesor->save();
+
+        $user = new User;
+        $user->id = 108230121;
+        $user->name = 'Bernarda';
+        $user->apellido = 'Rivas Solano';
+        $user->email = 'bernarda.rivas.solano@una.cr';
+        $user->usuario = ucwords('BernardaRivasSolano');
+        $user->password = Hash::make('Exito2021');
+        $user->rol = 2;
+        $user->save();
+        $asesor = new asesor;
+        $asesor->id = $user->id;
+        $asesor->save();
+
+        $user = new User;
+        $user->id = 401520495;
+        $user->name = 'Ana';
+        $user->apellido = 'Gonzalez Vargas';
+        $user->email = 'ana.gonzalez.vargas@una.cr';
+        $user->usuario = ucwords('AnaGonzalesVargas');
+        $user->password = Hash::make('Exito2021');
+        $user->rol = 2;
         $user->save();
         $asesor = new asesor;
         $asesor->id = $user->id;
@@ -57,7 +97,20 @@ class UserSeeder extends Seeder
         $user->email = 'jacqueline.gonzalez.espinoza@una.cr';
         $user->usuario = ucwords('JacquelineGonzalezEspinoza');
         $user->password = Hash::make('Exito2021');
-        $user->rol = 0;
+        $user->rol = 3;
+        $user->save();
+        $tutor = new tutor;
+        $tutor->id = $user->id;
+        $tutor->save();
+
+        $user = new User;
+        $user->id = 401900984;
+        $user->name = 'Cristina';
+        $user->apellido = 'Arrieta Araya';
+        $user->email = ' cristina.arrieta.araya@una.ac.cr';
+        $user->usuario = ucwords('CristinaArrietaAraya');
+        $user->password = Hash::make('Exito2021');
+        $user->rol = 3;
         $user->save();
         $tutor = new tutor;
         $tutor->id = $user->id;

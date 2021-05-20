@@ -147,7 +147,7 @@ class EstudianteController extends Controller
 
         //$file->name = $name;
         $estudiante->id = $id;
-        $estudiante->especialidad = "Bien";
+        $estudiante->estado = "Sin definir";
         $estudiante->archivo = $name;
 
         $estudiante->save();

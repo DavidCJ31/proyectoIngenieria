@@ -10,7 +10,7 @@ use App\Models\tutor;
 use App\Http\Controllers\Controller;
 use App\Models\super_administrador;
 use App\Mail\newusuario;
-
+use App\Models\estudiante;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
