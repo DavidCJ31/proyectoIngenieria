@@ -11,7 +11,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/validaciones.js') }}"></script>
 </head>
 
 <body onload="cargaInicial()">
@@ -46,11 +45,11 @@
             <div class="input-group mb-3">
                 <div class="input-group-append">
                     <span class="input-group-text">FECHA DE NACIMIENTO:</span>
-                    <input type="date" class="form-control" name="campo-fecha-nacimiento" id="campo-fecha-nacimiento" aria-describedby="basic-addon2" require value="{{$estudianteDetalle->fecha_nacimiento}}">
+                    <input type="date" class="form-control" name="campo-fecha-nacimiento" id="campo-fecha-nacimiento" aria-describedby="basic-addon2" require value="{{$estudianteDetalle->fecha_nacimiento}}" readonly>
                 </div>
                 <div class="input-group-append">
                     <span class="input-group-text">EDAD:</span>
-                    <input type="number" class="form-control" name="campo-edad" id="campo-edad" aria-describedby="basic-addon2" autocomplete="off" require min="16" max="100" value="{{$estudianteDetalle->edad}}" disabled>
+                    <input type="number" class="form-control" name="campo-edad" id="campo-edad" aria-describedby="basic-addon2" autocomplete="off" require min="16" max="100" value="{{$estudianteDetalle->edad}}" readonly>
                 </div>
             </div>
             <div class="input-group mb-3">
@@ -590,14 +589,8 @@
                     </table>
                 </div>
             </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Archivo</span>
-                    <input type="file" class="form-control" name="archivo" id="archivos" aria-describedby="basic-addon1">
-                </div>
-            </div>
             <button type="submit" class="btn btn-primary" name="enviar" id='boton-enviar'>Actualizar</button>
-            <button type="submit" class="btn btn-primary" name="imprimir" id='boton-imprimir' onclick="window.print()">Imprimir</button>
+            <!-- <button type="submit" class="btn btn-primary" name="imprimir" id='boton-imprimir' onclick="window.print()">Imprimir</button> -->
         </div>
     </form>
     @include("layouts.footer")

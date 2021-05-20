@@ -121,7 +121,7 @@ class UserSeeder extends Seeder
         $user->id = 401900984;
         $user->name = 'Cristina';
         $user->apellido = 'Arrieta Araya';
-        $user->email = ' cristina.arrieta.araya@una.ac.cr';
+        $user->email = 'cristina.arrieta.araya@una.ac.cr';
         $user->usuario = ucwords('CristinaArrietaAraya');
         $user->password = Hash::make('Exito2021');
         $user->rol = 3;
@@ -149,7 +149,7 @@ class UserSeeder extends Seeder
         $user->id = 207770701;
         $user->name = 'Mario';
         $user->apellido = 'Siu';
-        $user->email = ' mario.siu.araya@est.una.ac.cr';
+        $user->email = 'mario.siu.araya@est.una.ac.cr';
         $user->usuario = ucwords('MarioSiu');
         $user->password = Hash::make('123456789');
         $user->rol = 4;

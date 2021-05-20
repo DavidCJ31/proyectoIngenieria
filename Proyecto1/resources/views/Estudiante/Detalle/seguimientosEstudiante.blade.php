@@ -26,7 +26,9 @@
     @include('layouts.header')
     <!--Main Navigation-->
     <!-- Aqui empieza el  formulario -->
-    {{ $contador = 0 }}
+    @php
+    $contador = 0;
+    @endphp
 
     <div class="form-card">
         <h4>VICERRECTORIA DE DOCENCIA</h4>
@@ -63,9 +65,9 @@
                                 <td>{{ $seguimiento[3] }}</td>
                                 <td>{{ $seguimiento[4] }}</td>
                                 @if( $contador++ == 0)
-                                    <td><a href="/DescargarPDF/?id={{$seguimiento[2]}}&file=primerSeguimiento-{{$seguimiento[2]}}-{{$seguimiento[5]}}.pdf"><button class='btn btn-primary'>Descargar</button></a></td>
+                                <td><a href="/DescargarPDF/?id={{$seguimiento[2]}}&file=primerSeguimiento-{{$seguimiento[2]}}-{{$seguimiento[5]}}.pdf"><button class='btn btn-primary'>Descargar</button></a></td>
                                 @else
-                                    <td><a href="/DescargarPDF/?id={{$seguimiento[2]}}&file=seguimientoRegular-{{$seguimiento[2]}}-{{$seguimiento[5]}}.pdf"><button class='btn btn-primary'>Descargar</button></a></td>
+                                <td><a href="/DescargarPDF/?id={{$seguimiento[2]}}&file=seguimientoRegular-{{$seguimiento[2]}}-{{$seguimiento[5]}}.pdf"><button class='btn btn-primary'>Descargar</button></a></td>
                                 @endif
 
                                 <td>

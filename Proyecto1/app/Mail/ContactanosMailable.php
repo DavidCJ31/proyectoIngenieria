@@ -16,7 +16,7 @@ class ContactanosMailable extends Mailable
      *
      * @return void
      */
-    public $subject = "Seguimiento Estudiantil";
+    public $subject = "Actualizacion de la Informacion";
     public $nombre;
     public $apellido;
 

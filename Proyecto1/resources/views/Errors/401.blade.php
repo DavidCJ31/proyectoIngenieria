@@ -46,7 +46,7 @@
 
         })
         setTimeout(function() {
-            location.href = "logged_in";
+            location.href = "/logged_in";
         }, 4200);
 
      
