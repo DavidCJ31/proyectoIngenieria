@@ -17,12 +17,12 @@ class CreateUsersTable extends Migration
             $table->string('usuario',45);
             $table->tinyInteger('rol');
             $table->string('password',255);
-
+            $table->rememberToken();
             $table->integer('id');
             $table->string('name', 45);
             $table->string('apellido', 45);
             $table->string('email',45);
-
+            $table->timestamps();
             $table->primary('id');
         });
     }
