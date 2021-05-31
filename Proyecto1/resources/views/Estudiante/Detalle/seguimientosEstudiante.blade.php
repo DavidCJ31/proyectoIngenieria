@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
     <link href="{{ asset('css/estilo-Form.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://cdn.jsdelivr.net/npm/moment@2.27.0/min/moment.min.js'></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -53,9 +53,8 @@
                             <tr>
                                 <th scope="col">Estudiante</th>
                                 <th scope="col">Fecha</th>
-                                <th scope="col">Documento</th>
                                 <th scope="col">Seguimiento</th>
-                                <th scope="col" colspan="2">Archivo</th>
+                                <th scope="col" colspan="2">Archivo Adjunto</th>
                             </tr>
                         </thead>
                         <tbody id="tabla-solicitudes">
@@ -63,18 +62,19 @@
                             <tr style="height: 10px">
                                 <td>{{ $seguimiento[2] }}</td>
                                 <td>{{ $seguimiento[3] }}</td>
-                                <td>{{ $seguimiento[4] }}</td>
                                 @if( $contador++ == 0)
                                 <td><a href="/DescargarPDF/?id={{$seguimiento[2]}}&file=primerSeguimiento-{{$seguimiento[2]}}-{{$seguimiento[5]}}.pdf"><button class='btn btn-primary'>Descargar</button></a></td>
                                 @else
                                 <td><a href="/DescargarPDF/?id={{$seguimiento[2]}}&file=seguimientoRegular-{{$seguimiento[2]}}-{{$seguimiento[5]}}.pdf"><button class='btn btn-primary'>Descargar</button></a></td>
                                 @endif
-
+                                @if($seguimiento[4] != NULL)
+                                <td>{{$seguimiento[4]}} </td>
                                 <td>
-                                    @if($seguimiento[3] != NULL)
-                                    <a href="/Descargar/?id={{$seguimiento[2]}}&file={{$seguimiento[4]}}"><button class='btn btn-primary'>Descargar</button></a>
-                                    @endif
+                                    <a href="/Descargar/?id={{$seguimiento[2]}}&file={{$seguimiento[4]}}"><button class='btn btn-info'><i class="fa fa-download"></i> Archivo</button></a>
                                 </td>
+                                @else
+                                <td colspan="2">Sin archivo adjunto</td>
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>
