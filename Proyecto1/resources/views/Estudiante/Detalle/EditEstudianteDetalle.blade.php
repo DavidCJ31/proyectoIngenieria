@@ -56,12 +56,12 @@
                 <div class="input-group-append">
                     <span class="input-group-text">TEL. CELULAR:</span>
                 </div>
-                <input type="number" class="form-control no-spin" placeholder="Celular" name="campo-tel-celular" id="campo-tel-celular" aria-describedby="basic-addon2" require value="{{$estudianteDetalle->tel_celular}}">
+                <input type="number" class="form-control no-spin" placeholder="Celular" name="campo-tel-celular" id="campo-tel-celular" aria-describedby="basic-addon2" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==8) return false;" require value="{{$estudianteDetalle->tel_celular}}">
 
                 <div class="input-group-append">
                     <span class="input-group-text">TEL. HABITABIÓN:</span>
                 </div>
-                <input type="number" class="form-control no-spin" placeholder="Habitacion" name="campo-tel-habitacion" id="campo-tel-habitacion" aria-describedby="basic-addon2" require value="{{$estudianteDetalle->tel_habitacion}}">
+                <input type="number" class="form-control no-spin" placeholder="Habitacion" name="campo-tel-habitacion" id="campo-tel-habitacion" aria-describedby="basic-addon2" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==8) return false;" require value="{{$estudianteDetalle->tel_habitacion}}">
             </div>
 
             <div class="input-group mb-3">
