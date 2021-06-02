@@ -272,6 +272,7 @@
                     var cell = $('#checkbox-' + asistencia[j].estudiante_id)
                     $("#trasistencia-"+asistencia[j].estudiante_id).addClass("table-success")
                     $("#btnEnviar").prop("disabled", true)
+                    $("#btnEliminar").prop("disabled", true)
                     if (asistencia[j].presencialidad == 1) {
                         cell.prop( "checked" ,"true");
                         cell.prop("disabled", true)
@@ -322,7 +323,6 @@
             });
 
         }
-
         function limpiarFormurario() {}
     });
 </script>

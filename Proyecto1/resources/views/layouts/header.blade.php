@@ -41,7 +41,7 @@
             @if(Auth::user() == null)
             <!-- ///////////////////////////////////////////////////////////////////////////// Header Vacio ///////////////////////////////////////////////////////////////////////////// -->
             <ul class="navbar-nav mr-auto navbar-rigth">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/">Inicio<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
@@ -50,7 +50,7 @@
             @case(0)
             <!-- ///////////////////////////////////////////////////////////////////////////// Header Super Usuario ///////////////////////////////////////////////////////////////////////////// -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -86,7 +86,7 @@
             @case(1)
             <!-- ///////////////////////////////////////////////////////////////////////////// Header Administrador ///////////////////////////////////////////////////////////////////////////// -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -97,23 +97,22 @@
             @case(2)
             <!-- ///////////////////////////////////////////////////////////////////////////// Header Asesor ///////////////////////////////////////////////////////////////////////////// -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a type="button" class="nav-link" id="seguimientoModal">Seguimientos</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/Calendario">Calendario</a>
                 </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Opciones
+                        Solicitudes de Seguimiento
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/SolicitudPrimerSeguimiento">Solicitudes de Primer Contacto</a>
-                        <a class="dropdown-item" href="/SolicitudSeguimientoRegular">Solicitudes de seguimiento regular</a>
-                        <a class="dropdown-item" href="/horario-citas">Guardar horario</a>
+                        <a class="dropdown-item" href="/SolicitudPrimerSeguimiento">Primer Contacto</a>
+                        <a class="dropdown-item" href="/SolicitudSeguimientoRegular">Seguimiento Regular</a>
                     </div>
                 </li>
             </ul>
@@ -121,7 +120,7 @@
             @case(3)
             <!-- ///////////////////////////////////////////////////////////////////////////// Header Tutor ///////////////////////////////////////////////////////////////////////////// -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -138,30 +137,32 @@
             @case(4)
             <!-- ///////////////////////////////////////////////////////////////////////////// Header Estudiante ///////////////////////////////////////////////////////////////////////////// -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/logged_in">Inicio<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/SolicitudSeguimientosEstudiante">Solicitudes<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/calendarioEstudiante">Calendario<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/EstudianteDetalle">Actulizar Informacion Personal<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Opciones
+                        Solicitudes de Seguimiento
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/EstudianteDetalle">Actulizar Informacion Personal</a>
-                        <a class="dropdown-item" href="/SolicitudPrimerSeguimiento/create">Solicitar Primer Contacto</a>
-                        <a class="dropdown-item" href="/SolicitudSeguimientoRegular/create">Solicitar Seguimiento Regular</a>
+                        <a class="dropdown-item" href="/SolicitudPrimerSeguimiento/create">Primer Contacto</a>
+                        <a class="dropdown-item" href="/SolicitudSeguimientoRegular/create">Seguimiento Regular</a>
                     </div>
                 </li>                
             </ul>
             @break
             @default
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/">Inicio<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
