@@ -28,7 +28,6 @@ class CreateNewUser implements CreatesNewUsers
             'nombre' => ['required', 'string', 'max:45'],
             'apellido' => ['required', 'string', 'max:45'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'usuario' => ['required', 'string', 'max:45'],
             'password' => $this->passwordRules(),
         ])->validate();
 
@@ -39,7 +38,7 @@ class CreateNewUser implements CreatesNewUsers
             'name' => $input['nombre'],
             'apellido' => $input['apellido'],
             'email' => $input['email'],
-            'usuario' => $input['usuario'],
+            'usuario' => $input['nombre'].$input['apellido'],
         ]);
         estudiante::create([
             'id' => $input['id'],

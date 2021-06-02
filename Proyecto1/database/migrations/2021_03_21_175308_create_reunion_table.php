@@ -24,7 +24,7 @@ class CreateReunionTable extends Migration
             $table->dateTime('end');
             $table->integer('duracion');
             
-            $table->text('descripcion');
+            $table->text('descripcion')->nullable();
 
             $table->string('tipo', 45);
 

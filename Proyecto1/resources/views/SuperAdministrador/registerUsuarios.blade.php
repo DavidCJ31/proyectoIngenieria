@@ -38,15 +38,8 @@
                         <div class="row">
                             <div class="col">
                                 <div class="input-group mb-4">
-                                    <input class="form-control" type="text" id="cedula" name="id" placeholder="Cédula" required autofocus autocomplete="id">
+                                    <input class="form-control no-spin" type="number" id="cedula" name="id" placeholder="Cédula" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==9) return false;" required autofocus autocomplete="id">
                                     <span class="input-group-text"><i class="fas fa-id-card text-primary"></i></span>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="input-group mb-4">
-                                    <input class="form-control" type="text" id="usuario" name="usuario" placeholder="Usuario" required autofocus autocomplete="id">
-
-                                    <span class="input-group-text"><i class="fas fa-user text-primary"></i></span>
                                 </div>
                             </div>
                         </div>
