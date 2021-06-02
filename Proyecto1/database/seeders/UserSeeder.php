@@ -132,10 +132,10 @@ class UserSeeder extends Seeder
 
         //Estudiantes
         $user = new User;
-        $user->id = 207600764;
+        $user->id = 207600154;
         $user->name = 'David';
         $user->apellido = 'Cordero';
-        $user->email = 'davidcordero@una.cr';
+        $user->email = 'david.cordero.jimenez@est.una.ac.cr';
         $user->usuario = ucwords('DavidCordero');
         $user->password = Hash::make('123456789');
         $user->rol = 4;

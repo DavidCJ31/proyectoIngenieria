@@ -52,9 +52,6 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">Calendarizar Seguimiento</h5>
-                        <button type="button" class="close" data-dismiss="modal" id="cerrar" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                     <div class="modal-body">
                         <input type="hidden" name="campo-id" id="campo-id">

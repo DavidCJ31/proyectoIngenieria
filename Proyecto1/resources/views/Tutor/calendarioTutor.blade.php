@@ -46,9 +46,6 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">Asistencia de Estudiantes</h5>
-                        <button type="button" class="close" data-dismiss="modal" id="cerrar" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                     <div class="modal-body table-responsive">
                         <table class="table">
@@ -67,7 +64,6 @@
                     <div class="modal-footer">
                         <button id='btnEliminar' type="button" class="btn btn-danger" > Eliminar </button>
                         <button id="btnEnviar" class="btn btn-success">Enviar</button>
-                        <button id="btnCancelar" data-dismiss="modal" class="btn btn-primary">Cancelar</button>
                     </div>
                 </div>
             </div>
