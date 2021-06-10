@@ -57,11 +57,11 @@ class UserSeeder extends Seeder
         $user->email = 'kattia.salas.perez@una.cr';
         $user->usuario = ucwords('KattiaSalasPerez');
         $user->password = Hash::make('Exito2021');
-        $user->rol = 0;
+        $user->rol = 2;
         $user->save();
-        $superAdministrador = new super_administrador();
-        $superAdministrador->id = $user->id;
-        $superAdministrador->save();
+        $asesor = new asesor;
+        $asesor->id = $user->id;
+        $asesor->save();
 
         //Asesores
         $user = new User;

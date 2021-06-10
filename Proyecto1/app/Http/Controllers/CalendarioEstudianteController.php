@@ -174,7 +174,7 @@ class CalendarioEstudianteController extends Controller
             $reunion = reunion::find($id);
             $asesor = asesor::find($reunion->asesor_id)->user;
             $datos = array(
-
+                'tipo' => $reunion->tipo,
                 'estado_reu' => $reunion->estado,
                 'nombre_asesor' => $asesor->name,
                 'apellido_asesor' => $asesor->apellido,

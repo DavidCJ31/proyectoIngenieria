@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\lista_curso_estudiante;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Models\user;
+use Illuminate\Support\Facades\Storage;
 
 
 class PrimerSeguimientoController extends Controller
@@ -94,6 +95,7 @@ class PrimerSeguimientoController extends Controller
                 'fecha' =>  $request->input('campo-fecha')
             ];
         }
+        Storage::makeDirectory('public/'. $primer_seguimiento->estudiante_id);
         $pdf = PDF::loadView('PDF/primerSeguimiento', $data)
             ->save(storage_path('app/public/' . $primer_seguimiento->estudiante_id) . '/' . 'primerSeguimiento-' . $primer_seguimiento->estudiante_id . '-' . $primer_seguimiento->id . '.pdf');
 

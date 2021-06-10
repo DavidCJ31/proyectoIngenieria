@@ -359,6 +359,21 @@
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
+                    <span class="input-group-text">Campus actual: </span>
+                </div>
+                <select class="form-control" name="campo-universidad-campus" id="campo-universidad-campus"  aria-describedby="basic-addon1" require value="{{ $estudianteDetalle->universidadCampus}}">
+                    <option name="Campus Omar Dengo">Campus Omar Dengo</option>
+                    <option name="Campus Benjamín Núñez">Campus Benjamín Núñez</option>
+                    <option name="Sede Interuniversitaria">Sede Interuniversitaria</option>
+                    <option name="Campus Sarapiquí">Campus Sarapiquí</option>
+                    <option name="Campus Coto">Campus Coto</option>
+                    <option name="Campus Pérez Zeledón">Campus Pérez Zeledón</option>
+                    <option name="Campus Liberia">Campus Liberia</option>
+                    <option name="Campus Nicoya">Campus Nicoya</option>
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
                     <span class="input-group-text">Año de ingreso a la UNA: </span>
                     <input type="number" class="form-control" name="campo-universidad-ingreso" id="campo-universidad-ingreso" aria-describedby="basic-addon1" min="1976" value="{{ $estudianteDetalle->universidadAnnoIngreso}}">
                 </div>

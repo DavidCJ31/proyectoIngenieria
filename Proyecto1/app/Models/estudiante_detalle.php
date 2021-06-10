@@ -36,6 +36,7 @@ class estudiante_detalle extends Model
         'antecedenteAdecuacionTipo',
         'universidadAdecuacion',
         'universidadCarrera',
+        'universidadCampus',
         'universidadAnnoIngreso',
         'universidadNivel',
         'universidadOpcion',

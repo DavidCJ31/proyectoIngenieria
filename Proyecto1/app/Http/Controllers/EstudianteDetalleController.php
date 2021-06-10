@@ -80,6 +80,7 @@ class EstudianteDetalleController extends Controller
         $estudiante_detalle->antecedenteAdecuacionTipo = $request->input('campo-antecedente-adecuacionTipo');
         $estudiante_detalle->universidadAdecuacion = $request->input('campo-universidad-adecuacion');
         $estudiante_detalle->universidadCarrera = $request->input('campo-universidad-carrera');
+        $estudiante_detalle->universidadCampus = $request->input('campo-universidad-campus');
         $estudiante_detalle->universidadAnnoIngreso = $request->input('campo-universidad-ingreso');
         $estudiante_detalle->universidadNivel = $request->input('campo-universidad-nivel');
         $estudiante_detalle->universidadOpcion = $request->input('campo-universidad-opcion');
@@ -168,6 +169,7 @@ class EstudianteDetalleController extends Controller
                 'antecedenteAdecuacionTipo' => $request->input('campo-antecedente-adecuacionTipo'),
                 'universidadAdecuacion' => $request->input('campo-universidad-adecuacion'),
                 'universidadCarrera' => $request->input('campo-universidad-carrera'),
+                'universidadCampus' => $request->input('campo-universidad-campus'),
                 'universidadAnnoIngreso' => $request->input('campo-universidad-ingreso'),
                 'universidadNivel' => $request->input('campo-universidad-nivel'),
                 'universidadOpcion' => $request->input('campo-universidad-opcion'),

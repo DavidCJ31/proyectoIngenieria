@@ -40,6 +40,7 @@
                             <tr>
                                 <th scope="col">CEDULA</th>
                                 <th scope="col">NOMBRE</th>
+                                <th scope="col">CAMPUS</th>
                                 <th scope="col">SITUACION</th>
                                 <th scope="col" colspan="2">ACCIONES</th>
                             </tr>
@@ -48,7 +49,12 @@
                             @foreach($seguimientos as $seguimiento)
                             <tr style="height: 10px">
                                 <td>{{$seguimiento->estudiante_id}}</td>
-                                <td>{{App\Models\User::find(App\Models\estudiante::find($seguimiento->estudiante_id)->id)->name}}</td>
+                                @php
+                                $estudiante = App\Models\estudiante::find($seguimiento->estudiante_id)->user;
+                                $estudianteDetalle = App\Models\estudiante_detalle::where('estudiante_id', $seguimiento->estudiante_id)->first();
+                                @endphp
+                                <td>{{$estudiante->name." ".$estudiante->apellido}}</td>
+                                <td>{{$estudianteDetalle->universidadCampus}}</td>
                                 <td>{{$seguimiento->situacion}}</td>
                                 <td><a href="javascript:window.open('{{route('SolicitudSeguimientoRegular.show', $seguimiento->estudiante_id)}}','','width=1584,height=864,left=100,top=50,toolbar=yes');void 0"><button class='btn btn-warning btn-sm'>Ver</button></a></td>
                                 <td><a href="{{route('CalendarizarSeguimientoRegular.edit', $seguimiento->estudiante_id)}}"><button class='btn btn-primary btn-sm'><i class="fa fa-check-circle-o" aria-hidden="true"></i> Aceptar Solicitud</button></a></td>

@@ -49,6 +49,7 @@ class CreateEstudianteDetallesTable extends Migration
             //DATOS UNIVERSITARIO
             $table->string('universidadAdecuacion', 100)->nullable();
             $table->string('universidadCarrera', 100)->nullable();
+            $table->string('universidadCampus', 100)->nullable();
             $table->integer('universidadAnnoIngreso')->nullable();
             $table->string('universidadNivel', 100)->nullable();
             $table->string('universidadOpcion', 100)->nullable();
