@@ -71,6 +71,8 @@
                     <h4 class="text-center" id='estado'></h4>
                     <h4 class="text-center" id='asesor'></h4>
                     <h4 class="text-center" id='emailAsesor'></h4>
+                    <h4 class="text-center" id='descripcion'></h4>
+                    
                     </div>
                 </div>
             </div>
@@ -176,6 +178,7 @@ listaClases = [];
                         $("#estado").append("Estado: "+ reunion.estado_reu);
                         $("#asesor").append("Nombre de la persona asesora: "+ reunion.nombre_asesor +" "+ reunion.apellido_asesor) ;
                         $("#emailAsesor").append("Email de persona asesora: " + reunion.emailAsesor);
+                        $("#descripcion").append("Descripcion: "+ reunion.descripcion)
 
                         $('#exampleModalCenter2').modal('toggle');
                     },
