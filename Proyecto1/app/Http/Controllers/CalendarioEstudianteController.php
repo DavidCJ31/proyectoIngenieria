@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\asesor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\estudiante;
@@ -12,6 +13,7 @@ use App\Models\curso;
 use App\Models\aula;
 use App\Models\tutor;
 use App\Models\lista_curso_estudiante;
+use App\Models\reunion;
 use Exception;
 
 class CalendarioEstudianteController extends Controller
@@ -54,14 +56,34 @@ class CalendarioEstudianteController extends Controller
                     'clase_id' => $clase->id,
                     'start' => $clase->fecha . ' '. $clase->hora_inicio,
                     'end' => $clase->fecha . ' '. $clase->hora_final,
-                    'nombre_curso' => $curso->nombre
+                    'nombre_curso' => $curso->nombre,
+                    'reunion_id' => '',
+                    'tipo_evento' => 'curso'
                     );
                     $data = $data . json_encode($temp) . ',';
                 }
-                $data = substr($data, 0, -1);
+            }
+
+            $listaReuniones = reunion::where('estudiante_id',$id)->get();
+            foreach($listaReuniones as $reunion){
+                $temp = array(
+                    'id' => $reunion->id,
+                    'title' => $reunion->tipo,
+                    'clase_id' =>'',
+                    'start' => $reunion->start,
+                    'end' => $reunion->end,
+                    'nombre_curso' => '',
+                    'reunion_id' => $reunion->id,
+                    'tipo_evento' => 'reunion'
+                    );
+                    $data = $data . json_encode($temp) . ',';
+
+            }
+
+
+            $data = substr($data, 0, -1);
                 $data = $data . ']';
                 echo $data;
-            }
             
         } catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
@@ -148,6 +170,22 @@ class CalendarioEstudianteController extends Controller
     public function update(Request $request, $id)
     {
         //
+        try {
+            $reunion = reunion::find($id);
+            $asesor = asesor::find($reunion->asesor_id)->user;
+            $datos = array(
+
+                'estado_reu' => $reunion->estado,
+                'nombre_asesor' => $asesor->name,
+                'apellido_asesor' => $asesor->apellido,
+                'emailAsesor' => $asesor->email
+            );
+            return response($datos, 200, $datos);
+            
+        } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return response('Erorr a la hora de cargar los datos de la clase', 400);
+        }
     }
 
     /**

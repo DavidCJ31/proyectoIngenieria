@@ -29,7 +29,7 @@
     <!-- Aqui empieza el  formulario -->
     <div class="form-card">
         <h4 class="text-center" >VICERRECTORIA DE DOCENCIA</h4>
-        <H5 class="text-center" >EXITO ACADEMICO</H5>
+        <H5 class="text-center" >ÉXITO ACADEMICO</H5>
         <h4 class="text-center" >CALENDARIO DEL ESTUDIANTE</h4>
         <h3 class="text-center">{{$estudiante->name}} {{$estudiante->apellido}}</h3>
 
@@ -57,7 +57,30 @@
                 </div>
             </div>
         </div>
-        <!-- FIN Disponibilidad del Estudiante -->
+        <!-- FIN del modal para desplegar la clase -->
+
+
+        <!-- Modal para mostrar una reunion-->
+
+        <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body table-responsive">
+                    <h2 class="text-center">Informacion de la reunion</h3>
+                    <h4 class="text-center" id='tipo'></h4>
+                    <h4 class="text-center" id='estado'></h4>
+                    <h4 class="text-center" id='asesor'></h4>
+                    <h4 class="text-center" id='emailAsesor'></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FIN del modal para desplegar la reunion -->
+
+
+
+
     </div>
     @include("layouts.footer")
 </body>
@@ -85,52 +108,86 @@ listaClases = [];
                 right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
             },
             eventClick: function(info) {
+                console.log(info.event.extendedProps.reunion_id);
                 console.log(info.event.extendedProps.clase_id);
-                $("#infoCurso").empty();
-                   $("#codigoAula").empty();
-                   $("#sedeAula").empty();
-                   $("#nombreAula").empty();
-                   $("#nombreTutor").empty();
-                   $("#horaInicio").empty();
-                   $("#fechaClase").empty();
-                $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: "/calendarioEstudiante/"+info.event.extendedProps.clase_id,
-                type: 'get',
-                dataType: 'JSON',
-                success: function(clase) {
-                    console.log(clase);
-                    /*
-                    <h4 id='infoCurso'></h4>
-                    <h4 id='codigoAula'></h4>
-                    <h4 id='sedeAula'></h4>
-                    <h4 id='nombreAula'></h4>
-                    <h4 id='nombreTutor'></h4>
-                    <h4 id='horaInicio'></h4>
-                    <h4 id='fechaClase'></h4>
-                    */
-                   $("#infoCurso").append("Curso: "+clase.nombre_curso);
-                   $("#codigoAula").append("Codigo del Aula: "+clase.codigo_aula);
-                   $("#sedeAula").append("Sede: "+clase.sede_aula);
-                   $("#nombreAula").append("Aula: "+clase.nombre_aula);
-                   $("#nombreTutor").append("Tutor: "+clase.nombre_tutor +" "+clase.apellido_tutor);
-                   $("#horaInicio").append("Hora: "+clase.hora_inicio);
-                   $("#fechaClase").append("Fecha: "+clase.fecha);
-                   
+                console.log(info.event.extendedProps.tipo_evento);
+                if(info.event.extendedProps.tipo_evento == 'curso'){
+                    $("#infoCurso").empty();
+                    $("#codigoAula").empty();
+                    $("#sedeAula").empty();
+                    $("#nombreAula").empty();
+                    $("#nombreTutor").empty();
+                    $("#horaInicio").empty();
+                    $("#fechaClase").empty();
+                    $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "/calendarioEstudiante/"+info.event.extendedProps.clase_id,
+                    type: 'get',
+                    dataType: 'JSON',
+                    success: function(clase) {
+                        console.log(clase);
+                        /*
+                        <h4 id='infoCurso'></h4>
+                        <h4 id='codigoAula'></h4>
+                        <h4 id='sedeAula'></h4>
+                        <h4 id='nombreAula'></h4>
+                        <h4 id='nombreTutor'></h4>
+                        <h4 id='horaInicio'></h4>
+                        <h4 id='fechaClase'></h4>
+                        */
+                    $("#infoCurso").append("Curso: "+clase.nombre_curso);
+                    $("#codigoAula").append("Codigo del Aula: "+clase.codigo_aula);
+                    $("#sedeAula").append("Sede: "+clase.sede_aula);
+                    $("#nombreAula").append("Aula: "+clase.nombre_aula);
+                    $("#nombreTutor").append("Tutor: "+clase.nombre_tutor +" "+clase.apellido_tutor);
+                    $("#horaInicio").append("Hora: "+clase.hora_inicio);
+                    $("#fechaClase").append("Fecha: "+clase.fecha);
+                    
 
-                    $('#exampleModalCenter').modal('toggle');
-                },
-                error: function(result) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Error al cargar la clase'
-                        })
-                }
-            });
+                        $('#exampleModalCenter').modal('toggle');
+                    },
+                    error: function(result) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Error al cargar la clase'
+                            })
+                    }
+                });
+            }
+            else{
+                    $("#tipo").empty();
+                    $("#estado").empty();
+                    $("#asesor").empty();
+                    $("#emailAsesor").empty();
+                    
+                    $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "/calendarioEstudiante/"+info.event.extendedProps.reunion_id,
+                    type: 'put',
+                    dataType: 'JSON',
+                    success: function(reunion) {
+                        console.log(reunion);
+                        $("#tipo").append("Tipo: "+ reunion.tipo_reu);
+                        $("#estado").append("Estado: "+ reunion.estado_reu);
+                        $("#asesor").append("Nombre de la persona asesora: "+ reunion.nombre_asesor +" "+ reunion.apellido_asesor) ;
+                        $("#emailAsesor").append("Email de persona asesora: " + reunion.emailAsesor);
 
+                        $('#exampleModalCenter2').modal('toggle');
+                    },
+                    error: function(result) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Error al cargar la clase'
+                            })
+                    }
+                });
+            }
             },
             events: "{{url('/calendarioEstudiante/create')}}"
         });
