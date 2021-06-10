@@ -172,7 +172,7 @@ listaClases = [];
                     dataType: 'JSON',
                     success: function(reunion) {
                         console.log(reunion);
-                        $("#tipo").append("Tipo: "+ reunion.tipo_reu);
+                        $("#tipo").append("Tipo: "+ reunion.tipo);
                         $("#estado").append("Estado: "+ reunion.estado_reu);
                         $("#asesor").append("Nombre de la persona asesora: "+ reunion.nombre_asesor +" "+ reunion.apellido_asesor) ;
                         $("#emailAsesor").append("Email de persona asesora: " + reunion.emailAsesor);
