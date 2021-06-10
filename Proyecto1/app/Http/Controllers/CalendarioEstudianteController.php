@@ -178,7 +178,8 @@ class CalendarioEstudianteController extends Controller
                 'estado_reu' => $reunion->estado,
                 'nombre_asesor' => $asesor->name,
                 'apellido_asesor' => $asesor->apellido,
-                'emailAsesor' => $asesor->email
+                'emailAsesor' => $asesor->email,
+                'descripcion' => $reunion->descripcion
             );
             return response($datos, 200, $datos);
             
