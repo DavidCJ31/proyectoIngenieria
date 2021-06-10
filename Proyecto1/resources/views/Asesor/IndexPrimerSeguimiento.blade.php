@@ -38,6 +38,7 @@
                                 <th scope="col">CEDULA</th>
                                 <th scope="col">NOMBRE</th>
                                 <th scope="col">CAMPUS</th>
+                                <th scope="col">CARRERA</th>
                                 <th scope="col">MATERIA EN LA QUE SOLICITA TUTORIA</th>
                                 <th scope="col">NOMBRE DEL/DE LA PROFESOR/A</th>
                                 <th scope="col">CREDITOS DEL CURSO</th>
@@ -56,6 +57,7 @@
                                 @endphp
                                 <td>{{$estudiante->name." ".$estudiante->apellido}}</td>
                                 <td>{{$estudianteDetalle->universidadCampus}}</td>
+                                <td>{{$estudianteDetalle->universidadCarrera}}</td>
                                 <td>{{$seguimiento->materiaTutoria}}</td>
                                 <td>{{$seguimiento->profesorCurso}}</td>
                                 <td>{{$seguimiento->creditoCruso}}</td>

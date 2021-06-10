@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\estudiante;
 use App\Models\user;
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ComprobanteReunionEmail;
 
 class SeguimientoRegularController extends Controller
 {
@@ -79,6 +81,12 @@ class SeguimientoRegularController extends Controller
         reunion::where('id', $request->input('campo-id'))->update([
             'estado' => 'Realizada'
         ]);
+
+        $reunion = reunion::find($request->input('campo-id'));
+        //Mandar Email
+        $estudiante = estudiante::find($seguimiento_regular->estudiante_id)->user;
+        $correo = new ComprobanteReunionEmail($estudiante, $reunion, $seguimiento_regular->id, 'seguimientoRegular-');
+        Mail::to($estudiante->email)->send($correo);
         return redirect('/Calendario');
     }
 

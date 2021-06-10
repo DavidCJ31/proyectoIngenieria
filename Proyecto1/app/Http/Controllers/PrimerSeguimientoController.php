@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ComprobanteReunionEmail;
 use App\Models\curso;
 use App\Models\detalle_curso;
 use Illuminate\Http\Request;
@@ -95,13 +97,21 @@ class PrimerSeguimientoController extends Controller
                 'fecha' =>  $request->input('campo-fecha')
             ];
         }
-        Storage::makeDirectory('public/'. $primer_seguimiento->estudiante_id);
+        Storage::makeDirectory('public/' . $primer_seguimiento->estudiante_id);
         $pdf = PDF::loadView('PDF/primerSeguimiento', $data)
             ->save(storage_path('app/public/' . $primer_seguimiento->estudiante_id) . '/' . 'primerSeguimiento-' . $primer_seguimiento->estudiante_id . '-' . $primer_seguimiento->id . '.pdf');
 
         reunion::where('id', $request->input('campo-id'))->update([
             'estado' => 'Realizada'
         ]);
+
+        $reunion = reunion::find($request->input('campo-id'));
+        //Mandar Email
+
+        $correo = new ComprobanteReunionEmail($estudiante, $reunion, $primer_seguimiento->id, 'primerSeguimiento-');
+        Mail::to($estudiante->email)->send($correo);
+
+
         return redirect('/Calendario');
     }
 
