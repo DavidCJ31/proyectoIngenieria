@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\seguimiento_regular;
 use App\Models\solicitudes_primer_seguimiento;
 use App\Models\solicitudes_seguimiento_regular;
+use App\Models\User;
 
 class CalendarioController extends Controller
 {

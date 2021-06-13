@@ -75,6 +75,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/horarioAsesor', [HorarioAsesorController::class, 'tablaHorarios']);
 
     Route::get('/Estudiante/Listar', [EstudianteController::class, 'listar']);
+    Route::get('/Asesor/Listar', [AsesorController::class, 'listar']);
 
     Route::get('/Estudiante/ValidarDetalle', [EstudianteController::class, 'ValidarDetalle'])->name('Estudiante.ValidarDetalle');
     Route::get('/Estudiante/ValidarPrimerSeguimiento', [EstudianteController::class, 'ValidarPrimerSeguimiento']);

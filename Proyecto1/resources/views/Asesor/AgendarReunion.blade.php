@@ -72,6 +72,10 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="campo-asesor">Asesor</label>
+                            <select class="form-control" name="campo-asesor" id="campo-asesor"></select>
+                        </div>
+                        <div class="form-group">
                             <label for="campo-descripcion">Descripcion o Link de reunion virtual</label>
                             <textarea class="form-control" name="campo-descripcion" id="campo-descripcion" placeholder="descripcion o link"></textarea>
                         </div>
@@ -94,6 +98,32 @@
 </html>
 
 <script>
+    $(document).ready(function() {
+        $.ajax({
+            url: '/Asesor/Listar',
+            type: 'get',
+            dataType: 'JSON',
+            success: function(response) {
+                var len = response.length;
+                for (var i = 0; i < len; i++) {
+                    var id = response[i].id;
+                    var nombre = response[i].nombre;
+                    var apellido = response[i].apellido;
+                    var selected1 = false;
+                    if (id == '{{Auth::user()->id}}') {
+                        selected1 = true
+                    }
+                    $('#campo-asesor').append($('<option>', {
+                        value: id,
+                        text: nombre + " " + apellido,
+                        selected: selected1
+                    }));
+                }
+            },
+            error: function(result) {}
+        });
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -178,7 +208,7 @@
 
             nuevoEvento = {
                 id: $('#campo-id').val(),
-                asesor_id: '{{$asesor->id}}',
+                asesor_id: $('#campo-asesor').val(),
                 estudiante_id: '{{$estudiante-> id}}',
                 start: $('#campo-fecha').val() + " " + $('#campo-hora').val(),
                 end: fecha_end,

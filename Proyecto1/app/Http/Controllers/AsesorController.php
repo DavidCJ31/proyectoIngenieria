@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\referencia;
 use App\Mail\referenciamail;
 use App\Models\asesor;
-use App\Models\user;
+use App\Models\User;
 
 
 
@@ -97,6 +97,25 @@ class AsesorController extends Controller
         $user = user::findOrFail($id);
         $user->delete();
         return $this->show();
+    }
+
+    public function listar()
+    {
+        $data = '[';
+
+        foreach (asesor::all() as $asesor) {
+            $user = User::find($asesor->id);
+
+            $temp = array(
+                'id' => $asesor->id,
+                'nombre' => $user->name,
+                'apellido' => $user->apellido
+            );
+            $data = $data . json_encode($temp) . ',';
+        }
+        $data = substr($data, 0, -1);
+        $data = $data . ']';
+        return $data;
     }
 }
 
