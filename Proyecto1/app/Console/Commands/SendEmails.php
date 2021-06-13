@@ -65,8 +65,8 @@ class SendEmails extends Command
             if ($ahora == $formated_date) {
                 $correo1 = new RecordarCitaEmail($estudiante, $reunion, $asesor);
                 $correo2 = new RecordatorioCitaAsesor($estudiante, $reunion, $asesor);
-                Mail::to('mariosiua@hotmail.com')->send($correo1);
-                Mail::to('mariosiua@hotmail.com')->send($correo2);
+                Mail::to($estudiante->email)->send($correo1);
+                Mail::to($asesor->email)->send($correo2);
                 $this->info("Enviando Correo a " . $estudiante->name . " " . $estudiante->apellido);
             }
         }

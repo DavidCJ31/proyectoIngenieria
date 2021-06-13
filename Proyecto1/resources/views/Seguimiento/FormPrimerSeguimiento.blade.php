@@ -53,7 +53,7 @@
                 </div>
                 <select class="form-control" name="campo-curso" id="campo-curso" form="formPrimerSeguimiento" aria-describedby="basic-addon2" style="margin-right: 15px;">
                     @foreach($info_cursos as $curso)
-                    <option value="{{$curso[0]}}">{{ $curso[8] }}</option>
+                    <option value="{{$curso[0]}}">{{$curso[8]}} Tutor: {{$curso[1]}} Periodo: {{$curso[3]}}-{{$curso[4]}}-{{$curso[2]}} Dia: {{$curso[7]}} Hora: {{$curso[5]}}</option>
                     @endforeach
                 </select>
             </div>

@@ -145,18 +145,19 @@ class CalendarioController extends Controller
                 ->get();
             $All_Info = array();
             foreach ($detalle_cursos as $curso) {
+                $tutor = User::find($curso->tutor_id);
                 $info_cursos = array();
-                $info_cursos[] = $curso->id;
-                $info_cursos[] = $curso->tutor_id;
-                $info_cursos[] = $curso->anno;
-                $info_cursos[] = $curso->periodo;
-                $info_cursos[] = $curso->num_periodo;
-                $info_cursos[] = $curso->hora_inicio;
-                $info_cursos[] = $curso->hora_final;
-                $info_cursos[] = $curso->dia;
+                $info_cursos[] = $curso->id;//0
+                $info_cursos[] = $tutor->name . " " . $tutor->apellido;//1
+                $info_cursos[] = $curso->anno;//2
+                $info_cursos[] = $curso->periodo;//3
+                $info_cursos[] = $curso->num_periodo;//4
+                $info_cursos[] = $curso->hora_inicio;//5
+                $info_cursos[] = $curso->hora_final;//6
+                $info_cursos[] = $curso->dia;//7
                 foreach ($cursos as $cur) {
                     if ($curso->curso_codigo == $cur->codigo) {
-                        $info_cursos[] = $cur->nombre;
+                        $info_cursos[] = $cur->nombre;//8
                         $info_cursos[] = $cur->curso_necesario;
                         $All_Info[] = $info_cursos;
                     }
