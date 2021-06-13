@@ -102,7 +102,8 @@ class PrimerSeguimientoController extends Controller
             ->save(storage_path('app/public/' . $primer_seguimiento->estudiante_id) . '/' . 'primerSeguimiento-' . $primer_seguimiento->estudiante_id . '-' . $primer_seguimiento->id . '.pdf');
 
         reunion::where('id', $request->input('campo-id'))->update([
-            'estado' => 'Realizada'
+            'estado' => 'Realizada',
+            'backgroundColor' => '#FF0000'
         ]);
 
         $reunion = reunion::find($request->input('campo-id'));

@@ -33,7 +33,7 @@
         <h4>HORARIO ASESOR</h4>
         <div class="form-card">
             <div class="container">
-            <h5>Calendario de {{Auth::user()->name}} {{Auth::user()->apellido}}</h5>
+                <h5>Calendario de {{Auth::user()->name}} {{Auth::user()->apellido}}</h5>
                 <div id="calendar"></div>
             </div>
         </div>
@@ -42,7 +42,7 @@
         <!-- Modal -->
         <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
+                <div class="modal-content" id="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="ModalLongTitle"></h5>
                     </div>
@@ -52,7 +52,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <label for="campo-fecha">Fecha</label>
-                                <input type="date" class="form-control" name="campo-fecha" id="campo-fecha" disabled>
+                                <input type="date" class="form-control" name="campo-fecha" id="campo-fecha">
                             </div>
                         </div>
                         <div class="form-row">
@@ -75,16 +75,12 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-3">
-                                <label for="campo-color">Color</label>
-                                <input type="color" class="form-control" name="campo-color" id="campo-color" placeholder="color">
-                            </div>
-                            <div class="form-group col-md-3">
                                 <label for="campo-estado">Estado</label>
                                 <input type="text" class="form-control" name="campo-estado" id="campo-estado" disabled>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer" id="modal-footer">
                         <button id="btnReunion" class="btn btn-info">Realizar Reunion</button>
                         <button id="btnModificar" class="btn btn-secondary">Modificar</button>
                         <button id="btnEliminar" class="btn btn-danger">Cancelar cita</button>
@@ -130,15 +126,27 @@
                     $("#campo-hora").prop("disabled", true);
                     $("#campo-duracion").prop("disabled", true);
                     $("#campo-descripcion").prop("disabled", true);
+                    $("#campo-fecha").prop("disabled", true);
                     $("#campo-color").prop("disabled", true);
+                    $('#modal-content').css("background-color","#ff9a9a");
+                    $("#modal-footer").css('display', 'none');
+                    $("#btnReunion").css('display', 'none');
+                    $("#btnModificar").css('display', 'none');
+                    $("#btnEliminar").css('display', 'none');
                 } else {
                     $("#btnReunion").prop("disabled", false);
                     $("#btnModificar").prop("disabled", false);
                     $("#btnEliminar").prop("disabled", false);
                     $("#campo-hora").prop("disabled", false);
                     $("#campo-duracion").prop("disabled", false);
+                    $("#campo-fecha").prop("disabled", false);
                     $("#campo-descripcion").prop("disabled", false);
                     $("#campo-color").prop("disabled", false);
+                    $('#modal-content').css("background-color","#C3FF94");
+                    $("#modal-footer").css('display', 'flex');
+                    $("#btnReunion").css('display', 'flex');
+                    $("#btnModificar").css('display', 'flex');
+                    $("#btnEliminar").css('display', 'flex');
                 }
 
 
@@ -183,24 +191,24 @@
                 confirmButtonText: 'Si, cancelarla!',
                 cancelButtonText: 'No, cancelarla!',
                 reverseButtons: true
-                }).then((result) => {
+            }).then((result) => {
                 if (result.isConfirmed) {
 
                     ObjEvento = recolectarDatosGUI("DELETE");
                     EnviarInformacion('/' + $('#campo-id').val(), ObjEvento);
                     swal.fire(
-                    'Eliminada!',
-                    'Se elimino la reunión con exito!'
+                        'Eliminada!',
+                        'Se elimino la reunión con exito!'
                     )
                 } else if (
                     /* Read more about handling dismissals below */
                     result.dismiss === Swal.DismissReason.cancel
                 ) {
                     swal.fire(
-                    'Cancelado'
+                        'Cancelado'
                     )
                 }
-                })
+            })
         });
 
         $('#btnModificar').click(function() {

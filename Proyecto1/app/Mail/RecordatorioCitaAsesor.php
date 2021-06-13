@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class RecordarCitaEmail extends Mailable
+class RecordatorioCitaAsesor extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -35,6 +35,6 @@ class RecordarCitaEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('correos/recordarCita')->with('reunion', $this->reunion)->with('estudiante', $this->estudiante)->with('asesor', $this->asesor);
+        return $this->view('correos/recordarCitaAsesor')->with('reunion', $this->reunion)->with('estudiante', $this->estudiante)->with('asesor', $this->asesor);
     }
 }

@@ -47,12 +47,11 @@ class SeguimientoRegularController extends Controller
         $seguimiento_regular->estudiante_id = $request->input('campo-estudiante');
         $seguimiento_regular->situacion = $request->input('campo-sintesis');
         if ($request->input('campo-finalizar')) {
-            $seguimiento_regular->acuerdos = $request->input('campo-acuerdos')."\n\nUltimo Seguimiento";
+            $seguimiento_regular->acuerdos = $request->input('campo-acuerdos') . "\n\nUltimo Seguimiento";
             $estudiante = estudiante::find($request->input('campo-estudiante'));
             $estudiante->estado = "Finalizado";
             $estudiante->save();
-        }
-        else {
+        } else {
             $seguimiento_regular->acuerdos = $request->input('campo-acuerdos');
         }
         if ($request->file('archivo') != null) {
@@ -79,14 +78,14 @@ class SeguimientoRegularController extends Controller
             ->save(storage_path('app/public/' . $seguimiento_regular->estudiante_id) . '/' . 'seguimientoRegular-' . $seguimiento_regular->estudiante_id . '-' . $seguimiento_regular->id . '.pdf');
 
         reunion::where('id', $request->input('campo-id'))->update([
-            'estado' => 'Realizada'
+            'estado' => 'Realizada',
+            'backgroundColor' => '#FF0000'
         ]);
 
         $reunion = reunion::find($request->input('campo-id'));
         //Mandar Email
-        $estudiante = estudiante::find($seguimiento_regular->estudiante_id)->user;
-        $correo = new ComprobanteReunionEmail($estudiante, $reunion, $seguimiento_regular->id, 'seguimientoRegular-');
-        Mail::to($estudiante->email)->send($correo);
+        $correo = new ComprobanteReunionEmail($user, $reunion, $seguimiento_regular->id, 'seguimientoRegular-');
+        Mail::to($user->email)->send($correo);
         return redirect('/Calendario');
     }
 

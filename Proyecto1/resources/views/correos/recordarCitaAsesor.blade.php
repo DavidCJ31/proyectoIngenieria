@@ -347,10 +347,9 @@
                       <h3><a href="https://www.una.ac.cr/"><img style="width:95%; padding-top: 12%; " src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/LogoUNA.svg/1200px-LogoUNA.svg.png" /></a></h3>
                     </td>
                       <td style="padding-top: 6%;">
-                      <p style="font-size:15px; font-family:sans-serif; " >Seguimiento Estudiantil le informa:</p>
-                      <p style="font-size:15px; font-family:sans-serif;" >Hola {{$estudiante->name}} {{$estudiante->apellido}} </p>
+                      <p style="font-size:15px; font-family:sans-serif;" >Hola {{$asesor->name}} {{$asesor->apellido}}</p>
 
-                        <p style="font-size:15px; font-family:sans-serif;" > Le recordamos su reunión mañana en Éxito Académico con {{$asesor->name}} {{$asesor->apellido}}.</p>
+                        <p style="font-size:15px; font-family:sans-serif;" > Le recordamos su reunión mañana con el/la estudiante {{$estudiante->name}} {{$estudiante->apellido}}.</p>
                         <p style="font-size:15px; font-family:sans-serif;" > Fecha y hora: {{$reunion->start}}</p>
                         <p style="font-size:15px; font-family:sans-serif;" > Descripción:</p>
                         <textarea style="font-size:15px; font-family:sans-serif; border:solid 1px black;" readonly cols="30" rows="10">{{$reunion->descripcion}}</textarea>

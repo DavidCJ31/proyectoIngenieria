@@ -39,7 +39,7 @@
     <div class="form-card">
         <h4>VICERRECTORIA DE DOCENCIA</h4>
         <H5>EXITO ACADEMICO</H5>
-        <h4>CALENDARIZAR REUNION</h4>   
+        <h4>CALENDARIZAR REUNION</h4>
         <div class="form-card">
             <div class="container">
                 <h5>Calendario de {{Auth::user()->name}} {{Auth::user()->apellido}}</h5>
@@ -63,27 +63,21 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="campo-hora">Hora</label>
+                                <label for="campo-hora"><strong style="color:red">*</strong>Hora</label>
                                 <input type="time" class="form-control" name="campo-hora" id="campo-hora" placeholder="Hora" min="07:00" max="21:00" step="1800" required>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="campo-duracion">Duracion(Horas)</label>
+                                <label for="campo-duracion"><strong style="color:red">*</strong>Duracion(Horas)</label>
                                 <input type="number" class="form-control" name="campo-duracion" id="campo-duracion" placeholder="duracion" min="1" max="2" value="1" required pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==1) return false;">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="campo-descripcion">Descripcion</label>
-                            <textarea class="form-control" name="campo-descripcion" id="campo-descripcion" placeholder="descripcion"></textarea>
+                            <label for="campo-descripcion">Descripcion o Link de reunion virtual</label>
+                            <textarea class="form-control" name="campo-descripcion" id="campo-descripcion" placeholder="descripcion o link"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="campo-tipo">Tipo de Seguimiento</label>
                             <input type="text" class="form-control" name="campo-tipo" id="campo-tipo" value='{{$tipo}}' readonly>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
-                                <label for="campo-color">Color</label>
-                                <input type="color" class="form-control" name="campo-color" id="campo-color" placeholder="color">
-                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -148,7 +142,6 @@
                 $('#campo-duracion').val(info.event.extendedProps.duracion);
                 $('#campo-descripcion').val(info.event.extendedProps.descripcion);
                 $('#campo-tipo').val(info.event.extendedProps.tipo);
-                $('#campo-color').val(info.event.backgroundColor);
 
                 $('#exampleModalCenter').modal('toggle');
             },
@@ -193,7 +186,7 @@
                 descripcion: $('#campo-descripcion').val(),
                 tipo: $('#campo-tipo').val(),
                 estado: 'Pendiente',
-                backgroundColor: $('#campo-color').val(),
+                backgroundColor: "#2ECC71",
                 textColor: '#000000',
                 '_token': $("meta[name='csrf-token']").attr("content"),
                 '_method': method
@@ -247,7 +240,6 @@
             $('#campo-duracion').val("");
             $('#campo-descripcion').val("");
             $('#campo-tipo').val("");
-            $('#campo-color').val("");
 
             $('#exampleModalCenter').modal('toggle');
         }
