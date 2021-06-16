@@ -284,8 +284,8 @@
         }
 
         function cargarListaEstudiantes(estudiantes) {
-            var lista = $("#listarEstudiantes")
             $("#listarEstudiantes").empty();
+            var lista = $("#listarEstudiantes")
             estudiantes.forEach((est) => {
                 rowListaEstudiante(lista, est);
             });
