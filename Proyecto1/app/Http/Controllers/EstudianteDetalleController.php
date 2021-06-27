@@ -34,7 +34,6 @@ class EstudianteDetalleController extends Controller
      */
     public function create()
     {
-  
         $id = Auth::user()->id;
         $estudiante = estudiante::find($id)->user;
         return view('Estudiante/Detalle/RegistroDeEntrada')->with('estudiante', $estudiante);
